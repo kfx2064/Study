@@ -1,20 +1,72 @@
 package me.whiteship.springinit;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
 
-import me.whiteship.Holoman;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-@SpringBootApplication
+import org.apache.catalina.Context;
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.startup.Tomcat;
+
+//@SpringBootApplication
 public class SpringinitApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LifecycleException {
 
-		SpringApplication application = new SpringApplication(SpringinitApplication.class);
+		Tomcat tomcat = new Tomcat();
+		tomcat.setPort(8080);
+		
+		String docBase = String.valueOf("");
+		
+		try {
+			docBase = Files.createTempDirectory("tomcat-basedir").toString();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		String startPath = String.valueOf("/");
+		Context context = tomcat.addContext(startPath, docBase);
+		
+		HttpServlet servlet = new HttpServlet() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -6256352809672498594L;
+
+			@Override
+			protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+				PrintWriter writer = null;
+				try {
+					writer = resp.getWriter();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				writer.println("<html><head><title>");
+				writer.println("Hey, Tomcat");
+				writer.println("</title></head>");
+				writer.println("<body><h1>Hello Tomcat</h1></body>");
+				writer.println("</html>");
+			}
+		};
+		
+		String servletName = "helloServlet";
+		tomcat.addServlet("/", servletName, servlet);
+		context.addServletMappingDecoded("/hello", servletName);
+		
+		try {
+			tomcat.start();
+			tomcat.getServer().await();
+		} catch (LifecycleException e) {
+			e.printStackTrace();
+		}
+		
+		/*SpringApplication application = new SpringApplication(SpringinitApplication.class);
 		application.setWebApplicationType(WebApplicationType.NONE);
-		application.run(args);
+		application.run(args);*/
 		
 		//SpringApplication.run(SpringinitApplication.class, args);
 	}
