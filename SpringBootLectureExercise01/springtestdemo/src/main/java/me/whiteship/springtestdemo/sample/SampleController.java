@@ -14,11 +14,13 @@ public class SampleController {
 	@Autowired
 	private SampleService sampleService;
 	
+	/*
 	@GetMapping("/hello")
 	public String hello() {
 		logger.info("holoman");
 		System.out.println("skip");
 		return "hello " + sampleService.getName();
 	}
+	*/
 
 }
