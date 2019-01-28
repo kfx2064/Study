@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.WebBoard;
+import org.zerock.persistence.CustomCrudRepository;
 import org.zerock.persistence.WebBoardRepository;
 import org.zerock.vo.PageMaker;
 import org.zerock.vo.PageVO;
@@ -25,6 +28,32 @@ public class WebBoardController {
 	@Autowired
 	private WebBoardRepository repo;
 	
+	@Autowired
+	private CustomCrudRepository customRepo;
+	
+	@GetMapping("/list")
+	public void list(@ModelAttribute("pageVO") PageVO vo, Model model) {
+		
+		Pageable page = vo.makePageable(0, "bno");
+		
+		Page<Object[]> result = customRepo.getCustomPage(vo.getType(), vo.getKeyword(), page);
+		
+		log.info("page ::: " + page);
+		log.info("result ::: " + result);
+		
+		log.info("TOTAL PAGE NUMBER ::: " + result.getTotalPages());
+		
+		System.out.println("resultToString ::: " + result.toString());
+		
+		result.getContent().forEach(arr -> {
+			log.info(Arrays.toString(arr));
+		});
+		
+		model.addAttribute("result", new PageMaker<>(result));
+		
+	}
+	
+	/*
 	@GetMapping("/list")
 	public void list(@ModelAttribute("pageVO") PageVO vo, Model model) {
 		
@@ -41,6 +70,7 @@ public class WebBoardController {
 		model.addAttribute("result", new PageMaker(result));
 		
 	}
+	*/
 	
 	@GetMapping("/register")
 	public void registerGET(@ModelAttribute("vo") WebBoard vo) {

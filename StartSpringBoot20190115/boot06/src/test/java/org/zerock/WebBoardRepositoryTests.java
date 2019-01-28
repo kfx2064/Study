@@ -1,5 +1,7 @@
 package org.zerock;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
@@ -27,6 +29,17 @@ public class WebBoardRepositoryTests {
 	WebBoardRepository repo;
 	
 	@Test
+	public void testList3() {
+		
+		Pageable pageable = PageRequest.of(0, 10, Direction.DESC, "bno");
+		
+		List<Object[]> list = repo.getListWithQuery(pageable);
+		
+		list.forEach(arr -> log.info(Arrays.toString(arr)));
+		
+	}
+	
+	/*@Test
 	public void testList2() {
 		
 		Pageable pageable = PageRequest.of(0, 20, Direction.DESC, "bno");
@@ -38,7 +51,7 @@ public class WebBoardRepositoryTests {
 		log.info("------------------------------");
 		result.getContent().forEach(board -> log.info("" + board));
 		
-	}
+	}*/
 	
 	/*@Test
 	public void testList1() {

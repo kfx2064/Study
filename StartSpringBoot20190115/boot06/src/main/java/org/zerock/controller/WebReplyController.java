@@ -92,7 +92,7 @@ public class WebReplyController {
 		
 		WebBoard board = new WebBoard();
 		board.setBno(bno);
-		return new ResponseEntity<List<WebReply>>(getListByBoard(board), HttpStatus.OK);
+		return new ResponseEntity<>(getListByBoard(board), HttpStatus.OK);
 		
 	}
 	
