@@ -48,5 +48,28 @@
 					, updateDate 	= now()
 		where		bno = #{bno}
 	</update>
+	
+	<select id="getListWithPaging"
+			resultType="org.zerock.domain.BoardVO">
+		<![CDATA[
+			SELECT	INDB.bno
+					, INDB.title
+					, INDB.content
+					, INDB.writer
+					, INDB.regdate
+					, INDB.updatedate
+			FROM	(
+						SELECT	bno
+								, title
+								, content
+								, writer
+								, regdate
+								, updatedate
+						FROM	tbl_board
+						ORDER BY bno DESC				
+					)	INDB		
+			LIMIT	10 		OFFSET	10
+		]]>
+	</select>
 
 </mapper>
