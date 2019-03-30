@@ -68,7 +68,16 @@
 						FROM	tbl_board
 						ORDER BY bno DESC				
 					)	INDB		
-			LIMIT	#{amount} 		OFFSET		#{pageNum} - 1
+			LIMIT	10 		OFFSET		#{pageNum} - 1
+		]]>
+	</select>
+	
+	<select id="getTotalCount" 
+			resultType="int">
+		SELECT	count(*)
+		FROM	tbl_board
+		<![CDATA[
+		WHERE	bno > 0
 		]]>
 	</select>
 

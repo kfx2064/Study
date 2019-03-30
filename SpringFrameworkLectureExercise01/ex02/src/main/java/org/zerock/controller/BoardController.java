@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,10 +33,19 @@ public class BoardController {
 		
 		logger.info("list");
 		
+		logger.info("cri ::: " + cri.toString());
+		
+		int total = service.getTotal(cri);
+		logger.info("total : " + total);
+		
+		cri.setAmount(total);
+		
 		List<BoardVO> resultList = service.getList(cri);
 		
+		logger.info("pageMaker ::: " + new PageDTO(cri, total).toString());
+		
 		model.addAttribute("list", resultList);
-		model.addAttribute("pageMaker", new PageDTO(cri, 123));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		
 		return "board/list";
 	}
@@ -53,7 +63,7 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/get"})
-	public String get(@RequestParam("bno") Long bno, Model model) {
+	public String get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		
 		logger.info("/get");
 		
@@ -62,8 +72,8 @@ public class BoardController {
 		return "/board/get";
 	}
 	
-	@GetMapping
-	public String getModify(@RequestParam("bno") Long bno, Model model) {
+	@GetMapping("/modify")
+	public String getModify(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		
 		logger.info("/modify");
 		
@@ -73,7 +83,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr) {
+	public String modify(BoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		
 		logger.info("modify ::: " + board.toString());
 		
@@ -81,17 +91,23 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		
 		return "redirect:/board/list";
 	}
 	
 	@PostMapping("/remove")
-	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
+	public String remove(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		
 		logger.info("remove......" + bno);
 		
 		if (service.remove(bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 		
 		return "redirect:/board/list";
 	}

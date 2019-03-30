@@ -44,11 +44,28 @@ $(document).ready(function(){
 		console.log("click");
 		
 		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+		
+		var showPageNum = $("input[name='pageNum']").val();
+		var showAmount = $("input[name='amount']").val();
+		
 		actionForm.submit();
 		
 	});
 	
-	
+	$(".move").on("click", function(e) {
+		
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href") + "'>");
+		actionForm.attr("action", "/board/get");
+		
+		var showBno = $("input[name='bno']").val();
+		var showPageNum = $("input[name='pageNum']").val();
+		var showAmount = $("input[name='amount']").val();
+		var showPaginatePageNum = $("#hiddenNum").val();
+		
+		actionForm.submit();
+		
+	});
 	
 });
 
@@ -413,7 +430,10 @@ $(document).ready(function(){
                 		
                 		<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
                 			<li class="paginate_button ${pageMaker.cri.pageNum == num ? 'active':'' }">
-                				<a href="${num }">${num }</a>
+                				<a href="${num }">
+                					${num }
+                					<input type="hidden" id="hiddenNum" value="${num }" />                					
+                				</a>
                 			</li>
                 		</c:forEach>
                 		
@@ -427,7 +447,7 @@ $(document).ready(function(){
                 
                 <form id='actionForm' action='/board/list' method='get'>
                 	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }' />
-                	<input type='hidden' name='amout' value='${pageMaker.cri.amount }' />
+                	<input type='hidden' name='amount' value='${pageMaker.cri.amount }' />
                 </form>                
                 <!-- end Paging -->
                 
