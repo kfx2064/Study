@@ -91,10 +91,16 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
+		/*
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		*/
 		
-		return "redirect:/board/list";
+		String strGetLink = cri.getListLink();
+		
+		return "redirect:/board/list" + strGetLink;
 	}
 	
 	@PostMapping("/remove")
@@ -106,10 +112,16 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
+		/*
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		*/
 		
-		return "redirect:/board/list";
+		String strListLink = cri.getListLink();
+		
+		return "redirect:/board/list" + strListLink;
 	}
 	
 	@GetMapping("/register")
