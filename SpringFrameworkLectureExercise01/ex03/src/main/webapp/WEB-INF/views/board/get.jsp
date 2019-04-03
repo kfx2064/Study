@@ -5,8 +5,71 @@
 
 <%@include file="../includes/header.jsp" %>
 
+<script type="text/javascript" src="/resources/js/reply.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	// reply.js 작동 확인
+	console.log(replyService);
+	console.log("======");
+	console.log("JS TEST");
+	
+	var bnoValue = '<c:out value="${board.bno}" />';
+	
+	replyService.get(10, function(data) {
+		
+		console.log(data);
+		
+	});
+	
+	// for replyService getList test
+	replyService.getList({ bno:bnoValue, page:1 }, function(list) {
+		
+		for(var i = 0, len = list.length || 0; i < len; i++) {
+			console.log(list[i]);
+		}
+		
+	});
+	
+	// update
+	/*
+	replyService.update({
+		rno : 22
+		, bno : bnoValue
+		, reply : "Modified Reply..."
+	}, function(result) {
+		alert("수정 완료");
+	});
+	*/
+	
+	/*
+	replyService.remove(23, function(count) {
+		
+		console.log(count);
+		
+		if (count == "success") {
+			alert("REMOVED");
+		}
+	}, function(err) {
+		alert("ERROR...");
+	});
+	*/
+	
+	// for replyService add test
+	/*
+	replyService.add(
+		{
+			reply : "JS Test"
+			, replyer : "tester"
+			, bno : bnoValue
+		},
+		function(result) {
+			alert("RESULT : " + result);
+		}
+	);
+	*/
+	
 	
 	var operForm = $("#operForm");
 	
@@ -85,6 +148,40 @@ $(document).ready(function() {
 		
 		</div>
 	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-lg-12">
+	
+		<!-- /.panel -->
+		<div class="panel paenl-default">
+			<div class="panel-heading">
+				<i class="fa fa-comments fa-fw"></i> Reply
+			</div>
+		</div>
+		
+		<!-- /.pannel-heading -->
+		<div class="panel-body">
+			
+			<ul class="chat">
+				<!-- start reply -->
+				<li class="left clearfix" data-rno="12">
+					<div>
+						<div class="header">
+							<strong class="primary-font">user00</strong>
+							<small class="pull-right text-muted">2018-01-01 13:13</small>
+						</div>
+						<p>Good job!</p>
+					</div>
+				</li>
+				<!-- end reply -->
+			</ul>
+			<!-- ./ end ul -->
+		</div>
+		<!-- /.panel-body -->
+	</div>
+
 </div>
 
 <%@include file="../includes/footer.jsp" %>
