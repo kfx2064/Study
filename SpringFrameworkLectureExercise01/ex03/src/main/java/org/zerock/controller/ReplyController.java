@@ -92,6 +92,7 @@ public class ReplyController {
 		
 		logger.info("rno : " + rno);
 		logger.info("modify : " + vo.toString());
+		logger.info("voToString : " + vo.toString());
 		
 		return service.modify(vo) == 1
 				? new ResponseEntity<>("success", HttpStatus.OK)

@@ -42,6 +42,7 @@
 	<update id="update">
 		UPDATE	tbl_reply
 		SET		reply = #{reply}
+				, replyer = #{replyer}
 				, updatedate = now()
 		WHERE   rno = #{rno}
 	</update>
