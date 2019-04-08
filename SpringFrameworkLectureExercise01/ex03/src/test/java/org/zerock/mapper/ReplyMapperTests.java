@@ -27,6 +27,18 @@ public class ReplyMapperTests {
 	private Long[] bnoArr = {10L, 15L, 20L, 30L, 35L};
 	
 	@Test
+	public void testList2() {
+		
+		Criteria cri = new Criteria(1, 10);
+		
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, 15L);
+		
+		replies.forEach(reply -> logger.info(reply.toString()));
+		
+	}
+	
+	/*
+	@Test
 	public void testList() {
 		
 		Criteria cri = new Criteria();
@@ -36,6 +48,7 @@ public class ReplyMapperTests {
 		replies.forEach(reply -> logger.info(reply.toString()));
 		
 	}
+	*/
 	
 	/*
 	@Test
