@@ -74,5 +74,14 @@
 			OFFSET 	(#{cri.pageNum} - 1) * #{cri.amount};
 		]]>
 	</select>
+	
+	<select id="getCountByBno"
+			resultType="int">
+		<![CDATA[
+			SELECT	count(rno)			
+			FROM	tbl_reply
+			WHERE	bno = #{bno}
+		]]>
+	</select>
 
 </mapper>

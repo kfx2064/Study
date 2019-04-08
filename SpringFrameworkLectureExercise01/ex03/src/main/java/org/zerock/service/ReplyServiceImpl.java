@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
 import org.zerock.mapper.ReplyMapper;
 
@@ -68,6 +69,17 @@ public class ReplyServiceImpl implements ReplyService {
 		List<ReplyVO> resultList = mapper.getListWithPaging(cri, bno);
 		
 		return resultList;
+	}
+
+	@Override
+	public ReplyPageDTO getListPage(Criteria cri, Long bno) {
+		
+		ReplyPageDTO replyPageDto = null;
+		
+		replyPageDto = new ReplyPageDTO(mapper.getCountByBno(bno)
+										, mapper.getListWithPaging(cri, bno));
+		
+		return replyPageDto;
 	}
 
 }

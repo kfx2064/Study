@@ -58,6 +58,8 @@ public class ReplyController {
 		
 		Criteria cri = new Criteria(page, 10);
 		
+		logger.info("get Reply List bno : " + bno);
+		
 		logger.info(cri.toString());
 		
 		return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
