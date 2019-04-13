@@ -12,13 +12,17 @@
 			, bno
 			, reply
 			, replyer
+			, replydate
+			, updatedate
 		)
 		VALUES
 		(
 			nextval('seq_reply')
 			, #{bno}
 			, #{reply}
-			, #{replyer}	
+			, #{replyer}
+			, now()
+			, now()	
 		)
 	</insert>
 	
