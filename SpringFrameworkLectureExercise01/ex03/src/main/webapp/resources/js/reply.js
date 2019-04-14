@@ -32,10 +32,14 @@ var replyService = (function(){
 		var bno = param.bno;
 		var page = param.page || 1;
 		
+		console.log("start getList.");
+		
 		$.getJSON("/replies/pages/" + bno + "/" + page + ".json",
 				function(data) {
 					if (callback) {
 						//callback(data);	// 댓글 목록만 가져오는 경우
+						console.log("show data.");
+						console.log(data);
 						callback(data.replyCnt, data.list);		// 댓글 숫자와 목록을 가져오는 경우
 					}
 				}).fail(function(xhr, status, err) {

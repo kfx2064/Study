@@ -71,7 +71,7 @@
 							 , replyDate
 							 , updatedate
 					FROM	 tbl_reply
-					WHERE	 bno = 15
+					WHERE	 bno = #{bno}
 					AND		 rno > 0
 					LIMIT 	 #{cri.pageNum} * #{cri.amount}
 				) AS a
