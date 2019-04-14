@@ -20,8 +20,8 @@ public class PageDTO {
 		
 		this.cri = cri;
 		this.total = total;
-		System.out.println("cri ::: " + cri.toString());
 		System.out.println("total ::: " + total);
+		System.out.println("cri.getPageNum() ::: " + cri.getPageNum());
 		
 		this.endPage = (int) (Math.ceil(cri.getPageNum() / 10.0)) * 10;
 		System.out.println("endPage ::: " + endPage);
@@ -30,18 +30,29 @@ public class PageDTO {
 		System.out.println("startPage ::: " + startPage);
 		
 		//int realEnd = (int) (Math.ceil((total * 1.0) / cri.getAmount()));
+		
+		System.out.println("cri.getAmount() ::: " + cri.getAmount());
+		
 		int realEnd = (int) Math.ceil(total / endPage);
 		System.out.println("realEnd ::: " + realEnd);
 		
-		if(realEnd < this.endPage) {
+		
+		if(realEnd < 10) {
 			this.endPage = realEnd;
+		}
+		
+		// 페이지 끝자리 구하기
+		if(realEnd < 10) {
+			int trueEndPage = (((int)(startPage / 10)) * 10) + this.endPage;
+			System.out.println("trueEndPage ::: " + trueEndPage);
+			this.endPage = trueEndPage;
 		}
 		
 		System.out.println("this.endPage ::: " + this.endPage);
 		
 		this.prev = this.startPage > 1;
 		
-		this.next = this.endPage < realEnd;
+		this.next = 10 < realEnd;
 		
 		System.out.println("this.prev ::: " + this.prev);
 		System.out.println("this next ::: " + this.next);
