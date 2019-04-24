@@ -78,6 +78,7 @@
 					, INDB.writer
 					, INDB.regdate
 					, INDB.updatedate
+					, INDB.replycnt
 			FROM	(
 						SELECT	bno
 								, title
@@ -85,6 +86,7 @@
 								, writer
 								, regdate
 								, updatedate
+								, replycnt
 						FROM	tbl_board
 						WHERE
 						<include refid="criteria"></include>
@@ -103,5 +105,11 @@
 		WHERE	bno > 0
 		]]>
 	</select>
+	
+	<update id="updateReplyCnt">
+		UPDATE 	tbl_board
+		SET		replycnt 	= replycnt + #{amount}
+		WHERE	bno 		= #{bno}
+	</update>
 
 </mapper>

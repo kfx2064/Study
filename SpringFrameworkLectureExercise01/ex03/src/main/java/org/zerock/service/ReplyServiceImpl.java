@@ -6,9 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
+import org.zerock.mapper.BoardMapper;
 import org.zerock.mapper.ReplyMapper;
 
 import lombok.Setter;
@@ -21,12 +23,18 @@ public class ReplyServiceImpl implements ReplyService {
 	@Setter(onMethod_ = @Autowired)
 	private ReplyMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private BoardMapper boardMapper;
+	
+	@Transactional
 	@Override
 	public int register(ReplyVO vo) {
 		
 		logger.info("register......" + vo);
 		
 		int result = mapper.insert(vo);
+		
+		result += boardMapper.updateReplyCnt(vo.getBno(), 1);
 		
 		return result;
 	}
@@ -41,6 +49,7 @@ public class ReplyServiceImpl implements ReplyService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int modify(ReplyVO vo) {
 		
@@ -51,12 +60,16 @@ public class ReplyServiceImpl implements ReplyService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int remove(Long rno) {
 		
 		logger.info("remove....." + rno);
 		
-		int result = mapper.delete(rno);
+		ReplyVO vo = mapper.read(rno);
+		
+		int result = boardMapper.updateReplyCnt(vo.getBno(), -1);
+		result += mapper.delete(rno);
 		
 		return result;
 	}
