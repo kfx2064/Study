@@ -6,8 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.mapper.BoardAttachMapper;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -21,11 +23,37 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardMapper mapper;
 	
+	@Autowired
+	private BoardAttachMapper attachMapper;
+	
+	@Transactional
 	@Override
-	public void register(BoardVO board) {
+	public BoardVO register(BoardVO board) {
+		
 		logger.info("register........." + board);
+		System.out.println("register.............");
 		
 		mapper.insertSelectKey(board);
+		
+		return board;
+	}
+	
+	@Transactional
+	@Override
+	public void registerAttach(BoardVO board) {
+
+		if(board.getAttachList() == null || board.getAttachList().size() <= 0) {
+			return;
+		}
+		
+		System.out.println("showboardbno : " + board.getBno());
+		
+		board.getAttachList().forEach(attach -> {
+			
+			attach.setBno(board.getBno() + 1);
+			attachMapper.insert(attach);
+			
+		});
 	}
 
 	@Override

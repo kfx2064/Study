@@ -53,9 +53,24 @@ public class BoardController {
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
 		
+		logger.info("=================================");
+		
 		logger.info("register ::: " + board.toString());
 		
-		service.register(board);
+		if(board.getAttachList() != null) {
+			board.getAttachList().forEach(attach -> logger.info(attach.toString()));
+		}
+		
+		logger.info("=================================");
+		
+		BoardVO tmpAttachVO = new BoardVO();;
+		
+		tmpAttachVO = service.register(board);
+		Long getBno = tmpAttachVO.getBno();
+		board.setBno(getBno);
+		System.out.println("controllerGetBno ::: " + getBno);
+		
+		service.registerAttach(board);
 		
 		rttr.addFlashAttribute("result", board.getBno());
 		

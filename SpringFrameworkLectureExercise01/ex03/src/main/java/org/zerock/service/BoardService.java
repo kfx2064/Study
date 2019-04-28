@@ -7,7 +7,9 @@ import org.zerock.domain.Criteria;
 
 public interface BoardService {
 	
-	public void register(BoardVO board);
+	public BoardVO register(BoardVO board);
+	
+	public void registerAttach(BoardVO board);
 	
 	public BoardVO get(Long bno);
 	
