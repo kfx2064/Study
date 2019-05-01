@@ -1,9 +1,15 @@
 package org.zerock.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.BoardAttachVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
@@ -123,7 +131,13 @@ public class BoardController {
 		
 		logger.info("remove......" + bno);
 		
+		List<BoardAttachVO> attachList = service.getAttachList(bno);
+		
 		if (service.remove(bno)) {
+			
+			// delete Attach Files
+			deleteFiles(attachList);
+			
 			rttr.addFlashAttribute("result", "success");
 		}
 		
@@ -143,6 +157,52 @@ public class BoardController {
 	public String register() {
 		
 		return "board/register";
+	}
+	
+	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<BoardAttachVO> getAttachList(Long bno) {
+		
+		logger.info("getAttachList : " + bno);
+		
+		ResponseEntity resultEntity = new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
+		
+		return resultEntity;		
+	}
+	
+	private void deleteFiles(List<BoardAttachVO> attachList) {
+		
+		if(attachList == null || attachList.size() == 0) {
+			return;
+		}
+		
+		logger.info("delete attach files......................");
+		logger.info(attachList.toString());
+		
+		attachList.forEach(attach -> {
+			
+			try {
+				
+				Path file = Paths.get("C:\\upload\\" + attach.getUploadPath() + "\\" + attach.getUuid() + "_"
+										+ "_" + attach.getFileName());
+				
+				Files.deleteIfExists(file);
+				
+				if(Files.probeContentType(file).startsWith("image")) {
+					
+					Path thumbNail = Paths.get("C:\\upload\\" + attach.getUploadPath() + "\\s_" + attach.getUuid() + "_"
+												+ attach.getFileName());
+					
+					Files.delete(thumbNail);
+					
+				}
+				
+			} catch(Exception e) {
+				logger.error("delete file error : " + e.getMessage());
+			} 
+			
+		});
+		
 	}
 	
 }

@@ -24,8 +24,10 @@
 		)
 	</insert>
 	
-	<delete id="delete">
-		delete from tbl_attach where uuid = #{uuid}
+	<delete id="delete"
+			parameterType="org.zerock.domain.BoardAttachVO">
+		delete from 	tbl_attach 
+		where 			uuid = #{uuid}
 	</delete>
 	
 	<select id="findByBno"
@@ -34,5 +36,10 @@
 		from	tbl_attach
 		where	bno = #{bno}
 	</select>
+	
+	<delete id="deleteAll">
+		delete from 	tbl_attach
+		where			bno = #{bno}
+	</delete>
 
 </mapper>

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zerock.domain.BoardAttachVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.mapper.BoardAttachMapper;
@@ -81,6 +82,8 @@ public class BoardServiceImpl implements BoardService {
 		
 		logger.info("remove........." + bno);
 		
+		attachMapper.deleteAll(bno);
+		
 		boolean result = mapper.delete(bno) == 1;
 		
 		return result;
@@ -106,6 +109,18 @@ public class BoardServiceImpl implements BoardService {
 		result = mapper.getTotalCount(cri);
 		
 		return result;
+	}
+
+	@Override
+	public List<BoardAttachVO> getAttachList(Long bno) {
+	
+		logger.info("get Attach list by bno : " + bno);
+	
+		List<BoardAttachVO> resultList = null;
+		
+		resultList = attachMapper.findByBno(bno);
+		
+		return resultList;
 	}
 
 }
