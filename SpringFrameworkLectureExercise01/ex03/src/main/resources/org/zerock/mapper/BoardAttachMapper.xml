@@ -37,7 +37,8 @@
 		where	bno = #{bno}
 	</select>
 	
-	<delete id="deleteAll">
+	<delete id="deleteAll"
+			parameterType="org.zerock.domain.BoardAttachVO">
 		delete from 	tbl_attach
 		where			bno = #{bno}
 	</delete>
