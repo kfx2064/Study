@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CommonController {
@@ -34,6 +35,20 @@ public class CommonController {
 		if(logout != null) {
 			model.addAttribute("logout", "Logout!!");
 		}
+		
+	}
+	
+	@GetMapping("/customLogout")
+	public void logoutGET() {
+		
+		logger.info("custom logout");
+		
+	}
+	
+	@PostMapping("/customLogout")
+	public void logoutPost() {
+		
+		logger.info("post custom logout");
 		
 	}
 	
