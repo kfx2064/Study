@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script>
+var URI = "http://hanbit.co.kr?test=한글입니다.";
+
+var output = "";
+output += "show escape()\n";
+output += escape(URI) + "\n\n";
+output += "show encodeURI()\n";
+output += encodeURI(URI) + "\n\n";
+output += "show encodeURIComponent()\n";
+output += encodeURIComponent(URI) + "\n\n";
+
+alert(output);
+</script>
+</head>
+<body>
+
+</body>
+</html>
