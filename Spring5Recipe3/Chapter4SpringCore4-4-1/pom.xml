@@ -4,17 +4,25 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jth</groupId>
 	<artifactId>spring</artifactId>
-	<name>Chapter4SpringCore4-4-1</name>
+	<name>Chapter3SpringCore4-4-1</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.6</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<java-version>1.8</java-version>
+		<org.springframework-version>5.0.5.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
+		<!-- Core -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- Context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -27,19 +35,55 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
+		<!-- Beans -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-oxm -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-oxm</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-simple</artifactId>
+		    <version>1.7.25</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.9.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.rometools/rome -->
+		<dependency>
+		    <groupId>com.rometools</groupId>
+		    <artifactId>rome</artifactId>
+		    <version>1.9.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.3</version>
+		</dependency>
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>	
-		
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -82,7 +126,7 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-
+		
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
