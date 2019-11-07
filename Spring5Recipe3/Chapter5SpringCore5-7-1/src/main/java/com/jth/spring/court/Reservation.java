@@ -4,9 +4,13 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Reservation {
 	
 	private String courtName;
+	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate date;
 	private int hour;
 	private Player player;
