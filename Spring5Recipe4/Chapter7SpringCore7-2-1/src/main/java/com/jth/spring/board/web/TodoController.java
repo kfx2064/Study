@@ -1,7 +1,8 @@
-package board.web;
+package com.jth.spring.board.web;
 
-import board.Todo;
-import board.TodoService;
+
+import com.jth.spring.board.Todo;
+import com.jth.spring.board.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

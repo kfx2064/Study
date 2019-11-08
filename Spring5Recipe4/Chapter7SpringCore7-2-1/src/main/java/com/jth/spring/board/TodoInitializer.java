@@ -1,4 +1,4 @@
-package board;
+package com.jth.spring.board;
 
 import org.springframework.stereotype.Component;
 
@@ -31,6 +31,18 @@ public class TodoInitializer {
         todo.setOwner("marten@apressmedia.net");
         todo.setDescription("Call parents.");
 
+        messageBoardService.save(todo);
+        
+        todo = new Todo();
+        todo.setOwner("jlong@pivotal.io");
+        todo.setDescription("Prepare Cloud Native Presentation");
+        
+        messageBoardService.save(todo);
+        
+        todo = new Todo();
+        todo.setOwner("rwinch@pivotal.io");
+        todo.setDescription("Finish Spring Security Reactive.");
+        
         messageBoardService.save(todo);
     }
 

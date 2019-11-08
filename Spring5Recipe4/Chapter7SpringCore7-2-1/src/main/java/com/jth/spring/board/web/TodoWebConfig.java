@@ -1,4 +1,4 @@
-package board.web;
+package com.jth.spring.board.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(value = "board", excludeFilters = {@ComponentScan.Filter(Configuration.class)})
+@ComponentScan(value = "com.jth.spring", excludeFilters = {@ComponentScan.Filter(Configuration.class)})
 public class TodoWebConfig implements WebMvcConfigurer {
 
     @Override

@@ -1,4 +1,4 @@
-package board;
+package com.jth.spring.board;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

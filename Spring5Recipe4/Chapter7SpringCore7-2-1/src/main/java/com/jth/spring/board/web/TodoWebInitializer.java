@@ -1,4 +1,4 @@
-package board.web;
+package com.jth.spring.board.web;
 
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
