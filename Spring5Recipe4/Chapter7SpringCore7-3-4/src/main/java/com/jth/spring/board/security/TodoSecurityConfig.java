@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -26,16 +27,16 @@ public class TodoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .build();
     }
 
+    @Bean
+    public BCryptPasswordEncoder psswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
-                .dataSource(dataSource())
-                .usersByUsernameQuery("SELECT username, password, 'true' as enabled FROM member WHERE username = ?")
-                .authoritiesByUsernameQuery(
-                        "SELECT member.username, member_role.role as authorities " +
-                                "FROM member, member_role " +
-                                "WHERE member.username = ? AND member.id = member_role.member_id"
-                );
+                .passwordEncoder(psswordEncoder())
+                .dataSource(dataSource());
     }
 
     @Override

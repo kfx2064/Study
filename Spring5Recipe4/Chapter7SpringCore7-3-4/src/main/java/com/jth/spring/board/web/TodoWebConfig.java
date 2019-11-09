@@ -27,17 +27,6 @@ public class TodoWebConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-    /*
-    @Bean
-    public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.H2)
-                .setName("com/jth/spring/board")
-                .addScript("classpath:/schema.sql")
-                .build();
-    }
-     */
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
