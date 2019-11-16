@@ -1,6 +1,6 @@
-package com.jth.spring.vehicle;
+package com.jth.spring;
 
-import com.jth.spring.vehicle.config.VehicleConfiguration;
+import com.jth.spring.config.VehicleConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,7 +10,7 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(VehicleConfiguration.class);
 
         VehicleDao vehicleDao = context.getBean(VehicleDao.class);
-        Vehicle vehicle = new Vehicle("TEM0001", "Red", 4, 4);
+        Vehicle vehicle = new Vehicle("TEM0002", "Red", 4, 4);
         vehicleDao.insert(vehicle);
 
         vehicle = vehicleDao.findByVehicleNo("TEM0001");

@@ -1,7 +1,8 @@
-package com.jth.spring.vehicle.config;
+package com.jth.spring.config;
 
-import com.jth.spring.vehicle.PlainJdbcVehicleDao;
-import com.jth.spring.vehicle.VehicleDao;
+
+import com.jth.spring.PlainJdbcVehicleDao;
+import com.jth.spring.VehicleDao;
 import org.postgresql.Driver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

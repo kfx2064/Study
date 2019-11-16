@@ -50,4 +50,13 @@ public class Vehicle {
         this.seat = seat;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "vehicleNo='" + vehicleNo + '\'' +
+                ", color='" + color + '\'' +
+                ", wheel=" + wheel +
+                ", seat=" + seat +
+                '}';
+    }
 }

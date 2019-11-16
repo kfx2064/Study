@@ -1,4 +1,4 @@
-package com.jth.spring.vehicle;
+package com.jth.spring;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package com.jth.spring.vehicle;
+package com.jth.spring;
 
 import java.util.Collection;
 import java.util.List;

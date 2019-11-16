@@ -1,4 +1,4 @@
-package com.jth.spring.vehicle;
+package com.jth.spring;
 
 public class Vehicle {
 

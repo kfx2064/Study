@@ -1,5 +1,8 @@
 package com.jth.spring.vehicle;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,40 +11,40 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlainJdbcVehicleDao implements VehicleDao {
+public class JdbcVehicleDao implements VehicleDao {
 
-    private static final String INSERT_SQL = "INSERT INTO vehicle (COLOR, WHEEL, SEAT, VEHICLE_NO) VALUES (?, ?, ?, ?)";
-    private static final String UPDATE_SQL = "UPDATE vehicle SET COLOR=?, WHEEL=?, SEAT=?, WHERE VEHICLE_NO=?";
-    private static final String SELECT_ALL_SQL = "SELECT * FROM vehicle";
-    private static final String SELECT_ONE_SQL = "SELECT * FROM vehicle WHERE VEHICLE_NO = ?";
-    private static final String DELETE_SQL = "DELETE FROM vehicle WHERE VECHILE_NO=?";
+    private static final String INSERT_SQL = "INSERT INTO vehicle.vehicle(COLOR, WHEEL, SEAT, VEHICLE_NO) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE_SQL = "UPDATE vehicle.vehicle SET COLOR=?, WHEEL=?, SEAT=?, WHERE VEHICLE_NO=?";
+    private static final String SELECT_ALL_SQL = "SELECT * FROM vehicle.vehicle";
+    private static final String SELECT_ONE_SQL = "SELECT * FROM vehicle.vehicle WHERE VEHICLE_NO = ?";
+    private static final String DELETE_SQL = "DELETE FROM vehicle.vehicle WHERE VEHICLE_NO=?";
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
-    public PlainJdbcVehicleDao(DataSource dataSource) {
+    public JdbcVehicleDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
     @Override
     public void insert(Vehicle vehicle) {
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement(INSERT_SQL)) {
-            prepareStatement(ps, vehicle);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(this.dataSource);
+        jdbcTemplate.update(con -> {
+           PreparedStatement ps = con.prepareStatement(INSERT_SQL);
+           prepareStatement(ps, vehicle);
+           return ps;
+        });
     }
 
     @Override
     public Vehicle findByVehicleNo(String vehicleNo) {
+
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SELECT_ONE_SQL)) {
+                PreparedStatement ps = conn.prepareStatement(SELECT_ONE_SQL)) {
             ps.setString(1, vehicleNo);
 
             Vehicle vehicle = null;
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
+                if(rs.next()) {
                     vehicle = toVehicle(rs);
                 }
             }
@@ -49,22 +52,25 @@ public class PlainJdbcVehicleDao implements VehicleDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
     public List<Vehicle> findAll() {
+
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SELECT_ALL_SQL);
-             ResultSet rs = ps.executeQuery()) {
+            PreparedStatement ps = conn.prepareStatement(SELECT_ALL_SQL);
+            ResultSet rs = ps.executeQuery()) {
 
             List<Vehicle> vehicles = new ArrayList<>();
-            while (rs.next()) {
+            while(rs.next()) {
                 vehicles.add(toVehicle(rs));
             }
             return vehicles;
-        } catch (SQLException e) {
+        } catch(SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     private Vehicle toVehicle(ResultSet rs) throws SQLException {
@@ -82,17 +88,19 @@ public class PlainJdbcVehicleDao implements VehicleDao {
 
     @Override
     public void update(Vehicle vehicle) {
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement(UPDATE_SQL)) {
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement(UPDATE_SQL)) {
             prepareStatement(ps, vehicle);
             ps.executeUpdate();
-        } catch (SQLException e) {
+        } catch(SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public void delete(Vehicle vehicle) {
+
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement(DELETE_SQL)) {
             ps.setString(1, vehicle.getVehicleNo());
@@ -100,5 +108,23 @@ public class PlainJdbcVehicleDao implements VehicleDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
+
+    private class InsertVehicleStatementCreator implements PreparedStatementCreator {
+
+        private Vehicle vehicle;
+
+        InsertVehicleStatementCreator(Vehicle vehicle) {
+            this.vehicle = vehicle;
+        }
+
+        @Override
+        public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+            PreparedStatement ps = conn.prepareStatement(INSERT_SQL);
+            prepareStatement(ps, this.vehicle);
+            return ps;
+        }
+    }
+
 }

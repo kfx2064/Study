@@ -1,11 +1,10 @@
 package com.jth.spring.vehicle.config;
 
-import com.jth.spring.vehicle.PlainJdbcVehicleDao;
+import com.jth.spring.vehicle.JdbcVehicleDao;
 import com.jth.spring.vehicle.VehicleDao;
-import org.postgresql.Driver;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
 
@@ -13,17 +12,19 @@ import javax.sql.DataSource;
 public class VehicleConfiguration {
 
     @Bean
-    public VehicleDao vehicleDao(DataSource dataSource) {
-        return new PlainJdbcVehicleDao(dataSource);
+    public VehicleDao vehicleDao() {
+        return new JdbcVehicleDao(dataSource());
     }
 
     @Bean
     public DataSource dataSource() {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(Driver.class);
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/vehicle");
+
+        HikariDataSource dataSource = new HikariDataSource();
         dataSource.setUsername("postgres");
         dataSource.setPassword("1234");
+        dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
+        dataSource.setMinimumIdle(2);
+        dataSource.setMaximumPoolSize(5);
         return dataSource;
     }
 
