@@ -24,6 +24,8 @@ dependencies {
     compile "org.springframework:spring-context:${springVersion}"
     compile "org.springframework:spring-beans:${springVersion}"
     compile "org.springframework:spring-jdbc:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile "org.springframework.data:spring-data-jpa:2.0.2.RELEASE"
     compile "org.slf4j:slf4j-simple:1.7.25"
     compile "org.postgresql:postgresql:42.1.4"
     compile "com.zaxxer:HikariCP:2.7.6"
