@@ -10,6 +10,19 @@
 <a th:href="@{register?userId=JeongTaeHyun&password=1234}">register?userId=JeongTaeHyun&amp;password=1234</a><br>
 <a th:href="@{register/jeongtaehyun}">register/jeongtaehyun</a><br>
 
+<a th:href="@{registerByGet01?userId=jeongtaehyun&dateOfBirth=1234}">registerByGet01?userId=jeongtaehyun&amp;dateOfBirth=1234</a><br>
+<a th:href="@{registerByGet01?userId=jeongtaehyun&dateOfBirth=2018-09-08}">registerByGet01?userId=jeongtaehyun&amp;dateOfBirth=2018-09-08</a><br>
+<a th:href="@{registerByGet01?userId=jeongtaehyun&dateOfBirth=20180908}">registerByGet01?userId=jeongtaehyun&amp;dateOfBrith=20180908</a><br>
+<a th:href="@{registerByGet01?userId=jeongtaehyun&dateOfBirth=2018/09/08}">registerByGet01?userId=jeongtaehyun&amp;dateOfBrith=2018/09/08</a><br>
+<a th:href="@{registerByGet02?userId=jeongtaehyun&dateOfBirth=20180908}">registerByGet02?userId=jeongtaehyun&amp;dateOfBrith=20180908</a><br>
+
+<form th:action="@{/register}" method="post">
+    userId : <input type="text" name="userId" value="jeongtaehyun"><br>
+    password : <input type="text" name="pasword" value="1234"><br>
+    dateOfBirth : <input type="text" name="dateOfBirth" value="20180908"><br>
+    <input type="submit" value="register">
+</form>
+
 <form th:action="@{/register01}" method="post">
     userId : <input type="text" name="userId" value="jeongtaehyun"><br>
     password : <input type="text" name="pasword" value="1234"><br>
