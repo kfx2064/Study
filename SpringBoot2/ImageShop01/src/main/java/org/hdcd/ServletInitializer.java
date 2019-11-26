@@ -1,4 +1,4 @@
-package org.hdcd.imageshop01;
+package org.hdcd;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

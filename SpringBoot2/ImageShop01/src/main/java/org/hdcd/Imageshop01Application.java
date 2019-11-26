@@ -1,4 +1,4 @@
-package org.hdcd.imageshop01;
+package org.hdcd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
