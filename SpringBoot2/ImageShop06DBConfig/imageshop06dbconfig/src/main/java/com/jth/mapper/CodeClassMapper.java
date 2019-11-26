@@ -1,9 +1,11 @@
 package com.jth.mapper;
 
 import com.jth.domain.CodeClass;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface CodeClassMapper {
 
     public void create(CodeClass codeClass) throws Exception;
