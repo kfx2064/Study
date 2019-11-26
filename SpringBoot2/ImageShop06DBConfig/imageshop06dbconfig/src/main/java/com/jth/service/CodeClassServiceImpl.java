@@ -3,9 +3,11 @@ package com.jth.service;
 import com.jth.domain.CodeClass;
 import com.jth.mapper.CodeClassMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CodeClassServiceImpl implements CodeClassService {
 
     @Autowired
