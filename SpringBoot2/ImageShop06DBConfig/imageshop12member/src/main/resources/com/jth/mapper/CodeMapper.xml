@@ -18,6 +18,15 @@
         SELECT  code_value      AS value
                 , code_name     AS label
         FROM    code_detail
+        WHERE   use_yn = 'Y'
+        ORDER BY sort_seq
+    </select>
+
+    <select id="getCodeListOops"
+            resultType="com.jth.domain.CodeLabelValue">
+        SELECT  code_value      AS value
+                , code_name     AS label
+        FROM    code_detail
         WHERE   class_code = #{classCode}
         AND     use_yn = 'Y'
         ORDER BY sort_seq

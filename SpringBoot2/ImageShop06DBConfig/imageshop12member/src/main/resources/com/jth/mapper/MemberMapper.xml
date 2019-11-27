@@ -4,7 +4,7 @@
 
 <mapper namespace="com.jth.mapper.MemberMapper">
 
-    <resultMap id="Member" type="memberMap">
+    <resultMap type="Member" id="memberMap">
         <id property="userNo" column="user_no"/>
         <result property="userNo" column="user_no"/>
         <result property="userId" column="user_id"/>
@@ -18,7 +18,7 @@
         <collection property="authList" resultMap="authMap"></collection>
     </resultMap>
 
-    <resultMap id="MemberAuth" type="authMap">
+    <resultMap type="MemberAuth" id="authMap">
         <result property="userNo" column="user_no"/>
         <result property="auth" column="auth"/>
     </resultMap>
@@ -35,7 +35,7 @@
                 , reg_date
                 , upd_date
                 , auth
-        FROM    member mem
+        FROM    member_org mem
         LEFT JOIN   member_auth auth
         ON          mem.user_no = auth.user_no
         WHERE   mem.user_id = #{userId}
@@ -44,7 +44,7 @@
     <insert id="create"
             useGeneratedKeys="true"
             keyProperty="userNo">
-        INSERT INTO member
+        INSERT INTO member_org
         (
             user_id
             , user_pw
@@ -71,21 +71,21 @@
                 , reg_date
                 , upd_date
                 , auth
-        FROM        member          mem
-        LEFT JOIN   member_auth     auth
+        FROM        member_org          mem
+        LEFT JOIN   member_auth         auth
         ON          mem.user_no = auth.user_no
         WHERE   mem.user_no = #{userNo}
     </select>
 
     <update id="update">
-        UPDATE  member
+        UPDATE  member_org
         SET     user_name   = #{userName}
                 , job       = #{job}
         WHERE   user_no = #{userNo}
     </update>
 
     <delete id="delete">
-        DELETE FROM member
+        DELETE FROM member_org
         WHERE   user_no = #{userNo}
     </delete>
 
@@ -95,10 +95,10 @@
                 , user_id
                 , user_pw
                 , user_name
-                , (SELECT code_name FROM code_detail WHERE class_code = 'A01' AND code_value = job) AS job
+                , (SELECT code_name FROM code_detail WHERE code_value = job) AS job
                 , coin
                 , reg_date
-        FROM    member
+        FROM    member_org
         ORDER BY reg_date DESC
     </select>
 
