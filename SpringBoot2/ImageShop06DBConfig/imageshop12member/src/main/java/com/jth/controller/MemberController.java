@@ -5,6 +5,7 @@ import com.jth.domain.Member;
 import com.jth.service.CodeService;
 import com.jth.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,6 +64,7 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole({'ROLE_ADMIN', 'ROLE_MEMBER'})")
     public void list(Model model) throws Exception {
         model.addAttribute("list", service.list());
     }
@@ -78,6 +80,7 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String remove(int userNo, RedirectAttributes rttr) throws Exception {
         service.remove(userNo);
 
