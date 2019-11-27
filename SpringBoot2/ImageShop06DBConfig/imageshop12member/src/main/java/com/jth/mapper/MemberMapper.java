@@ -25,4 +25,7 @@ public interface MemberMapper {
 
     public void deleteAuth(int userNo) throws Exception;
 
+    // 회원 테이블의 데이터 건수 반환
+    public int countAll() throws Exception;
+
 }

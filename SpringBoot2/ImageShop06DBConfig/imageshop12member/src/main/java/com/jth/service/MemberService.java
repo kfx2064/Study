@@ -18,4 +18,10 @@ public interface MemberService {
 
     public int getCoin(int userNo) throws Exception;
 
+    // 회원 테이블 데이터 건수 반환
+    public int countAll() throws Exception;
+
+    // 최초 관리자 생성을 위한 데이터 등록
+    public void setupAdmin(Member member) throws Exception;
+
 }
