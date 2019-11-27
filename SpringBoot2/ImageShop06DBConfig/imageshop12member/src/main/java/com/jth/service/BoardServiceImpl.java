@@ -1,6 +1,7 @@
 package com.jth.service;
 
 import com.jth.domain.Board;
+import com.jth.domain.PageRequest;
 import com.jth.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<Board> list() throws Exception {
         return mapper.list();
+    }
+
+    @Override
+    public List<Board> list(PageRequest pageRequest) throws Exception {
+        return mapper.list(pageRequest);
+    }
+
+    @Override
+    public int count() throws Exception {
+        return mapper.count();
     }
 }
