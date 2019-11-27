@@ -21,8 +21,9 @@
 
                 var codeValue = $("#codeValue");
                 var codeValueVal = codeValue.val();
+                alert("codeValueVal : " + codeValueVal);
 
-                self.location = "modify?classCode=" + classCodeVal + "&" + "codeValue=" + codeValue;
+                self.location = "modify?classCode=" + classCodeVal + "&" + "codeValue=" + codeValueVal;
             });
 
             $("#btnRemove").on("click", function () {

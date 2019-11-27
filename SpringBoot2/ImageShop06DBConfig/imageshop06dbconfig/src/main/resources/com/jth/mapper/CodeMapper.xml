@@ -9,7 +9,7 @@
         SELECT  class_code      AS value
                 , class_name    AS label
         FROM    code_class
-        WHERE   user_yn = 'Y'
+        WHERE   use_yn = 'Y'
         ORDER BY class_name
     </select>
 

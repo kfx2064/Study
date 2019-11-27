@@ -9,7 +9,7 @@
     <script src="/webjars/jquery/3.3.1/dist/jquery.js"></script>
     <script>
         $(document).ready(function () {
-            var formObj = $("#codeClass");
+            var formObj = $("#codeDetail");
 
             $("#btnModify").on("click", function () {
                 formObj.submit();
@@ -25,7 +25,7 @@
 <div layout:fragment="content">
     <h2 th:text="#{codedetail.header.modify}">코드 수정</h2>
 
-    <form id="codeDetail" action="list.html" th:action="@{/codedetail/modify}" th:object="${codeDeatil}" method="POST">
+    <form id="codeDetail" action="list.html" th:action="@{/codedetail/modify}" th:object="${codeDetail}" method="POST">
         <table>
             <tr>
                 <td th:text="#{codedetail.classCode}">그룹코드</td>
