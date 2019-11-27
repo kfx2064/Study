@@ -13,6 +13,9 @@ public class Board implements Serializable {
     private String writer;
     private Date regDate;
 
+    // 페이징요청 정보를 멤버변수로 선언
+    private PageRequest pageRequest;
+
     public int getBoardNo() {
         return boardNo;
     }
@@ -53,6 +56,22 @@ public class Board implements Serializable {
         this.regDate = regDate;
     }
 
+    public int getPage() {
+        return pageRequest.getPage();
+    }
+
+    public int getSizePerPage() {
+        return pageRequest.getSizePerPage();
+    }
+
+    public PageRequest getPageRequest() {
+        return pageRequest;
+    }
+
+    public void setPageRequest(PageRequest pageRequest) {
+        this.pageRequest = pageRequest;
+    }
+
     @Override
     public String toString() {
         return "Board{" +
@@ -61,6 +80,7 @@ public class Board implements Serializable {
                 ", content='" + content + '\'' +
                 ", writer='" + writer + '\'' +
                 ", regDate=" + regDate +
+                ", pageRequest=" + pageRequest +
                 '}';
     }
 }

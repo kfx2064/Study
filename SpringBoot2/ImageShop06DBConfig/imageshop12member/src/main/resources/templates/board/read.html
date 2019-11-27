@@ -10,13 +10,21 @@
     <script src="/webjars/jquery/3.3.1/dist/jquery.js"></script>
     <script>
         $(document).ready(function () {
+
             var formObj = $("#board");
+
+            var pageObj = $("#page");
+            var sizePerPageObj = $("#sizePerPage");
+
+            var pageVal = pageObj.val();
+            var sizePerPageVal = sizePerPageObj.val();
 
             $("#btnEdit").on("click", function () {
                 var boardNo = $("#boardNo");
                 var boardNoVal = boardNo.val();
 
-                self.location = "/board/modify?boardNo=" + boardNoVal;
+                self.location = "/board/modify?boardNo=" + boardNoVal + "&page=" + pageVal
+                                + "&sizePerPage=" + sizePerPageVal;
             });
 
             $("#btnRemove").on("click", function () {
@@ -25,7 +33,7 @@
             });
 
             $("#btnList").on("click", function () {
-                self.location = "/board/list";
+                self.location = "/board/list?page=" + pageVal + "&sizePerPage=" + sizePerPageVal;
             });
         });
     </script>
@@ -35,8 +43,13 @@
     <h2 th:text="#{board.header.read}">회원게시판 상세보기</h2>
 
     <form id="board" action="list.html" th:action="@{/board/remove}" th:object="${board}" method="POST">
+
         <input type="hidden" name="boardNo" th:field="*{boardNo}" />
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+        <input type="hidden" name="page" th:field="*{page}">
+        <input type="hidden" name="sizePerPage" th:field="*{sizePerPage}">
+
         <table>
             <tr>
                 <td th:text="#{board.title}">제목</td>
