@@ -42,7 +42,7 @@
         WHERE       board_no = #{boardNo}
     </delete>
 
-    <select id=""
+    <select id="list"
             resultType="Board">
         <![CDATA[
             SELECT  board_no
