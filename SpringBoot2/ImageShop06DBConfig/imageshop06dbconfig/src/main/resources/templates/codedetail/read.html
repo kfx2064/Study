@@ -3,7 +3,7 @@
       layout:decorate="~{/layouts/main_template}">
 
 <head>
-    <title>CodeClass</title>
+    <title>CodeDetail</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
     <script src="/webjars/jquery/3.3.1/dist/jquery.js"></script>
@@ -22,7 +22,7 @@
                 var codeValue = $("#codeValue");
                 var codeValueVal = codeValue.val();
 
-                self.location = "modify?classCode=" + classCodeVal + "&" + "codeValue=" + codeValueVal;
+                self.location = "modify?classCode=" + classCodeVal + "&" + "codeValue=" + codeValue;
             });
 
             $("#btnRemove").on("click", function () {
