@@ -1,5 +1,6 @@
 package com.jth.controller;
 
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,12 @@ public class LoginController {
         }
 
         return "auth/loginForm";
+    }
+
+    // 로그아웃 화면
+    @RequestMapping("/logout")
+    public String logoutForm() {
+        return "auth/logoutForm";
     }
 
 }
