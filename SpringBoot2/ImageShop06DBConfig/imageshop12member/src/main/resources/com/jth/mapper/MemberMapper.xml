@@ -120,4 +120,10 @@
         WHERE   user_no = #{userNo}
     </delete>
 
+    <select id="countAll"
+            resultType="int">
+        SELECT  count(*)
+        FROM    member_org
+    </select>
+
 </mapper>
