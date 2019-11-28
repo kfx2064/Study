@@ -1,10 +1,15 @@
 package com.jth.controller;
 
+import com.jth.common.security.domain.CustomUser;
 import com.jth.domain.Item;
+import com.jth.domain.Member;
 import com.jth.service.ItemService;
+import com.jth.service.MemberService;
+import com.jth.service.UserItemService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,6 +29,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @Controller
@@ -32,6 +38,15 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
+
+    @Autowired
+    private MemberService memberService;
+
+    @Autowired
+    private UserItemService userItemService;
+
+    @Autowired
+    private MessageSource messageSource;
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -225,6 +240,30 @@ public class ItemController {
         }
 
         return null;
+    }
+
+    @RequestMapping(value = "/buy", method = RequestMethod.POST)
+    public String buy(Integer itemId, RedirectAttributes rttr, Authentication authentication) throws  Exception {
+        CustomUser customUser = (CustomUser) authentication.getPrincipal();
+        Member member = customUser.getMember();
+
+        int userNo = member.getUserNo();
+
+        member.setCoin(memberService.getCoin(userNo));
+
+        Item item = itemService.read(itemId);
+
+        userItemService.register(member, item);
+
+        String message = messageSource.getMessage("item.purchaseComplete", null, Locale.KOREAN);
+        rttr.addFlashAttribute("msg", message);
+
+        return "redirect:/item/success";
+    }
+
+    @RequestMapping(value = "/success", method = RequestMethod.GET)
+    public String success() throws Exception {
+        return "item/success";
     }
 
 }
