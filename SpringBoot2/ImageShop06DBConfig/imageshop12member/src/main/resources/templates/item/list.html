@@ -4,7 +4,7 @@
       layout:decorate="~{/layouts/main_template}">
 
 <head>
-    <title>Notice</title>
+    <title>Item</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/static/css/style.css}"/>
     <script src="/webjars/jquery/3.3.1/dist/jquery.js"></script>
@@ -73,7 +73,6 @@
 
     <script th:inline="javascript">
         var result = [[${msg}]];
-
         if(result === "SUCCESS") {
             alert([[#{common.processSuccess}]]);
         }
