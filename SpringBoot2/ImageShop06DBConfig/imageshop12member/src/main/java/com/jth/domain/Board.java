@@ -56,6 +56,7 @@ public class Board implements Serializable {
         this.regDate = regDate;
     }
 
+    /*
     public int getPage() {
         return pageRequest.getPage();
     }
@@ -71,6 +72,7 @@ public class Board implements Serializable {
     public void setPageRequest(PageRequest pageRequest) {
         this.pageRequest = pageRequest;
     }
+     */
 
     @Override
     public String toString() {

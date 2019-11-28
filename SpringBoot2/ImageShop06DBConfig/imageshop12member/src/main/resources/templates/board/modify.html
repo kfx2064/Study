@@ -17,7 +17,8 @@
             });
 
             $("#btnList").on("click", function () {
-                self.location = "list?page=[[${pgrq.page}]]&sizePerPage=[[${pgrq.sizePerPage}]]";
+                //self.location = "list?page=[[${pgrq.page}]]&sizePerPage=[[${pgrq.sizePerPage}]]";
+                self.location = "list[(${pgrq.toUriString()})]";
             });
         });
     </script>
@@ -30,8 +31,10 @@
         <input type="hidden" name="boardNo" th:field="*{boardNo}">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
-        <input type="hidden" name="page" th:field="*{page}"/>
-        <input type="hidden" name="sizePerPage" th:field="*{sizePerPage}"/>
+        <input type="hidden" name="page" th:field="*{pgrq.page}"/>
+        <input type="hidden" name="sizePerPage" th:field="*{pgrq.sizePerPage}"/>
+        <input type="hidden" name="searchType" th:field="*{pgrq.searchType}"/>
+        <input type="hidden" name="keyword" th:field="*{pgrq.keyword}"/>
 
         <table>
             <tr>
