@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>클래스</title>
+<script>
+    // Rectangle 클래스를 선언
+    class Rectangle {
+        // 생성자
+        constructor(width, height) {
+            this._width = width;
+            this._height = height;
+        }
+
+        get width() {
+            return this._width;
+        }
+
+        set width(input) {
+            this._height = input;
+        }
+
+        // height의 게터와 세터
+        get height() {
+            return this._height;
+        }
+
+        set height(input) {
+            this._width = input;
+        }
+
+        getArea() {
+            return this._width * this._height;
+        }
+    }
+
+    // Rectangle 클래스를 상속받아서 Square 클래스를 만든다.
+    class Square extends Rectangle {
+        // 생성자
+        constructor(length) {
+            super(length, length);
+            alert(this);
+        }
+
+        // width 또는 height를 변경하면 둘 다 변경되게 다시 선언됩니다.
+        set width(input) {
+            this._width = input;
+            this._height = input;
+        }
+
+        set height(input) {
+            this._width = input;
+            this._height = input;
+        }
+    }
+
+    // 생성, 호출
+    const square = new Square(100);
+    alert(square.getArea());
+</script>
+</head>
+<body>
+
+</body>
+</html>
