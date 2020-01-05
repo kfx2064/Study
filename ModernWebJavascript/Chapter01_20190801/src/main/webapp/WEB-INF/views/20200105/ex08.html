@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>배열</title>
+    <script>
+        let array = [1, 2, 3, 4, 5];
+
+        let result = array.reduce(function(previousValue, currentValue) {
+           return previousValue + currentValue;
+        });
+
+        alert("result : " + result);
+
+        array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        result = array.reduce(function(previousValue, currentValue) {
+            return previousValue + currentValue;
+        });
+
+        alert("10 result : " + result);
+
+        result = array.reduceRight(function (previousValue, currentValue) {
+            return previousValue + currentValue;
+        });
+
+        alert("right result : " + result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
