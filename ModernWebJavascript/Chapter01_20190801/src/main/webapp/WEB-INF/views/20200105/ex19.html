@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>screen</title>
+    <script>
+        let child = window.open('', '', 'width=300, height=200');
+        let width = screen.width;
+        let height = screen.height;
+
+        child.moveTo(0, 0);
+        child.resizeTo(width, height);
+
+        setInterval(function () {
+            child.resizeBy(-20, -20);
+            child.moveBy(10, 10);
+        }, 1000);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
