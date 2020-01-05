@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>언더스코어</title>
+    <script src="underscore.js"></script>
+    <script>
+        let students = [
+            {이름 : '윤인성', 국어: 87, 수학: 98, 영어: 88, 과학: 95},
+            {이름 : '서준서', 국어: 45, 수학: 52, 영어: 72, 과학: 78}
+        ];
+
+        let sortByScience = _.sortBy(students, function (item) {
+            return item.과학;
+        }).slice(0, 3);
+
+        alert(1);
+        alert(JSON.stringify(sortByScience, null, 2));
+
+        let sortByAverage = _.sortBy(students, function (item) {
+            return (item.국어 + item.수학 + item.영어 + item.과학) / 4;
+        }).slice(0, 3);
+
+        alert(2);
+        alert(JSON.stringify(sortByAverage, null, 2));
+
+        let scienceTop = _.max(students, function (item) {
+            return item.과학;
+        });
+
+        alert(3);
+        alert(JSON.stringify(scienceTop, null, 2));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
