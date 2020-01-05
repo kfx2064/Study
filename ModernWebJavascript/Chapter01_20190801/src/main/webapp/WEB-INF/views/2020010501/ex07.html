@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>innerHTML</title>
+    <script>
+        window.onload = function () {
+            let headers = document.getElementsByTagName('h1');
+            for (let i = 0; i < headers.length; i++) {
+                // 문서 객체 속성 변경
+                headers[i].innerHTML = 'with getElementsByTagName()';
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Header</h1>
+    <h1>Header</h1>
+</body>
+</html>
