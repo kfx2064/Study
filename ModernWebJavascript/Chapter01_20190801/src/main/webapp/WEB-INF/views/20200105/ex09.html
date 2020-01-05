@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>배열</title>
+    <script>
+        let object = {
+            name: '윤인성',
+            region: '서울특별시'
+        };
+
+        alert(JSON.stringify(object));
+
+        let copy = JSON.parse(JSON.stringify(object));
+        alert(copy.name + ' : ' + copy.region);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
