@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>배열</title>
+    <script>
+        var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        function lessThanFive(element, index, array) {
+            return element < 5;
+        }
+
+        function lessThanTwenty(element, index, array) {
+            return element < 20;
+        }
+
+        let output1 = array.every(lessThanFive);
+        let output2 = array.every(lessThanTwenty);
+        let output3 = array.some(lessThanFive);
+        let output4 = array.some(lessThanTwenty);
+
+        let output = '';
+        output += output1 + ' : ' + output2 + '\n';
+        output += output3 + " : " + output4 + '\n';
+        alert(output);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
