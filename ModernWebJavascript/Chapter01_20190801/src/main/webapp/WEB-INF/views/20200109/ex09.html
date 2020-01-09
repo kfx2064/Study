@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트</title>
+    <script>
+        window.attachEvent('onload', function () {
+            let header = document.getElementById('my-header');
+
+            header.attachEvent('onclick', function () {
+                alert("클릭");
+            });
+            header.attachEvent('onclick', function () {
+                alert('클릭');
+            });
+            header.attachEvent('onclick', function () {
+                alert('클릭');
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 id="my-header">Click</h1>
+</body>
+</html>
