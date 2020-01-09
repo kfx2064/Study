@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../jquery.3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                let value = $('select > option:selected').val();
+
+                alert(value);
+            }, 3000);
+        });
+    </script>
+</head>
+<body>
+    <select>
+        <option>Apple</option>
+        <option>Bag</option>
+        <option>Cat</option>
+        <option>Dog</option>
+        <option>Elephant</option>
+    </select>
+</body>
+</html>
