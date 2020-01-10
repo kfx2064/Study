@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../jquery.3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('img').attr({
+                width: function (index) {
+                    return (index + 1) * 100;
+                },
+                height: 100
+            });
+        });
+    </script>
+</head>
+<body>
+    <img src="1.jpg" />
+    <img src="2.jpg" />
+    <img src="3.png" />
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../jquery.3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('button').click(function () {
+                $(this).text('비활성화하기');
+
+                $(this).parent().css('background', 'red');
+                $(this).parent().find('span').text('활성화');
+            });
+        });
+    </script>
+</head>
+<body>
+    <span>비활성화</span>
+    <button>활성화하기</button>
+</body>
+</html>
