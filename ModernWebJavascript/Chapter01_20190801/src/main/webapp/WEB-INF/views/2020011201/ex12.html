@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../jquery.3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $('img').css('width', 250);
+
+            setInterval(function () {
+                $('img').first().appendTo('body');
+            }, 1000);
+        });
+    </script>
+</head>
+<body>
+    <img src="1.jpg" />
+    <img src="2.jpg" />
+    <img src="3.png" />
+</body>
+</html>

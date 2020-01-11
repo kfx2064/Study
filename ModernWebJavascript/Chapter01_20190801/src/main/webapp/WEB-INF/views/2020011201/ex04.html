@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../jquery.3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $('div').html(function(index){
+                return '<h1>Header-' + index + '</h1>';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
