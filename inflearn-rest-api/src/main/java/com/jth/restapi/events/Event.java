@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 @Getter @Setter @EqualsAndHashCode(of = "id")
 public class Event {
 
+    private int id;
+
     private String name;
     private String description;
     private LocalDateTime beginEnrollmentDateTime;
