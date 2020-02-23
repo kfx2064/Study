@@ -10,8 +10,22 @@ public class StreamEx3 {
 
         //ex1();
         //ex2();
-        ex3();
+        //ex3();
+        //ex4();
+        ex5();
 
+    }
+
+    public static void ex5() {
+        int[] arrInt1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        IntStream intStream1 = IntStream.of(arrInt1);
+
+        intStream1.filter(i -> i % 2 == 0).forEach(System.out::println);
+    }
+
+    public static void ex4() {
+        IntStream intStream1 = IntStream.of(1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 6, 7, 7, 7, 8, 9, 10);
+        intStream1.distinct().forEach(System.out::println);
     }
 
     public static void ex3() {
