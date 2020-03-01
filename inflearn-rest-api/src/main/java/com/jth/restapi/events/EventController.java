@@ -1,5 +1,6 @@
 package com.jth.restapi.events;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.server.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,20 @@ import java.net.URI;
 @RequestMapping(value = "/api/events", produces = MediaTypes.HAL_JSON_VALUE)
 public class EventController {
 
+    private final EventRepository eventRepository;
+
+    @Autowired
+    public EventController(EventRepository eventRepository) {
+        this.eventRepository = eventRepository;
+    }
+
     @PostMapping
     public ResponseEntity createEvent(@RequestBody Event event) {
 
+        Event newEvent = this.eventRepository.save(event);
+
         URI createUri = ControllerLinkBuilder.linkTo(EventController.class)
-                .slash("{id}").toUri();
-        event.setId(10);
+                .slash(newEvent.getId()).toUri();
         return ResponseEntity.created(createUri).body(event) ;
     }
 
