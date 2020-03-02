@@ -5,7 +5,7 @@ import org.junit.Test;
 
 class EventTest {
 
-    @Test
+    /*@Test
     public void builder() {
         Event event = Event.builder()
                 .name("Inflearn Spring REST API")
@@ -27,6 +27,6 @@ class EventTest {
 
         Assertions.assertThat(event.getName()).isEqualTo(name);
         Assertions.assertThat(event.getDescription()).isEqualTo(description);
-    }
+    }*/
 
 }
