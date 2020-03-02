@@ -1,15 +1,23 @@
 package com.jth.restapi.events;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jth.restapi.common.RestDocsConfiguration;
 import com.jth.restapi.common.TestDescription;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.headers.HeaderDocumentation;
+import org.springframework.restdocs.hypermedia.HypermediaDocumentation;
+import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
+import org.springframework.restdocs.payload.PayloadDocumentation;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -21,6 +29,8 @@ import java.time.LocalDateTime;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@AutoConfigureRestDocs
+@Import(RestDocsConfiguration.class)
 public class EventControllerTests {
 
     @Autowired
@@ -61,6 +71,52 @@ public class EventControllerTests {
                 .andExpect(MockMvcResultMatchers.jsonPath("_links.self").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("_links.query-events").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("_links.update-event").exists())
+                .andDo(MockMvcRestDocumentation.document("create-event",
+                        HypermediaDocumentation.links(
+                                HypermediaDocumentation.linkWithRel("self").description("link to self"),
+                                HypermediaDocumentation.linkWithRel("query-events").description("link to query events"),
+                                HypermediaDocumentation.linkWithRel("update-event").description("link to update an existing event")
+                        ),
+                        HeaderDocumentation.requestHeaders(
+                                HeaderDocumentation.headerWithName(HttpHeaders.ACCEPT).description("accept header"),
+                                HeaderDocumentation.headerWithName(HttpHeaders.CONTENT_TYPE).description("content type header")
+                        ),
+                        PayloadDocumentation.requestFields(
+                                PayloadDocumentation.fieldWithPath("name").description("Name of new event"),
+                                PayloadDocumentation.fieldWithPath("description").description("description of new event"),
+                                PayloadDocumentation.fieldWithPath("beginEnrollmentDateTime").description("date time of begin of new event"),
+                                PayloadDocumentation.fieldWithPath("closeEnrollmentDateTime").description("date time of close of new event"),
+                                PayloadDocumentation.fieldWithPath("beginEventDateTime").description("date time of begin of new event"),
+                                PayloadDocumentation.fieldWithPath("endEventDateTime").description("date time of end of new event"),
+                                PayloadDocumentation.fieldWithPath("location").description("location of new event"),
+                                PayloadDocumentation.fieldWithPath("basePrice").description("base price of new event"),
+                                PayloadDocumentation.fieldWithPath("maxPrice").description("max price of new event"),
+                                PayloadDocumentation.fieldWithPath("limitOfEnrollment").description("limit of enrollment")
+                        ),
+                        HeaderDocumentation.responseHeaders(
+                                HeaderDocumentation.headerWithName(HttpHeaders.LOCATION).description("Location header"),
+                                HeaderDocumentation.headerWithName(HttpHeaders.CONTENT_TYPE).description("Content type")
+                        ),
+                        PayloadDocumentation.relaxedResponseFields(
+                                PayloadDocumentation.fieldWithPath("id").description("Identifier of new event"),
+                                PayloadDocumentation.fieldWithPath("name").description("Name of new event"),
+                                PayloadDocumentation.fieldWithPath("description").description("description of new event"),
+                                PayloadDocumentation.fieldWithPath("beginEnrollmentDateTime").description("date time of begin of new event"),
+                                PayloadDocumentation.fieldWithPath("closeEnrollmentDateTime").description("date time of close of new event"),
+                                PayloadDocumentation.fieldWithPath("beginEventDateTime").description("date time of begin of new event"),
+                                PayloadDocumentation.fieldWithPath("endEventDateTime").description("date time of end of new event"),
+                                PayloadDocumentation.fieldWithPath("location").description("location of new event"),
+                                PayloadDocumentation.fieldWithPath("basePrice").description("base price of new event"),
+                                PayloadDocumentation.fieldWithPath("maxPrice").description("max price of new event"),
+                                PayloadDocumentation.fieldWithPath("limitOfEnrollment").description("limit of enrollment"),
+                                PayloadDocumentation.fieldWithPath("free").description("it tells if this event is free or not"),
+                                PayloadDocumentation.fieldWithPath("offline").description("it tells if this event is offline event or not"),
+                                PayloadDocumentation.fieldWithPath("eventStatus").description("event status"),
+                                PayloadDocumentation.fieldWithPath("_links.self.href").description("link to self"),
+                                PayloadDocumentation.fieldWithPath("_links.query-events.href").description("link to query event list"),
+                                PayloadDocumentation.fieldWithPath("_links.update-event.href").description("link to update existing event")
+                        )
+                ))
         ;
     }
 
