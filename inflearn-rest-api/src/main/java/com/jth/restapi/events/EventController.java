@@ -1,7 +1,6 @@
 package com.jth.restapi.events;
 
 import com.jth.restapi.common.ErrorsResource;
-import org.apache.coyote.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

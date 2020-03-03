@@ -1,6 +1,7 @@
 package com.jth.restapi.events;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.jth.restapi.accouts.Account;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +31,9 @@ public class Event {
 
     @Enumerated(EnumType.STRING)
     private EventStatus eventStatus = EventStatus.DRAFT;
+
+    @ManyToOne
+    private Account manager;
 
     public void update() {
         // Update free
