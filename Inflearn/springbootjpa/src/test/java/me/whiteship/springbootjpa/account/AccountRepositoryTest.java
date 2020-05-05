@@ -36,10 +36,13 @@ class AccountRepositoryTest {
         account.setPassword("pass");
 
         Account newAccount = accountRepository.save(account);
-
         assertThat(newAccount).isNotNull();
 
-        accountRepository.findByUsername(newAccount.getUsername());
+        Account existingAccount = accountRepository.findByUsername(newAccount.getUsername());
+        assertThat(existingAccount).isNotNull();
+
+        Account nonExistingAccount = accountRepository.findByUsername("whiteship");
+        assertThat(nonExistingAccount).isNull();
     }
 
 }
