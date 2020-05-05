@@ -118,7 +118,12 @@ public class EventControllerTests {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/api/events/")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(this.objectMapper.writeValueAsString(eventDto)))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].objectName").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].field").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].defaultMessage").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].code").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].rejectedValue").exists());
     }
 
 }
