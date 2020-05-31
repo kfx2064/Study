@@ -1,0 +1,8 @@
+/.metadata/
+
+#local properties
+.settings/
+
+#Eclipse Path 
+.project
+.classpath

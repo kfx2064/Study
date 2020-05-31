@@ -1,0 +1,35 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.springframework.org/schema/beans"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	<bean id="bannerLoader"
+			class="com.jth.spring.shop.BannerLoader"
+			init-method="showBanner">
+		<property name="banner">
+			<value>classpath:banner.txt</value>
+		</property>		
+	</bean>
+	
+	<bean id="aaa" class="com.jth.spring.shop.Battery">
+		<property name="name" value="AAA"/>
+		<property name="price" value="2.5"/>
+		<property name="rechargeable" value="true"/>
+	</bean>
+	
+	<bean id="cdrw" class="com.jth.spring.shop.Disc">
+		<property name="name" value="CD-RW"/>
+		<property name="price" value="1.5"/>
+		<property name="capacity" value="700"/>
+	</bean>
+	
+	<bean id="dvdrw" class="com.jth.spring.shop.Disc">
+		<property name="name" value="DVD-RW"/>
+		<property name="price" value="3.0"/>
+		<property name="capacity" value="700"/>
+	</bean>
+	
+	<bean id="shoppingCart" class="com.jth.spring.shop.ShoppingCart" scope="prototype"/>
+	
+</beans>

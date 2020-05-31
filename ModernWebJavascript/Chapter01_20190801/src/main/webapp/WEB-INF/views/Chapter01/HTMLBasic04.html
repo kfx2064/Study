@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script>
+
+let korean 	= 0;
+let english = 0;
+let math 	= 0;
+
+korean = prompt("국어 점수를 입력하세요.");
+english = prompt("영어 점수를 입력하세요.");
+math = prompt("수학 점수를 입력하세요.");
+
+korean = korean * 1;
+english = english * 1;
+math = math * 1;
+
+let total = korean + english + math;
+total = total / 3;
+
+if(total >= 90) {
+	alert("수");
+} else if(total >= 80) {
+	alert("우");
+} else if(total >= 70) {
+	alert("미");
+} else if(total >= 60) {
+	alert("양");
+} else if(total < 60) {
+	alert("가");
+}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

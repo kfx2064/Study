@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript</title>
+    <script>
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function process() {
+            console.log("안녕하세요.");
+            await sleep(1000);  // 1 second sleep.
+            console.log("반갑습니다.");
+        }
+
+        process().then(() => {
+            console.log("work done.");
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

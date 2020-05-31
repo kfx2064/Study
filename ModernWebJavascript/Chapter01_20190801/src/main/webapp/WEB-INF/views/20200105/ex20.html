@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>song</title>
+    <script>
+        let audio = new Audio('enyasong.mp3');
+    </script>
+</head>
+<body>
+    <button onclick="audio.play()">PLAY</button>
+    <button onclick="audio.pause()">PAUSE</button>
+    <input type="number" onchange="audio.currentTime=this.value" />
+    <input type="number" onchange="audio.volume=this.value" />
+</body>
+</html>

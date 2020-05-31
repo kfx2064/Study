@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- <html class="no-js" lang=""> -->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- <link rel="manifest" href="site.webmanifest"> 
+  <link rel="apple-touch-icon" href="icon.png">	-->
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+  <!-- <link href="../static/css/bootstrap.css" rel="stylesheet"/> -->
+  <link th:href="@{/css/normalize.css}" rel="stylesheet" />
+  <link th:href="@{/css/main.css}" rel="stylesheet" />
+  
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <script th:src="@{/js/popper.js}"></script>
+  <script th:src="@{/js/bootstrap.js}"></script>
+  
+  <script th:src="@{/js/plugins.js}"></script>
+  <script th:src="@{/js/main.js}"></script>
+  
+  <script th:src="@{/js/vendor/modernizr-custom.js}"></script>
+  <!-- <script th:src="@{/static/js/jquery.min.js}"></script> -->
+  
+  <!--
+  <link rel="stylesheet" href="../static/css/bootstrap.css">
+  
+  <link rel="stylesheet" href="../static/css/normalize.css">
+  <link rel="stylesheet" href="../static/css/main.css">
+  -->
+  
+  <!-- <script th:src="@{/js/vendor/modernizr-custom.js}"></script> -->
+  <!-- <script th:src="@{/js/vendor/modernizr-custom.js}"></script> -->
+  <!--  
+  <script src="../static/js/vendor/modernizr-custom.js"></script>
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/popper.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+  -->
+  
+  
+  
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+  
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+  
+  <!-- content body -->
+  <!-- <div layout:fragment="content">
+  		
+  </div> -->
+  
+  <div class="page-header">
+  	<h1>
+  		Boot06 Project <small>for Spring MVC + JPA</small>
+  	</h1>
+  </div>
+  
+  <div class="panel panel-default" layout:fragment="content">
+  
+  </div>
+
+  <!-- Add your site or application content here -->
+  <!-- <script src="/js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="/js/plugins.js"></script>
+  <script src="/js/main.js"></script> -->
+  
+  
+  <!-- custom javascript -->
+  <script></script>
+  <th:block layout:fragment="script">
+  	<script th:inline="javascript">
+  		
+  	</script>
+  </th:block>
+  
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	e.src='https://www.google-analytics.com/analytics.js';
+	r.parentNode.insertBefore(e,r)
+	}(window,document,'script','ga'));
+	ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+  	/* 
+  		window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    	ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+  	*/
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+
+</html>

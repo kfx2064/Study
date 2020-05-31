@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../jquery.3.4.1.min.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            margin: 5px; padding: 3px;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('div').click(function () {
+                let header = $('h1', this).text();
+                let paragraph = $('p', this).text();
+
+                alert(header + '\n' + paragraph);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Header 1</h1>
+        <p>Paragraph</p>
+    </div>
+    <div>
+        <h1>Header 2</h1>
+        <p>Paragraph</p>
+    </div>
+    <div>
+        <h1>Header 3</h1>
+        <p>Paragraph</p>
+    </div>
+</body>
+</html>

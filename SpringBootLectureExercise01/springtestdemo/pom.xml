@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>me.whiteship</groupId>
+	<artifactId>springtestdemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springtestdemo</name>
+	<description>Training</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<!-- 내장 톰캣 사용 안 하려고 추가 중 -->
+		<!-- <packaging>war</packaging> -->
+		<!-- /// -->
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.webjars.bower/jquery -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.3.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>webjars-locator-core</artifactId>
+		</dependency>
+				
+				
+		
+		<!-- 내장 톰캣 사용 안 하려고 추가 중 -->
+		<!-- <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-tomcat</artifactId>
+		    <scope>provided</scope>
+		</dependency> -->
+		<!-- /// -->
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
