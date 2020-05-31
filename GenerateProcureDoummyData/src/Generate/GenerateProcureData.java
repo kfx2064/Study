@@ -24,36 +24,40 @@ public class GenerateProcureData {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet("procureData");
-        XSSFRow row = null;
-        XSSFCell cell = null;
-
-        FileOutputStream fos = null;
-        String outputFilePath = String.valueOf("D:/dummyProcureRequestData00001");
-
-        int excelDataRow = 0;
-
-        String strProcureRequestNo = String.valueOf("");
-        String strProcureSeq = String.valueOf("");
-        String strProcureRequestDate = String.valueOf("");
-        String strItemCd = String.valueOf("");
-        String strUnit = String.valueOf("");
-        String strQty = String.valueOf("");
-        String strRegDate = String.valueOf("");
-        String strRegId = String.valueOf("");
-        String strDelYn = String.valueOf("N");
-        String strProcureStatus = String.valueOf("01");
-
-        HashMap<String, Object> saveProcureDataMap = new HashMap<>();
-
         int intSetYear = 2020;
         // 하나의 일자에 생성되는 최대의 구매요청데이터 개수. 해당 숫자 안에서 랜덤한 수의 맥스값으로 데이터가 생성된다.
         int generateCount = 5;
 
-        // 2020년 각 월의 주말을 제외한 날짜를 구한다.
-        Calendar calendar = Calendar.getInstance();
+        FileOutputStream fos = null;
+        String outputFilePath = String.valueOf("D:/dummyProcureRequestData" + 1 + ".xlsx");
+
         for (int forYear = intSetYear; forYear > 2015; forYear--) {
+
+            outputFilePath = String.valueOf("D:/dummyProcureRequestData" + forYear + ".xlsx");
+
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("procureData");
+            XSSFRow row = null;
+            XSSFCell cell = null;
+
+            int excelDataRow = 0;
+
+            String strProcureRequestNo = String.valueOf("");
+            String strProcureSeq = String.valueOf("");
+            String strProcureRequestDate = String.valueOf("");
+            String strItemCd = String.valueOf("");
+            String strUnit = String.valueOf("");
+            String strQty = String.valueOf("");
+            String strRegDate = String.valueOf("");
+            String strRegId = String.valueOf("");
+            String strDelYn = String.valueOf("N");
+            String strProcureStatus = String.valueOf("01");
+
+            HashMap<String, Object> saveProcureDataMap = new HashMap<>();
+
+            // 2020년 각 월의 주말을 제외한 날짜를 구한다.
+            Calendar calendar = Calendar.getInstance();
+
             for(int i = 0; i < 12; i++) {
                 calendar.set(forYear, i, 1);
 
@@ -199,12 +203,13 @@ public class GenerateProcureData {
                     }
                 }
             }
-        }
 
-        try {
-            fos = new FileOutputStream(outputFilePath);
-            workbook.write(fos);
-        } catch (Exception e) {
+            try {
+                fos = new FileOutputStream(outputFilePath);
+                workbook.write(fos);
+            } catch (Exception e) {
+
+            }
 
         }
 

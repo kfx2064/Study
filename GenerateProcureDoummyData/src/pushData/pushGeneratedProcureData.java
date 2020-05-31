@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -22,7 +23,7 @@ public class pushGeneratedProcureData {
     public static void main(String[] args) throws Exception {
 
         ArrayList<LinkedHashMap<String, Object>> extractProcureDataList = new ArrayList<>();
-        LinkedHashMap<String, Object> extractProcureDataMap = new LinkedHashMap<>();
+
 
         Class.forName("org.mariadb.jdbc.Driver");
         Connection connection = null;
@@ -32,7 +33,7 @@ public class pushGeneratedProcureData {
         String userId = String.valueOf("root");
         String userPw = String.valueOf("1234");
 
-        FileInputStream fis = new FileInputStream("D:\\dummyProcureRequestData00001.xlsx");
+        FileInputStream fis = new FileInputStream("D:\\dummyProcureRequestData2016.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
         int rowindex = 0;
         int columnindex = 0;
@@ -45,10 +46,13 @@ public class pushGeneratedProcureData {
         for (rowindex = 0; rowindex < rows; rowindex++) {
             // 행을 읽는다.
             XSSFRow row = sheet.getRow(rowindex);
+            System.out.println("rowindex ::: " + rowindex);
 
             if (row != null) {
                 // 셀의 수
                 int cells = row.getPhysicalNumberOfCells();
+                LinkedHashMap<String, Object> extractProcureDataMap = new LinkedHashMap<>();
+
                 for (columnindex = 0; columnindex <= cells; columnindex++) {
                     // 셀 값을 읽는다.
                     XSSFCell cell = row.getCell(columnindex);
@@ -74,17 +78,17 @@ public class pushGeneratedProcureData {
                         }
                     }
 
-                    System.out.println("value ::: " + value);
-
                     switch (columnindex) {
                         // 0셀, 구매요청번호
                         // 1셀, 구매요청순번
                         // 2셀, 구매요청일자
                         case 0:
                             extractProcureDataMap.put("procureRequestNo", value);
+                            System.out.println("procureRequestNo ::: " + value);
                             break;
                         case 1:
                             extractProcureDataMap.put("procureRequestSeq", value);
+                            System.out.println("procureRequestSeq ::: " + value);
                             break;
                         case 2:
                             extractProcureDataMap.put("procureRequestDate", value);
@@ -118,50 +122,71 @@ public class pushGeneratedProcureData {
                             extractProcureDataMap.put("procureRowStatus", value);
                             break;
                     }
-                    extractProcureDataList.add(extractProcureDataMap);
                 }
+                extractProcureDataList.add(extractProcureDataMap);
             } // 엑셀 데이터 추출 후 자료구조에 담는 작업 완료
 
-            // 자료구조를 풀어가며 데이터베이스에 데이터를 저장한다.
-            int extListSize = extractProcureDataList.size();
+        }
 
-            StringBuilder strSql = new StringBuilder("");
+        // 자료구조를 풀어가며 데이터베이스에 데이터를 저장한다.
+        int extListSize = extractProcureDataList.size();
+        System.out.println("extListSize ::: " + extListSize);
 
-            for (int i = 0; i < extListSize; i++) {
-                LinkedHashMap<String, Object> lkMap = extractProcureDataList.get(i);
-                String procureRequestNo = String.valueOf(lkMap.get("procureRequestNo"));
-                String procureRequestSeq = String.valueOf(lkMap.get("procureRequestSeq"));
-                String procureRequestDate = String.valueOf(lkMap.get("procureRequestDate"));
-                String itemCd = String.valueOf(lkMap.get("itemCd"));
-                String unit = String.valueOf(lkMap.get("unit"));
-                String qty = String.valueOf(lkMap.get("qty"));
-                String regDate = String.valueOf(lkMap.get("regDate"));
-                String regId = String.valueOf(lkMap.get("regId"));
-                String delYn = String.valueOf(lkMap.get("delYn"));
-                String procureRowStatus = String.valueOf(lkMap.get("procureRowStatus"));
+        StringBuilder strSql = new StringBuilder("");
 
-                strSql.append("INSERT INTO procure_procure_request ")
-                        .append("(")
-                        .append("procure_request_no").append(", procure_seq").append(", procure_request_date").append(", item_cd")
-                        .append(", unit").append(", qty").append(", procure_status").append(", reg_date")
-                        .append(", reg_id").append(", del_yn").append(") VALUES (")
-                        .append(procureRequestNo).append(", ").append(procureRequestSeq)
-                        .append(", ").append(procureRequestDate).append(", ")
-                        .append(itemCd).append(", ").append(unit).append(", ")
-                        .append(qty).append(", ").append(procureRowStatus).append(", ")
-                        .append(regDate).append(", ").append(regId).append(", ").append(delYn)
-                        .append(");");
+        for (int i = 0; i < extListSize; i++) {
 
-                connection = DriverManager.getConnection(jdbcUrl, userId, userPw);
-                System.out.println("db connection success.");
+            System.out.println("show i ::: " + i);
 
-                preparedStatement = connection.prepareStatement(strSql.toString());
+            LinkedHashMap<String, Object> lkMap = extractProcureDataList.get(i);
+            System.out.println("showExtractDataMap ::: " + lkMap.toString());
+            String procureRequestNo = String.valueOf(lkMap.get("procureRequestNo"));
+            String procureRequestSeq = String.valueOf(lkMap.get("procureRequestSeq"));
+            String procureRequestDate = String.valueOf(lkMap.get("procureRequestDate"));
+            String itemCd = String.valueOf(lkMap.get("itemCd"));
+            String unit = String.valueOf(lkMap.get("unit"));
+            String qty = String.valueOf(lkMap.get("qty"));
+            String regDate = String.valueOf(lkMap.get("regDate"));
+            String regId = String.valueOf(lkMap.get("regId"));
+            String delYn = String.valueOf(lkMap.get("delYn"));
+            String procureRowStatus = String.valueOf(lkMap.get("procureRowStatus"));
 
-                preparedStatement.close();
-                connection.close();
+            strSql.append("INSERT INTO procure_procure_request ")
+                    .append("(")
+                    .append("procure_request_no").append(", procure_seq").append(", procure_request_date").append(", item_cd")
+                    .append(", unit").append(", qty").append(", procure_status")
+                    .append(", reg_id").append(", del_yn").append(") VALUES ('")
+                    .append(procureRequestNo)
+                    .append("', ")
+                    .append(procureRequestSeq)
+                    .append(", '")
+                    .append(procureRequestDate)
+                    .append("', '")
+                    .append(itemCd)
+                    .append("', '")
+                    .append(unit)
+                    .append("', ")
+                    .append(qty)
+                    .append(", '")
+                    .append(procureRowStatus)
+                    .append("', '")
+                    .append(regId)
+                    .append("', '")
+                    .append(delYn)
+                    .append("');");
 
+            connection = DriverManager.getConnection(jdbcUrl, userId, userPw);
+            System.out.println(i + " ::: db connection success.");
+
+            System.out.println(strSql.toString());
+            preparedStatement = connection.prepareStatement(strSql.toString());
+
+            preparedStatement.close();
+            connection.close();
+
+            if (i % 800 == 0) {
+                Thread.sleep(10000);
             }
-
         }
 
     }
