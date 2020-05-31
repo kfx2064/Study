@@ -11,10 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -132,11 +129,11 @@ public class pushGeneratedProcureData {
         int extListSize = extractProcureDataList.size();
         System.out.println("extListSize ::: " + extListSize);
 
-        StringBuilder strSql = new StringBuilder("");
-
         for (int i = 0; i < extListSize; i++) {
 
             System.out.println("show i ::: " + i);
+
+            StringBuilder strSql = new StringBuilder("");
 
             LinkedHashMap<String, Object> lkMap = extractProcureDataList.get(i);
             System.out.println("showExtractDataMap ::: " + lkMap.toString());
@@ -178,10 +175,12 @@ public class pushGeneratedProcureData {
             connection = DriverManager.getConnection(jdbcUrl, userId, userPw);
             System.out.println(i + " ::: db connection success.");
 
-            System.out.println(strSql.toString());
-            preparedStatement = connection.prepareStatement(strSql.toString());
+            Statement stmt = connection.createStatement();
+            int result = stmt.executeUpdate(strSql.toString());
 
-            preparedStatement.close();
+            System.out.println("After insert, get result ::: " + i + " == " + result);
+
+            stmt.close();
             connection.close();
 
             if (i % 800 == 0) {
