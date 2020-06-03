@@ -9,7 +9,7 @@
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{checkBtnCompleted: todoItem.completed}"
-          v-on:click="toggleComplete(todoItem, index)"
+          v-on:click="toggleComplete({todoItem, index})"
         ></i>
         <span class="checkBtn"></span>
         <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
@@ -27,14 +27,12 @@ import { mapGetters, mapMutations } from "vuex";
 export default {
   methods: {
     ...mapMutations({
-      removeTodo: "removeOneItem"
-    }),
+      removeTodo: "removeOneItem",
+      toggleComplete: "toggleOneItem"
+    })
     // removeTodo: function(todoItem, index) {
     //   this.$store.commit("removeOneItem", { todoItem, index });
     // },
-    toggleComplete: function(todoItem, index) {
-      this.$store.commit("toggleOneItem", { todoItem, index });
-    }
   },
   computed: {
     ...mapGetters(["storedTodoItems"])
