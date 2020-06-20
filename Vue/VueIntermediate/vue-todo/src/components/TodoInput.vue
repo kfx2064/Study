@@ -32,8 +32,11 @@ export default {
   methods: {
     addTodo: function() {
       if (this.newTodoItem !== "") {
-        console.log(this.newTodoItem);
-        this.$emit("addTodoItem", this.newTodoItem);
+        console.log("activate addTodo.");
+        // console.log(this.newTodoItem);
+        //this.$emit("addTodoItem", this.newTodoItem);
+        //this.$store.commit("addOneItem");
+        this.$store.commit("addOneItem", this.newTodoItem);
         this.clearInput();
       } else {
         this.showModal = !this.showModal;
@@ -44,7 +47,8 @@ export default {
     }
   },
   components: {
-    Modal: Modal
+    Modal
+    //Modal: Modal
   }
 };
 </script>
