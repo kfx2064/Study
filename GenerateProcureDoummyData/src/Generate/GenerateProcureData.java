@@ -45,6 +45,8 @@ public class GenerateProcureData {
             String strProcureRequestNo = String.valueOf("");
             String strProcureSeq = String.valueOf("");
             String strProcureRequestDate = String.valueOf("");
+            String strPartnersId = String.valueOf("");
+            String strSupplyId = String.valueOf("");
             String strItemCd = String.valueOf("");
             String strUnit = String.valueOf("");
             String strQty = String.valueOf("");
@@ -162,6 +164,8 @@ public class GenerateProcureData {
                                 StringBuilder strSql = new StringBuilder("")
                                         .append("SELECT item_cd ")
                                         .append(", unit ")
+                                        .append(", partners_id ")
+                                        .append(", supply_id ")
                                         .append("FROM procure_item ")
                                         .append("WHERE id = " + intId);
 
@@ -177,8 +181,16 @@ public class GenerateProcureData {
 
                                     String unit = resultSet.getString("unit");
                                     strUnit = unit;
+
+                                    String partnersId = resultSet.getString("partners_id");
+                                    String supplyId = resultSet.getString("supply_id");
+
+                                    strPartnersId = partnersId;
+                                    strSupplyId = supplyId;
                                 }
 
+                                System.out.println("partnersId ::: " + strPartnersId);
+                                System.out.println("supplyId ::: " + strSupplyId);
                                 System.out.println("itemCd ::: " + strItemCd);
                                 System.out.println("unit ::: " + strUnit);
 
@@ -190,13 +202,15 @@ public class GenerateProcureData {
                             }
 
                             // 만들어진 데이터를 토대로 엑셀 파일을 생성한다.
-                            row.createCell(3).setCellValue(strItemCd);
-                            row.createCell(4).setCellValue(strUnit);
-                            row.createCell(5).setCellValue(strQty);
-                            row.createCell(6).setCellValue(strRegDate);
-                            row.createCell(7).setCellValue(strRegId);
-                            row.createCell(8).setCellValue(strDelYn);
-                            row.createCell(9).setCellValue(strProcureStatus);
+                            row.createCell(3).setCellValue(strPartnersId);
+                            row.createCell(4).setCellValue(strSupplyId);
+                            row.createCell(5).setCellValue(strItemCd);
+                            row.createCell(6).setCellValue(strUnit);
+                            row.createCell(7).setCellValue(strQty);
+                            row.createCell(8).setCellValue(strRegDate);
+                            row.createCell(9).setCellValue(strRegId);
+                            row.createCell(10).setCellValue(strDelYn);
+                            row.createCell(11).setCellValue(strProcureStatus);
 
                         }
                         System.out.println();
