@@ -90,32 +90,40 @@ public class pushGeneratedProcureData {
                         case 2:
                             extractProcureDataMap.put("procureRequestDate", value);
                             break;
-                        // 3셀, 품목코드
-                        // 4셀, 단위코드
-                        // 5셀, 수량
+                        // 3셀, 협력업체
+                        // 4셀, 공급업체
+                        // 5셀, 품목코드
                         case 3:
-                            extractProcureDataMap.put("itemCd", value);
+                            extractProcureDataMap.put("partnersId", value);
                             break;
                         case 4:
-                            extractProcureDataMap.put("unit", value);
+                            extractProcureDataMap.put("supplyId", value);
                             break;
                         case 5:
-                            extractProcureDataMap.put("qty", value);
+                            extractProcureDataMap.put("itemCd", value);
                             break;
-                        // 6셀, 등록일자
-                        // 7셀, 등록사용자
-                        // 8셀, 삭제여부
+                        // 6셀, 단위코드
+                        // 7셀, 수량
+                        // 8셀, 등록일자
                         case 6:
-                            extractProcureDataMap.put("regDate", value);
+                            extractProcureDataMap.put("unit", value);
                             break;
                         case 7:
-                            extractProcureDataMap.put("regId", value);
+                            extractProcureDataMap.put("qty", value);
                             break;
                         case 8:
+                            extractProcureDataMap.put("regDate", value);
+                            break;
+                        // 9셀, 등록사용자
+                        // 10셀, 삭제여부
+                        // 11셀, 구매상태
+                        case 9:
+                            extractProcureDataMap.put("regId", value);
+                            break;
+                        case 10:
                             extractProcureDataMap.put("delYn", value);
                             break;
-                        // 9셀, 구매요청상태
-                        case 9:
+                        case 11:
                             extractProcureDataMap.put("procureRowStatus", value);
                             break;
                     }
@@ -137,28 +145,43 @@ public class pushGeneratedProcureData {
 
             LinkedHashMap<String, Object> lkMap = extractProcureDataList.get(i);
             System.out.println("showExtractDataMap ::: " + lkMap.toString());
-            String procureRequestNo = String.valueOf(lkMap.get("procureRequestNo"));
-            String procureRequestSeq = String.valueOf(lkMap.get("procureRequestSeq"));
-            String procureRequestDate = String.valueOf(lkMap.get("procureRequestDate"));
-            String itemCd = String.valueOf(lkMap.get("itemCd"));
-            String unit = String.valueOf(lkMap.get("unit"));
-            String qty = String.valueOf(lkMap.get("qty"));
-            String regDate = String.valueOf(lkMap.get("regDate"));
-            String regId = String.valueOf(lkMap.get("regId"));
-            String delYn = String.valueOf(lkMap.get("delYn"));
-            String procureRowStatus = String.valueOf(lkMap.get("procureRowStatus"));
+            String procureRequestNo         = String.valueOf(lkMap.get("procureRequestNo"));
+            String procureRequestSeq        = String.valueOf(lkMap.get("procureRequestSeq"));
+            String procureRequestDate       = String.valueOf(lkMap.get("procureRequestDate"));
+            String partnersId               = String.valueOf(lkMap.get("partnersId"));
+            String supplyId                 = String.valueOf(lkMap.get("supplyId"));
+            String itemCd                   = String.valueOf(lkMap.get("itemCd"));
+            String unit                     = String.valueOf(lkMap.get("unit"));
+            String qty                      = String.valueOf(lkMap.get("qty"));
+            String regDate                  = String.valueOf(lkMap.get("regDate"));
+            String regId                    = String.valueOf(lkMap.get("regId"));
+            String delYn                    = String.valueOf(lkMap.get("delYn"));
+            String procureRowStatus         = String.valueOf(lkMap.get("procureRowStatus"));
 
             strSql.append("INSERT INTO procure_procure_request ")
                     .append("(")
-                    .append("procure_request_no").append(", procure_seq").append(", procure_request_date").append(", item_cd")
-                    .append(", unit").append(", qty").append(", procure_status")
-                    .append(", reg_id").append(", del_yn").append(") VALUES ('")
+                    .append("procure_request_no")
+                    .append(", procure_seq")
+                    .append(", procure_request_date")
+                    .append(", partners_id")
+                    .append(", supply_id")
+                    .append(", item_cd")
+                    .append(", unit")
+                    .append(", qty")
+                    .append(", procure_status")
+                    .append(", reg_id")
+                    .append(", del_yn")
+                    .append(") VALUES ('")
                     .append(procureRequestNo)
                     .append("', ")
                     .append(procureRequestSeq)
                     .append(", '")
                     .append(procureRequestDate)
-                    .append("', '")
+                    .append("', ")
+                    .append(partnersId)
+                    .append(", ")
+                    .append(supplyId)
+                    .append(", '")
                     .append(itemCd)
                     .append("', '")
                     .append(unit)
