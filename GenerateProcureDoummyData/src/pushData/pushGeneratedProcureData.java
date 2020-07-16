@@ -21,7 +21,6 @@ public class pushGeneratedProcureData {
 
         ArrayList<LinkedHashMap<String, Object>> extractProcureDataList = new ArrayList<>();
 
-
         Class.forName("org.mariadb.jdbc.Driver");
         Connection connection = null;
         PreparedStatement preparedStatement = null;

@@ -42,18 +42,19 @@ public class GenerateProcureData {
 
             int excelDataRow = 0;
 
-            String strProcureRequestNo = String.valueOf("");
-            String strProcureSeq = String.valueOf("");
-            String strProcureRequestDate = String.valueOf("");
-            String strPartnersId = String.valueOf("");
-            String strSupplyId = String.valueOf("");
-            String strItemCd = String.valueOf("");
-            String strUnit = String.valueOf("");
-            String strQty = String.valueOf("");
-            String strRegDate = String.valueOf("");
-            String strRegId = String.valueOf("");
-            String strDelYn = String.valueOf("N");
-            String strProcureStatus = String.valueOf("01");
+            String strProcureRequestNo      = String.valueOf("");
+            String strProcureSeq            = String.valueOf("");
+            String strProcureRequestDate    = String.valueOf("");
+            String strOrderRequestNo        = String.valueOf("");
+            String strPartnersId            = String.valueOf("");
+            String strSupplyId              = String.valueOf("");
+            String strItemCd                = String.valueOf("");
+            String strUnit                  = String.valueOf("");
+            String strQty                   = String.valueOf("");
+            String strRegDate               = String.valueOf("");
+            String strRegId                 = String.valueOf("");
+            String strDelYn                 = String.valueOf("N");
+            String strProcureStatus         = String.valueOf("01");
 
             HashMap<String, Object> saveProcureDataMap = new HashMap<>();
 
@@ -143,7 +144,6 @@ public class GenerateProcureData {
                             System.out.print("genCnt ::: " + genCnt + "  ");
                             row.createCell(1).setCellValue(genCnt);
                             row.createCell(2).setCellValue(strProcureRequestDate);
-
 
                             // 수량을 10개 이내로 랜덤하게 생성한다.
                             int intRandomQty = (int) (Math.random() * 10) + 1;
