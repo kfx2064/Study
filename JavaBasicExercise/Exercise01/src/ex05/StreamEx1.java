@@ -17,7 +17,9 @@ public class StreamEx1 {
         );
         studentStream.sorted(Comparator.comparing(Student::getBan)
         .thenComparing(Comparator.naturalOrder()))
-                .forEach(System.out::println);
+                .forEach(student -> {
+                    System.out.println(student);
+                });
     }
 
 }
