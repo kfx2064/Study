@@ -1,6 +1,16 @@
-package lec07.jth.world.electronics;
+package lec07.jth.world.vo.electronics;
 
 public class LGElectronics {
+
+    private static LGElectronics lgElectronics = new LGElectronics();
+
+    private LGElectronics() {
+
+    }
+
+    public static LGElectronics getInstance() {
+        return lgElectronics;
+    }
 
     private int salesAmount;        // 매출액
     private int propertyAmount;     // 자산액
@@ -8,7 +18,8 @@ public class LGElectronics {
     private int capitalAmount;      // 자본액
     private int totalEmployee;      // 총 종업원
     private String headOfficeAddress;   // 본점 주소
-    private String campanyProperty;     // 회사 속성(조선, 전자 등)
+    private String companyProperty;     // 회사 속성(조선, 전자, it 등)
+    private String companyName;         // 회사명
 
     public int getSalesAmount() {
         return salesAmount;
@@ -62,12 +73,33 @@ public class LGElectronics {
         this.headOfficeAddress = headOfficeAddress;
     }
 
-    public String getCampanyProperty() {
-        return campanyProperty;
+    public String getCompanyProperty() {
+        return companyProperty;
     }
 
-    public void setCampanyProperty(String campanyProperty) {
-        this.campanyProperty = campanyProperty;
+    public void setCompanyProperty(String companyProperty) {
+        this.companyProperty = companyProperty;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    @Override
+    public String toString() {
+        return "LGElectronics{" +
+                "salesAmount=" + salesAmount +
+                ", propertyAmount=" + propertyAmount +
+                ", debtAmount=" + debtAmount +
+                ", capitalAmount=" + capitalAmount +
+                ", totalEmployee=" + totalEmployee +
+                ", headOfficeAddress='" + headOfficeAddress + '\'' +
+                ", companyProperty='" + companyProperty + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }

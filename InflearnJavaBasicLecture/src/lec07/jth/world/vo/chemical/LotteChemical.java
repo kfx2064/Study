@@ -1,9 +1,19 @@
-package lec07.jth.world.chemical;
+package lec07.jth.world.vo.chemical;
 
 /**
  * 롯데케미칼
  */
 public class LotteChemical {
+
+    private static LotteChemical lotteChemical = new LotteChemical();
+
+    private LotteChemical() {
+
+    }
+
+    public static LotteChemical getInstance() {
+        return lotteChemical;
+    }
 
     private int salesAmount;        // 매출액
     private int propertyAmount;     // 자산액
@@ -11,7 +21,8 @@ public class LotteChemical {
     private int capitalAmount;      // 자본액
     private int totalEmployee;      // 총 종업원
     private String headOfficeAddress;   // 본점 주소
-    private String campanyProperty;     // 회사 속성(조선, 전자 등)
+    private String companyProperty;     // 회사 속성(조선, 전자, it 등)
+    private String companyName;         // 회사명
 
     public int getSalesAmount() {
         return salesAmount;
@@ -65,12 +76,33 @@ public class LotteChemical {
         this.headOfficeAddress = headOfficeAddress;
     }
 
-    public String getCampanyProperty() {
-        return campanyProperty;
+    public String getCompanyProperty() {
+        return companyProperty;
     }
 
-    public void setCampanyProperty(String campanyProperty) {
-        this.campanyProperty = campanyProperty;
+    public void setCompanyProperty(String companyProperty) {
+        this.companyProperty = companyProperty;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    @Override
+    public String toString() {
+        return "LotteChemical{" +
+                "salesAmount=" + salesAmount +
+                ", propertyAmount=" + propertyAmount +
+                ", debtAmount=" + debtAmount +
+                ", capitalAmount=" + capitalAmount +
+                ", totalEmployee=" + totalEmployee +
+                ", headOfficeAddress='" + headOfficeAddress + '\'' +
+                ", companyProperty='" + companyProperty + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }
