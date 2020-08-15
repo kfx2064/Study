@@ -1,4 +1,4 @@
-package lec07.jth.world.vo.electronics;
+package lec08.jth.world.vo.electronics;
 
 /**
  * SK하이닉스

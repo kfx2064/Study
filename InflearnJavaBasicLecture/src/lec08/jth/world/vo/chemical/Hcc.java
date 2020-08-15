@@ -1,4 +1,4 @@
-package lec07.jth.world.vo.chemical;
+package lec08.jth.world.vo.chemical;
 
 /**
  * 한화솔루션/케미칼
