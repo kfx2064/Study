@@ -18,7 +18,7 @@ public interface CallDataRepository {
      * 국가 데이터를 가져오는 메소드 기능입니다.
      * 국가 이름을 파라미터로 하여 국가 데이터를 가져오는 것입니다.
      */
-    public Map<String, Object> getNationData(String nationName);
+    public Object getNationData(String nationName);
 
     /**
      * 산업 데이터를 가져오는 메소드 기능입니다.

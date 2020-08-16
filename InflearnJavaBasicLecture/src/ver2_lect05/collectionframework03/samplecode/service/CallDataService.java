@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public interface CallDataService {
 
-    public Map<String, Object> getNationData(String nationName);
+    public Object getNationData(String nationName);
 
     /**
      * 국가 데이터를 가져오는 메소드 뼈대를 만듭니다.

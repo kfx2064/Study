@@ -22,7 +22,7 @@ public class CallDataServiceImpl implements CallDataService {
      */
 
     @Override
-    public Map<String, Object> getNationData(String nationName) {
+    public Object getNationData(String nationName) {
         return callDataRepositoryImpl.getNationData(nationName);
     }
 

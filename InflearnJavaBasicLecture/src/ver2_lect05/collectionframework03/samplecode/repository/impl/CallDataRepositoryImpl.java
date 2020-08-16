@@ -34,8 +34,8 @@ public class CallDataRepositoryImpl implements CallDataRepository {
      */
 
     @Override
-    public Map<String, Object> getNationData(String nationName) {
-        return (Map<String, Object>) dataRepository.savedDataLkMap.get(nationName);
+    public Object getNationData(String nationName) {
+        return dataRepository.savedDataLkMap.get(nationName);
     }
 
     /**
