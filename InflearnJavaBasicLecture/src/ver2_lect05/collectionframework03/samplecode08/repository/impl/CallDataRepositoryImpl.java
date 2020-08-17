@@ -1,8 +1,6 @@
-package ver2_lect05.collectionframework03.samplecode.repository.impl;
+package ver2_lect05.collectionframework03.samplecode08.repository.impl;
 
-import ver2_lect05.collectionframework03.samplecode.repository.CallDataRepository;
-
-import java.util.Map;
+import ver2_lect05.collectionframework03.samplecode08.repository.CallDataRepository;
 
 /**
  * CallDataRepository를 구현한 클래스입니다.

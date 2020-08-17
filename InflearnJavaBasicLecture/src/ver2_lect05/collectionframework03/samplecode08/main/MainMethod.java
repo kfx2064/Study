@@ -1,8 +1,6 @@
-package ver2_lect05.collectionframework03.samplecode.main;
+package ver2_lect05.collectionframework03.samplecode08.main;
 
-import ver2_lect05.collectionframework03.samplecode.service.impl.CallDataServiceImpl;
-
-import java.util.Map;
+import ver2_lect05.collectionframework03.samplecode08.service.impl.CallDataServiceImpl;
 
 public class MainMethod {
 
