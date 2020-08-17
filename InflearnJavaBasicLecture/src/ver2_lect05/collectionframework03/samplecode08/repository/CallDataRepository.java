@@ -1,7 +1,4 @@
-package ver2_lect05.collectionframework03.samplecode.repository;
-
-import java.util.List;
-import java.util.Map;
+package ver2_lect05.collectionframework03.samplecode08.repository;
 
 /**
  * 레포지토리 인터페이스입니다.

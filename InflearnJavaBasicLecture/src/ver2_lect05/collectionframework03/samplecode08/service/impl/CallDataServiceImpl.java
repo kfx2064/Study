@@ -1,9 +1,7 @@
-package ver2_lect05.collectionframework03.samplecode.service.impl;
+package ver2_lect05.collectionframework03.samplecode08.service.impl;
 
-import ver2_lect05.collectionframework03.samplecode.repository.impl.CallDataRepositoryImpl;
-import ver2_lect05.collectionframework03.samplecode.service.CallDataService;
-
-import java.util.Map;
+import ver2_lect05.collectionframework03.samplecode08.repository.impl.CallDataRepositoryImpl;
+import ver2_lect05.collectionframework03.samplecode08.service.CallDataService;
 
 /**
  * CallDataService 인터페이스를 구현한 클래스입니다.

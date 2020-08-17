@@ -1,4 +1,4 @@
-package ver2_lect05.collectionframework03.samplecode.repository.impl;
+package ver2_lect05.collectionframework03.samplecode08.repository.impl;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

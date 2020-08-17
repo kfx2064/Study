@@ -1,6 +1,4 @@
-package ver2_lect05.collectionframework03.samplecode.service;
-
-import java.util.Map;
+package ver2_lect05.collectionframework03.samplecode08.service;
 
 /**
  * 서비스 인터페이스를 만듭니다.
