@@ -9,6 +9,9 @@
       <root url="jar://$PROJECT_DIR$/lib/poi-ooxml-3.10-FINAL.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/poi-ooxml-schemas-3.10-FINAL.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-dbcp2-2.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-pool2-2.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
