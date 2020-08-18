@@ -1,4 +1,4 @@
-package ver2_lect05.thread03;
+package ver2_lect05.thread04;
 
 public class Thread01 {
 

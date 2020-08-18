@@ -1,4 +1,4 @@
-package ver2_lect05.thread03.one;
+package ver2_lect05.thread04.one;
 
 public class DoThread extends Thread {
 
