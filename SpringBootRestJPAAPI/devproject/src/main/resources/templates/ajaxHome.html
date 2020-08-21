@@ -8,67 +8,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $("#ajaxBtn").on("click", function () {
-            var title = $("#title");
-            var content = $("#content");
-            var writer = $("#writer");
-
-            var titleVal = title.val();
-            var contentVal = content.val();
-            var writerVal = writer.val();
-
-            var boardObject = {
-                title: titleVal
-                , content: contentVal
-                , writer: writerVal
-            };
-
-            $.ajax({
-                type: "POST"
-                , url: "/boards"
-                , data: JSON.stringify(boardObject)
-                , contentType: "application/json; charset=UTF-8"
-                , success: function (data) {
-                    console.log("data : " + data);
-
-                    alert(data);
-                }
-                , error: function (request, status, error) {
-                    alert("code : " +request.status + "\n" + "message : " + request.responseText + "\n"
-                    + "error : " + error);
-                }
-            });
-        });
-
-        $("#postBtn").on("click", function () {
-            var title = $("#title");
-            var content = $("#content");
-            var writer = $("#writer");
-
-            var titleVal = title.val();
-            var contentVal = content.val();
-            var writerVal = writer.val();
-
-            var boardObject = {
-                title: titleVal
-                , content: contentVal
-                , writer: writerVal
-            };
-
-            $.post("/boards", boardObject, function (data) {
-                console.log(data);
-
-                alert(JSON.stringify(data));
-            });
-        });
-
-        $("#getJsonBtn").on("click", function () {
-            var boardNo = $("#boardNo");
-            var boardNoVal = boardNo.val();
-
-            console.log(boardNoVal);
-
-            $.getJSON("/boards/" + boardNoVal, function (data) {
+        $("#listBtn").on("click", function () {
+            $.get("/boards", function (data) {
                 console.log(data);
 
                 alert(JSON.stringify(data));
@@ -88,28 +29,7 @@
             });
         });
 
-        $("#listBtn").on("click", function () {
-            $.get("/boards", function (data) {
-                console.log(data);
-
-                alert(JSON.stringify(data));
-            });
-        });
-
-        $("#readBtn").on("click", function () {
-            var boardNo = $("#boardNo");
-            var boardNoVal = boardNo.val();
-
-            console.log(boardNoVal);
-
-            $.get("/boards/" + boardNoVal, function (data) {
-                console.log(data);
-
-                alert(JSON.stringify(data));
-            });
-        });
-
-        $("#registerBtn").on("click", function () {
+        $("#postBtn").on("click", function () {
             var title = $("#title");
             var content = $("#content");
             var writer = $("#writer");
@@ -119,14 +39,14 @@
             var writerVal = writer.val();
 
             var boardObject = {
-                title : titleVal
-                , content : contentVal
-                , writer : writerVal
+                title: titleVal
+                , content: contentVal
+                , writer: writerVal
             };
 
             $.ajax({
-                type: ""
-                , url: ""
+                type: "POST"
+                , url: "/boards"
                 , data: JSON.stringify(boardObject)
                 , contentType: "application/json; charset=UTF-8"
                 , success: function (result) {
@@ -135,8 +55,8 @@
                     alert(result);
                 }
                 , error: function (request, status, error) {
-                    alert("code: " + request.status + "\n" + "message: " + request.responseText
-                    + "\n" + "error: " + error);
+                    alert("code: " + request.status + "\n"
+                    + "message: " + request.responseText + "\n" + "error: " + error);
                 }
             });
         });
@@ -151,14 +71,14 @@
                 type: "DELETE"
                 , url: "/boards/" + boardNoVal
                 , success: function (result) {
-                    console.log("result: " + result);
+                    console.log("result : " + result);
 
                     alert(result);
                 }
             });
         });
 
-        $("#modifyBtn").on("click", function () {
+        $("#putBtn").on("click", function () {
             var boardNo = $("#boardNo");
             var title = $("#title");
             var content = $("#content");
@@ -167,13 +87,13 @@
             var boardNoVal = boardNo.val();
             var titleVal = title.val();
             var contentVal = content.val();
-            var writerVal = writer.value();
+            var writerVal = writer.val();
 
             var boardObject = {
-                boardNo : boardNoVal
-                , title : titleVal
-                , content : contentVal
-                , writer : writerVal
+                boardNo: boardNoVal
+                , title: titleVal
+                , content: contentVal
+                , writer: writerVal
             };
 
             $.ajax({
@@ -188,6 +108,38 @@
                 }
             });
         });
+
+        $("#patchBtn").on("click", function () {
+            var boardNo = $("#boardNo");
+            var title = $("#title");
+            var content = $("#content");
+            var writer = $("#writer");
+
+            var boardNoVal = boardNo.val();
+            var titleVal = title.val();
+            var contentVal = content.val();
+            var writerVal = writer.val();
+
+            var boardObject = {
+                boardNo: boardNoVal
+                , title: titleVal
+                , content: contentVal
+                , writer: writerVal
+            };
+
+            $.ajax({
+                type: "PATCH"
+                , url: "/boards/" + boardNoVal
+                , data: JSON.stringify(boardObject)
+                , contentType: "application/json; charset=UTF-8"
+                , success: function (result) {
+                    console.log("result: " + result);
+
+                    alert(result);
+                }
+            });
+        });
+
     });
 </script>
 <body>
@@ -199,15 +151,12 @@
         writer : <input type="text" name="writer" value="" id="writer">
     </form>
     <div>
-        <button id="ajaxBtn">ajax</button>
-        <button id="postBtn">post</button>
-        <button id="getJsonBtn">getJson</button>
-        <button id="getBtn">get</button>
         <button id="listBtn">LIST</button>
-        <button id="readBtn">READ</button>
-        <button id="registerBtn">REGISTER</button>
+        <button id="getBtn">READ</button>
+        <button id="postBtn">REGISTER</button>
         <button id="deleteBtn">DELETE</button>
-        <button id="modifyBtn">MODIFY</button>
+        <button id="putBtn">MODIFY(put)</button>
+        <button id="patchBtn">MODIFY(patch)</button>
     </div>
 </body>
 </html>

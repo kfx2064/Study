@@ -21,25 +21,7 @@ public class BoardController {
 
         List<Board> boardList = new ArrayList<>();
 
-        Board board = new Board();
-
-        board.setBoardNo(1);
-        board.setTitle("향수");
-        board.setContent("넓은 벌 동쪽 끝으로");
-        board.setWriter("hongkd");
-        board.setRegDate(new Date());
-
-        boardList.add(board);
-
-        board = new Board();
-
-        board.setBoardNo(2);
-        board.setTitle("첫 마음");
-        board.setContent("날마다 새로우며 깊어지고 넓어진다");
-        board.setWriter("hongkd");
-        board.setRegDate(new Date());
-
-        boardList.add(board);
+        boardList.add(new Board());
 
         ResponseEntity<List<Board>> entity = new ResponseEntity<>(boardList, HttpStatus.OK);
 
@@ -50,11 +32,9 @@ public class BoardController {
     public ResponseEntity<String> register(@RequestBody Board board) {
         log.info("register");
 
-        log.info("Title : " + board.getTitle());
-        log.info("Content : " + board.getContent());
-        log.info("Writer : " + board.getWriter());
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
-        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+        return entity;
     }
 
     @RequestMapping(value = "/{boardNo}", method = RequestMethod.GET)
@@ -63,13 +43,9 @@ public class BoardController {
 
         Board board = new Board();
 
-        board.setBoardNo(1);
-        board.setTitle("향수");
-        board.setContent("넓은 벌 동쪽 끝으로");
-        board.setWriter("hongkd");
-        board.setRegDate(new Date());
+        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
 
-        return new ResponseEntity<>(board, HttpStatus.OK);
+        return entity;
     }
 
     @RequestMapping(value = "/{boardNo}", method = RequestMethod.DELETE)
@@ -82,12 +58,42 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/{boardNo}", method = RequestMethod.PUT)
-    public ResponseEntity<String> modify(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
-        log.info("modify");
+    public ResponseEntity<String> modifyByPut(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modifyByPut");
 
         ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
         return entity;
+    }
+
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.PATCH)
+    public ResponseEntity<String> modifyByPatch(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modifyByPatch");
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping("/read2/{no}")
+    public String read2(@PathVariable("no") int boardNo) {
+        log.info("read2 boardNo : " + boardNo);
+
+        return "READ2 boardNo : " + boardNo;
+    }
+
+    @RequestMapping(value = "/register")
+    public String registerForm() {
+        log.info("registerForm");
+
+        return "REGISTER";
+    }
+
+    @RequestMapping(value = "/modify")
+    public String modifyForm() {
+        log.info("modifyForm");
+
+        return "MODIFY";
     }
 
 }
