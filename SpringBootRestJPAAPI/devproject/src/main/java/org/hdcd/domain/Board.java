@@ -7,10 +7,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(of = "boardNo")
-public class Board implements java.io.Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Board {
 
     private int boardNo;
     private String title;

@@ -28,4 +28,9 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping(value = "/ajaxHome", method = RequestMethod.GET)
+    public String ajaxHome() {
+        return "ajaxHome";
+    }
+
 }

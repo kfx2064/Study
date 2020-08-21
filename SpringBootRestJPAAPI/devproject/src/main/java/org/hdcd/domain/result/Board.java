@@ -6,8 +6,6 @@ import lombok.ToString;
 
 import java.util.Date;
 
-@Getter
-@Setter
 @ToString
 public class Board {
 
@@ -17,29 +15,54 @@ public class Board {
     private String writer;
     private Date regDate;
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + boardNo;
-        return result;
+    Board(int boardNo, String title, String content, String writer, Date regDate) {
+        super();
+        this.boardNo = boardNo;
+        this.title = title;
+        this.content = content;
+        this.writer = writer;
+        this.regDate = regDate;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-            return false;
-        Board other = (Board) obj;
-        if (boardNo != other.boardNo) {
-            return false;
+    public static class BoardBuilder {
+
+        private int boardNo;
+        private String title;
+        private String content;
+        private String writer;
+        private Date regDate;
+
+        private BoardBuilder() {}
+
+        public BoardBuilder boardNo(int boardNo) {
+            this.boardNo = boardNo;
+            return this;
         }
 
-        return true;
+        public BoardBuilder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public BoardBuilder content(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public BoardBuilder writer(String writer) {
+            this.writer = writer;
+            return this;
+        }
+
+        public BoardBuilder regDate(Date regDate) {
+            this.regDate = regDate;
+            return this;
+        }
+
+        public Board build() {
+            return new Board(boardNo, title, content, writer, regDate);
+        }
+
     }
+
 }
