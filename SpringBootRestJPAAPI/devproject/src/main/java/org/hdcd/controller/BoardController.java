@@ -15,6 +15,57 @@ import java.util.List;
 @RequestMapping("/boards")
 public class BoardController {
 
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.GET, produces = "application/xml")
+    public ResponseEntity<Board> readToXml(@PathVariable("boardNo") int boardNo) {
+        log.info("readToXml");
+
+        Board board = new Board();
+
+        board.setBoardNo(boardNo);
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("홍길동");
+        board.setRegDate(new Date());
+
+        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Board> readToJson(@PathVariable("boardNo") int boardNo) {
+        log.info("readToJson");
+
+        Board board = new Board();
+
+        board.setBoardNo(boardNo);
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("홍길동");
+        board.setRegDate(new Date());
+
+        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.GET)
+    public ResponseEntity<Board> read(@PathVariable("boardNo") int boardNo) {
+        log.info("read");
+
+        Board board = new Board();
+
+        board.setBoardNo(boardNo);
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("홍길동");
+        board.setRegDate(new Date());
+
+        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+        return entity;
+    }
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<Board>> list() {
         log.info("list");
@@ -37,17 +88,6 @@ public class BoardController {
         return entity;
     }
 
-    @RequestMapping(value = "/{boardNo}", method = RequestMethod.GET)
-    public ResponseEntity<Board> read(@PathVariable("boardNo") int boardNo) {
-        log.info("read");
-
-        Board board = new Board();
-
-        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
-
-        return entity;
-    }
-
     @RequestMapping(value = "/{boardNo}", method = RequestMethod.DELETE)
     public ResponseEntity<String> remove(@PathVariable("boardNo") int boardNo) {
         log.info("remove");
@@ -57,9 +97,37 @@ public class BoardController {
         return entity;
     }
 
-    @RequestMapping(value = "/{boardNo}", method = RequestMethod.PUT)
-    public ResponseEntity<String> modifyByPut(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
-        log.info("modifyByPut");
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.POST)
+    public ResponseEntity<String> modify(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modify");
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity<String> modifyByJson(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modifyByJson");
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.PUT, consumes = "application/xml")
+    public ResponseEntity<String> modifyByXml(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modifyByXml boardNo : " + boardNo);
+        log.info("modifyByXml board : " + board);
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/{boardNo}", method = RequestMethod.PUT, headers = "X-HTTP-Method-Override=PUT")
+    public ResponseEntity<String> modifyByHeader(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modifyByHeader");
 
         ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
