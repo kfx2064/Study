@@ -3,7 +3,7 @@ package ver2_lect05.fileIO05.training01;
 import java.io.File;
 import java.util.Date;
 
-public class IOManyFunction01 {
+public class FileManyFunction01 {
 
     public static void main(String[] args) throws Exception {
         File txtFile = new File("C:\\dev\\FileIOTextFile.txt");
@@ -137,6 +137,73 @@ public class IOManyFunction01 {
 
         /**
          * 파일 명이 바뀌는 것을 확인할 수 있다.
+         */
+
+
+        /**
+         * 이제 삭제에 대해 실습해 보겠습니다.
+         * deleteFolder라는 폴더를 하나 생성하겠습니다.
+         */
+        File deleteFolder = new File("C:\\dev\\deleteFolder");
+        boolean tfDelete = deleteFolder.delete();
+        System.out.println("tfDelete : " + tfDelete);
+        /**
+         * 폴더를 하나 생성해서 삭제하는 예제를 수행해 봤습니다.
+         */
+
+        /**
+         * 이번에는 용량에 대한 실습입니다.
+         * 두 가지를 실습해 보겠습니다.
+         */
+        long freeSpace = txtFile.getFreeSpace();
+        System.out.println("freeSpace : " + freeSpace);
+        long freeSpaceGB = ((freeSpace / 1024) / 1024) / 1024;
+        System.out.println("freeSpaceMB : " + freeSpaceGB);
+
+        long totalSpace = txtFile.getTotalSpace();
+        System.out.println("totalSpace : " + totalSpace);
+        long totalSpaceGB = ((totalSpace / 1024) / 1024) / 1024;
+        System.out.println("totalSpaceGB : " + totalSpaceGB);
+        /**
+         * GB로 변환하여 출력하였습니다.
+         * 여유 공간과 총 공간에 대한 정보입니다.
+         */
+
+        /**
+         * File 클래스에는 대략적으로 이러한 기능들이 있습니다.
+         * 더 많은 기능들이 존재하지만 Java API를 찾아보시는 것도 좋습니다.
+         * 제가 앞전에 강의에서 설명드린 바와 같이
+         * 기능들에 대해 대략적으로 알고
+         * Java API 문서를 찾아보면서
+         * 빠르게 찾아서 적용하는 것도 프로그래머에게 매우 중요한 능력입니다.
+         *
+         * 이제 다른 내용을 강의해 드리겠습니다.
+         *
+         * 경로 표현 중
+         *
+         * ./ 표현과
+         * ../ 표현이 있습니다.
+         *
+         * 절대 경로와는 다른 상대 경로에 대한 표현입니다.
+         *
+         * ./ 표현은 현재 폴더 기준이라는 뜻입니다.
+         * 현재 폴더를 기준으로 파일을 찾아간다는 것입니다.
+         * ../는 상위 폴더를 기준으로 찾아간다는 뜻입니다.
+         *
+         * 프로그래밍을 하다보면 절대 경로를 사용할 때도 많지만,
+         * 상대 경로를 사용할 경우도 많습니다.
+         * 이에 대한 구분을 알아두시면 좋습니다.
+         *
+         * 보통 사용자마다 설치해서 사용하는 응용 프로그램은 상대 경로를 쓸 경우
+         * 문제가 발생할 확률이 있습니다.
+         * 하지만 하나의 웹 서버에서 실행되고
+         * 각 사용자는 브라우저로 접근하여 웹 서버에 파일을 업로드하고 다운로드하는
+         * 웹 프로그램의 경우엔 그럴 경우가 많이 줄어듭니다.
+         *
+         * 그럼에도 절대 경로를 쓰는 경우가 많긴 합니다.
+         * 절대 경로로 확실한 경로를 지정하여
+         * 연관되는 프로그램이나 파일들에 대한 정보를 정확하게 지정해 주는 것이
+         * 좋기 때문입니다.
          */
 
     }
