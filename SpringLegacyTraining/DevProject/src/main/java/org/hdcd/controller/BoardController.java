@@ -113,6 +113,38 @@ public class BoardController {
 		return entity;
 	}
 
+	@RequestMapping(value = "/{boardNo}", method = RequestMethod.GET, produces = "application/xml")
+	public ResponseEntity<Board> readToXml(@PathVariable("boardNo") int boardNo) {
+		logger.info("readToXml");
+
+		Board board = new Board();
+
+		board.setTitle("제목");
+		board.setContent("내용입니다.");
+		board.setWriter("홍길동");
+		board.setRegDate(new Date());
+
+		ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+		return entity;
+	}
+
+	@RequestMapping(value = "/{boardNo}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<Board> readToJson(@PathVariable("boardNo") int boardNo) {
+		logger.info("readToJson");
+
+		Board board = new Board();
+
+		board.setTitle("제목");
+		board.setContent("내용입니다.");
+		board.setWriter("홍길동");
+		board.setRegDate(new Date());
+
+		ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+		return entity;
+	}
+
 	@RequestMapping(value = "/{boardNo}", method = RequestMethod.GET)
 	public ResponseEntity<Board> read(@PathVariable("boardNo") int boardNo) {
 		logger.info("read");
