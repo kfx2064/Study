@@ -1,9 +1,12 @@
 package org.hdcd.controller;
 
+import org.apache.commons.io.IOUtils;
 import org.hdcd.controller.domain.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.*;
 
@@ -166,6 +171,62 @@ public class HomeController {
 		map.put("key2", member1);
 
 		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/goHome1101", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> home1101() throws Exception {
+		logger.info("home1101");
+
+		InputStream in = null;
+		ResponseEntity<byte[]> entity = null;
+
+		try {
+			HttpHeaders headers = new HttpHeaders();
+
+			in = new FileInputStream("D:\\TEMP\\sample.png");
+
+			headers.setContentType(MediaType.IMAGE_PNG);
+
+			entity = new ResponseEntity<>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		} finally {
+			in.close();
+		}
+
+		return entity;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/goHome1102", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> home1102() throws Exception {
+		logger.info("home1102");
+
+		String fileName = String.valueOf("sample.png");
+
+		InputStream in = null;
+		ResponseEntity<byte[]> entity = null;
+
+		try {
+			HttpHeaders headers = new HttpHeaders();
+
+			in = new FileInputStream("D:\\TEMP\\" + fileName);
+
+			headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+			headers.add("Content-Disposition", "attachment; filename=\""
+					+ new String(fileName.getBytes("UTF-8"), "ISO-8859-1") + "\"");
+
+			entity = new ResponseEntity<>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		} finally {
+			in.close();
+		}
+
+		return entity;
 	}
 	
 }
