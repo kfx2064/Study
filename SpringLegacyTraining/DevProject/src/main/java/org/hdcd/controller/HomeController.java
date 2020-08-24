@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -91,6 +93,22 @@ public class HomeController {
 		Member member = new Member();
 
 		return member;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/goHome04", method = RequestMethod.GET)
+	public List<Member> home04() {
+		logger.info("home04");
+
+		List<Member> list = new ArrayList<Member>();
+
+		Member member = new Member();
+		list.add(member);
+
+		Member member1 = new Member();
+		list.add(member1);
+
+		return list;
 	}
 	
 }
