@@ -71,4 +71,18 @@ public class MemberController {
         return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/register06", method = RequestMethod.GET)
+    public ResponseEntity<Void> register06() {
+        log.info("register06");
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/register07", method = RequestMethod.GET)
+    public ResponseEntity<String> register07() {
+        log.info("register07");
+
+        return new ResponseEntity<String>("HELLO", HttpStatus.OK);
+    }
+
 }
