@@ -12,6 +12,5 @@ public class Member {
 
     private String userId = "hongkd";
     private String password = "1234";
-    private String userName;
 
 }

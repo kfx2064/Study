@@ -85,4 +85,28 @@ public class MemberController {
         return new ResponseEntity<String>("HELLO", HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/register08", method = RequestMethod.GET)
+    public ResponseEntity<String> register08() {
+        log.info("register08");
+
+        Member member = new Member();
+
+        return new ResponseEntity<>(member.toString(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/register09", method = RequestMethod.GET)
+    public ResponseEntity<List<Member>> register09() {
+        log.info("register09");
+
+        List<Member> list = new ArrayList<>();
+
+        Member member = new Member();
+        list.add(member);
+
+        Member member1 = new Member();
+        list.add(member1);
+
+        return new ResponseEntity<List<Member>>(list, HttpStatus.OK);
+    }
+
 }

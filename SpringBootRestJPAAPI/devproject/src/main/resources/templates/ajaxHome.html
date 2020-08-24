@@ -408,6 +408,38 @@
             });
         });
 
+        $("#registerBtn08").on("click", function () {
+            $.ajax({
+                type: "GET"
+                , url: "/register08"
+                , contentType: "application/json; charset=UTF-8"
+                , success: function (data) {
+                    console.log("data : " + data);
+
+                    alert(JSON.stringify(data));
+                }
+                , error: function (xhr, status, error) {
+                    alert("code: " + xhr.status + "\n" + "message: " + xhr.responseText + "\n" + "error: " + error);
+                }
+            });
+        });
+
+        $("#registerBtn09").on("click", function () {
+            $.ajax({
+                type: "GET"
+                , url: "/register09"
+                , contentType: "application/json; charset=UTF-8"
+                , success: function (data) {
+                    console.log("data : " + data);
+
+                    alert(JSON.stringify(data));
+                }
+                , error: function (xhr, status, error) {
+                    alert("code : " + xhr.status + "\n" + "message: " + xhr.responseText + "\n" + "error: " + error);
+                }
+            });
+        });
+
     });
 </script>
 <body>
@@ -439,6 +471,8 @@
         <button id="registerBtn05">register05</button>
         <button id="registerBtn06">register06</button>
         <button id="registerBtn07">register07</button>
+        <button id="registerBtn08">register08</button>
+        <button id="registerBtn09">register09</button>
     </div>
 </body>
 </html>
