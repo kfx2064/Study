@@ -1,16 +1,14 @@
 package org.hdcd.controller;
 
-import org.hdcd.controller.domain.Address;
-import org.hdcd.controller.domain.Card;
-import org.hdcd.controller.domain.Member;
+import org.hdcd.controller.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +30,7 @@ public class MemberController {
         return "success";
     }
 
-    @RequestMapping(value = "/register/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/registerByPath/{userId}", method = RequestMethod.GET)
     public String registerByPath(String userId) {
         logger.info("registerByPath");
 
@@ -52,73 +50,139 @@ public class MemberController {
         return "success";
     }
 
-    @RequestMapping(value = "/register01", method = RequestMethod.POST)
-    public String register01(Member member) {
+    @RequestMapping(value = "/register/{userId}", method = RequestMethod.GET)
+    public ResponseEntity<String> register01(@PathVariable("userId") String userId) {
         logger.info("register01");
 
-        logger.info("member.getUserId() = " + member.getUserId());
+        logger.info("userId = " + userId);
 
-        logger.info("member.getPassword() = " + member.getPassword());
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
-        logger.info("member.getCoin() = " + member.getCoin());
-
-        return "success";
+        return entity;
     }
 
-    @RequestMapping(value = "/register02", method = RequestMethod.POST)
-    public String register02(Member member, int coin) {
+    @RequestMapping(value = "/register/{userId}/{password}", method = RequestMethod.POST)
+    public ResponseEntity<String> register02(@PathVariable("userId") String userId
+            , @PathVariable("password") String password) {
         logger.info("register02");
 
-        logger.info("member.getUserId() = " + member.getUserId());
+        logger.info("userId = " + userId);
+        logger.info("password = " + password);
 
-        logger.info("member.getPassword() = " + member.getPassword());
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
-        logger.info("member.getCoin() = " + member.getCoin());
-
-        logger.info("coin = " + coin);
-
-        return "success";
+        return entity;
     }
 
     @RequestMapping(value = "/register03", method = RequestMethod.POST)
-    public String register03(int uid, Member member) {
+    public ResponseEntity<String> register03(@RequestBody Member member) {
         logger.info("register03");
 
-        logger.info("uid = " + uid);
+        logger.info("userId = " + member.getUserId());
+        logger.info("password = " + member.getPassword());
 
-        logger.info("member.getUserId() = " + member.getUserId());
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
-        logger.info("member.getPassword() = " + member.getPassword());
-
-        logger.info("member.getCoin() = " + member.getCoin());
-
-        return "success";
+        return entity;
     }
 
     @RequestMapping(value = "/register04", method = RequestMethod.POST)
-    public String register04(String userId, String password, String coin) {
+    public ResponseEntity<String> register04(String userId) {
         logger.info("register04");
 
         logger.info("userId = " + userId);
 
-        logger.info("password = " + password);
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
-        logger.info("coin = " + coin);
-
-        return "success";
+        return entity;
     }
 
     @RequestMapping(value = "/register05", method = RequestMethod.POST)
-    public String register05(String userId, String password, int coin) {
+    public ResponseEntity<String> register05(String userId, String password) {
         logger.info("register05");
 
         logger.info("userId = " + userId);
 
         logger.info("password = " + password);
 
-        logger.info("coin = " + coin);
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
-        return "success";
+        return entity;
+    }
+
+    @RequestMapping(value = "/register/{userId}", method = RequestMethod.POST)
+    public ResponseEntity<String> register06(@PathVariable("userId") String userId, @RequestBody Member member) {
+        logger.info("register06");
+
+        logger.info("userId = " + userId);
+
+        logger.info("member.getUserId() = " + member.getUserId());
+        logger.info("member.getPassword() = " + member.getPassword());
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/register07", method = RequestMethod.POST)
+    public ResponseEntity<String> register07(@RequestBody List<Member> memberList) {
+        logger.info("register07");
+
+        for (Member member : memberList) {
+            logger.info("userId = " + member.getUserId());
+            logger.info("password = " + member.getPassword());
+        }
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/register08", method = RequestMethod.POST)
+    public ResponseEntity<String> register08(@RequestBody Member member) {
+        logger.info("register08");
+
+        logger.info("userId = " + member.getUserId());
+        logger.info("password = " + member.getPassword());
+
+        Address address = member.getAddress();
+
+        if (address != null) {
+            logger.info("address.getPostCode() = " + address.getPostCode());
+            logger.info("address.getLocation() = " + address.getLocation());
+        } else {
+            logger.info("address == null");
+        }
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
+    }
+
+    @RequestMapping(value = "/register09", method = RequestMethod.POST)
+    public ResponseEntity<String> register09(@RequestBody Member member) {
+        logger.info("register09");
+
+        logger.info("userId = " + member.getUserId());
+        logger.info("password = " + member.getPassword());
+
+        List<Card> cardList = member.getCardList();
+
+        if (cardList != null) {
+            logger.info("cardList.size() = " + cardList.size());
+
+            for (int i = 0; i < cardList.size(); i++) {
+                Card card = cardList.get(i);
+                logger.info("card.getNo() = " + card.getNo());
+                logger.info("card.getValidMonth() = " + card.getValidMonth());
+            }
+        } else {
+            logger.info("cardList == null");
+        }
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+
+        return entity;
     }
 
     @RequestMapping(value = "/register0201", method = RequestMethod.POST)
@@ -499,6 +563,130 @@ public class MemberController {
             logger.info("dateOfBirth = " + dateOfBirth);
         } else {
             logger.info("dateOfBirth == null");
+        }
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
+    public String registerForm2() {
+        logger.info("MemberController, registerForm2.");
+
+        return "registerForm2";
+    }
+
+    @RequestMapping(value = "/registerFile01", method = RequestMethod.POST)
+    public String registerFile01(MultipartFile picture) throws Exception {
+        logger.info("registerFile01");
+
+        logger.info("originalName: " + picture.getOriginalFilename());
+        logger.info("size: " + picture.getSize());
+        logger.info("contentType: " + picture.getContentType());
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerFile02", method = RequestMethod.POST)
+    public String registerFile02(String userId, String password, MultipartFile picture) throws Exception {
+        logger.info("registerFile02");
+
+        logger.info("userId = " + userId);
+        logger.info("password = " + password);
+
+        logger.info("originalName : " + picture.getOriginalFilename());
+        logger.info("size: ");
+        logger.info("contentType: " + picture.getContentType());
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerFile03", method = RequestMethod.POST)
+    public String registerFile03(Member member, MultipartFile picture) throws Exception {
+        logger.info("registerFile03");
+
+        logger.info("userId = " + member.getUserId());
+        logger.info("password = " + member.getPassword());
+
+        logger.info("originalName: " + picture.getOriginalFilename());
+        logger.info("size: " + picture.getSize());
+        logger.info("contentType: " + picture.getContentType());
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerFile04", method = RequestMethod.POST)
+    public String registerFile04(FileMember fileMember) throws Exception {
+        logger.info("registerFile04");
+
+        logger.info("userId = " + fileMember.getUserId());
+        logger.info("password = " + fileMember.getPassword());
+
+        MultipartFile picture = fileMember.getPicture();
+
+        logger.info("originalName: " + picture.getOriginalFilename());
+        logger.info("size: " + picture.getSize());
+        logger.info("contentType: " + picture.getContentType());
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerFile05", method = RequestMethod.POST)
+    public String registerFile05(MultipartFile picture, MultipartFile picture2) throws Exception {
+        logger.info("registerFile05");
+
+        logger.info("picture originalName: " + picture.getOriginalFilename());
+        logger.info("picture size: " + picture.getSize());
+        logger.info("picture contentType: " + picture.getContentType());
+
+        logger.info("picture2 originalName: " + picture2.getOriginalFilename());
+        logger.info("picture2 size: " + picture2.getSize());
+        logger.info("picture2 contentType: " + picture2.getContentType());
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerFile06", method = RequestMethod.POST)
+    public String registerFile06(List<MultipartFile> pictureList) throws Exception {
+        logger.info("registerFile06");
+
+        logger.info("registerFile06 pictureList.size() = " + pictureList.size());
+
+        for (MultipartFile picture : pictureList) {
+            logger.info("picture originalName: " + picture.getOriginalFilename());
+            logger.info("picture size: " + picture.getSize());
+            logger.info("picture contentType: " + picture.getContentType());
+        }
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerFile07", method = RequestMethod.POST)
+    public String registerFile07(MultiFileMember multiFileMember) throws Exception {
+        logger.info("registerFile07");
+
+        List<MultipartFile> pictureList = multiFileMember.getPictureList();
+
+        logger.info("registerFile07 pictureList.size() = " + pictureList.size());
+
+        for (MultipartFile picture : pictureList) {
+            logger.info("picture originalName: " + picture.getOriginalFilename());
+            logger.info("picture size: " + picture.getSize());
+            logger.info("picutre contentType: " + picture.getContentType());
+        }
+
+        return "success";
+    }
+
+    @RequestMapping(value = "/registerFile08", method = RequestMethod.POST)
+    public String registerFile08(MultipartFile[] pictureList) throws Exception {
+        logger.info("registerFile08");
+
+        logger.info("registerFile08 pictureList.length = " + pictureList.length);
+
+        for (MultipartFile picture : pictureList) {
+            logger.info("picture originalName: " + picture.getOriginalFilename());
+            logger.info("picture size: " + picture.getSize());
+            logger.info("picture contentType: " + picture.getContentType());
         }
 
         return "success";

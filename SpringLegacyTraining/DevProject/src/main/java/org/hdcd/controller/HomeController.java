@@ -228,5 +228,12 @@ public class HomeController {
 
 		return entity;
 	}
+
+	@RequestMapping(value = "/registerForm3", method = RequestMethod.GET)
+	public String registerForm3() {
+		logger.info("registerForm3");
+
+		return "registerForm3";
+	}
 	
 }
