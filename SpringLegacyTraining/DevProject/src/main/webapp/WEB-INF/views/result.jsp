@@ -8,10 +8,6 @@
 <body>
 <h3>Result</h3>
 
-userId:             ${userId}<br>
-password:           ${password}<br>
-
-member.userId:      ${member.userId}<br>
-member.password:    ${member.password}<br>
+${msg}
 </body>
 </html>

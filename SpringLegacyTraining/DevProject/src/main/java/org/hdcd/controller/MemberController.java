@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,6 +21,28 @@ import java.util.List;
 public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
+    @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
+    public String registerForm() {
+        logger.info("registerForm");
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(Member member, RedirectAttributes rttr) throws Exception {
+        logger.info("register");
+
+        rttr.addFlashAttribute("msg", "success");
+        return "redirect:/result";
+    }
+
+    @RequestMapping(value = "/result", method = RequestMethod.GET)
+    public String result() {
+        logger.info("result");
+
+        return "result";
+    }
 
     @RequestMapping(value = "/register01", method = RequestMethod.POST)
     public String register01(String userId) {
@@ -60,17 +83,6 @@ public class MemberController {
         logger.info("password = " + member.getPassword());
 
         return "result";
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerByParameter(String userId, String password) {
-        logger.info("registerByParameter");
-
-        logger.info("userId = " + userId);
-
-        logger.info("password = " + password);
-
-        return "success";
     }
 
     @RequestMapping(value = "/registerByPath/{userId}", method = RequestMethod.GET)
@@ -244,13 +256,6 @@ public class MemberController {
         logger.info("registerAllForm");
 
         return "registerAllForm";
-    }
-
-    @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
-    public String registerForm() {
-        logger.info("registerForm");
-
-        return "registerForm";
     }
 
     @RequestMapping(value = "/registerMemberUserId", method = RequestMethod.POST)
