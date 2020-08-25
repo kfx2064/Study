@@ -766,4 +766,73 @@ public class MemberController {
         return "read03";
     }
 
+    @RequestMapping(value = "/read04", method = RequestMethod.GET)
+    public String read04(Model model) {
+        logger.info("read04");
+
+        String[] carArray = {"saab", "audi"};
+
+        List<String> carList = new ArrayList<>();
+        carList.add("saab");
+        carList.add("audi");
+
+        String[] hobbyArray = {"Music", "Movie"};
+
+        List<String> hobbyList = new ArrayList<>();
+        hobbyList.add("Music");
+        hobbyList.add("Movie");
+
+        model.addAttribute("carArray" , carArray);
+        model.addAttribute("carList", carList);
+
+        model.addAttribute("hobbyArray", hobbyArray);
+        model.addAttribute("hobbyList", hobbyList);
+
+        return "read04";
+    }
+
+    @RequestMapping(value = "/read05", method = RequestMethod.GET)
+    public String read05(Model model) {
+        logger.info("read05");
+
+        Member member = new Member();
+
+        Address address = new Address();
+        address.setPostCode("080908");
+        address.setLocation("seoul");
+
+        member.setAddress(address);
+
+        List<Card> cardList = new ArrayList<>();
+
+        Card card1 = new Card();
+        card1.setNo("123456");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2020);
+        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.DAY_OF_MONTH, 8);
+
+        card1.setValidMonth(cal.getTime());
+
+        cardList.add(card1);
+
+        Card card2 = new Card();
+        card2.setNo("456786");
+
+        cal.set(Calendar.YEAR, 2022);
+        cal.set(Calendar.MONTH, 11);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        card2.setValidMonth(cal.getTime());
+
+        cardList.add(card2);
+
+        member.setCardList(cardList);
+
+        model.addAttribute("user", member);
+
+        return "read05";
+    }
+
 }
