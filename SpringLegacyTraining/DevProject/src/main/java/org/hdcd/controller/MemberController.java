@@ -692,4 +692,15 @@ public class MemberController {
         return "success";
     }
 
+    @RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
+    public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
+        String originalFilename = file.getOriginalFilename();
+
+        logger.info("originalName: " + originalFilename);
+
+        ResponseEntity<String> entity = new ResponseEntity<>("UPLOAD SUCCESS " + originalFilename, HttpStatus.OK);
+
+        return entity;
+    }
+
 }

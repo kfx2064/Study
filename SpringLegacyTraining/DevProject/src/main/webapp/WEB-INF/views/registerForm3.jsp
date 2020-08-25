@@ -224,10 +224,49 @@ $(document).ready(function () {
 
     });
 
+    $("#inputFile").on("change", function (event) {
+
+        console.log("change");
+
+        var files = event.target.files;
+
+        var file = files[0];
+
+        console.log(file);
+
+        var formData = new FormData();
+
+        formData.append("file", file);
+
+        $.ajax({
+            type: "post"
+            , url: "/uploadAjax"
+            , data: formData
+            , dataType: "text"
+            , processData: false
+            , contentType: false
+            , success: function (data) {
+                alert(data);
+            }
+        });
+
+    });
+
 });
 </script>
 <body>
 <h1>Register Form</h1>
+
+<div>
+    <input type="file" id="inputFile">
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <form>
     userId:     <input type="text" name="userId" value="hongkd" id="userId">
     password:   <input type="text" name="password" value="1234" id="password">
