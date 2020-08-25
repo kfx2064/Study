@@ -21,6 +21,47 @@ public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
+    @RequestMapping(value = "/register01", method = RequestMethod.POST)
+    public String register01(String userId) {
+        logger.info("register01");
+
+        logger.info("userId = " + userId);
+
+        return "result";
+    }
+
+    @RequestMapping(value = "/register02", method = RequestMethod.POST)
+    public String register02(@ModelAttribute("userId") String userId) {
+        logger.info("register02");
+
+        logger.info("userId = " + userId);
+
+        return "result";
+    }
+
+    @RequestMapping(value = "/register03", method = RequestMethod.POST)
+    public String register03(@ModelAttribute("userId") String userId
+                                            , @ModelAttribute("password") String password) {
+        logger.info("register03");
+
+        logger.info("userId = " + userId);
+
+        logger.info("password = " + password);
+
+        return "result";
+    }
+
+    @RequestMapping(value = "/register04", method = RequestMethod.POST)
+    public String register04(Member member) {
+        logger.info("register04");
+
+        logger.info("userId = " + member.getUserId());
+
+        logger.info("password = " + member.getPassword());
+
+        return "result";
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerByParameter(String userId, String password) {
         logger.info("registerByParameter");
@@ -50,53 +91,6 @@ public class MemberController {
         logger.info("coin = " + coin);
 
         return "success";
-    }
-
-    @RequestMapping(value = "/register/{userId}", method = RequestMethod.GET)
-    public ResponseEntity<String> register01(@PathVariable("userId") String userId) {
-        logger.info("register01");
-
-        logger.info("userId = " + userId);
-
-        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
-
-        return entity;
-    }
-
-    @RequestMapping(value = "/register/{userId}/{password}", method = RequestMethod.POST)
-    public ResponseEntity<String> register02(@PathVariable("userId") String userId
-            , @PathVariable("password") String password) {
-        logger.info("register02");
-
-        logger.info("userId = " + userId);
-        logger.info("password = " + password);
-
-        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
-
-        return entity;
-    }
-
-    @RequestMapping(value = "/register03", method = RequestMethod.POST)
-    public ResponseEntity<String> register03(@RequestBody Member member) {
-        logger.info("register03");
-
-        logger.info("userId = " + member.getUserId());
-        logger.info("password = " + member.getPassword());
-
-        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
-
-        return entity;
-    }
-
-    @RequestMapping(value = "/register04", method = RequestMethod.POST)
-    public ResponseEntity<String> register04(String userId) {
-        logger.info("register04");
-
-        logger.info("userId = " + userId);
-
-        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
-
-        return entity;
     }
 
     @RequestMapping(value = "/register05", method = RequestMethod.POST)
