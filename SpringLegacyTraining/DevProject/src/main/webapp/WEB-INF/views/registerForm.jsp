@@ -14,6 +14,19 @@
 <a href="register/hongkd">register/hongkd</a><br>
 <a href="register/hongkd/100">register/hongkd/100</a><br>
 
+<a href="registerByGet01?userId=hongkd&dateOfBirth=1234">registerByGet01?userId=hongkd&amp;dateOfBirth=1234</a><br>
+<a href="registerByGet01?userId=hongkd&dateOfBirth=2018-09-08">registerByGet01?userId=hongkd&amp;dateOfBirth=2018-09-08</a><br>
+<a href="registerByGet01?userId=hongkd&dateOfBirth=20180908">registerByGet01?userId=hongkd&amp;dateOfBirth=20180908</a><br>
+<a href="registerByGet01?userId=hongkd&dateOfBirth=2018/09/08">registerByGet01?userId=hongkd&amp;dateOfBirth=2018/09/08</a><br>
+<a href="registerByGet02?userId=hongkd&dateOfBirth=20180908">registerByGet02?userId=hongkd&amp;dateOfBirth=20180908</a><br>
+
+<form action="/register" method="post">
+    userId:         <input type="text" name="userId"        value="hongkd"><br>
+    password:       <input type="text" name="password"      value="1234"><br>
+    dateOfBirth:    <input type="text" name="dateOfBirth"   value="20180908"><br>
+    <input type="submit" value="register">
+</form>
+
 <form action="/register01" method="post">
     userId:     <input type="text" name="userId"    value="hongkd"><br>
     password:   <input type="text" name="password"  value="1234"><br>
@@ -29,6 +42,7 @@
 </form>
 
 <form action="/register03" method="post">
+    uid:        <input type="text" name="uid"       value="50"><br>
     userId:     <input type="text" name="userId"    value="hongkd"><br>
     password:   <input type="text" name="password"  value="1234"><br>
     coin:       <input type="text" name="coin"      value="100"><br>
