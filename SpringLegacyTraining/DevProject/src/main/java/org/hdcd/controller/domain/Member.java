@@ -41,5 +41,6 @@ public class Member implements Serializable {
 
     @DateTimeFormat(pattern = "yyyyMMdd")
     private Date dateOfBirth;
+    private String birthDay;
 
 }

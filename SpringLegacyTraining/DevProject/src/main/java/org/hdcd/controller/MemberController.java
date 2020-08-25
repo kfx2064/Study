@@ -7,10 +7,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -701,6 +703,67 @@ public class MemberController {
         ResponseEntity<String> entity = new ResponseEntity<>("UPLOAD SUCCESS " + originalFilename, HttpStatus.OK);
 
         return entity;
+    }
+
+    @RequestMapping(value = "/read01", method = RequestMethod.GET)
+    public String read01(Model model) {
+        logger.info("read01");
+
+        model.addAttribute("userId",    "hongkd");
+        model.addAttribute("password",  "1234");
+        model.addAttribute("email",     "aaa@ccc.com");
+        model.addAttribute("userName",  "홍길동");
+        model.addAttribute("birthDay",  "1989-09-07");
+
+        return "read01";
+    }
+
+    @RequestMapping(value = "/read02", method = RequestMethod.GET)
+    public String read02(Model model) {
+        logger.info("read02");
+
+        Member member = new Member();
+
+        member.setUserId("hongkd");
+        member.setPassword("1234");
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        member.setBirthDay("1989-09-07");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 1988);
+        cal.set(Calendar.MONTH, 10);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        member.setDateOfBirth(cal.getTime());
+
+        model.addAttribute(member);
+
+        return "read02";
+    }
+
+    @RequestMapping(value = "/read03", method = RequestMethod.GET)
+    public String read03(Model model) {
+        logger.info("read03");
+
+        Member member = new Member();
+
+        member.setUserId("hongkd");
+        member.setPassword("1234");
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        member.setBirthDay("1989-09-07");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 1988);
+        cal.set(Calendar.MONTH, 10);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        member.setDateOfBirth(cal.getTime());
+
+        model.addAttribute("user", member);
+
+        return "read03";
     }
 
 }
