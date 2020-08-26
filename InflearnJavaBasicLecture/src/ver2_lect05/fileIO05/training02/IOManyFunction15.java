@@ -122,7 +122,7 @@ public class IOManyFunction15 {
              *
              * InputStreamReader와 OutputStreamWriter의 설명은 여기까지 하겠습니다.
              *
-             * 감사합니다
+             * 감사합니다.
              */
 
         } catch (Exception e) {
