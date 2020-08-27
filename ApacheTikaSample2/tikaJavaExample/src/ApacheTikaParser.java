@@ -14,6 +14,7 @@ import org.apache.tika.parser.html.HtmlParser;
 import org.apache.tika.parser.microsoft.ooxml.OOXMLParser;
 import org.apache.tika.parser.odf.OpenDocumentParser;
 import org.apache.tika.parser.pdf.PDFParser;
+import org.apache.tika.parser.xml.XMLParser;
 import org.apache.tika.sax.BodyContentHandler;
 
 import java.io.FileInputStream;
@@ -45,7 +46,7 @@ public class ApacheTikaParser {
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\mhtmlFormat.mhtml");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\odsFormat.ods");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\slkFormt.slk");
-            String fileName = String.valueOf("C:\\dev\\excelFiles\\txtFormat.txt");
+            //String fileName = String.valueOf("C:\\dev\\excelFiles\\txtFormat.txt");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\txtUnicodeFormat.txt");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\xlaFormat.xla");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\xlamFormat.xlam");
@@ -57,7 +58,7 @@ public class ApacheTikaParser {
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\xltmFormat.xltm");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\xltxFormat.xltx");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\xmlFormat.xml");
-            //String fileName = String.valueOf("C:\\dev\\excelFiles\\xpsFormat.xps");
+            String fileName = String.valueOf("C:\\dev\\excelFiles\\xpsFormat.xps");
 
             fis = new FileInputStream(fileName);
 
@@ -108,25 +109,25 @@ public class ApacheTikaParser {
             } else if (subsFileName.equals("txt")) {
                 parser = new TextAndCSVParser();
             } else if (subsFileName.equals("xla")) {
-
+                // 파서가 없다
             } else if (subsFileName.equals("xlam")) {
-
+                parser = new OOXMLParser();
             } else if (subsFileName.equals("xls")) {
-
+                parser = new OOXMLParser();
             } else if (subsFileName.equals("xlsb")) {
-
+                parser = new OOXMLParser();
             } else if (subsFileName.equals("xlsm")) {
-
+                parser = new OOXMLParser();
             } else if (subsFileName.equals("xlt")) {
-
+                // 파서가 없다
             } else if (subsFileName.equals("xltm")) {
-
+                parser = new OOXMLParser();
             } else if (subsFileName.equals("xltx")) {
-
+                parser = new OOXMLParser();
             } else if (subsFileName.equals("xml")) {
-
+                parser = new XMLParser();
             } else if (subsFileName.equals("xps")) {
-
+                // 파서가 없음.
             } else {
                 parser = new AutoDetectParser();
             }
