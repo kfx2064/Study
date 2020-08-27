@@ -1,9 +1,3 @@
-1
-2
-3
-4
-5
-6
-7
-8
-9
+alpha, bravo, charlie, delta, echo.
+bank, stock, insurance, bonds, properties.
+factory, building, field, ocean, yard.
