@@ -12,6 +12,7 @@ import org.apache.tika.parser.csv.TextAndCSVParser;
 import org.apache.tika.parser.dif.DIFParser;
 import org.apache.tika.parser.html.HtmlParser;
 import org.apache.tika.parser.microsoft.ooxml.OOXMLParser;
+import org.apache.tika.parser.odf.OpenDocumentParser;
 import org.apache.tika.parser.pdf.PDFParser;
 import org.apache.tika.sax.BodyContentHandler;
 
@@ -39,12 +40,12 @@ public class ApacheTikaParser {
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\csvFormat.csv");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\difFormt.dif");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\htmFormat.htm");
-            String fileName = String.valueOf("C:\\dev\\excelFiles\\htmlFormat.html");
+            //String fileName = String.valueOf("C:\\dev\\excelFiles\\htmlFormat.html");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\mhtFormat.mht");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\mhtmlFormat.mhtml");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\odsFormat.ods");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\slkFormt.slk");
-            //String fileName = String.valueOf("C:\\dev\\excelFiles\\txtFormat.txt");
+            String fileName = String.valueOf("C:\\dev\\excelFiles\\txtFormat.txt");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\txtUnicodeFormat.txt");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\xlaFormat.xla");
             //String fileName = String.valueOf("C:\\dev\\excelFiles\\xlamFormat.xlam");
@@ -96,6 +97,36 @@ public class ApacheTikaParser {
                 parser = new HtmlParser();
             } else if (subsFileName.equals("html")) {
                 parser = new HtmlParser();
+            } else if (subsFileName.equals("mht")) {
+                parser = new HtmlParser();
+            } else if (subsFileName.equals("mhtml")) {
+                parser = new HtmlParser();
+            } else if (subsFileName.equals("ods")) {
+                parser = new OpenDocumentParser();
+            } else if (subsFileName.equals("slk")) {
+                // 파서가 없다.
+            } else if (subsFileName.equals("txt")) {
+                parser = new TextAndCSVParser();
+            } else if (subsFileName.equals("xla")) {
+
+            } else if (subsFileName.equals("xlam")) {
+
+            } else if (subsFileName.equals("xls")) {
+
+            } else if (subsFileName.equals("xlsb")) {
+
+            } else if (subsFileName.equals("xlsm")) {
+
+            } else if (subsFileName.equals("xlt")) {
+
+            } else if (subsFileName.equals("xltm")) {
+
+            } else if (subsFileName.equals("xltx")) {
+
+            } else if (subsFileName.equals("xml")) {
+
+            } else if (subsFileName.equals("xps")) {
+
             } else {
                 parser = new AutoDetectParser();
             }
