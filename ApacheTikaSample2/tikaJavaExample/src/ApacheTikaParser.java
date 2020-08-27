@@ -6,6 +6,7 @@ import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.microsoft.ooxml.OOXMLParser;
+import org.apache.tika.parser.pdf.PDFParser;
 import org.apache.tika.sax.BodyContentHandler;
 
 import java.io.FileInputStream;
@@ -21,8 +22,10 @@ public class ApacheTikaParser {
             Parser parser = null;
 
             //String fileName = String.valueOf("C:\\dev\\sampleWord.doc");
-            String fileName = String.valueOf("C:\\dev\\2018nationalLandTransportDepartment.pdf");
+            //String fileName = String.valueOf("C:\\dev\\sampleWord.docx");
+            //String fileName = String.valueOf("C:\\dev\\erp.pdf");
             //String fileName = String.valueOf("C:\\dev\\abc.xlsx");
+            String fileName = String.valueOf("C:\\dev\\abc.xls");
             //String fileName = String.valueOf("C:\\dev\\123.ai");
             fis = new FileInputStream(fileName);
 
@@ -38,6 +41,10 @@ public class ApacheTikaParser {
                 parser = new OOXMLParser();
             } else if (subsFileName.equals("xlsx")) {
                 parser = new OOXMLParser();
+            } else if (subsFileName.equals("xls")) {
+                parser = new OOXMLParser();
+            } else if (subsFileName.equals("pdf")) {
+                parser = new PDFParser();
             } else {
                 parser = new AutoDetectParser();
             }
