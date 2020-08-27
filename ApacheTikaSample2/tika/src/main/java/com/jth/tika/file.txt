@@ -1,0 +1,4 @@
+abcdefg
+1234567
+alpha, bravo, charlie, delta, echo.
+가나다라마바사
