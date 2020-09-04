@@ -13,7 +13,7 @@ public class network01 {
      * URL은 Uniform Resource Locator,
      * URI는 Uniform Resource Identifier.
      *
-     * URL은 위치 정보 주심,
+     * URL은 위치 정보 중심,
      * URI는 식별 정보 중심입니다.
      *
      * 이렇게만 설명하면 잘 모르시겠죠?
