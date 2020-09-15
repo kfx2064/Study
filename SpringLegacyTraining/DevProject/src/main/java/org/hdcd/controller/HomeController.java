@@ -354,6 +354,24 @@ public class HomeController {
 		return "home0703";
 	}
 
+	@RequestMapping(value = "/home0801", method = RequestMethod.GET)
+	public String home0801(Model model) {
+		Member member = new Member();
+
+		String hobby = "Music,Movie";
+
+		member.setHobby(hobby);
+
+		model.addAttribute(member);
+
+		return "home0801";
+	}
+
+	@RequestMapping(value = "/home0901", method = RequestMethod.GET)
+	public String home0901(Model model) {
+		return "home0901";
+	}
+
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
 	public void home0101() {
 		logger.info("home0101");
