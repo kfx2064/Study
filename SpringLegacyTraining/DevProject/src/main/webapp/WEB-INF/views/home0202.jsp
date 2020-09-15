@@ -6,8 +6,14 @@
     <title>Home</title>
 </head>
 <body>
+    <c:set var="memberId" value="${member.userId}"/>
+
     <table border="1">
         <tr>
+            <td>member.userId</td>
+            <td>${memberId}</td>
+        </tr>
+        <%--<tr>
             <td>{coin == 1000}</td>
             <td>${coin == 1000}</td>
         </tr>
@@ -54,7 +60,7 @@
         <tr>
             <td>{coin &gt;= 1000}</td>
             <td>${coin ge 1000}</td>
-        </tr>
+        </tr>--%>
     </table>
 </body>
 </html>
