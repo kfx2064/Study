@@ -134,6 +134,11 @@ public class HomeController {
 		return "home0202";
 	}
 
+	@RequestMapping(value = "/home0301", method = RequestMethod.GET)
+	public String home0301(Model model) {
+		return "home0301";
+	}
+
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
 	public void home0101() {
 		logger.info("home0101");
