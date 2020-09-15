@@ -8,6 +8,10 @@
 <body>
     <table border="1">
         <tr>
+            <td>member.userId</td>
+            <td>${member.userId}</td>
+        </tr>
+        <%--<tr>
             <td>${coin}</td>
             <td>${coin}</td>
         </tr>
@@ -38,7 +42,7 @@
         <tr>
             <td>${coin % 100}</td>
             <td>${coin mod 100}</td>
-        </tr>
+        </tr>--%>
     </table>
 </body>
 </html>
