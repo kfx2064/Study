@@ -1,6 +1,7 @@
 package org.hdcd.controller;
 
 import org.apache.commons.io.IOUtils;
+import org.hdcd.controller.domain.Card;
 import org.hdcd.controller.domain.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -276,6 +277,81 @@ public class HomeController {
 		model.addAttribute(member);
 
 		return "home0601";
+	}
+
+	@RequestMapping(value = "/home0603", method = RequestMethod.GET)
+	public String home0603(Model model) {
+		Member member = new Member();
+
+		member.setGender("M");
+
+		model.addAttribute(member);
+
+		return "home0601";
+	}
+
+	@RequestMapping(value = "/home0701", method = RequestMethod.GET)
+	public String home0701(Model model) {
+		Member member = new Member();
+
+		String[] hobbyArray = {"Music", "Movie"};
+
+		member.setHobbyArray(hobbyArray);
+
+		model.addAttribute(member);
+
+		return "home0701";
+	}
+
+	@RequestMapping(value = "/home0702", method = RequestMethod.GET)
+	public String home0702(Model model) {
+		Member member = new Member();
+
+		List<String> hobbyList = new ArrayList<>();
+		hobbyList.add("Music");
+		hobbyList.add("Movie");
+
+		member.setHobbyList(hobbyList);
+
+		model.addAttribute(member);
+
+		return "home0702";
+	}
+
+	@RequestMapping(value = "/home0703", method = RequestMethod.GET)
+	public String home0703(Model model) {
+		Member member = new Member();
+
+		List<Card> cardList = new ArrayList<>();
+
+		Card card1 = new Card();
+		card1.setNo("123456");
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 2020);
+		cal.set(Calendar.MONTH, 9);
+		cal.set(Calendar.DAY_OF_MONTH, 8);
+
+		card1.setValidMonth(cal.getTime());
+
+		cardList.add(card1);
+
+		Card card2 = new Card();
+		card2.setNo("456786");
+
+		cal.set(Calendar.YEAR, 2022);
+		cal.set(Calendar.MONTH, 11);
+		cal.set(Calendar.DAY_OF_MONTH, 7);
+
+		card2.setValidMonth(cal.getTime());
+
+		cardList.add(card2);
+
+		member.setCardList(cardList);
+
+		model.addAttribute(member);
+
+		return "home0703";
 	}
 
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
