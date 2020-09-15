@@ -44,23 +44,6 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
-	public void home0101() {
-		logger.info("home0101");
-	}
-
-	@RequestMapping(value = "/sub/goHome0102", method = RequestMethod.GET)
-	public void home0102() {
-		logger.info("home0102");
-	}
-
-	@RequestMapping(value = "/goHome0201", method = RequestMethod.GET)
-	public String home0201() {
-		logger.info("home0201");
-
-		return "home0201";
-	}
-
 	@RequestMapping(value = "/home01", method = RequestMethod.GET)
 	public String home01(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -131,6 +114,32 @@ public class HomeController {
 		model.addAttribute(member);
 
 		return "home0101";
+	}
+
+	@RequestMapping(value = "/home0201", method = RequestMethod.GET)
+	public String home0201(Model model) {
+		int coin = 1000;
+
+		model.addAttribute("coin", coin);
+
+		return "home0201";
+	}
+
+	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
+	public void home0101() {
+		logger.info("home0101");
+	}
+
+	@RequestMapping(value = "/sub/goHome0102", method = RequestMethod.GET)
+	public void home0102() {
+		logger.info("home0102");
+	}
+
+	@RequestMapping(value = "/goHome0201", method = RequestMethod.GET)
+	public String home0201() {
+		logger.info("home0201");
+
+		return "home0201";
 	}
 
 	@RequestMapping(value = "/sub/goHome0202", method = RequestMethod.GET)

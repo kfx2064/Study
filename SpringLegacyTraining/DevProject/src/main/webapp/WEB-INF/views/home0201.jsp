@@ -6,6 +6,39 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Home0201</h1>
+    <table border="1">
+        <tr>
+            <td>${coin}</td>
+            <td>${coin}</td>
+        </tr>
+        <tr>
+            <td>${coin + 100}</td>
+            <td>${coin + 100}</td>
+        </tr>
+        <tr>
+            <td>${coin - 100}</td>
+            <td>${coin - 100}</td>
+        </tr>
+        <tr>
+            <td>${coin * 100}</td>
+            <td>${coin * 100}</td>
+        </tr>
+        <tr>
+            <td>${coin / 100}</td>
+            <td>${coin / 100}</td>
+        </tr>
+        <tr>
+            <td>${coin / 100}</td>
+            <td>${coin div 100}</td>
+        </tr>
+        <tr>
+            <td>${coin % 100}</td>
+            <td>${coin % 100}</td>
+        </tr>
+        <tr>
+            <td>${coin % 100}</td>
+            <td>${coin mod 100}</td>
+        </tr>
+    </table>
 </body>
 </html>
