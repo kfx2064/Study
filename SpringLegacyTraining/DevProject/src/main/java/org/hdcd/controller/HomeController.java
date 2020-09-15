@@ -125,6 +125,15 @@ public class HomeController {
 		return "home0201";
 	}
 
+	@RequestMapping(value = "/home0202", method = RequestMethod.GET)
+	public String home0202(Model model) {
+		int coin = 1000;
+
+		model.addAttribute("coin", coin);
+
+		return "home0202";
+	}
+
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
 	public void home0101() {
 		logger.info("home0101");
