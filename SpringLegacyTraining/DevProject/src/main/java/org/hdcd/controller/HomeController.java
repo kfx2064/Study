@@ -174,11 +174,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/home0301", method = RequestMethod.GET)
 	public String home0301(Model model) {
-		Member member = new Member();
+		Date date = new Date();
 
-		member.setUserId("hongkd");
-
-		model.addAttribute(member);
+		model.addAttribute("now", date);
 
 		return "home0301";
 	}
