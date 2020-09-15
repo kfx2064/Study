@@ -112,6 +112,27 @@ public class HomeController {
 		return "home03";
 	}
 
+	@RequestMapping(value = "/home0101", method = RequestMethod.GET)
+	public String home0101(Model model) {
+		Member member = new Member();
+
+		member.setUserId("hongkd");
+		member.setPassword("1234");
+		member.setEmail("aaa@ccc.com");
+		member.setUserName("홍길동");
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 1988);
+		cal.set(Calendar.MONTH, 10);
+		cal.set(Calendar.DAY_OF_MONTH, 7);
+
+		member.setDateOfBirth(cal.getTime());
+
+		model.addAttribute(member);
+
+		return "home0101";
+	}
+
 	@RequestMapping(value = "/sub/goHome0202", method = RequestMethod.GET)
 	public String home0202() {
 		logger.info("home0202");
