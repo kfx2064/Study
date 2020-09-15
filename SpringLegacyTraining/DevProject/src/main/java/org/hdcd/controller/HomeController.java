@@ -98,21 +98,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/home0101", method = RequestMethod.GET)
 	public String home0101(Model model) {
-		Member member = new Member();
+		int coin = 1000;
 
-		member.setUserId("hongkd");
-		member.setPassword("1234");
-		member.setEmail("aaa@ccc.com");
-		member.setUserName("홍길동");
-
-		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, 1988);
-		cal.set(Calendar.MONTH, 10);
-		cal.set(Calendar.DAY_OF_MONTH, 7);
-
-		member.setDateOfBirth(cal.getTime());
-
-		model.addAttribute(member);
+		model.addAttribute("coin", coin);
 
 		return "home0101";
 	}
@@ -150,52 +138,36 @@ public class HomeController {
 
 	@RequestMapping(value = "/home0201", method = RequestMethod.GET)
 	public String home0201(Model model) {
-		/*int coin = 1000;
+		String coin = "1,000";
 
 		model.addAttribute("coin", coin);
-
-		return "home0201";*/
-		Member member = new Member();
-
-		member.setUserId("hongkd");
-
-		model.addAttribute(member);
 
 		return "home0201";
 	}
 
 	@RequestMapping(value = "/home0202", method = RequestMethod.GET)
 	public String home0202(Model model) {
-		/*int coin = 1000;
+		String coin = "1,000";
 
 		model.addAttribute("coin", coin);
-
-		return "home0202";*/
-		Member member = new Member();
-
-		member.setUserId("hongkd");
-
-		model.addAttribute(member);
 
 		return "home0202";
 	}
 
 	@RequestMapping(value = "/home0203", method = RequestMethod.GET)
 	public String home0203(Model model) {
-		Member member = new Member();
+		String coin = "1000%";
 
-		member.setUserId("hongkd");
-
-		model.addAttribute(member);
+		model.addAttribute("coin", coin);
 
 		return "home0203";
 	}
 
 	@RequestMapping(value = "home0204", method = RequestMethod.GET)
 	public String home0204(Model model) {
-		Member member = new Member();
+		String coin = "1,000.25";
 
-		model.addAttribute(member);
+		model.addAttribute("coin", coin);
 
 		return "home0204";
 	}
