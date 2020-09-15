@@ -247,6 +247,37 @@ public class HomeController {
 		return "home0501";
 	}
 
+	@RequestMapping(value = "/home0502", method = RequestMethod.GET)
+	public String home0502(Model model) {
+		Member member = new Member();
+
+		member.setForeigner(true);
+
+		model.addAttribute(member);
+
+		return "home0502";
+	}
+
+	@RequestMapping(value = "/home0601", method = RequestMethod.GET)
+	public String home0601(Model model) {
+		Member member = new Member();
+
+		model.addAttribute(member);
+
+		return "home0601";
+	}
+
+	@RequestMapping(value = "/home0602", method = RequestMethod.GET)
+	public String home0602(Model model) {
+		Member member = new Member();
+
+		member.setGender("F");
+
+		model.addAttribute(member);
+
+		return "home0601";
+	}
+
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
 	public void home0101() {
 		logger.info("home0101");
