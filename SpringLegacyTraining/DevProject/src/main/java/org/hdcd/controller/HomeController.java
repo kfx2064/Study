@@ -139,6 +139,20 @@ public class HomeController {
 		return "home0301";
 	}
 
+	@RequestMapping(value = "/home0401", method = RequestMethod.GET)
+	public String home0401(Model model) {
+		int coin = 1000;
+		String userId = "hongkd";
+		Member member = new Member();
+
+		model.addAttribute("coin", coin);
+		model.addAttribute("userId", userId);
+
+		model.addAttribute("member", member);
+
+		return "home0401";
+	}
+
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
 	public void home0101() {
 		logger.info("home0101");
