@@ -1,16 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jth45
-  Date: 2020-08-31
-  Time: 오전 10:07
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="false" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Locale" %>
+
+<%
+    Date date = new Date();
+    DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, Locale.KOREA);
+
+    String formattedDate = dateFormat.format(date);
+    String serverTime = formattedDate;
+%>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>
+    Hello world!
+</h1>
+
+<p> The time on the server is ${serverTime}. </p>
+</body>
 </html>

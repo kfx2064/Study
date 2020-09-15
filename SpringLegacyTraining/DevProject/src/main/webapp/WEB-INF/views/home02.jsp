@@ -1,16 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jth45
-  Date: 2020-08-31
-  Time: 오전 10:09
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="false" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>Member Info.</h1>
+
+<p> member.userId : <c:out value="${member.userId}" /></p>
+<p> member.password : ${member.password}. </p>
+<p> member.userName : ${member.userName}. </p>
+<p> member.email : ${member.email}. </p>
+<p> member.dateOfBirth : ${member.dateOfBirth}. </p>
+</body>
 </html>

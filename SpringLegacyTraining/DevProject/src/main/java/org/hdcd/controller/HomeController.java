@@ -61,6 +61,57 @@ public class HomeController {
 		return "home0201";
 	}
 
+	@RequestMapping(value = "/home01", method = RequestMethod.GET)
+	public String home01(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+		String formattedDate = dateFormat.format(date);
+
+		model.addAttribute("serverTime", formattedDate);
+
+		return "home01";
+	}
+
+	@RequestMapping(value = "/home02", method = RequestMethod.GET)
+	public String home02(Model model) {
+		logger.info("home2");
+
+		Member member = new Member();
+
+		member.setUserId("hongkd");
+		member.setPassword("1234");
+		member.setEmail("aaa@ccc.com");
+		member.setUserName("홍길동");
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 1988);
+		cal.set(Calendar.MONTH, 10);
+		cal.set(Calendar.DAY_OF_MONTH, 7);
+
+		member.setDateOfBirth(cal.getTime());
+
+		model.addAttribute(member);
+
+		return "home02";
+	}
+
+	@RequestMapping(value = "/home03", method = RequestMethod.GET)
+	public String home03(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+		String formattedDate = dateFormat.format(date);
+
+		model.addAttribute("serverTime", formattedDate);
+
+		return "home03";
+	}
+
 	@RequestMapping(value = "/sub/goHome0202", method = RequestMethod.GET)
 	public String home0202() {
 		logger.info("home0202");

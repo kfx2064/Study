@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jth45
-  Date: 2020-08-31
-  Time: 오전 10:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="false" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Home</title>
+</head>
+<body>
+<%@ include file="./includes/header.jsp" %>
+<p> The time on the server is ${serverTime}. </p>
+
+<%@ include file="./includes/footer.jsp" %>
+</body>
 </html>

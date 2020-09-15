@@ -14,8 +14,10 @@ import java.util.List;
 @ToString
 public class Member implements Serializable {
 
-    private String userId = "hongkd";
-    private String password = "1234";
+    private static final long serialVersionUID = -8660095590680225320L;
+
+    private String userId;
+    private String password;
 
     private String userName;
     private String email;
