@@ -7,15 +7,30 @@
     <title>Home</title>
 </head>
 <body>
+    <c:set var="memberId" value="${member.userId}"/>
+
     <table border="1">
         <tr>
+            <td>member.userId</td>
+            <td>${memberId}</td>
+        </tr>
+    </table>
+
+    <c:remove var="memberId"/>
+
+    <table border="1">
+        <tr>
+            <td>member.userId</td>
+            <td>${memberId}</td>
+        </tr>
+        <%--<tr>
             <td>{empty.member}</td>
             <td>${empty member}</td>
         </tr>
         <tr>
             <td>{empty member.userId}</td>
             <td>${empty member.userId}</td>
-        </tr>
+        </tr>--%>
     </table>
 </body>
 </html>

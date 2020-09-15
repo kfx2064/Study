@@ -7,7 +7,17 @@
     <title>Home</title>
 </head>
 <body>
-    <table border="1">
+    <c:catch var="ex">
+        ${member.hobbyArray[3]}
+    </c:catch>
+
+    <p>
+        <c:if test="${ex != null}">
+            ${ex}
+        </c:if>
+    </p>
+
+    <%--<table border="1">
         <tr>
             <td>{coin == 1000 && userId == "hongkd"}</td>
             <td>${coin == 1000 && userId == "hongkd"}</td>
@@ -24,6 +34,6 @@
             <td>{! empty member && userId eq "hongkd"}</td>
             <td>${empty member && userId eq "hongkd"}</td>
         </tr>
-    </table>
+    </table>--%>
 </body>
 </html>

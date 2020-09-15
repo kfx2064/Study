@@ -201,12 +201,18 @@ public class HomeController {
 
 	@RequestMapping(value = "/home0301", method = RequestMethod.GET)
 	public String home0301(Model model) {
+		Member member = new Member();
+
+		member.setUserId("hongkd");
+
+		model.addAttribute(member);
+
 		return "home0301";
 	}
 
 	@RequestMapping(value = "/home0401", method = RequestMethod.GET)
 	public String home0401(Model model) {
-		int coin = 1000;
+		/*int coin = 1000;
 		String userId = "hongkd";
 		Member member = new Member();
 
@@ -215,7 +221,30 @@ public class HomeController {
 
 		model.addAttribute("member", member);
 
+		return "home0401";*/
+		Member member = new Member();
+
+		String[] hobbyArray = {"Music", "Movie"};
+
+		member.setHobbyArray(hobbyArray);
+
+		model.addAttribute(member);
+
 		return "home0401";
+	}
+
+	@RequestMapping(value = "/home0402", method = RequestMethod.GET)
+	public String home0402(Model model) {
+		return "home0402";
+	}
+
+	@RequestMapping(value = "/home0501", method = RequestMethod.GET)
+	public String home0501(Model model) {
+		Member member = new Member();
+
+		model.addAttribute(member);
+
+		return "home0501";
 	}
 
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
