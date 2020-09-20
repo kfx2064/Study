@@ -592,6 +592,19 @@ public class MemberController {
         return "registerForm";
     }
 
+    @RequestMapping(value = "/registerForm07", method = RequestMethod.GET)
+    public String registerForm07(@ModelAttribute("user") Member member) {
+        logger.info("registerForm07");
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm08", method = RequestMethod.GET)
+    public String registerForm08(@ModelAttribute("user") Member member) {
+        logger.info("registerForm08");
+        return "registerForm2";
+    }
+
     @RequestMapping(value = "/registerFile01", method = RequestMethod.POST)
     public String registerFile01(MultipartFile picture) throws Exception {
         logger.info("registerFile01");
