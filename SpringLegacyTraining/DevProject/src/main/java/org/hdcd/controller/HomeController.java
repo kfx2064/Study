@@ -98,9 +98,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/home0101", method = RequestMethod.GET)
 	public String home0101(Model model) {
-		int coin = 1000;
+		String str = "Hello, World!";
 
-		model.addAttribute("coin", coin);
+		model.addAttribute("str", str);
 
 		return "home0101";
 	}
@@ -179,6 +179,15 @@ public class HomeController {
 		model.addAttribute("now", date);
 
 		return "home0301";
+	}
+
+	@RequestMapping(value = "/home0304", method = RequestMethod.GET)
+	public String home0304(Model model) {
+		Date date = new Date();
+
+		model.addAttribute("now", date);
+
+		return "home0304";
 	}
 
 	@RequestMapping(value = "/home0401", method = RequestMethod.GET)
@@ -343,8 +352,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
-	public void home0101() {
-		logger.info("home0101");
+	public void goHome0101() {
+		logger.info("goHome0101");
 	}
 
 	@RequestMapping(value = "/sub/goHome0102", method = RequestMethod.GET)

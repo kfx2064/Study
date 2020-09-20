@@ -570,10 +570,12 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
-    public String registerForm2() {
+    public String registerForm2(Model model) {
         logger.info("MemberController, registerForm2.");
 
-        return "registerForm2";
+        model.addAttribute("user", new Member());
+
+        return "registerForm";
     }
 
     @RequestMapping(value = "/registerFile01", method = RequestMethod.POST)
