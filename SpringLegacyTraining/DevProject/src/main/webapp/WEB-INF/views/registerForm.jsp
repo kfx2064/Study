@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Spring Form</h1>
-<form:form modelAttribute="user" method="post" action="register">
+<form:form modelAttribute="member" method="post" action="register">
     <table>
         <tr>
             <td>유저ID</td>
