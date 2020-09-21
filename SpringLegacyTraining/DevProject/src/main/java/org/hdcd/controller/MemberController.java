@@ -570,9 +570,38 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
-    public String registerForm2() {
+    public String registerForm2(Model model) {
         logger.info("MemberController, registerForm2.");
 
+        model.addAttribute("user", new Member());
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm05", method = RequestMethod.GET)
+    public String registerForm05(Member member) {
+        logger.info("registerForm05");
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm06", method = RequestMethod.GET)
+    public String registerForm06(Member user) {
+        logger.info("registerForm06");
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm07", method = RequestMethod.GET)
+    public String registerForm07(@ModelAttribute("user") Member member) {
+        logger.info("registerForm07");
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm08", method = RequestMethod.GET)
+    public String registerForm08(@ModelAttribute("user") Member member) {
+        logger.info("registerForm08");
         return "registerForm2";
     }
 
