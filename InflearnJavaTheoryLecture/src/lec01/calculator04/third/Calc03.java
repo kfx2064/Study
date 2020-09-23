@@ -4,7 +4,7 @@ package lec01.calculator04.third;
  * 이번엔 또 다른 연산자를 실습해 보겠습니다.
  * 우선 클래스를 만들겠습니다.
  */
-public class Calc3 {
+public class Calc03 {
 
     /**
      * 클래스가 만들어 졌으면 메인 메서드를 만들도록 하겠습니다.
