@@ -33,10 +33,7 @@ public class MemberController {
     public String register(Member member, RedirectAttributes rttr) throws Exception {
         logger.info("register");
 
-        logger.info("member.getUserId() = " + member.getUserId());
-        logger.info("member.getUserName() = " + member.getUserName());
-        logger.info("member.getUserEmail() = " + member.getEmail());
-        logger.info("member.getPassword() = " + member.getPassword());
+        logger.info("member.getIntroduction() = " + member.getIntroduction());
 
         return "result";
     }
@@ -586,7 +583,13 @@ public class MemberController {
     public String registerForm2(Model model) {
         logger.info("MemberController, registerForm2.");
 
-        model.addAttribute("user", new Member());
+        Member member = new Member();
+
+        String introduction = "안녕하세요.\n반갑습니다.";
+
+        member.setIntroduction(introduction);
+
+        model.addAttribute("user", member);
 
         return "registerForm";
     }

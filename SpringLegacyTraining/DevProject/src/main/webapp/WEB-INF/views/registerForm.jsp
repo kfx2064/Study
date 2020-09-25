@@ -10,8 +10,8 @@
 <h2>Spring Form</h2>
 <form:form modelAttribute="member" method="post" action="register">
     <table>
-        <td>패스워드</td>
-        <td><form:password path="password"/><font color="read"><form:errors path="password"/></font></td>
+        <td>소개</td>
+        <td><form:textarea path="introduction" rows="6" cols="30"/></td>
     </table>
     <form:button name="register">등록</form:button>
 </form:form>

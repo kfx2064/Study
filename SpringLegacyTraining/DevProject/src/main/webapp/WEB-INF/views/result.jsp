@@ -10,20 +10,8 @@
 
 <table>
     <tr>
-        <td>유저ID</td>
-        <td>${member.userId}</td>
-    </tr>
-    <tr>
-        <td>패스워드</td>
-        <td>${member.password}</td>
-    </tr>
-    <tr>
-        <td>이름</td>
-        <td>${member.userName}</td>
-    </tr>
-    <tr>
-        <td>E-MAIL</td>
-        <td>${member.email}</td>
+        <td>소개</td>
+        <td>${member.introduction}</td>
     </tr>
 </table>
 
