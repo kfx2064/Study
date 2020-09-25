@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class MemberController {
@@ -27,22 +24,6 @@ public class MemberController {
         logger.info("registerForm");
 
         return "registerForm";
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Member member, RedirectAttributes rttr) throws Exception {
-        logger.info("register");
-
-        logger.info("member.getIntroduction() = " + member.getIntroduction());
-
-        return "result";
-    }
-
-    @RequestMapping(value = "/result", method = RequestMethod.GET)
-    public String result() {
-        logger.info("result");
-
-        return "result";
     }
 
     @RequestMapping(value = "/register01", method = RequestMethod.POST)
@@ -570,13 +551,35 @@ public class MemberController {
         return "success";
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(Member member, RedirectAttributes rttr) throws Exception {
+        logger.info("register");
+
+        logger.info("member.getIntroduction() = " + member.getIntroduction());
+
+        return "result";
+    }
+
+    @RequestMapping(value = "/result", method = RequestMethod.GET)
+    public String result() {
+        logger.info("result");
+
+        return "result";
+    }
+
     @RequestMapping(value = "/registerForm01", method = RequestMethod.GET)
     public String registerForm01(Model model) {
         logger.info("registerForm01");
 
+        Map<String, String> hobbyMap = new HashMap<>();
+        hobbyMap.put("01", "Sports");
+        hobbyMap.put("02", "Music");
+        hobbyMap.put("03", "Movie");
+
+        model.addAttribute("hobbyMap", hobbyMap);
         model.addAttribute("member", new Member());
 
-        return "registerForm";
+        return "registerForm01";
     }
 
     @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
