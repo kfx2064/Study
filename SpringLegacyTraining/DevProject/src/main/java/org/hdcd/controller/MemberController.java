@@ -33,8 +33,11 @@ public class MemberController {
     public String register(Member member, RedirectAttributes rttr) throws Exception {
         logger.info("register");
 
-        rttr.addFlashAttribute("msg", "success");
-        return "redirect:/result";
+        logger.info("member.getUserId() = " + member.getUserId());
+        logger.info("member.getUserName() = " + member.getUserName());
+        logger.info("member.getUserEmail() = " + member.getEmail());
+
+        return "result";
     }
 
     @RequestMapping(value = "/result", method = RequestMethod.GET)
@@ -569,11 +572,34 @@ public class MemberController {
         return "success";
     }
 
+    @RequestMapping(value = "/registerForm01", method = RequestMethod.GET)
+    public String registerForm01(Model model) {
+        logger.info("registerForm01");
+
+        model.addAttribute("member", new Member());
+
+        return "registerForm";
+    }
+
     @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
     public String registerForm2(Model model) {
         logger.info("MemberController, registerForm2.");
 
         model.addAttribute("user", new Member());
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
+    public String registerForm02(Model model) {
+        logger.info("registerForm02");
+
+        Member member = new Member();
+
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+
+        model.addAttribute("member", member);
 
         return "registerForm";
     }
@@ -603,6 +629,20 @@ public class MemberController {
     public String registerForm08(@ModelAttribute("user") Member member) {
         logger.info("registerForm08");
         return "registerForm2";
+    }
+
+    @RequestMapping(value = "/registerForm09", method = RequestMethod.GET)
+    public String registerForm09(Model model) {
+        logger.info("registerForm09");
+
+        Member member = new Member();
+
+        member.setUserId("hongkd");
+        member.setUserName("홍길동");
+
+        model.addAttribute("member", member);
+
+        return "registerForm";
     }
 
     @RequestMapping(value = "/registerFile01", method = RequestMethod.POST)

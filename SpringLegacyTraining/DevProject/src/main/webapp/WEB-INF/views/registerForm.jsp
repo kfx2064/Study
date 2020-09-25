@@ -18,6 +18,10 @@
             <td>이름</td>
             <td><form:input path="userName"/><font color="red"><form:errors path="userName"/></font></td>
         </tr>
+        <tr>
+            <td>E-MAIL</td>
+            <td><form:input path="email"/><font color="red"><form:errors path="email"/></font></td>
+        </tr>
     </table>
     <form:button name="register">등록</form:button>
 </form:form>

@@ -8,6 +8,20 @@
 <body>
 <h3>Result</h3>
 
-${msg}
+<table>
+    <tr>
+        <td>유저ID</td>
+        <td>${member.userId}</td>
+    </tr>
+    <tr>
+        <td>이름</td>
+        <td>${member.userName}</td>
+    </tr>
+    <tr>
+        <td>E-MAIL</td>
+        <td>${member.email}</td>
+    </tr>
+</table>
+
 </body>
 </html>
