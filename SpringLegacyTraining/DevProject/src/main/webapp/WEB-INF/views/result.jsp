@@ -14,6 +14,10 @@
         <td>${member.userId}</td>
     </tr>
     <tr>
+        <td>패스워드</td>
+        <td>${member.password}</td>
+    </tr>
+    <tr>
         <td>이름</td>
         <td>${member.userName}</td>
     </tr>

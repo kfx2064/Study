@@ -7,21 +7,11 @@
     <title>Spring Form</title>
 </head>
 <body>
-<h1>Spring Form</h1>
+<h2>Spring Form</h2>
 <form:form modelAttribute="member" method="post" action="register">
     <table>
-        <tr>
-            <td>유저ID</td>
-            <td><form:input path="userId"/><font color="red"><form:errors path="userId"/></font></td>
-        </tr>
-        <tr>
-            <td>이름</td>
-            <td><form:input path="userName"/><font color="red"><form:errors path="userName"/></font></td>
-        </tr>
-        <tr>
-            <td>E-MAIL</td>
-            <td><form:input path="email"/><font color="red"><form:errors path="email"/></font></td>
-        </tr>
+        <td>패스워드</td>
+        <td><form:password path="password"/><font color="read"><form:errors path="password"/></font></td>
     </table>
     <form:button name="register">등록</form:button>
 </form:form>

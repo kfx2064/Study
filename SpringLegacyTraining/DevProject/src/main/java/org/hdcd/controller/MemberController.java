@@ -36,6 +36,7 @@ public class MemberController {
         logger.info("member.getUserId() = " + member.getUserId());
         logger.info("member.getUserName() = " + member.getUserName());
         logger.info("member.getUserEmail() = " + member.getEmail());
+        logger.info("member.getPassword() = " + member.getPassword());
 
         return "result";
     }
@@ -598,6 +599,7 @@ public class MemberController {
 
         member.setEmail("aaa@ccc.com");
         member.setUserName("홍길동");
+        member.setPassword("1234");
 
         model.addAttribute("member", member);
 
