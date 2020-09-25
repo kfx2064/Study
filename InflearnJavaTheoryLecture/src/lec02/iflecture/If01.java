@@ -1,4 +1,4 @@
-package lec02.first;
+package lec02.iflecture;
 
 /**
  * 조건문 중 if 구문입니다.

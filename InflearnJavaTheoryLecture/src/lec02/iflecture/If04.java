@@ -1,18 +1,27 @@
-package lec02.first;
+package lec02.iflecture;
+
+import java.util.Scanner;
 
 /**
- * if 조건문 강의입니다.
+ * 이번엔 값을 동적으로 입력받는 방법을 실습해 보겠습니다.
+ *
+ * 콘솔에 무언가 값을 입력하고 그것을 통해서 계산되는 것을 실습해 보는 것이죠.
+ * 비즈니스 로직은 이전과 같습니다.
+ *
+ * 그럼 프로그래밍을 진행하겠습니다.
  */
-public class If03 {
+public class If04 {
 
     public static void main(String[] args) {
 
-        //int workScore = 95;
-        //int workScore = 80;
-        int workScore = 75;
-        //int relationScore = 95;
-        //int relationScore = 90;
-        int relationScore = 75;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("업무수행점수 : ");
+        String strWorkScore = scanner.next();
+        System.out.print("대인관계점수 : ");
+        String strRelationScore = scanner.next();
+
+        int workScore = Integer.parseInt(strWorkScore);
+        int relationScore = Integer.parseInt(strRelationScore);
         boolean thisYearPromotionTarget = true;
 
         int totalScore = (workScore + relationScore) / 2;
@@ -79,30 +88,6 @@ public class If03 {
 
         }
 
-        /**
-         * 저렇게 평가를 내릴 수 있습니다.
-         * 실제 인사시스템, 보통 ERP에서 인사 모듈이지요.
-         * 인사 모듈에서 저런 식으로 단순하게 평가하지 않습니다.
-         * 강사도 ERP 인사를 개발한 경험이 있고,
-         * 당시 해당 중견기업은 특정 기준으로 직을 나누고
-         * 각 직별로 평가 기준이 다양하게 있었습니다.
-         * 그리고 각 평가 기준별로, 기준 내에서 등급별 점수를 할당하고
-         * 점수를 계산하여 그 사람의 성과를 평가했죠.
-         *
-         * 인사는 기업을 운영하는데 매우 중요한 요소입니다.
-         * 인사의 공정함, 그리고 인사의 정확도는 해당 기업의 생존을 가른다는 말이 나올 정도죠.
-         * 사실 모든 부서가 중요하긴 합니다.
-         * 회계가 정확하지 않으면 기업이 쉽게 부실해지고,
-         * 총무가 알뜰하지 않으면 기업의 비용이 증가하며,
-         * 구매와 영업이 잘하지 않으면 기업의 이익이 감소하죠.
-         * 모든 모듈들이 중요하고 모든 부서가 중요합니다.
-         * 필요없는데 존재하는 경우는 드물어요.
-         * 필요없는데 존재한다면 거긴 무슨 특별한 이유가 있는 겁니다.
-         *
-         * 잠시 곁가지 이야기를 했구요.
-         * 이제 평가 내린 것을 조건문으로 실습해 보죠.
-         */
-
         if (employeeGrade.equals("S")) {
             System.out.println("[진급]을 실행했습니다. 특별 보상을 실시합니다.");
         } else if (employeeGrade.equals("A")) {
@@ -132,9 +117,13 @@ public class If03 {
         }
 
         /**
-         * 위의 각 변수를 바꿔가면서 실행해 볼까요?
+         * 무언가 재미를 느끼신다면 적성에 맞으신 겁니다.
+         * 프로그래밍은 이러한 일들의 연속이라고 보시면 됩니다.
          *
-         * 조건문은 이렇게 비즈니스 로직을 처리하면서 수행할 수 있습니다.
+         * 사용자 인터페이스, 또는 기기간 통신 등의 방법으로 어떤 입력값이 전달되면
+         * 안에서 연산을 수행하고 결과값을 출력하거나 저장합니다.
+         *
+         * 이런 일들의 연속을 잘 처리해 내는 것을 프로그래밍이라고 합니다.
          *
          * 그럼 이번 강의는 여기서 마치겠습니다.
          *
