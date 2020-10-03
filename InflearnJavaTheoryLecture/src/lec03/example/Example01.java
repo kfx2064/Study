@@ -1,7 +1,6 @@
 package lec03.example;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -23,13 +22,7 @@ public class Example01 {
 
         boolean isProcureGo = false;
 
-        if (strProcureGo.equals("Y")) {
-            isProcureGo = true;
-        } else {
-            isProcureGo = false;
-        }
-
-        if (isProcureGo == true) {
+        while (strProcureGo.equals("Y")) {
 
             System.out.println("구매시스템에 접속하셨습니다.");
             System.out.println("구매요청을 생성합니다.");
@@ -74,15 +67,22 @@ public class Example01 {
 
             if (strOrderRequestGo.equals("Y")) {
 
+                sbOrderRequestNo.append(strToday.toString());
+                System.out.println("발주요청을 진행합니다.");
+                System.out.println("발주요청번호는 " + sbOrderRequestNo.toString() + "입니다.");
 
+                System.out.println("요청하신 구매요청으로 발주요청을 진행하였습니다.");
 
-            } else {
-                System.out.println("구매요청만 실행하고 구매시스템을 종료합니다.");
             }
 
-        } else {
-            System.out.println("구매시스템을 종료합니다.");
+            System.out.print("구매요청을 진행하시겠습니까?(Y/N) : ");
+
+            String getProcureIsGo = scanner.next();
+            strProcureGo = getProcureIsGo;
+
         }
+
+        System.out.println("구매시스템을 종료합니다.");
 
     }
 
