@@ -1,4 +1,4 @@
-package lec04.OOP.createEntity.procurement;
+package lec04.OOP01.createEntity.procurement;
 
 public class ProcureDocumentTest {
 

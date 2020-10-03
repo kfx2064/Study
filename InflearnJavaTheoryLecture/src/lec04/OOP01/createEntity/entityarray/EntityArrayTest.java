@@ -1,6 +1,6 @@
-package lec04.OOP.createEntity.entityarray;
+package lec04.OOP01.createEntity.entityarray;
 
-import lec04.OOP.createEntity.House;
+import lec04.OOP01.createEntity.House;
 
 public class EntityArrayTest {
 

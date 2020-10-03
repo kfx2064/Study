@@ -1,4 +1,4 @@
-package lec04.OOP.createEntity;
+package lec04.OOP01.createEntity;
 
 public class HouseTest {
 

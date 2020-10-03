@@ -1,4 +1,4 @@
-package lec04.OOP.createEntity.promotion;
+package lec04.OOP01.createEntity.promotion;
 
 public class PromotionTest {
 
