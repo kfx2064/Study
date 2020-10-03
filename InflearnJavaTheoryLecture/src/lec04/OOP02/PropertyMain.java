@@ -1,0 +1,2 @@
+package lec04.OOP02;public class PropertyMain {
+}
