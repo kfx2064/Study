@@ -1,4 +1,4 @@
-package lec04.OOP6.callbyvalue;
+package lec04.OOP7.callbyvalue;
 
 public class CallByValueTest {
 
