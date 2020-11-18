@@ -10,7 +10,7 @@ public class ClassEntityDiff {
     static int staticValue = 20;
 
     int normalValue2 = staticValue;
-    static staticValue2 = normalValue;
+    //static staticValue2 = normalValue;
     /**
      * 보시다시피 전역변수에는 static 전역변수를 담을 수 있습니다.
      * 하지만 static 전역변수에는 일반적인 전역변수를 담을 수 없습니다.
@@ -18,7 +18,7 @@ public class ClassEntityDiff {
 
     static void callStaticMethod() {
         System.out.println(staticValue);
-        System.out.println(normalValue);
+        //System.out.println(normalValue);
         /**
          * static 메서드 내에서도 마찬가지입니다.
          * static 메서드 내에서도 일반적인 전역변수는 호출할 수 없습니다.
@@ -47,15 +47,15 @@ public class ClassEntityDiff {
         System.out.println("일반 메서드");
     }
 
-    void static doStaticMethod() {
-        sampleStaticMethod();
-        sampleNormalMethod();
+    //void static doStaticMethod() {
+        //sampleStaticMethod();
+        //sampleNormalMethod();
         /**
          * 전역변수와 스태틱 전역변수를 쓸 때와 같죠?
          * 스태틱 메서드 내에서는 일반 메서드를 사용할 수 없습니다.
          * 그럼 일반적인 메서드는 어떨까요?
          */
-    }
+    //}
 
     void doNormalMethod() {
         sampleStaticMethod();

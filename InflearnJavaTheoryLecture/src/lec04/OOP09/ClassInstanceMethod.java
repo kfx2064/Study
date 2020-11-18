@@ -1,4 +1,4 @@
-package lec04.OOP9;
+package lec04.OOP09;
 
 /**
  * 이번엔 일반적인 메서드와 스태틱 메서드,

@@ -1,4 +1,4 @@
-package lec04.OOP6.arrayparameter;
+package lec04.OOP06.arrayparameter;
 
 public class ParamArrayTest {
 

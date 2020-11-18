@@ -1,4 +1,4 @@
-package lec04.OOP7.callbyreference;
+package lec04.OOP07.callbyreference;
 
 public class CallByReferenceTest {
 

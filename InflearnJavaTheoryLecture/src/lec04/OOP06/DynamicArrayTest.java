@@ -1,6 +1,4 @@
-package lec04.OOP6;
-
-import java.util.Arrays;
+package lec04.OOP06;
 
 public class DynamicArrayTest {
 

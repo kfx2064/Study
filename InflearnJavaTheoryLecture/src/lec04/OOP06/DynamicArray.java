@@ -1,4 +1,4 @@
-package lec04.OOP6;
+package lec04.OOP06;
 
 import java.util.Arrays;
 

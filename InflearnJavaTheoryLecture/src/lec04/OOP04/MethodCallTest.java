@@ -1,4 +1,4 @@
-package lec04.OOP4;
+package lec04.OOP04;
 
 public class MethodCallTest {
 

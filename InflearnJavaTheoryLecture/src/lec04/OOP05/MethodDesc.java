@@ -1,4 +1,4 @@
-package lec04.OOP5;
+package lec04.OOP05;
 
 public class MethodDesc {
 

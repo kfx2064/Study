@@ -1,4 +1,4 @@
-package lec04.OOP8;
+package lec04.OOP08;
 
 public class FactorialTest {
 

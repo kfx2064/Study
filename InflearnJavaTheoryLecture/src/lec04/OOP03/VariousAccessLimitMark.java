@@ -1,4 +1,4 @@
-package lec04.OOP3;
+package lec04.OOP03;
 
 /**
  * 다양한 메서드 접근제한자를 실습해 보겠습니다.
