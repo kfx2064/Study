@@ -10,7 +10,7 @@ public class Main {
         System.out.println(korea.haveMust);
         System.out.println(korea.special);
         korea.showDefault();
-        korea.mainEat();
+        korea.mainEat();cd 
 
         System.out.println("\n\n");
 

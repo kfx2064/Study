@@ -29,11 +29,11 @@ public class GenerateProcureData {
         int generateCount = 5;
 
         FileOutputStream fos = null;
-        String outputFilePath = String.valueOf("D:/dummyProcureRequestData" + 1 + ".xlsx");
+        String outputFilePath = String.valueOf("C:/dummyProcureRequestData" + 1 + ".xlsx");
 
         for (int forYear = intSetYear; forYear > 2015; forYear--) {
 
-            outputFilePath = String.valueOf("D:/dummyProcureRequestData" + forYear + ".xlsx");
+            outputFilePath = String.valueOf("C:/dummyProcureRequestData" + forYear + ".xlsx");
 
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("procureData");
@@ -153,7 +153,7 @@ public class GenerateProcureData {
                             // 품목코드, 단위코드 조회
                             try {
                                 Class.forName("org.mariadb.jdbc.Driver");
-                                String jdbcUrl = String.valueOf("jdbc:mariadb://127.0.0.1:3308/household");
+                                String jdbcUrl = String.valueOf("jdbc:mariadb://127.0.0.1:3306/household");
                                 String userId = String.valueOf("root");
                                 String userPass = String.valueOf("1234");
                                 connection = DriverManager.getConnection(jdbcUrl, userId, userPass);

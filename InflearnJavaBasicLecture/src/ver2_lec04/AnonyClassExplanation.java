@@ -1,7 +1,7 @@
 package ver2_lec04;
 
 /**
- * 이너클래스 설명
+ * 익명클래스 설명
  */
 public class AnonyClassExplanation {
 
