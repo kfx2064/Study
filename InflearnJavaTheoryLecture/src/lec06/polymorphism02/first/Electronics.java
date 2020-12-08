@@ -1,4 +1,4 @@
-package lec06.polymorphism01.first;
+package lec06.polymorphism02.first;
 
 /**
  * 우리나라에서 큰 산업군들 중 두 곳을 뽑아보겠습니다.

@@ -1,4 +1,4 @@
-package lec06.polymorphism01.first;
+package lec06.polymorphism02.first;
 
 /**
  * 다형성은 자바 코딩을 해가면서 설명해 드리겠습니다.

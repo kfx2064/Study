@@ -1,4 +1,6 @@
-package lec06.interface01.first;
+package lec06.interface03.first;
+
+import org.w3c.dom.ls.LSOutput;
 
 /**
  * interface 예시를 만들어 보겠습니다.
@@ -29,7 +31,7 @@ public interface SampleInterface {
      */
 
     public class sampleFirst {
-
+        public int sampleCount = 3;
     }
 
     /**
@@ -37,7 +39,7 @@ public interface SampleInterface {
      */
 
     public static class sampleStaticClass {
-
+        public static int staticSampleCount = 1;
     }
 
     /**
@@ -46,7 +48,7 @@ public interface SampleInterface {
      */
 
     public interface innerInterface {
-
+        public void showMsg();
     }
 
     /**

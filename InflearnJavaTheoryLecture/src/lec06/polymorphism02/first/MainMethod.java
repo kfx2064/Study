@@ -1,4 +1,4 @@
-package lec06.polymorphism01.first;
+package lec06.polymorphism02.first;
 
 import java.util.HashMap;
 import java.util.Map;

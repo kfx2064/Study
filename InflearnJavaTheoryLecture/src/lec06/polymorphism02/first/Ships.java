@@ -1,4 +1,4 @@
-package lec06.polymorphism01.first;
+package lec06.polymorphism02.first;
 
 /**
  * 이번엔 조선 회사에 대해 코딩해 보겠습니다.
