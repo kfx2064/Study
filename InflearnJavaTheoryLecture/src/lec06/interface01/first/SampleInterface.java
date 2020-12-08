@@ -1,4 +1,4 @@
-package lec06.polymorphism01.second;
+package lec06.interface01.first;
 
 /**
  * interface 예시를 만들어 보겠습니다.
