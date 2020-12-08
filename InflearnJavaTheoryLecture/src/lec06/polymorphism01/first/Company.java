@@ -27,7 +27,23 @@ public class Company {
     public String companyLocation;
     public int companyEmployeeCount;
 
+    public void builtCompany() {
+        System.out.println("회사를 만듭니다.");
+    }
+
+    public void manageCompany() {
+        System.out.println("회사를 운영합니다.");
+    }
+
+    public void shareProfits() {
+        System.out.println("수익을 나눕니다.");
+    }
     /**
+     * 회사의 핵심적인 활동들이라 생각되는 것들을 메서드로 만들어 보았습니다.
+     */
+
+    /**
+     *
      * 회사에는 회사명, 회사주소, 회사직원수가 필수적으로 존재할 것입니다.
      * 먼 미래에는 법인, 즉 회사 인격체만 존재하고 사람은 필요없는 회사가 존재할지도 모르겠다는 생각이 드는군요.
      * 법인이라는 뜻은 법적으로 인격을 부여했다는 의미로 알고 있습니다.
