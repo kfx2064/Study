@@ -8,6 +8,10 @@ public class EnumDayMain {
 
         while (true) {
 
+            /**
+             * 요일을 활용한 Enum입니다.
+             */
+
             System.out.println("요일을 입력하세요.  ");
             
             Scanner scanner = new Scanner(System.in);
@@ -30,6 +34,16 @@ public class EnumDayMain {
             } else {
                 break;
             }
+
+            /**
+             * 실습이 잘 되었는지요?
+             *
+             * Enum은 이런 식으로 활용이 가능합니다.
+             *
+             * 그럼 이번 강의는 여기서 마치겠습니다.
+             *
+             * 감사합니다.
+             */
 
         }
         
