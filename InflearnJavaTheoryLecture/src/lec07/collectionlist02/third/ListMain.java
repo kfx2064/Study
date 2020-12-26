@@ -58,7 +58,6 @@ public class ListMain {
         aList.retainAll(bList);
         System.out.println(aList.toString());
 
-
     }
 
 }
