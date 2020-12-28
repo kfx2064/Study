@@ -11,13 +11,21 @@ package lec08.thread02.seventh;
 public class ThreadMain {
 
     public static void main(String[] args) {
+
+        /**
+         * 본체 쓰레드를 동작시키겠습니다.
+         * 본체 쓰레드를 돌리고, 다른 쓰레드를 하나 더 만들어서
+         * 해당 다른 쓰레드에서 본체 쓰레드의 suspend, resume, stop 메서드를
+         * 실습해 보도록 하겠습니다.
+         */
+
         CustomThread customThread = new CustomThread();
         customThread.start();
 
         Thread thread = new Thread() {
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException ie) {
                     ie.printStackTrace();
                 }
