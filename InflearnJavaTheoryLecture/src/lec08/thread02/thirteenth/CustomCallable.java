@@ -12,13 +12,16 @@ public class CustomCallable implements Callable<String> {
 
     @Override
     public String call() {
-        for (int i = 0; i < 3; i++) {
+        int index = 0;
+        while (true) {
             try {
                 Thread.sleep(500);
             } catch (Exception e) {
                 e.printStackTrace();
+                break;
             }
-            System.out.println(i + " ::: " + name);
+            System.out.println(index + " ::: " + name);
+            index++;
         }
         return null;
     }

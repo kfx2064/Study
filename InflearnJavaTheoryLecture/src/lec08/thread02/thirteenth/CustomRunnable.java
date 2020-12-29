@@ -9,13 +9,16 @@ public class CustomRunnable implements Runnable {
     }
 
     public void run() {
-        for (int i = 0; i < 3; i++) {
+        int index = 0;
+        while (true) {
             try {
                 Thread.sleep(500);
             } catch (Exception e) {
                 e.printStackTrace();
+                break;
             }
-            System.out.println(i + " ::: " + name);
+            System.out.println(index + " ::: " + name);
+            index++;
         }
     }
 

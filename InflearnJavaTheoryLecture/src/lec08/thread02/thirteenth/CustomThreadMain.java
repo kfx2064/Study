@@ -13,6 +13,7 @@ public class CustomThreadMain {
          * 쓰레드풀 객체를 생성합니다.
          */
         ExecutorService executorServicePool = Executors.newFixedThreadPool(2);
+        //ExecutorService executorServicePool = Executors.newFixedThreadPool(3);
 
         /**
          * Runnable 객체를 생성합니다.
