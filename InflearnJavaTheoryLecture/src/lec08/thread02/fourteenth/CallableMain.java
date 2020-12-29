@@ -34,6 +34,10 @@ public class CallableMain {
             //List<Future<String>> invokeAllList = executorServicePool.invokeAll(callableList);
             //System.out.println(invokeAllList);
             executorServicePool.invokeAny(callableList);
+            /**
+             * invokeAny는 최초 풀에서 실행된 작업이 완료되면,
+             * 나머지 작업은 InterruptedException을 발생시킨다.
+             */
         } catch (Exception e) {
             e.printStackTrace();
         }
