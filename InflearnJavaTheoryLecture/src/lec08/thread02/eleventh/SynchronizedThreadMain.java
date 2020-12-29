@@ -1,18 +1,13 @@
-package lec08.thread02.elevnth;
+package lec08.thread02.eleventh;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThreadMain {
+public class SynchronizedThreadMain {
 
     public static void main(String[] args) {
 
         List<Integer> intList = new ArrayList<>();
-
-        /**
-         * 동기화와 관련된 실습을 하겠습니다.
-         * list에서 데이터를 삭제하는 쓰레드를 만들겠습니다.
-         */
 
         Thread thread1 = new Thread() {
             public void run() {
@@ -22,9 +17,13 @@ public class ThreadMain {
                     } catch (Exception e) {
                         break;
                     }
-                    if (intList.size() > 0) {
-                        intList.remove(intList.size() - 1);
+
+                    synchronized (intList) {
+                        if (intList.size() > 0) {
+                            intList.remove(intList.size() - 1);
+                        }
                     }
+
                 }
             }
         };
@@ -37,9 +36,12 @@ public class ThreadMain {
                     } catch (Exception e) {
                         break;
                     }
-                    if (intList.size() > 0) {
-                        System.out.println(intList);
-                        System.out.println("List의 마지막 값 : " + intList.get(intList.size() - 1));
+
+                    synchronized (intList) {
+                        if (intList.size() > 0) {
+                            System.out.println(intList);
+                            System.out.println("List의 마지막 값 : " + intList.get(intList.size() - 1));
+                        }
                     }
                 }
             }
@@ -54,12 +56,16 @@ public class ThreadMain {
                     } catch (Exception e) {
                         break;
                     }
-                    intList.add(count);
+
+                    synchronized (intList) {
+                        intList.add(count);
+                    }
+
                     count++;
                     boolean alive1 = thread1.isAlive();
                     boolean alive2 = thread2.isAlive();
 
-                    if (alive1 == false || alive2 == false) {
+                    if (alive1 == false || alive2 == false || count == 3000) {
                         thread1.interrupt();
                         thread2.interrupt();
                         interrupt();
