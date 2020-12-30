@@ -12,7 +12,7 @@ package lec08.threadExercise03;
 public class RawMaterialInputProcess implements Runnable {
 
     protected boolean stop = false;
-
+    protected int count = 1;
     protected String rawMaterailName = "플라스틱";
 
     public void setStop(boolean isStop) {
@@ -21,10 +21,9 @@ public class RawMaterialInputProcess implements Runnable {
 
     @Override
     public void run() {
-        int count = 1;
+        System.out.println("원재료 투입 공정이 시작되었습니다.");
         while (stop == false) {
             try {
-
                 synchronized (StringFactoryProcess.rawMaterialPlasticList) {
                     // 원재료의 개수가 10개인지 확인합니다.
                     /*
@@ -34,15 +33,20 @@ public class RawMaterialInputProcess implements Runnable {
                      */
                     int rawMaterialListSize = StringFactoryProcess.rawMaterialPlasticList.size();
                     if (rawMaterialListSize > 9) {
-                        Thread.sleep(500);
+                        System.out.println("원재료 투입을 일시 중지합니다.");
+                        Thread.sleep(1000);
                         continue;
-                    } else if (rawMaterialListSize > 1  && rawMaterialListSize < 10) {
+                    } else if (rawMaterialListSize > 0  && rawMaterialListSize < 10) {
                         inputRawMaterialWork(count);
+                        System.out.println("원재료가 투입되었습니다.");
                     } else if (rawMaterialListSize == 0){
                         inputRawMaterialWork(count);
-                    }
+                        System.out.println("원재료가 투입되었습니다.");
 
-                    Thread.sleep(500);
+                    }
+                    Thread.sleep(1000);
+                    System.out.println("[[중간재 대기열]]" + StringFactoryProcess.rawMaterialPlasticList);
+                    count++;
                 }
 
             } catch (Exception e) {
@@ -51,6 +55,7 @@ public class RawMaterialInputProcess implements Runnable {
                 break;
             }
         }
+        System.out.println("원재료 투입 공정이 중지되었습니다.");
     }
 
     public void inputRawMaterialWork(int count) {
