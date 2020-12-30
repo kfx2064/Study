@@ -21,7 +21,7 @@ public class TryWithResource {
          * 그럼 실습을 진행하겠습니다.
          */
 
-        try(BufferedReader br = new BufferedReader(new FileReader("C:\\dev\\test.txt"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader("C:\\dev\\testOut.txt"))) {
 
             while (true) {
                 String strData = br.readLine();
