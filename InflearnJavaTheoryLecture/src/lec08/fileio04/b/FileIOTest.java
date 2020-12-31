@@ -1,4 +1,4 @@
-package lec08.fileio04.second;
+package lec08.fileio04.b;
 
 import java.io.File;
 
