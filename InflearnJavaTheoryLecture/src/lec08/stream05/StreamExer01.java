@@ -8,7 +8,7 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class StreanExer01 {
+public class StreamExer01 {
 
     public static void main(String[] args) {
 
