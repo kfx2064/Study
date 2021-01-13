@@ -7,7 +7,7 @@ public class BufferedInputTest {
 
     public static void main(String[] args) {
 
-        String strPath = "C:\\dev\\test.txt";
+        String strPath = "D:\\dev\\fileIOTest\\test.txt";
 
         BufferedInputStream bufferedInputStream = null;
 

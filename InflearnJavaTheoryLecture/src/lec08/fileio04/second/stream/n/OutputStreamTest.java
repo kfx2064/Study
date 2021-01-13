@@ -9,7 +9,7 @@ public class OutputStreamTest {
 
     public static void main(String[] args) {
 
-        String strPath = "D:\\devTest\\testOut.txt";
+        String strPath = "D:\\dev\\fileIOTest\\testOut.txt";
 
         OutputStreamWriter outputStreamWriter = null;
 

@@ -37,8 +37,8 @@ public class FileIOMain {
 
     public static void main(String[] args) {
 
-        String targetPath = "C:\\dev\\test.txt";
-        String destinationPath = "C:\\dev\\testcopy.txt";
+        String targetPath = "D:\\dev\\fileIOTest\\test.txt";
+        String destinationPath = "D:\\dev\\fileIOTest\\testcopy.txt";
 
         try {
 

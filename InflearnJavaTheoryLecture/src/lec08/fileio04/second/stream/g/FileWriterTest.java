@@ -8,7 +8,7 @@ public class FileWriterTest {
 
     public static void main(String[] args) {
 
-        String strFilePath = "C:\\dev\\test2.txt";
+        String strFilePath = "D:\\dev\\fileIOTest\\test2.txt";
         FileWriter fileWriter = null;
 
         try {

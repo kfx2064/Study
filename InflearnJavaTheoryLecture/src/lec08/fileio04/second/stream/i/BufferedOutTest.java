@@ -9,7 +9,7 @@ public class BufferedOutTest {
 
     public static void main(String[] args) {
 
-        String strPath = "C:\\dev\\testOut.txt";
+        String strPath = "D:\\dev\\fileIOTest\\testOut.txt";
 
         BufferedOutputStream bufferedOutputStream = null;
 

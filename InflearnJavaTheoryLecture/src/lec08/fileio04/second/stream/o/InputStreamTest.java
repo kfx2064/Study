@@ -10,7 +10,7 @@ public class InputStreamTest {
 
     public static void main(String[] args) {
 
-        String strPath = "D:\\devTest\\testOut.txt";
+        String strPath = "D:\\dev\\fileIOTest\\testOut.txt";
 
         BufferedReader bufferedReader = null;
         InputStreamReader inputStreamReader = null;

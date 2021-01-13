@@ -17,7 +17,7 @@ public class FileReaderTest {
              * 한글이 깨져서 나오게 됩니다.
              */
 
-            String strFilePath = "C:\\dev\\test.txt";
+            String strFilePath = "D:\\dev\\fileIOTest\\test.txt";
 
             fileReader = new FileReader(strFilePath);
 
