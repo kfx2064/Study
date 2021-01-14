@@ -54,7 +54,39 @@ public class OptionalMain03 {
 
         /**
          * ifPresent에 대해 실습해 보겠습니다.
+         * String 값으로 성공 시엔 success 문자열을 리턴한다고 가정하겠습니다.
          */
+
+        String calcResultData = String.valueOf("success");
+        //String calcResultData = null;
+
+        Optional.ofNullable(calcResultData)
+                .ifPresent(s -> System.out.println("성공하였습니다."));
+
+        System.out.println("===================================");
+
+        /**
+         * ifPresentOrElse라는 것이 있습니다.
+         * 값이 존재할 경우엔 안의 파라미터 중 앞의 것을,
+         * 값이 없을 경우엔 안의 파라미터 중 뒤의 것을 실행합니다.
+         */
+
+        Optional.ofNullable(calcResultData)
+                .ifPresentOrElse(
+                        s -> System.out.println("성공하였습니다.")
+                        , () -> System.out.println("실패하였습니다.")
+                );
+
+        /**
+         * 이런 식으로 동작합니다.
+         * 해당 로직을 아래와 같이 변환이 가능합니다.
+         */
+
+        if (calcResultData == null) {
+            System.out.println("실패하였습니다.");
+        } else {
+            System.out.println("성공하였습니다.");
+        }
 
     }
 
