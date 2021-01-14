@@ -88,6 +88,44 @@ public class OptionalMain03 {
             System.out.println("성공하였습니다.");
         }
 
+        System.out.println("===================================");
+
+        String countryName = "Korea";
+
+        Integer strLength01 = Optional.ofNullable(countryName)
+                                        .map(s -> s.length())
+                                        .orElseGet(() -> {
+                                            return 0;
+                                        });
+        System.out.println("문자열 길이 : " + strLength01);
+
+        countryName = null;
+
+        Integer strLength02 = Optional.ofNullable(countryName)
+                                        .map(s -> s.length())
+                                        .orElseGet(() -> {
+                                            return 0;
+                                        });
+        System.out.println("문자열 길이 : " + strLength02);
+
+        System.out.println("===================================");
+
+        String manufacturingResult = "success";
+
+        boolean isBoolean01 = Optional.ofNullable(manufacturingResult)
+                                        .map(String::trim)
+                                        .filter(s -> s.equals("success"))
+                                        .isPresent();
+        System.out.println("생산 결과 : " + isBoolean01);
+
+        manufacturingResult = "fail";
+
+        boolean isBoolean02 = Optional.ofNullable(manufacturingResult)
+                                        .map(String::trim)
+                                        .filter(s -> s.equals("success"))
+                                        .isPresent();
+        System.out.println("생산 결과 : " + isBoolean02);
+
     }
 
 }
