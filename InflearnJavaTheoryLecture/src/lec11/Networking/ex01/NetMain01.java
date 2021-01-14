@@ -6,7 +6,7 @@ import java.net.URL;
 public class NetMain01 {
 
     public static void doPrintingMsg(String strObj, Object objValue) {
-        System.out.println("Title : " + strObj + " == Value : [" + objValue + "]");
+        System.out.println("[Title] : " + strObj + "\t\t == [Value] : " + objValue);
     }
 
     public static void main(String[] args) throws Exception {
@@ -17,9 +17,9 @@ public class NetMain01 {
         URL url = new URL(internetPath);
         System.out.println("URL 정보입니다.");
         doPrintingMsg("String path", internetPath);
-        doPrintingMsg("Protocol", url.getProtocol());
-        doPrintingMsg("Host", url.getHost());
-        doPrintingMsg("Port", url.getPort());
+        doPrintingMsg("protocol", url.getProtocol());
+        doPrintingMsg("host", url.getHost());
+        doPrintingMsg("port", url.getPort());
         doPrintingMsg("url path", url.getPath());
         doPrintingMsg("file", url.getFile());
         doPrintingMsg("query", url.getQuery());
