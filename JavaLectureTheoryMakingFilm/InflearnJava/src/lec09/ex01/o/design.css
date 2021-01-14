@@ -1,0 +1,15 @@
+#textLeft1 {
+	-fx-background-color:green;
+}
+TextField.textLeft {
+	-fx-background-color:pink;
+}
+.textRight {
+	-fx-background-color:yellow;
+}
+#textRight4 {
+	-fx-background-color:orange;
+}
+TextField {
+	-fx-background-color:red;
+}
