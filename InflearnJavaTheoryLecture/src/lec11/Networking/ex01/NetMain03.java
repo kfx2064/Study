@@ -5,66 +5,75 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
 
 public class NetMain03 {
 
     public static void main(String[] args) throws Exception {
 
-        ServerSocket serverSocket = new ServerSocket(8080);
+        ServerSocket server = new ServerSocket(8080);
         System.out.println("서버를 시작합니다.");
 
         try {
 
             while (true) {
-
-                Socket accept = serverSocket.accept();
+                Socket socket = server.accept();
 
                 try {
+                    BufferedReader readRequest =
+                            new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                    BufferedReader bufferedReader
-                            = new BufferedReader(new InputStreamReader(accept.getInputStream()));
-
-                    String getData = "";
-
+                    String request = "";
                     while (true) {
-                        String readData = bufferedReader.readLine();
-                        if (readData == null || readData.equals("")) {
+                        String readLine = readRequest.readLine();
+                        if (readLine == null || readLine.equals("")) {
                             break;
                         }
-                        System.out.println(readData);
-                        if (readData.startsWith("GET")) {
-                            getData = readData;
+                        System.out.println(readLine);
+                        if (readLine.startsWith("GET")) {
+                            request = readLine;
                         }
                     }
 
-                    DataOutputStream dataOutputStream
-                            = new DataOutputStream(accept.getOutputStream());
+                    DataOutputStream dos =
+                            new DataOutputStream(socket.getOutputStream());
 
-                    dataOutputStream.writeBytes("HTTP/1.1 200 OK \r\n");
+                    String msg = "<html><body>";
+                    msg += "<span style='fond-size:30pt; color:red; font-weight:bold;'>";
+                    msg += "HTTP 서비스";
+                    msg += "</span>";
+                    msg += "<br><br><span style='font-weight:bold; font-size:15pt'>";
+                    Date date = new Date(System.currentTimeMillis());
+                    msg += date.toString();
+                    msg += "<br><br>요청내용 = " + request;
+                    msg += "</span>";
+                    msg += "</body></html>";
 
-                    StringBuffer writeHTMLData = new StringBuffer("<html><body>").append("Hello, world!")
-                                                                                    .append("</body></html>");
+                    byte[] body = msg.getBytes("UTF-8");
 
-                    byte[] forSendingData = writeHTMLData.toString().getBytes("UTF-8");
+                    dos.writeBytes("HTTP/1.1 200 OK \r\n");
+                    dos.writeBytes("Server:MyServerName\r\n");
+                    dos.writeBytes("Cache-Control:private\r\n");
+                    dos.writeBytes("Content-Length: " + body.length + "\r\n");
+                    dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
+                    dos.writeBytes("\r\n");
 
-                    dataOutputStream.write(forSendingData, 0, forSendingData.length);
-                    dataOutputStream.flush();
+                    dos.write(body, 0, body.length);
 
-                    System.out.println("GET 데이터를 확인합니다.");
-                    System.out.println(getData);
+                    dos.writeBytes("\r\n");
+                    dos.flush();
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    accept.close();
+                    socket.close();
                 }
-
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            serverSocket.close();
+            server.close();
         }
 
     }
