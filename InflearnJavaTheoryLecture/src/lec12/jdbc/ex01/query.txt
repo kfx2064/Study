@@ -1,0 +1,8 @@
+CREATE TABLE `procure_table` (
+	`id` BIGINT(20) NOT NULL,
+	`pName` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`pId` VARCHAR(40) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci'
+)
+COLLATE='utf8_unicode_ci'
+ENGINE=InnoDB
+;
