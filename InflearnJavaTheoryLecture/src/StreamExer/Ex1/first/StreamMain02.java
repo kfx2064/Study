@@ -15,7 +15,9 @@ public class StreamMain02 {
         System.out.println();
 
         Stream<String> originalStream02
-                = Stream.of("samsung", "lg", "hyundai", "sk", "", "lotte").filter(i -> !i.isEmpty()).filter(i -> !i.startsWith("l"));
+                = Stream.of("samsung", "lg", "hyundai", "sk", "", "lotte")
+                        .filter(i -> !i.isEmpty())
+                        .filter(i -> !i.startsWith("l"));
 
         originalStream02.forEach(i -> System.out.print(i + " "));
         System.out.println();
