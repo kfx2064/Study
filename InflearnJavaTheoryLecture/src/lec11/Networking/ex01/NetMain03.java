@@ -10,7 +10,7 @@ public class NetMain03 {
 
     public static void main(String[] args) throws Exception {
 
-        ServerSocket serverSocket = new ServerSocket(8080);
+        ServerSocket serverSocket = new ServerSocket(80);
         System.out.println("서버를 시작합니다.");
 
         try {
@@ -24,34 +24,17 @@ public class NetMain03 {
                     BufferedReader bufferedReader
                             = new BufferedReader(new InputStreamReader(accept.getInputStream()));
 
-                    String getData = "";
-
-                    while (true) {
-                        String readData = bufferedReader.readLine();
-                        if (readData == null || readData.equals("")) {
-                            break;
-                        }
-                        System.out.println(readData);
-                        if (readData.startsWith("GET")) {
-                            getData = readData;
-                        }
-                    }
-
                     DataOutputStream dataOutputStream
                             = new DataOutputStream(accept.getOutputStream());
 
-                    dataOutputStream.writeBytes("HTTP/1.1 200 OK \r\n");
-
-                    StringBuffer writeHTMLData = new StringBuffer("<html><body>").append("Hello, world!")
-                                                                                    .append("</body></html>");
+                    StringBuffer writeHTMLData =
+                            new StringBuffer("<html><body>").append("<h1>Hello, world!</h1>")
+                                                            .append("</body></html>");
 
                     byte[] forSendingData = writeHTMLData.toString().getBytes("UTF-8");
 
                     dataOutputStream.write(forSendingData, 0, forSendingData.length);
                     dataOutputStream.flush();
-
-                    System.out.println("GET 데이터를 확인합니다.");
-                    System.out.println(getData);
 
                 } catch (Exception e) {
                     e.printStackTrace();
