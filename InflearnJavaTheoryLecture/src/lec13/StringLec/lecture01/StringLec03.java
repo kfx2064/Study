@@ -1,4 +1,4 @@
-package lec13.StringLec.lecutre01;
+package lec13.StringLec.lecture01;
 
 import java.util.Arrays;
 

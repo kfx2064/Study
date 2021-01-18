@@ -1,6 +1,4 @@
-package lec13.StringLec.lecutre01;
-
-import java.util.Locale;
+package lec13.StringLec.lecture01;
 
 public class StringLec04 {
 
