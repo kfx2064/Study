@@ -1,5 +1,6 @@
 package lec14.big01;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class BigInt01 {
@@ -173,6 +174,78 @@ public class BigInt01 {
          * 이렇게 하여 빅 인티저 활용 방법을 알아보았습니다.
          * 이번엔 빅 데시말을 해볼까요?
          */
+
+        System.out.println("========================================");
+
+        BigDecimal bigDec10dot1 = new BigDecimal("10.1");
+        System.out.println(bigDec10dot1);
+
+        BigDecimal bigDecValueOf1 = BigDecimal.valueOf(1.5);
+        System.out.println(bigDecValueOf1);
+
+        System.out.println("========================================");
+
+        /**
+         * 빅 데시말입니다.
+         * 빅 데시말은 빅 인티저와 같은데 다만 다른 것은 double처럼 소수입니다.
+         * 이것에 대해 실습을 진행해 보겠습니다.
+         */
+
+        BigDecimal bigDecEq01 = BigDecimal.valueOf(10.1);
+        BigDecimal bigDecEq02 = BigDecimal.valueOf(10.1);
+        boolean boolBigEq = bigDecEq01.equals(bigDecEq02);
+        System.out.println("equals : " + boolBigEq);
+
+        /**
+         * equals이구요.
+         */
+
+        System.out.println("========================================");
+
+        BigDecimal bigDecAdd1 = BigDecimal.valueOf(1.5);
+        BigDecimal bigDecAdd2 = BigDecimal.valueOf(0.2);
+        BigDecimal bigDecResult1 = bigDecAdd1.add(bigDecAdd2);
+        System.out.println("더하기 : " + bigDecResult1);
+
+        /**
+         * 더하기구요, 빼기를 하겠습니다.
+         */
+
+        System.out.println("========================================");
+
+        BigDecimal bigDecSubs1 = BigDecimal.valueOf(1.5);
+        BigDecimal bigDecSubs2 = BigDecimal.valueOf(0.2);
+        BigDecimal bigDecResultSubs = bigDecSubs1.subtract(bigDecSubs2);
+        System.out.println("빼기 : " + bigDecResultSubs);
+
+        /**
+         * 이젠 곱하기입니다.
+         */
+
+        System.out.println("========================================");
+
+        BigDecimal bigDecMulti1 = BigDecimal.valueOf(0.5);
+        BigDecimal bigDecMulti2 = BigDecimal.valueOf(0.2);
+        BigDecimal bigDecMultiResult1 = bigDecMulti1.multiply(bigDecMulti2);
+        System.out.println("곱하기 : " + bigDecMultiResult1);
+
+        System.out.println("========================================");
+
+        BigDecimal bigDecDiv1 = BigDecimal.valueOf(1.0);
+        BigDecimal bigDecDiv2 = BigDecimal.valueOf(2.0);
+        BigDecimal bigDecDivResult1 = bigDecDiv1.divide(bigDecDiv2);
+        System.out.println("나누기 : " + bigDecDivResult1);
+
+        /**
+         * 빅 데시말은 이런 식으로 사용할 수 있습니다.
+         * 이제 빅 인티저와 빅 데시말의 사용법에 대해 알아본 것 같습니다.
+         * 이 정도 활용법을 알아두시면 좋습니다.
+         *
+         * 그럼 이번 강의는 여기서 마치겠습니다.
+         *
+         * 감사합니다.
+         */
+
 
     }
 
