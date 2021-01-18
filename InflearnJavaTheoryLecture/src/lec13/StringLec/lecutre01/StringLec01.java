@@ -98,6 +98,32 @@ public class StringLec01 {
          * 그럼 다음 기능으로 넘어가겠습니다.
          */
 
+        /**
+         * 다음 기능은 문자열이 비어있는지 확인하는 기능입니다.
+         * 람다식을 배울 때였던가, 옵셔널을 배울 때 였던가, 그때 사용한 기억이 나네요.
+         * 진행하겠습니다.
+         */
+
+        String strEmpty01 = "";
+        String strEmpty02 = "Hello, world!";
+        boolean boolEmpty01 = strEmpty01.isEmpty();
+        boolean boolEmpty02 = strEmpty02.isEmpty();
+        System.out.println("boolEmpty01 : " + boolEmpty01);
+        System.out.println("boolEmpty02 : " + boolEmpty02);
+
+        /**
+         * isEmpty는 비어있는 여부를 확인합니다.
+         * 다만 null일 경우는 에러가 발생합니다.
+         * 빈 값이냐와 널이냐는 프로그래밍에서 차이가 있습니다.
+         * null은 아예 값이 없다는 의미입니다.
+         * 정확한 표현은 아닐 수도 있지만 메모리에 할당되지 않은 상태라고도 표현하기도 합니다.
+         * 그래서 쌍따옴표로 감싸진 공백과 null은 처리하는 방법이 다릅니다.
+         *
+         * 이렇게 몇 가지 메서드를 알아보았습니다.
+         *
+         * 그럼 다음 강의에서 뵙겠습니다.
+         */
+
     }
 
 }
