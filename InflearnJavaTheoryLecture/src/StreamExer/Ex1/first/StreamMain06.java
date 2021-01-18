@@ -18,7 +18,8 @@ public class StreamMain06 {
         long getCountNumber = Stream.of(1, 2, 3, 4, 5).count();
         System.out.println("스트림의 총 개수 : " + getCountNumber);
 
-        long getCountNumber01 = Stream.of("Ship", "Energy", "Plant", "Special", "Robot", "Engine").count();
+        long getCountNumber01 =
+                Stream.of("Ship", "Energy", "Plant", "Special", "Robot", "Engine").count();
         System.out.println("스트림의 총 개수 : " + getCountNumber01);
 
         /**
@@ -99,7 +100,8 @@ public class StreamMain06 {
          * 스트림의 구성 요소를 배열로 반환합니다.
          */
 
-        String[] strings = Stream.of("korea", "america", "japan", "china", "russia").toArray(String[]::new);
+        String[] strings =
+                Stream.of("korea", "america", "japan", "china", "russia").toArray(String[]::new);
         System.out.println("스트림 -> 배열 : " + Arrays.toString(strings));
 
         Integer reduce = Stream.of(1, 2, 3).reduce(0, Integer::sum);

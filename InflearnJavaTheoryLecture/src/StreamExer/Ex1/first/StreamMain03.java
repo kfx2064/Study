@@ -48,18 +48,21 @@ public class StreamMain03 {
         caseStream03.forEach(i -> System.out.print(i + " "));
         System.out.println();
 
-        Stream<String> caseStream04 = Stream.of("b", "c", "A", "A", "B").sorted(String.CASE_INSENSITIVE_ORDER.reversed());
+        Stream<String> caseStream04 =
+                Stream.of("b", "c", "A", "A", "B").sorted(String.CASE_INSENSITIVE_ORDER.reversed());
         caseStream04.forEach(i -> System.out.print(i + " "));
         System.out.println();
 
         /**
          * 문자열 길이순으로 정렬합니다.
          */
-        Stream<String> caseStream05 = Stream.of("b", "cc", "A", "A", "B").sorted(Comparator.comparing(String::length));
+        Stream<String> caseStream05 =
+                Stream.of("b", "cc", "A", "A", "B").sorted(Comparator.comparing(String::length));
         caseStream05.forEach(i -> System.out.print(i + " "));
         System.out.println();
 
-        Stream<String> caseStream06 = Stream.of("b", "cc", "A", "A", "B").sorted(Comparator.comparing(i -> i.length()));
+        Stream<String> caseStream06 =
+                Stream.of("b", "cc", "A", "A", "B").sorted(Comparator.comparing(i -> i.length()));
         caseStream06.forEach(i -> System.out.print(i + " "));
         System.out.println();
 

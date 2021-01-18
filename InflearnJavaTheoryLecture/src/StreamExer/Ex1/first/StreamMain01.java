@@ -19,6 +19,8 @@ public class StreamMain01 {
         strList01.add("자동차");
         strList01.add("배");
 
+
+
         /**
          * Stream을 이용한 정렬
          */

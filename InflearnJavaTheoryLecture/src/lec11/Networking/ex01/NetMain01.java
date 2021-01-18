@@ -15,6 +15,8 @@ public class NetMain01 {
                             "parameter1=admin&parameter2=password";
 
         URL url = new URL(internetPath);
+        URI uri = url.toURI();
+
         System.out.println("URL 정보입니다.");
         doPrintingMsg("String path", internetPath);
         doPrintingMsg("protocol", url.getProtocol());
@@ -28,8 +30,6 @@ public class NetMain01 {
         doPrintingMsg("defaultPort", url.getDefaultPort());
         doPrintingMsg("toExternalForm", url.toExternalForm());
         System.out.println("============================================================");
-
-        URI uri = url.toURI();
 
         System.out.println("URI 정보입니다.");
         doPrintingMsg("scheme", uri.getScheme());
