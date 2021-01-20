@@ -556,33 +556,9 @@ public class MemberController {
                             , Model model) throws Exception {
         logger.info("register");
 
-        logger.info("member.isForeigner() = " + member.isForeigner());
-        logger.info("member.getDeveloper() = " + member.getDeveloper());
-        logger.info("member.getHobby() = " + member.getHobby());
+        logger.info("member.getGender() = " + member.getGender());
 
-        String[] hobbyArray = member.getHobbyArray();
-
-        if (hobbyArray != null) {
-            logger.info("hobbyArray != null = " + hobbyArray.length);
-            for (int i = 0; i < hobbyArray.length; i++) {
-                logger.info("hobbyArray[" + i + "] = " + hobbyArray[i]);
-            }
-        } else {
-            logger.info("hobbyArray == null");
-        }
-
-        List<String> hobbyList = member.getHobbyList();
-
-        if (hobbyList != null) {
-            logger.info("hobbyList != null = " + hobbyList.size());
-            for (int i = 0; i < hobbyList.size(); i++) {
-                logger.info("hobbyList(" + i + ") = " + hobbyList.get(i));
-            }
-        } else {
-            logger.info("hobbyList == null");
-        }
-
-        model.addAttribute("member", member);
+        model.addAttribute("gender", member.getGender());
 
         return "result";
     }
