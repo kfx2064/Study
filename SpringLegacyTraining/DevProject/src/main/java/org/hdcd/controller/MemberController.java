@@ -39,6 +39,7 @@ public class MemberController {
 
         logger.info("member.getUserId() = " + member.getUserId());
         logger.info("member.getUserName() = " + member.getUserName());
+        logger.info("member.getEmail() = " + member.getEmail());
 
         return "result";
     }

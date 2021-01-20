@@ -8,22 +8,22 @@
 </head>
 <body>
 <h2>Spring Form</h2>
-<form:form modelAttribute="member" method="post" action="register">
+<form id="member" action="register" method="post">
     <table>
         <tr>
-            <td><form:label path="userId">유저ID</form:label></td>
-            <td><form:input path="userId" /><font color="red"><form:errors path="userId" /></font></td>
+            <td><label for="userId">유저ID</label></td>
+            <td><input id="userId" name="userId" type="text" value=""/><font color="red"></font></td>
         </tr>
         <tr>
-            <td><form:label path="userName">이름</form:label></td>
-            <td><form:input path="userName" /><font color="red"><form:errors path="userName" /></font></td>
+            <td><label for="userName">이름</label></td>
+            <td><input id="userName" name="userName" type="text" value="홍길동"/><font color="red"></font></td>
         </tr>
         <tr>
-            <td><form:label path="email">E-MAIL</form:label></td>
-            <td><form:input path="email" /><font color="red"><form:errors path="email" /></font></td>
+            <td><label for="email">E-MAIL</label></td>
+            <td><input id="email" name="email" type="text" value="aaa@ccc.com"/><font color="red"></font></td>
         </tr>
     </table>
-    <form:button name="register">등록</form:button>
-</form:form>
+    <button id="register" name="register" type="submit" value="Submit">등록</button>
+</form>
 </body>
 </html>

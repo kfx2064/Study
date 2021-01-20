@@ -17,6 +17,10 @@
         <td>이름</td>
         <td>${member.userName}</td>
     </tr>
+    <tr>
+        <td>E-MAIL</td>
+        <td>${member.email}</td>
+    </tr>
 </table>
 </body>
 </html>
