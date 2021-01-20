@@ -598,9 +598,16 @@ public class MemberController {
     public String registerForm01(Model model) {
         logger.info("registerForm01");
 
+        Map<String, String> genderCodeMap = new HashMap<>();
+        genderCodeMap.put("01", "Male");
+        genderCodeMap.put("02", "Female");
+        genderCodeMap.put("03", "Other");
+
+        model.addAttribute("genderCodeMap", genderCodeMap);
+
         model.addAttribute("member", new Member());
 
-        return "registerForm";
+        return "registerForm01";
     }
 
     @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
