@@ -8,7 +8,9 @@
 </head>
 <body>
 <h3>Result</h3>
-<h4>nationality : </h4>
-<c:out value="${nationality}" />
+<h4>carList : </h4>
+<c:forEach var="car" items="${carList}">
+    <c:out value="${car}"/><br>
+</c:forEach>
 </body>
 </html>

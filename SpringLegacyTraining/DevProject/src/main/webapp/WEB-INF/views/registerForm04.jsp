@@ -8,13 +8,13 @@
 </head>
 <body>
 <h2>Spring Form</h2>
-<form:form modelAttribute="member" method="post" action="register">
+<form:form modelAttribute="member" method="post" action="register2">
     <table>
         <tr>
-            <td>국적</td>
+            <td>소유차량</td>
             <td>
-                <form:select path="nationality" items="${nationalityCodeList}"
-                        itemValue="value" itemLabel="label" />
+                <form:select path="carList" items="${carCodeList}"
+                             itemValue="value" itemLabel="label" multiple="true" />
             </td>
         </tr>
     </table>

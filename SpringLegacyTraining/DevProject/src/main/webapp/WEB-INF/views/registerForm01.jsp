@@ -11,9 +11,9 @@
 <form:form modelAttribute="member" method="post" action="register">
     <table>
         <tr>
-            <td>성별</td>
+            <td>국적</td>
             <td>
-                <form:radiobuttons path="gender" items="${genderCodeMap}" />
+                <form:select path="nationality" items="${nationalityCodeMap}" />
             </td>
         </tr>
     </table>
