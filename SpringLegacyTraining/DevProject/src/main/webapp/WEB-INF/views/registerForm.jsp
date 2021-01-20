@@ -11,16 +11,16 @@
 <form id="member" action="register" method="post">
     <table>
         <tr>
-            <td><label for="userId">유저ID</label></td>
-            <td><input id="userId" name="userId" type="text" value=""/><font color="red"></font></td>
+            <td>유저ID</td>
+            <td><input id="userId" name="userId" type="text" value=""/></td>
         </tr>
         <tr>
-            <td><label for="userName">이름</label></td>
-            <td><input id="userName" name="userName" type="text" value="홍길동"/><font color="red"></font></td>
+            <td>이름</td>
+            <td><input id="userName" name="userName" type="text" value="홍길동"/></td>
         </tr>
         <tr>
-            <td><label for="email">E-MAIL</label></td>
-            <td><input id="email" name="email" type="text" value="aaa@ccc.com"/><font color="red"></font></td>
+            <td>E-MAIL</td>
+            <td><input id="email" name="email" type="text" value="aaa@ccc.com"/></td>
         </tr>
     </table>
     <button id="register" name="register" type="submit" value="Submit">등록</button>
