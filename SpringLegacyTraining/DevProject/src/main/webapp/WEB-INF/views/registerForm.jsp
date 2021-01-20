@@ -13,41 +13,61 @@
         <tr>
             <td>개발자여부</td>
             <td>
-                <form:checkbox path="developer" value="Y" />
+                <input id="developer1" name="developer" type="checkbox" value="Y" checked="checked"/>
+                <input type="hidden" name="_developer" value="on" />
             </td>
         </tr>
         <tr>
             <td>외국인여부</td>
             <td>
-                <form:checkbox path="foreigner" value="falase" />
+                <input id="foreigner1" name="foreigner" type="checkbox" value="true" checked="checked" />
+                <input type="hidden" name="_foreigner" value="on" />
             </td>
         </tr>
         <tr>
             <td>취미(hobby)</td>
             <td>
-                <form:checkbox path="hobby" value="Sports" label="Sports" /><br>
-                <form:checkbox path="hobby" value="Music" label="Music" /><br>
-                <form:checkbox path="hobby" value="Movie" label="Movie" />
+                <input id="hobby1" name="hobby" type="checkbox" value="Sports" />
+                <label for="hobby1"> Sports</label>
+                <input type="hidden" name="_hobby" value="on" /><br>
+                <input id="hobby2" name="hobby" type="checkbox" value="Music" />
+                <label for="hobby2"> Music</label>
+                <input type="hidden" name="_hobby" value="on" /><br>
+                <input id="hobby3" name="hobby" type="checkbox" value="Movie" checked="checked" />
+                <label for="hobby3"> Movie</label>
+                <input type="hidden" name="_hobby" value="on" />
             </td>
         </tr>
         <tr>
             <td>취미(hobbyArray)</td>
             <td>
-                <form:checkbox path="hobbyArray" value="Sports" label="Sports" /><br>
-                <form:checkbox path="hobbyArray" value="Music" label="Music" /><br>
-                <form:checkbox path="hobbyArray" value="Movie" label="Movie" />
+                <input id="hobbyArray1" name="hobbyArray" type="checkbox" value="Sports"/>
+                <label for="hobbyArray1"> Sports</label>
+                <input type="hidden" name="_hobbyArray" value="on" /><br>
+                <input id="hobbyArray2" name="hobbyArray" type="checkbox" value="Music" checked="checked" />
+                <label for="hobbyArray2"> Music</label>
+                <input type="hidden" name="_hobbyArray" value="on" /><br>
+                <input id="hobbyArray3" name="hobbyArray" type="checkbox" value="Movie" checked="checked" />
+                <label for="hobbyArray3"> Movie</label>
+                <input type="hidden" name="_hobbyArray" value="on" />
             </td>
         </tr>
         <tr>
             <td>취미(hobbyList)</td>
             <td>
-                <form:checkbox path="hobbyList" value="Sports" label="Sports" /><br>
-                <form:checkbox path="hobbyList" value="Music" label="Music" /><br>
-                <form:checkbox path="hobbyList" value="Movie" label="Movie" />
+                <input id="hobbyList1" name="hobbyList" type="checkbox" value="Sports" />
+                <label for="hobbyList1"> Sports</label>
+                <input type="hidden" name="_hobbyList" value="on" /><br>
+                <input id="hobbyList2" name="hobbyList" type="checkbox" value="Music" />
+                <label for="hobbyList2"> Music</label>
+                <input type="hidden" name="_hobbyList" value="on" /><br>
+                <input id="hobbyList3" name="hobbyList" type="checkbox" value="Movie" checked="checked" />
+                <label for="hobbyList3"> Movie</label>
+                <input type="hidden" name="_hobbyList" value="on" />
             </td>
         </tr>
     </table>
-    <form:button name="register">등록</form:button>
+    <button id="register" name="register" type="submit" value="Submit">등록</button>
 </form:form>
 </body>
 </html>

@@ -552,10 +552,37 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Member member, RedirectAttributes rttr) throws Exception {
+    public String register(Member member, RedirectAttributes rttr
+                            , Model model) throws Exception {
         logger.info("register");
 
-        logger.info("member.getIntroduction() = " + member.getIntroduction());
+        logger.info("member.isForeigner() = " + member.isForeigner());
+        logger.info("member.getDeveloper() = " + member.getDeveloper());
+        logger.info("member.getHobby() = " + member.getHobby());
+
+        String[] hobbyArray = member.getHobbyArray();
+
+        if (hobbyArray != null) {
+            logger.info("hobbyArray != null = " + hobbyArray.length);
+            for (int i = 0; i < hobbyArray.length; i++) {
+                logger.info("hobbyArray[" + i + "] = " + hobbyArray[i]);
+            }
+        } else {
+            logger.info("hobbyArray == null");
+        }
+
+        List<String> hobbyList = member.getHobbyList();
+
+        if (hobbyList != null) {
+            logger.info("hobbyList != null = " + hobbyList.size());
+            for (int i = 0; i < hobbyList.size(); i++) {
+                logger.info("hobbyList(" + i + ") = " + hobbyList.get(i));
+            }
+        } else {
+            logger.info("hobbyList == null");
+        }
+
+        model.addAttribute("member", member);
 
         return "result";
     }
