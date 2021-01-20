@@ -20,10 +20,27 @@ public class MemberController {
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
     @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
-    public String registerForm() {
+    public String registerForm(Model model) {
         logger.info("registerForm");
 
+        Member member = new Member();
+
+        member.setUserId("hongkd");
+        member.setUserName("홍길동");
+
+        model.addAttribute("member", member);
+
         return "registerForm";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(Member member) throws Exception {
+        logger.info("register");
+
+        logger.info("member.getUserId() = " + member.getUserId());
+        logger.info("member.getUserName() = " + member.getUserName());
+
+        return "result";
     }
 
     @RequestMapping(value = "/register01", method = RequestMethod.POST)
@@ -558,28 +575,9 @@ public class MemberController {
         return "result";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Member member, RedirectAttributes rttr
-                            , Model model) throws Exception {
-        logger.info("register");
-
-        logger.info("member.getNationality() = " + member.getNationality());
-
-        model.addAttribute("nationality", member.getNationality());
-
-        return "result";
-    }
-
     @RequestMapping(value = "/registerForm01", method = RequestMethod.GET)
     public String registerForm01(Model model) {
         logger.info("registerForm01");
-
-        Map<String, String> nationalityCodeMap = new HashMap<>();
-        nationalityCodeMap.put("01", "Korea");
-        nationalityCodeMap.put("02", "Germany");
-        nationalityCodeMap.put("03", "Australia");
-
-        model.addAttribute("nationalityCodeMap", nationalityCodeMap);
 
         model.addAttribute("member", new Member());
 
@@ -590,14 +588,12 @@ public class MemberController {
     public String registerForm02(Model model) {
         logger.info("registerForm02");
 
-        List<CodeLabelValue> nationalityCodeList = new ArrayList<>();
-        nationalityCodeList.add(new CodeLabelValue("01", "Korea"));
-        nationalityCodeList.add(new CodeLabelValue("02", "Germany"));
-        nationalityCodeList.add(new CodeLabelValue("03", "Australia"));
-
-        model.addAttribute("nationalityCodeList", nationalityCodeList);
-
-        model.addAttribute("member", new Member());
+        Member member = new Member();
+        
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        
+        model.addAttribute("member", member);
 
         return "registerForm";
     }

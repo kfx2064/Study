@@ -8,7 +8,15 @@
 </head>
 <body>
 <h3>Result</h3>
-<h4>nationality : </h4>
-<c:out value="${nationality}" />
+<table border="1">
+    <tr>
+        <td>유저ID</td>
+        <td>${member.userId}</td>
+    </tr>
+    <tr>
+        <td>이름</td>
+        <td>${member.userName}</td>
+    </tr>
+</table>
 </body>
 </html>
