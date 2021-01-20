@@ -8,12 +8,9 @@
 <body>
 <h3>Result</h3>
 
-<table>
-    <tr>
-        <td>소개</td>
-        <td>${member.introduction}</td>
-    </tr>
-</table>
-
+<h4>hobbyList</h4>
+<c:forEach var="hobby" items="${hobbyList}">
+    <c:out value="${hobby}" /> <br>
+</c:forEach>
 </body>
 </html>

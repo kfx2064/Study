@@ -13,7 +13,8 @@
         <tr>
             <td>취미(hobbyList)</td>
             <td>
-                <form:checkboxes path="hobbyList" items="${hobbyMap}" />
+                <form:checkboxes path="hobbyList" items="${hobbyCodeList}"
+                                 itemValue="value" itemLabel="label" />
             </td>
         </tr>
     </table>

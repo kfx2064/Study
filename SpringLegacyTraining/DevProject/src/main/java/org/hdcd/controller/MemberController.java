@@ -571,15 +571,9 @@ public class MemberController {
     public String registerForm01(Model model) {
         logger.info("registerForm01");
 
-        Map<String, String> hobbyMap = new HashMap<>();
-        hobbyMap.put("01", "Sports");
-        hobbyMap.put("02", "Music");
-        hobbyMap.put("03", "Movie");
-
-        model.addAttribute("hobbyMap", hobbyMap);
         model.addAttribute("member", new Member());
 
-        return "registerForm01";
+        return "registerForm";
     }
 
     @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
