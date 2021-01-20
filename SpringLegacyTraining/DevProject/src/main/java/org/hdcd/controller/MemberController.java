@@ -597,9 +597,20 @@ public class MemberController {
 
         Member member = new Member();
 
-        member.setEmail("aaa@ccc.com");
-        member.setUserName("홍길동");
-        member.setPassword("1234");
+        member.setDeveloper("Y");
+        member.setForeigner(true);
+
+        member.setHobby("Movie");
+
+        String[] hobbyArray = {"Music", "Movie"};
+
+        member.setHobbyArray(hobbyArray);
+
+        List<String> hobbyList = new ArrayList<>();
+        hobbyList.add("Music");
+        hobbyList.add("Movie");
+
+        member.setHobbyList(hobbyList);
 
         model.addAttribute("member", member);
 
