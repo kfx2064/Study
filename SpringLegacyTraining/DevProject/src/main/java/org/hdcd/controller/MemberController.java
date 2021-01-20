@@ -25,7 +25,6 @@ public class MemberController {
 
         Member member = new Member();
 
-        member.setUserId("hongkd");
         member.setEmail("aaa@ccc.com");
         member.setUserName("홍길동");
 
