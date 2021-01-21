@@ -13,22 +13,19 @@
 		<property name="password" value="1234"></property>
 	</bean>
 
-	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		<property name="packagesToScan" value="org.hdcd.domain" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:/org/hdcd/mapper/*Mapper.xml" />
 	</bean>
 
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 
 	<tx:annotation-driven />
 
-	<jpa:repositories base-package="org.hdcd.repository" />
-
+	<context:component-scan base-package="org.hdcd.dao"></context:component-scan>
 	<context:component-scan base-package="org.hdcd.service"></context:component-scan>
 
 	<mvc:interceptors>
