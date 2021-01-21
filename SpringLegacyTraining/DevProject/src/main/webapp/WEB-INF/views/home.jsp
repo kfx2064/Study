@@ -10,7 +10,6 @@
 <h1>
 	Hello world!<br>
 	<spring:message code="welcome.message"/><br>
-	<spring:message code="result.succeed"/>
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>

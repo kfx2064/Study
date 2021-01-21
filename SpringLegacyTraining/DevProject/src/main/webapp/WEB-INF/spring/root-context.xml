@@ -8,7 +8,7 @@
 		<property name="basenames">
 			<list>
 				<value>messages</value>
-				<value>application-messages</value>
+				<!--<value>application-messages</value>-->
 			</list>
 		</property>
 	</bean>
