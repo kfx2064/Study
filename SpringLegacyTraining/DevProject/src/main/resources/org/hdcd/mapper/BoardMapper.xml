@@ -19,7 +19,7 @@
         )
     </insert>
 
-    <select id="read" resultType="org.hdcd.domain.Board">
+    <select id="read" resultType="Board">
         SELECT  board_no    AS boardNo,
                 title,
                 content,
@@ -41,7 +41,7 @@
         WHERE   board_no = #{boardNo}
     </delete>
 
-    <select id="list" resultType="org.hdcd.domain.Board">
+    <select id="list" resultType="Board">
         <![CDATA[
         SELECT  board_no AS boardNo,
                 title,
