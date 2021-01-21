@@ -27,12 +27,34 @@
             <td><form:input path="email"/><font color="red"><form:errors path="email"/></font></td>
         </tr>
         <tr>
-            <td>성별</td>
+            <td>생년월일</td>
+            <td><form:input type="date" path="dateOfBirth"/><font color="red"><form:errors path="dateOfBirth"/></font></td>
+        </tr>
+        <tr>
+            <td>우편번호</td>
+            <td><form:input path="address.postCode"/><font color="red"><form:errors path="address.postCode"/></font></td>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td><form:input path="address.location"/><font color="red"><form:errors path="address.location"/></font></td>
+        </tr>
+        <tr>
+            <td>카드1 - 번호</td>
+            <td><form:input path="cardList[0].no"/><font color="red"><form:errors path="cardList[0].no"/></font></td>
+        </tr>
+        <tr>
+            <td>카드1 - 유효년월</td>
             <td>
-                <form:radiobutton path="gender" value="male" label="Male" />
-                <form:radiobutton path="gender" value="female" label="Female" />
-                <form:radiobutton path="gender" value="other" label="Other" />
+                <form:input path="cardList[0].validMonth"/><font color="red"><form:errors path="cardList[0].validMonth"/></font>
             </td>
+        </tr>
+        <tr>
+            <td>카드2 - 번호</td>
+            <td><form:input path="cardList[1].no"/><font color="red"><form:errors path="cardList[1].no"/></font></td>
+        </tr>
+        <tr>
+            <td>카드2 - 유효년월</td>
+            <td><form:input path="cardList[1].validMonth"/><font color="red"><form:errors path="cardList[1].validMonth"/></font></td>
         </tr>
     </table>
     <table>

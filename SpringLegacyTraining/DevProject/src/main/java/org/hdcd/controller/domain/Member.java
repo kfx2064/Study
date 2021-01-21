@@ -5,7 +5,10 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -20,11 +23,13 @@ public class Member implements Serializable {
 
     @NotBlank
     private String userId;
+    @NotBlank
     private String password;
 
     @NotBlank
     @Size(max = 3)
     private String userName;
+    @Email
     private String email;
     private String gender;
     private String hobby;
@@ -34,8 +39,10 @@ public class Member implements Serializable {
     private String developer;
     private String nationality;
 
+    @Valid
     private Address address;
 
+    @Valid
     private List<Card> cardList;
 
     private String cars;
@@ -46,7 +53,8 @@ public class Member implements Serializable {
 
     private int coin = 100;
 
-    @DateTimeFormat(pattern = "yyyyMMdd")
+    @Past
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     private String birthDay;
 
