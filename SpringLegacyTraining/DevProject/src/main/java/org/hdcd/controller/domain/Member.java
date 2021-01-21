@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -16,9 +18,12 @@ public class Member implements Serializable {
 
     private static final long serialVersionUID = -8660095590680225320L;
 
+    @NotBlank
     private String userId;
     private String password;
 
+    @NotBlank
+    @Size(max = 3)
     private String userName;
     private String email;
     private String gender;

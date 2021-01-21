@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -34,14 +36,17 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Member member) throws Exception {
+    public String register(@Validated Member member, BindingResult result) throws Exception {
         logger.info("register");
 
-        logger.info("member.getUserId() = " + member.getUserId());
-        logger.info("member.getUserName() = " + member.getUserName());
-        logger.info("member.getEmail() = " + member.getEmail());
+        if (result.hasErrors()) {
+            return "registerForm";
+        }
 
-        return "result";
+        logger.info("member.getUserId() = " + member.getUserId());
+        logger.info("member.getGender() = " + member.getGender());
+
+        return "success";
     }
 
     @RequestMapping(value = "/register01", method = RequestMethod.POST)
