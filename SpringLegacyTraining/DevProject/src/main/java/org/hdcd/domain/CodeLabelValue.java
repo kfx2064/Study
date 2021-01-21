@@ -1,4 +1,4 @@
-package org.hdcd.controller.domain;
+package org.hdcd.domain;
 
 public class CodeLabelValue {
 

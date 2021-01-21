@@ -1,6 +1,6 @@
 package org.hdcd.controller;
 
-import org.hdcd.controller.domain.Board;
+import org.hdcd.domain.Board;
 import org.hdcd.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

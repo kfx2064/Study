@@ -1,8 +1,8 @@
 package org.hdcd.controller;
 
 import org.apache.commons.io.IOUtils;
-import org.hdcd.controller.domain.Card;
-import org.hdcd.controller.domain.Member;
+import org.hdcd.domain.Card;
+import org.hdcd.domain.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package org.hdcd.service;
 
-import org.hdcd.controller.domain.Board;
+import org.hdcd.domain.Board;
 import org.hdcd.dao.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

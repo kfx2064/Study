@@ -1,6 +1,6 @@
 package org.hdcd.service;
 
-import org.hdcd.controller.domain.Board;
+import org.hdcd.domain.Board;
 
 import java.util.List;
 
