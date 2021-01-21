@@ -19,12 +19,12 @@
         )
     </insert>
 
-    <select id="read" resultType="Board">
-        SELECT  board_no    AS boardNo,
+    <select id="read" resultType="org.hdcd.domain.Board">
+        SELECT  board_no,
                 title,
                 content,
                 writer,
-                reg_date    AS regDate
+                reg_date
         FROM    board
         WHERE   board_no = #{boardNo}
     </select>
@@ -41,13 +41,13 @@
         WHERE   board_no = #{boardNo}
     </delete>
 
-    <select id="list" resultType="Board">
+    <select id="list" resultType="org.hdcd.domain.Board">
         <![CDATA[
-        SELECT  board_no AS boardNo,
+        SELECT  board_no,
                 title,
                 content,
                 writer,
-                reg_date    AS regDate
+                reg_date
         FROM    board
         WHERE   board_no > 0
         ORDER BY    board_no DESC,
