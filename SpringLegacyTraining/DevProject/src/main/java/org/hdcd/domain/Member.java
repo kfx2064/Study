@@ -21,15 +21,16 @@ public class Member implements Serializable {
 
     private static final long serialVersionUID = -8660095590680225320L;
 
-    @NotBlank
+    private int userNo;
     private String userId;
-    @NotBlank
-    private String password;
-
-    @NotBlank
-    @Size(max = 3)
+    private String userPw;
     private String userName;
-    @Email
+    private Date regDate;
+    private Date updDate;
+
+    private List<MemberAuth> authList;
+
+    private String password;
     private String email;
     private String gender;
     private String hobby;
@@ -39,10 +40,8 @@ public class Member implements Serializable {
     private String developer;
     private String nationality;
 
-    @Valid
     private Address address;
 
-    @Valid
     private List<Card> cardList;
 
     private String cars;
@@ -53,8 +52,6 @@ public class Member implements Serializable {
 
     private int coin = 100;
 
-    @Past
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     private String birthDay;
 

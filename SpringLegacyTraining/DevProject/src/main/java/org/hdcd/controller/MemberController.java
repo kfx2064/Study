@@ -1,8 +1,10 @@
 package org.hdcd.controller;
 
 import org.hdcd.domain.*;
+import org.hdcd.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,9 @@ public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
+    @Autowired
+    private MemberService service;
+
     @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
     public String registerForm(Model model) {
         logger.info("registerForm");
@@ -34,43 +39,19 @@ public class MemberController {
         return "registerForm";
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public void registerForm(Member member, Model model) throws Exception {
+
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@Validated Member member, BindingResult result) throws Exception {
-        logger.info("register");
+    public String register(Member member, Model model) throws Exception {
 
-        if (result.hasErrors()) {
-            return "registerForm";
-        }
+        service.register(member);
 
-        logger.info("member.getUserId() = " + member.getUserId());
-        logger.info("member.getBirthDate() = " + member.getDateOfBirth());
+        model.addAttribute("msg", "등록이 완료되었습니다.");
 
-        Address address = member.getAddress();
-
-        if (address != null) {
-            logger.info("address != null address.getPostCode() = " + address.getPostCode());
-            logger.info("address != null address.getLocation() = " + address.getLocation());
-        } else {
-            logger.info("address == null");
-        }
-
-        List<Card> cardList = member.getCardList();
-
-        if (cardList != null) {
-            logger.info("cardList != null = " + cardList.size());
-            for (int i = 0; i < cardList.size(); i++) {
-                Card card = cardList.get(i);
-                logger.info("card.getNo() = " +card.getNo());
-                logger.info("card.getValidMonth() = " + card.getValidMonth());
-            }
-        } else {
-            logger.info("cardList == null");
-        }
-
-        logger.info("member.getUserId() = " + member.getUserId());
-        logger.info("member.getGender() = " + member.getGender());
-
-        return "success";
+        return "user/success";
     }
 
     @RequestMapping(value = "/registerForm01", method = RequestMethod.GET)
