@@ -1,5 +1,6 @@
 package org.hdcd.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.hdcd.domain.*;
 import org.hdcd.service.MemberService;
 import org.slf4j.Logger;
@@ -40,16 +41,58 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public void registerForm(Member member, Model model) throws Exception {
-
+    public String registerForm(Member member, Model model, BindingResult bindingResult) throws Exception {
+        return "user/register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Member member, Model model) throws Exception {
+    public String register(Member member, Model model, BindingResult bindingResult) throws Exception {
 
         service.register(member);
 
         model.addAttribute("msg", "등록이 완료되었습니다.");
+
+        return "user/success";
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String list(Model model, BindingResult bindingResult) throws Exception {
+
+        model.addAttribute("list", service.list());
+
+        return "user/list";
+    }
+
+    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    public String read(int userNo, Model model, BindingResult bindingResult) throws Exception {
+
+        model.addAttribute(service.read(userNo));
+
+        return "user/read";
+    }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public String remove(int userNo, Model model) throws Exception {
+
+        service.remove(userNo);
+
+        model.addAttribute("msg", "삭제가 완료되었습니다.");
+
+        return "user/success";
+    }
+
+    @RequestMapping(value = "/modify", method = RequestMethod.GET)
+    public String modifyForm(int userNo, Model model) throws Exception {
+        model.addAttribute(service.read(userNo));
+
+        return "user/modify";
+    }
+
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    public String modify(Member member, Model model) throws Exception {
+        service.modify(member);
+
+        model.addAttribute("msg", "수정이 완료되었습니다.");
 
         return "user/success";
     }

@@ -6,5 +6,6 @@
 </head>
 <body>
 <h3>${msg}</h3>
+<a href="list">List</a>
 </body>
 </html>

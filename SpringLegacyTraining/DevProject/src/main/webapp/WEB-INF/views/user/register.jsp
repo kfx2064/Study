@@ -14,6 +14,10 @@
             formObj.attr("method", "post");
             formObj.submit();
         });
+
+        $("#btnList").on("click", function () {
+            self.location = "/board/list";
+        });
     });
 </script>
 <body>
