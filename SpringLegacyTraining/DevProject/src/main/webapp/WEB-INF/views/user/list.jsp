@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>User</title>
 </head>
 <script src="/resources/js/jquery-3.5.1.js"></script>
 <body>
@@ -13,8 +15,8 @@
     <tr>
         <th align="center" width="60">NO</th>
         <th align="center" width="80">USERID</th>
-        <th align="center" width="300">USERPW</th>
-        <th align="center" width="100">USERNAME</th>
+        <th align="center" width="50">USERPW</th>
+        <th align="center" width="50">USERNAME</th>
         <th align="center" width="180">REGDATE</th>
     </tr>
     <c:forEach items="${list}" var="member">

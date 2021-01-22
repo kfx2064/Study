@@ -9,6 +9,7 @@
 <script>
     $(document).ready(function () {
         var formObj = $("#member");
+
         $("#btnRegister").on("click", function () {
             formObj.attr("action", "/user/register");
             formObj.attr("method", "post");
@@ -16,7 +17,7 @@
         });
 
         $("#btnList").on("click", function () {
-            self.location = "/board/list";
+            self.location = "/user/list";
         });
     });
 </script>
@@ -44,6 +45,7 @@
 
 <div>
     <button type="submit" id="btnRegister">Register</button>
+    <button type="submit" id="btnList">List</button>
 </div>
 </body>
 </html>

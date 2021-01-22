@@ -8,7 +8,7 @@
         <id property="userNo" column="user_no" />
         <result property="userNo" column="user_no" />
         <result property="userId" column="user_id" />
-        <result property="usrePw" column="user_pw" />
+        <result property="userPw" column="user_pw" />
         <result property="userName" column="user_name" />
         <result property="regDate" column="reg_date" />
         <result property="updDate" column="upd_date" />
@@ -61,11 +61,11 @@
     </delete>
 
     <select id="list" resultType="org.hdcd.domain.Member">
-        SELECT  user_no,
-                user_id,
-                user_pw,
-                user_name,
-                reg_date
+        SELECT  user_no
+                , user_id
+                , user_pw
+                , user_name
+                , reg_date
         FROM    member
         ORDER BY reg_date DESC
     </select>
@@ -73,13 +73,13 @@
     <insert id="createAuth">
         INSERT INTO member_auth
         (
-            user_no,
-            auth
+            user_no
+            , auth
         )
         VALUES
         (
-            #{userNo},
-            #{auth}
+            #{userNo}
+            , #{auth}
         )
     </insert>
 

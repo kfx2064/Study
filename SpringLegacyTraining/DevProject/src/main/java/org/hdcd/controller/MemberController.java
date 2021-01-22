@@ -1,6 +1,5 @@
 package org.hdcd.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.hdcd.domain.*;
 import org.hdcd.service.MemberService;
 import org.slf4j.Logger;
@@ -12,13 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
 
 @Controller
+@RequestMapping("/user")
 public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -41,12 +40,11 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerForm(Member member, Model model, BindingResult bindingResult) throws Exception {
-        return "user/register";
+    public void registerForm(Member member, Model model) throws Exception {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Member member, Model model, BindingResult bindingResult) throws Exception {
+    public String register(Member member, Model model) throws Exception {
 
         service.register(member);
 
@@ -56,19 +54,13 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model, BindingResult bindingResult) throws Exception {
-
+    public void list(Model model) throws Exception {
         model.addAttribute("list", service.list());
-
-        return "user/list";
     }
 
     @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public String read(int userNo, Model model, BindingResult bindingResult) throws Exception {
-
+    public void read(int userNo, Model model) throws Exception {
         model.addAttribute(service.read(userNo));
-
-        return "user/read";
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
@@ -82,10 +74,8 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/modify", method = RequestMethod.GET)
-    public String modifyForm(int userNo, Model model) throws Exception {
+    public void modifyForm(int userNo, Model model) throws Exception {
         model.addAttribute(service.read(userNo));
-
-        return "user/modify";
     }
 
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
