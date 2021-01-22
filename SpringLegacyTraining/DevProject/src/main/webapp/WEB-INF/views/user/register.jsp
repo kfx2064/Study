@@ -27,13 +27,13 @@
     <table>
         <tr>
             <td>userid</td>
-            <td><form:input path="usreId"/></td>
+            <td><form:input path="userId"/></td>
             <td><font color="red"><form:errors path="userId" /></font></td>
         </tr>
         <tr>
             <td>userpw</td>
             <td><form:input path="userPw"/></td>
-            <td><font color="red"><form:errors path="usrePw" /></font></td>
+            <td><font color="red"><form:errors path="userPw" /></font></td>
         </tr>
         <tr>
             <td>username</td>
