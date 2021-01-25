@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page session="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page session="false" %>
 <html>
 <head>
     <title>Spring Form</title>
@@ -11,13 +11,12 @@
 <form:form modelAttribute="member" method="post" action="register">
     <table>
         <tr>
-            <td>취미(hobbyList)</td>
+            <td>국적</td>
             <td>
-                <form:checkboxes path="hobbyList" items="${hobbyMap}" />
+                <form:select path="nationality" items="${nationalityCodeMap}" />
             </td>
         </tr>
     </table>
-
     <form:button name="register">등록</form:button>
 </form:form>
 </body>

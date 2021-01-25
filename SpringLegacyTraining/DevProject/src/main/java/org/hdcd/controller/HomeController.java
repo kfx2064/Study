@@ -1,10 +1,12 @@
 package org.hdcd.controller;
 
 import org.apache.commons.io.IOUtils;
-import org.hdcd.controller.domain.Card;
-import org.hdcd.controller.domain.Member;
+import org.hdcd.domain.Card;
+import org.hdcd.domain.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,6 +29,9 @@ import java.util.*;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+	@Autowired
+	private MessageSource messageSource;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -42,6 +47,17 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		return "home";
+	}
+
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcome() {
+		String[] args = {"홍길동"};
+
+		String message = messageSource.getMessage("welcome.message", args, Locale.KOREAN);
+
+		logger.info("Welcome message : " + message);
+
 		return "home";
 	}
 

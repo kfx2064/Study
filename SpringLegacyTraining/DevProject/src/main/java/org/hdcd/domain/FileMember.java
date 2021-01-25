@@ -1,19 +1,17 @@
-package org.hdcd.controller.domain;
+package org.hdcd.domain;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString
-public class MultiFileMember {
+public class FileMember {
 
     private String userId;
     private String password;
-    private List<MultipartFile> pictureList;
+    private MultipartFile picture;
 
 }

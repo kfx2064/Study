@@ -1,29 +1,201 @@
 package org.hdcd.controller;
 
-import org.hdcd.controller.domain.*;
+import org.hdcd.domain.*;
+import org.hdcd.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.*;
 
 @Controller
+@RequestMapping("/user")
 public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
+    @Autowired
+    private MemberService service;
+
     @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
-    public String registerForm() {
+    public String registerForm(Model model) {
         logger.info("registerForm");
 
+        Member member = new Member();
+
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+
+        model.addAttribute("member", member);
+
         return "registerForm";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public void registerForm(Member member, Model model) throws Exception {
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(Member member, Model model) throws Exception {
+
+        service.register(member);
+
+        model.addAttribute("msg", "등록이 완료되었습니다.");
+
+        return "user/success";
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public void list(Model model) throws Exception {
+        model.addAttribute("list", service.list());
+    }
+
+    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    public void read(int userNo, Model model) throws Exception {
+        model.addAttribute(service.read(userNo));
+    }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public String remove(int userNo, Model model) throws Exception {
+
+        service.remove(userNo);
+
+        model.addAttribute("msg", "삭제가 완료되었습니다.");
+
+        return "user/success";
+    }
+
+    @RequestMapping(value = "/modify", method = RequestMethod.GET)
+    public void modifyForm(int userNo, Model model) throws Exception {
+        model.addAttribute(service.read(userNo));
+    }
+
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    public String modify(Member member, Model model) throws Exception {
+        service.modify(member);
+
+        model.addAttribute("msg", "수정이 완료되었습니다.");
+
+        return "user/success";
+    }
+
+    @RequestMapping(value = "/registerForm01", method = RequestMethod.GET)
+    public String registerForm01(Model model) {
+        logger.info("registerForm01");
+
+        model.addAttribute("member", new Member());
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
+    public String registerForm02(Model model) {
+        logger.info("registerForm02");
+
+        Member member = new Member();
+
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        member.setUserName("홍길동");
+
+        Address address = new Address();
+        address.setPostCode("080908");
+        address.setLocation("seoul");
+
+        member.setAddress(address);
+
+        List<Card> cardList = new ArrayList<>();
+
+        Card card1 = new Card();
+        card1.setNo("123456");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2020);
+        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.DAY_OF_MONTH, 8);
+
+        card1.setValidMonth(cal.getTime());
+
+        cardList.add(card1);
+
+        Card card2 = new Card();
+        card2.setNo("456786");
+
+        cal.set(Calendar.YEAR, 2022);
+        cal.set(Calendar.MONTH, 11);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        card2.setValidMonth(cal.getTime());
+
+        cardList.add(card2);
+
+        member.setCardList(cardList);
+
+        cal.set(Calendar.YEAR, 1988);
+        cal.set(Calendar.MONTH, 10);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        member.setDateOfBirth(cal.getTime());
+
+        model.addAttribute("member", member);
+
+        return "registerForm";
+    }
+
+    @RequestMapping(value = "/registerForm03", method = RequestMethod.GET)
+    public String registerForm03(Model model) {
+        logger.info("registerForm03");
+
+        Map<String, String> carCodeMap = new HashMap<>();
+        carCodeMap.put("01", "Volvo");
+        carCodeMap.put("02", "Saab");
+        carCodeMap.put("03", "Opel");
+
+        model.addAttribute("carCodeMap", carCodeMap);
+
+        model.addAttribute("member", new Member());
+
+        return "registerForm03";
+    }
+
+    @RequestMapping(value = "/registerForm04", method = RequestMethod.GET)
+    public String registerForm04(Model model) {
+        logger.info("registerForm04");
+
+        List<CodeLabelValue> carCodeList = new ArrayList<>();
+        carCodeList.add(new CodeLabelValue("01", "Volvo"));
+        carCodeList.add(new CodeLabelValue("02", "Saab"));
+        carCodeList.add(new CodeLabelValue("03", "Opel"));
+
+        model.addAttribute("carCodeList", carCodeList);
+
+        model.addAttribute("member", new Member());
+
+        return "registerForm04";
+    }
+
+    @RequestMapping(value = "/registerForm05", method = RequestMethod.GET)
+    public String registerForm05(Model model) {
+        logger.info("registerForm05");
+
+        List<CodeLabelValue> carCodeList = new ArrayList<>();
+        carCodeList.add(new CodeLabelValue("01", "Volvo"));
+        carCodeList.add(new CodeLabelValue("02", "Saab"));
+        carCodeList.add(new CodeLabelValue("03", "Opel"));
+
+        model.addAttribute("carCodeList", carCodeList);
+
+        model.addAttribute("member", new Member());
+
+        return "registerForm05";
     }
 
     @RequestMapping(value = "/register01", method = RequestMethod.POST)
@@ -551,15 +723,6 @@ public class MemberController {
         return "success";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Member member, RedirectAttributes rttr) throws Exception {
-        logger.info("register");
-
-        logger.info("member.getIntroduction() = " + member.getIntroduction());
-
-        return "result";
-    }
-
     @RequestMapping(value = "/result", method = RequestMethod.GET)
     public String result() {
         logger.info("result");
@@ -567,20 +730,27 @@ public class MemberController {
         return "result";
     }
 
-    @RequestMapping(value = "/registerForm01", method = RequestMethod.GET)
-    public String registerForm01(Model model) {
-        logger.info("registerForm01");
+    @RequestMapping(value = "/register2", method = RequestMethod.POST)
+    public String register2(Member member, Model model) {
+        logger.info("register2");
 
-        Map<String, String> hobbyMap = new HashMap<>();
-        hobbyMap.put("01", "Sports");
-        hobbyMap.put("02", "Music");
-        hobbyMap.put("03", "Movie");
+        List<String> carList = member.getCarList();
 
-        model.addAttribute("hobbyMap", hobbyMap);
-        model.addAttribute("member", new Member());
+        if (carList != null) {
+            logger.info("carList != null = " + carList.size());
+            for (int i = 0; i < carList.size(); i++) {
+                logger.info("carList(" + i + ") = " + carList.get(i));
+            }
+        } else {
+            logger.info("carList == null");
+        }
 
-        return "registerForm01";
+        model.addAttribute("carList", member.getCarList());
+
+        return "result2";
     }
+
+
 
     @RequestMapping(value = "/registerForm2", method = RequestMethod.GET)
     public String registerForm2(Model model) {
@@ -593,28 +763,6 @@ public class MemberController {
         member.setIntroduction(introduction);
 
         model.addAttribute("user", member);
-
-        return "registerForm";
-    }
-
-    @RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
-    public String registerForm02(Model model) {
-        logger.info("registerForm02");
-
-        Member member = new Member();
-
-        member.setEmail("aaa@ccc.com");
-        member.setUserName("홍길동");
-        member.setPassword("1234");
-
-        model.addAttribute("member", member);
-
-        return "registerForm";
-    }
-
-    @RequestMapping(value = "/registerForm05", method = RequestMethod.GET)
-    public String registerForm05(Member member) {
-        logger.info("registerForm05");
 
         return "registerForm";
     }

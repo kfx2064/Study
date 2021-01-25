@@ -11,13 +11,13 @@
 <form:form modelAttribute="member" method="post" action="register">
     <table>
         <tr>
-            <td>취미(hobbyList)</td>
+            <td>국적</td>
             <td>
-                <form:checkboxes path="hobbyList" items="${hobbyMap}" />
+                <form:select path="nationality" items="${nationalityCodeList}"
+                        itemValue="value" itemLabel="label" />
             </td>
         </tr>
     </table>
-
     <form:button name="register">등록</form:button>
 </form:form>
 </body>
