@@ -1,8 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Board</title>
 </head>
 <script src="/resources/js/jquery-3.5.1.js"></script>
@@ -14,10 +16,9 @@ $(document).ready(function () {
     console.log(formObj);
 
     $("#btnModify").on("click", function () {
-        var boardNo = $("#boardNo");
-        var boardNoVal = boardNo.val();
-
-        self.location = "/board/modify?boardNo=" + boardNoVal;
+        formObj.attr("action", "/board/modify");
+        formObj.attr("method", "get");
+        formObj.submit();
     });
 
     $("#btnRemove").on("click", function () {

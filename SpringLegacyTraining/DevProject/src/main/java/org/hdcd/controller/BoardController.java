@@ -226,4 +226,17 @@ public class BoardController {
 		return "board/success";
 	}
 
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String search(String title, Model model) throws Exception {
+		logger.info("search");
+
+		Board board = new Board();
+		board.setTitle(title);
+
+		model.addAttribute("board", board);
+		model.addAttribute("list", service.search(title));
+
+		return "board/list";
+	}
+
 }
