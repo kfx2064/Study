@@ -18,6 +18,56 @@
         $("#btnList").on("click", function () {
             self.location = "/item/list";
         });
+
+        function getOriginalName(fileName) {
+            if (checkImageType(fileName)) {
+                return;
+            }
+
+            var idx = fileName.indexOf("_") + 1;
+
+            return fileName.substr(idx);
+        }
+
+        function getThumbnailName(fileName) {
+            var front = fileName.substr(0, 12);
+            var end = fileName.substr(12);
+
+            console.log("front : " + front);
+            console.log("end : " + end);
+
+            return front + "s_" + end;
+        }
+
+        function checkImageType(fileName) {
+            var pattern = /jpg|gif|png|jpeg/i;
+
+            return fileName.match(pattern);
+        }
+
+        var itemId = ${item.itemId};
+
+        console.log("itemId : " + itemId);
+
+        $.getJSON("/item/getAttach/" + itemId, function (list) {
+            $(list).each(function () {
+                console.log("data : " + this);
+
+                var data = this;
+
+                var str = "";
+
+                if (checkImageType(data)) {
+                    str = "<div><a href='/item/displayFile?fileName=" + data + "'>"
+                        + "<img src='/item/displayFile?fileName=" + getThumbnailName(data) + "'/>"
+                        + "</a></div>";
+                } else {
+                    str = "<div><a href='/item/displayFile?fileName=" + data + "'>"
+                        + getOriginalName(data) + "</a></div>";
+                }
+                $(".uploadedList").append(str);
+            });
+        });
     });
 </script>
 </head>

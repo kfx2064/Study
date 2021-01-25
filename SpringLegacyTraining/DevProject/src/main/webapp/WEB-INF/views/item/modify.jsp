@@ -19,14 +19,118 @@
         $("#btnList").on("click", function () {
             self.location = "/item/list";
         });
+
+        $(".uploadedList").on("click", function () {
+            $(this).parent("div").remove();
+        });
+
+        function getOriginalName(fileName) {
+            if (checkImageType(fileName)) {
+                return;
+            }
+            var idx = fileName.indexOf("_") + 1;
+            return fileName.substr(idx);
+        }
+
+        function getThumbnailName(fileName) {
+            var front = fileName.substr(0, 12);
+            var end = fileName.substr(12);
+
+            console.log("front : " + front);
+            console.log("end : " + end);
+
+            return front + "s_" + end;
+        }
+
+        function checkImageType(fileName) {
+            var pattern = /jpg|gif|png|jpeg/i;
+
+            return fileName.match(pattern);
+        }
+
+        var itemId = ${item.itemId};
+
+        console.log("itemId : " + itemId);
+
+        $.getJSON("/item/getAttach/" + itemId, function (list) {
+            $(list).each(function() {
+                console.log("data : " + this);
+
+                var data = this;
+
+                var str = "";
+
+                if (checkImageType(data)) {
+                    str = "<div><a href='/item/displayFile?fileName=" + data + "'>"
+                        + "<img src=/item/displayFile?fileName=" + getThumbnailName(data) + "'/>"
+                        + "</a><span>X</span></div>";
+                } else {
+                    str = "<div><a href='/item/displayFile?fileName=" + data + "'>"
+                        + getOriginalName(data) + "</a><span>X</span></div>";
+                }
+                $(".uploadedList").append(str);
+            });
+        });
+
+        $("#item").submit(function (event) {
+            event.preventDefault();
+
+            var that = $(this);
+
+            var str = "";
+            $(".uploadedList a").each(function (index) {
+                var value = $(this).attr("href");
+                value = value.substr(27);
+
+                str += "<input type='hidden' name='files[" + index + "]' value='" + value + "'>";
+            });
+            console.log("str = " + str);
+            that.append(str);
+            that.get(0).submit();
+        });
+
+        $("#inputFile").on("change", function (event) {
+            console.log("change");
+
+            var files = event.target.files;
+            var file = files[0];
+
+            console.log(file);
+
+            var formData = new FormData();
+            formData.append("file", file);
+
+            $.ajax({
+                url: "/item/uploadAjax" ,
+                data: formData,
+                dataType: "text",
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function (data) {
+                    console.log(data);
+
+                    var str = "";
+
+                    if (checkImageType(data)) {
+                        str = "<div><a href='/item/displayFile?fileName=" + data + "'>"
+                            + "<img src='/item/displayFile?fileName=" + getThumbnailName(data) + "'/>"
+                            + "</a><span>X</span></div>";
+                    } else {
+                        str = "<div><a href='/item/displayFile?fileName=" + data + "'>"
+                            + getOriginalName(data) + "</a>"
+                            + "<span>X</span></div></div>";
+                    }
+                    $(".uploadedList").append(str);
+                }
+            });
+        });
     });
 </script>
 <body>
 <h2>MODIFY</h2>
 <form:form modelAttribute="item" action="modify" enctype="multipart/form-data">
     <form:hidden path="itemId"/>
-    <form:hidden path="pictureUrl"/>
-    <form:hidden path="pictureUrl2"/>
     <table>
         <tr>
             <td>상품명</td>
@@ -40,20 +144,10 @@
         </tr>
         <tr>
             <td>파일</td>
-            <td><img src="display?itemId=${item.itemId}" width="210" height="240" ></td>
-        </tr>
-        <tr>
-            <td>파일</td>
-            <td><input type="file" name="pictures"></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>파일</td>
-            <td><img src="display2?itemId=${item.itemId}" width="210" height="240" ></td>
-        </tr>
-        <tr>
-            <td>파일</td>
-            <td><input type="file" name="pictures"></td>
+            <td>
+                <input type="file" id="inputFile">
+                <div class="uploadedList"></div>
+            </td>
             <td></td>
         </tr>
         <tr>
