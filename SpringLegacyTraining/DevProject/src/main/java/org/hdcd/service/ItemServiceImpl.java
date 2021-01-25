@@ -4,6 +4,7 @@ import org.hdcd.domain.Item;
 import org.hdcd.mapper.ItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,9 +14,20 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private ItemMapper mapper;
 
+    @Transactional
     @Override
     public void regist(Item item) throws Exception {
         mapper.create(item);
+
+        String[] files = item.getFiles();
+
+        if (files == null) {
+            return;
+        }
+
+        for (String fileName : files) {
+            mapper.addAttach(fileName);
+        }
     }
 
     @Override
@@ -23,13 +35,29 @@ public class ItemServiceImpl implements ItemService {
         return mapper.read(itemId);
     }
 
+    @Transactional
     @Override
     public void modify(Item item) throws Exception {
         mapper.update(item);
+
+        Integer itemId = item.getItemId();
+        mapper.deleteAttach(itemId);
+
+        String[] files = item.getFiles();
+
+        if (files == null) {
+            return;
+        }
+
+        for (String fileName : files) {
+            mapper.replaceAttach(fileName, itemId);
+        }
     }
 
+    @Transactional
     @Override
     public void remove(Integer itemId) throws Exception {
+        mapper.deleteAttach(itemId);
         mapper.delete(itemId);
     }
 
@@ -44,7 +72,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public String getPicture2(Integer itemId) throws Exception {
-        return mapper.getPicture2(itemId);
+    public List<String> getAttach(Integer itemId) throws Exception {
+        return mapper.getAttach(itemId);
     }
 }

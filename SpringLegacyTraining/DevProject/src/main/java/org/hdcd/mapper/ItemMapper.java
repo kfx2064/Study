@@ -1,5 +1,6 @@
 package org.hdcd.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.hdcd.domain.Item;
 
 import java.util.List;
@@ -18,6 +19,12 @@ public interface ItemMapper {
 
     public String getPicture(Integer itemId) throws Exception;
 
-    public String getPicture2(Integer itemId) throws Exception;
+    public void addAttach(String fullName) throws Exception;
+
+    public List<String> getAttach(Integer itemId) throws Exception;
+
+    public void deleteAttach(Integer itemId) throws Exception;
+
+    public void replaceAttach(@Param("fullName") String fullName, @Param("itemId") Integer itemId) throws Exception;
 
 }
