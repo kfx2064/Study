@@ -5,19 +5,21 @@
 <mapper namespace="org.hdcd.mapper.ItemMapper">
 
     <insert id="create">
-        INSERT INTO item
+        INSERT INTO item2
         (
          item_name,
          price,
          description,
-         picture_url
+         picture_url,
+         picture_url2
         )
         VALUES
         (
          #{itemName},
          #{price},
          #{description},
-         #{pictureUrl}
+         #{pictureUrl},
+         #{pictureUrl2}
         )
     </insert>
 
@@ -26,22 +28,24 @@
                 item_name,
                 price,
                 description,
-                picture_url
-        FROM    item
+                picture_url,
+                picture_url2
+        FROM    item2
         WHERE   item_id = #{itemId}
     </select>
 
     <update id="update">
-        UPDATE  item
-        SET     item_name       = #{itemName}
-                , price         = #{price}
-                , description   = #{description}
-                , picture_url   = #{picture_url}
+        UPDATE  item2
+        SET     item_name           = #{itemName}
+                , price             = #{price}
+                , description       = #{description}
+                , picture_url       = #{pictureUrl}
+                , picture_url2      = #{pictureUrl2}
         WHERE   item_id = #{itemId}
     </update>
 
     <delete id="delete">
-        DELETE FROM item
+        DELETE FROM item2
         WHERE item_id = #{itemId}
     </delete>
 
@@ -51,8 +55,9 @@
                     item_name,
                     price,
                     description,
-                    picture_url
-        FROM        item
+                    picture_url,
+                    picture_url2
+        FROM        item2
         WHERE       item_id > 0
         ORDER BY item_id DESC
         ]]>
@@ -60,7 +65,13 @@
 
     <select id="getPicture" resultType="String">
         SELECT  picture_url
-        FROM    item
+        FROM    item2
+        WHERE   item_id = #{itemId}
+    </select>
+
+    <select id="getPicture2" resultType="String">
+        SELECT  picture_url2
+        FROM    item2
         WHERE   item_id = #{itemId}
     </select>
 

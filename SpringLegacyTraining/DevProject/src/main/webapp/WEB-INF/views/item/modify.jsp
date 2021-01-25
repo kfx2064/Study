@@ -26,6 +26,7 @@
 <form:form modelAttribute="item" action="modify" enctype="multipart/form-data">
     <form:hidden path="itemId"/>
     <form:hidden path="pictureUrl"/>
+    <form:hidden path="pictureUrl2"/>
     <table>
         <tr>
             <td>상품명</td>
@@ -43,7 +44,16 @@
         </tr>
         <tr>
             <td>파일</td>
-            <td><input type="file" name="picture"></td>
+            <td><input type="file" name="pictures"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>파일</td>
+            <td><img src="display2?itemId=${item.itemId}" width="210" height="240" ></td>
+        </tr>
+        <tr>
+            <td>파일</td>
+            <td><input type="file" name="pictures"></td>
             <td></td>
         </tr>
         <tr>

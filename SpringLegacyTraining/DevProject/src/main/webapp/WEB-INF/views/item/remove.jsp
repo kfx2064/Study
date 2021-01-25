@@ -39,6 +39,10 @@
             <td><img src="display?itemId=${item.itemId}" width="210" height="240"></td>
         </tr>
         <tr>
+            <td>파일</td>
+            <td><img src="display2?itemId=${item.itemId}" width="210" height="240"></td>
+        </tr>
+        <tr>
             <td>개요</td>
             <td><form:textarea path="description" disabled="true" /></td>
         </tr>
