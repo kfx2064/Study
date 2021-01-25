@@ -29,5 +29,6 @@
 	<mybatis-spring:scan base-package="org.hdcd.mapper" />
 
 	<context:component-scan base-package="org.hdcd.service"></context:component-scan>
+	<context:component-scan base-package="org.hdcd.dao"></context:component-scan>
 
 </beans>
