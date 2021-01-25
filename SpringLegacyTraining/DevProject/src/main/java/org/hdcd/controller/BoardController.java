@@ -184,6 +184,9 @@ public class BoardController {
 	public void list(Model model) throws Exception {
 		logger.info("list");
 
+		Board board = new Board();
+
+		model.addAttribute("board", board);
 		model.addAttribute("list", service.list());
 	}
 

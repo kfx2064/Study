@@ -33,6 +33,7 @@ public class MemberServiceImpl implements MemberService {
         return mapper.read(userNo);
     }
 
+    @Transactional
     @Override
     public void modify(Member member) throws Exception {
         mapper.update(member);
