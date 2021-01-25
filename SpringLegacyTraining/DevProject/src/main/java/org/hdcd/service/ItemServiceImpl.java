@@ -43,4 +43,8 @@ public class ItemServiceImpl implements ItemService {
         return mapper.getPicture(itemId);
     }
 
+    @Override
+    public String getPicture2(Integer itemId) throws Exception {
+        return mapper.getPicture2(itemId);
+    }
 }
