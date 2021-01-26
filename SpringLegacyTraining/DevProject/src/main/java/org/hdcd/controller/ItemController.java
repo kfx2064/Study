@@ -48,6 +48,8 @@ public class ItemController {
         List<Item> itemList = this.itemService.list();
 
         model.addAttribute("itemList", itemList);
+
+        throw new Exception();
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
