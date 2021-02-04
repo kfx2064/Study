@@ -9,7 +9,7 @@ public interface ItemMapper {
 
     public void create(Item item) throws Exception;
 
-    public Item read(Integer integer) throws Exception;
+    public Item read(Integer itemId) throws Exception;
 
     public void update(Item item) throws Exception;
 
