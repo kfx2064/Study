@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+function ShowClass() {
+	this.add = function(f, s) {
+		var dataSum = f + s;
+		alert(dataSum);
+	},
+	this.substract = function(f, s) {
+		var dataSubs = f - s;
+		alert(dataSubs);
+	}
+}
+
+var sc = new ShowClass();
+sc.add(10, 2);
+sc.substract(10, 2);
+</script>
+</head>
+<body>
+
+</body>
+</html>
