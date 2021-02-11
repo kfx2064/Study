@@ -2,6 +2,7 @@ package me.whiteship.demoinflearnrestapi.events;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,6 @@ import javax.validation.Valid;
 import java.net.URI;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 
 @Controller
@@ -54,10 +54,15 @@ public class EventController {
         Event newEvent = this.eventRepository.save(event);
 
         ControllerLinkBuilder selfLinkBuilder = linkTo(EventController.class).slash(newEvent.getId());
+
         URI createUri = selfLinkBuilder.toUri();
+        System.out.println("createUri");
+        System.out.println(createUri);
+
         EventResource eventResource = new EventResource(event);
         eventResource.add(linkTo(EventController.class).withRel("query-events"));
         eventResource.add(selfLinkBuilder.withRel("update-event"));
+        eventResource.add(new Link("/docs/index.html#resources-events-create").withRel("profile"));
         return ResponseEntity.created(createUri).body(eventResource);
     }
 
