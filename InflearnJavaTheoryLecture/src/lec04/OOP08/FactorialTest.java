@@ -20,6 +20,7 @@ public class FactorialTest {
         if (one == 0 || one == 1) {
             return 1;
         }
+        System.out.println("one : " + one);
         int returnValue = one * methodFactorial(one - 1);
         System.out.println(one + " * factorial(" + (one - 1) + ") = " + returnValue);
         return returnValue;

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vertical align</title>
+<style type="text/css">
+.div_css {
+	border: 1px solid black;
+	width: 300px;
+	height: 200px;
+}
+</style>
+</head>
+<body>
+<div class="div_css">
+
+</div>
+</body>
+</html>

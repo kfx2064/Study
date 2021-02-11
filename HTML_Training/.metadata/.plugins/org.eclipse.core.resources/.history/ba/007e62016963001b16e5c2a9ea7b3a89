@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>position</title>
+<style type="text/css">
+ul {
+	list-style-position: outside;
+}
+</style>
+</head>
+<body>
+<ul>
+	<li>»ï¼º</li>
+	<li>¿¤Áö</li>
+	<li>Çö´ë</li>
+	<li>sk</li>
+</ul>
+</body>
+</html>

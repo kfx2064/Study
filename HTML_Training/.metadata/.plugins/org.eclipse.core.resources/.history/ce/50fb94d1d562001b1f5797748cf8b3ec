@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>div width</title>
+<style type="text/css">
+.one {
+	border-width: 1px;
+}
+.two {
+	border-width: 5px;
+}
+.three {
+	border-width: 1px 5px 10px 2px;
+}
+</style>
+</head>
+<body>
+<div class="one">
+
+</div>
+<div class="two">
+
+</div>
+<div class="three">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>property</title>
+<style type="text/css">
+table {
+	width: 400px;
+}
+</style>
+</head>
+<body>
+<table style="width: 400px;">
+	<tr>
+		<td>삼성</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+	<tr>
+		<td>sk</td>
+		<td>텔레콤</td>
+		<td>반도체</td>
+	</tr>
+	<tr>
+		<td>현대</td>
+		<td>자동차</td>
+		<td>수소차</td>
+	</tr>
+</table>
+</body>
+</html>

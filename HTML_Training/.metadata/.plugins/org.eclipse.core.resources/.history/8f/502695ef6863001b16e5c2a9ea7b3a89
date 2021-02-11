@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>position</title>
+<style type="text/css">
+ul {
+	list-style-position: outside;
+}
+</style>
+</head>
+<body>
+
+</body>
+</html>

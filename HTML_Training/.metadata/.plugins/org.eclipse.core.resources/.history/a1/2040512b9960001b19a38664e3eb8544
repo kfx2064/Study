@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form component</title>
+</head>
+<body>
+<form action="/go_logic/done">
+	<label for="iptText">이름</label><br>
+	<input type="text" id="iptText" name="username" value="일정준수"><br>
+	<label for="iptPhone">전화번호</label><br>
+	<input type="text" id="iptPhone" name="phone" value="비용초과"><br>
+	<input type="submit" value="제출">
+</form>
+
+
+@GetMapping("/go_logic/done")
+@PostMapping("/go_logic/done")
+</body>
+</html>

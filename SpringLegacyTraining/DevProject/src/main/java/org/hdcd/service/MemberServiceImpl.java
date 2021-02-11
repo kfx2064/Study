@@ -12,31 +12,32 @@ import java.util.List;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-    @Autowired
-    private MemberMapper mapper;
+    /*@Autowired
+    private MemberMapper mapper;*/
 
     @Transactional
     @Override
     public void register(Member member) throws Exception {
-        mapper.create(member);
+        /*mapper.create(member);
 
         MemberAuth memberAuth = new MemberAuth();
 
         memberAuth.setUserNo(member.getUserNo());
         memberAuth.setAuth("ROLE_USER");
 
-        mapper.createAuth(memberAuth);
+        mapper.createAuth(memberAuth);*/
     }
 
     @Override
     public Member read(int userNo) throws Exception {
-        return mapper.read(userNo);
+//        return mapper.read(userNo);
+        return null;
     }
 
     @Transactional
     @Override
     public void modify(Member member) throws Exception {
-        mapper.update(member);
+        /*mapper.update(member);
 
         int userNo = member.getUserNo();
 
@@ -60,20 +61,21 @@ public class MemberServiceImpl implements MemberService {
             memberAuth.setUserNo(userNo);
 
             mapper.createAuth(memberAuth);
-        }
+        }*/
     }
 
     @Transactional
     @Override
     public void remove(int userNo) throws Exception {
-        mapper.deleteAuth(userNo);
+        /*mapper.deleteAuth(userNo);
 
-        mapper.delete(userNo);
+        mapper.delete(userNo);*/
     }
 
     @Override
     public List<Member> list() throws Exception {
-        return mapper.list();
+//        return mapper.list();
+        return null;
     }
 
 }

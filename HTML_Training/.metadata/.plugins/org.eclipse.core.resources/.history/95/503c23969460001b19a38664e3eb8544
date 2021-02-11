@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Head tag description</title>
+<style>
+
+</style>
+</head>
+<body>
+<h1 style="width: 100px; height: 250px;"></h1>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>padding</title>
+</head>
+<body>
+<div class="one">
+Just do it.
+</div>
+<div class="two">
+Just do it.
+</div>
+<div class="three">
+Just do it.
+</div>
+</body>
+</html>

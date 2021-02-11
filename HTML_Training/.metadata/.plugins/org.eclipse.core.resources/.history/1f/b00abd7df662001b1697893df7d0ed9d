@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>padding</title>
+<style type="text/css">
+.one {
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+}
+.two {
+	width: 200px;
+	height: 200px;
+	border: 5px dotted green;
+	padding: 5px;
+}
+.three {
+
+}
+</style>
+</head>
+<body>
+<div class="one">
+Just do it.
+</div>
+<div class="two">
+Just do it.
+</div>
+<div class="three">
+Just do it.
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text transform</title>
+<style type="text/css">
+.upscale {
+	text-transform: uppercase;	
+}
+.downscale {
+	text-transform: lowercase;
+}
+.camelcase {
+	text-transform: capitalize;
+}
+</style>
+</head>
+<body>
+<p class="upscale">this is a book.</p>
+<p class="downscale">MARK THE DEFENCE.</p>
+<p class="camelcase">show your number.</p>
+</body>
+</html>

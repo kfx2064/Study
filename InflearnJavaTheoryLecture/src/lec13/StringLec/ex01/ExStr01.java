@@ -1,7 +1,5 @@
 package lec13.StringLec.ex01;
 
-import org.mariadb.jdbc.internal.com.send.authentication.gssapi.GssUtility;
-
 import java.util.Arrays;
 
 public class ExStr01 {

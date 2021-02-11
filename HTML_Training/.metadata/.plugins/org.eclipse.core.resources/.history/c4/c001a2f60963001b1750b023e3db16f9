@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>under line inline</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>font weight</title>
+<style type="text/css">
+.title {
+	font-weight: bold;
+}
+.content {
+	font-wieght: normal;
+}
+</style>
+</head>
+<body>
+<p class="title">오늘의 목표</p>
+<p class="content">판매 목표 120% 달성. 비용 절감 목표 110% 달성.</p>
+</body>
+</html>

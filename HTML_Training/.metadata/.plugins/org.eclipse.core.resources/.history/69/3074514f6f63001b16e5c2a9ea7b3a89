@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>property</title>
+</head>
+<body>
+<table>
+	<tr>
+		<td class="sam">삼성</td>
+		<td class="sam">반도체</td>
+		<td class="sam">스마트폰</td>
+	</tr>
+	<tr>
+		<td class="lg">엘지</td>
+		<td class="lg">가전</td>
+		<td class="lg">전장</td>
+	</tr>
+	<tr>
+		<td class="sk">sk</td>
+		<td class="sk">텔레콤</td>
+		<td class="sk">반도체</td>
+		<td class="sk"></td>
+	</tr>
+	<tr>
+		<td class="hd"></td>
+		<td class="hd"></td>
+		<td class="hd"></td>
+		<td class="hd"></td>
+	</tr>
+</table>
+</body>
+</html>

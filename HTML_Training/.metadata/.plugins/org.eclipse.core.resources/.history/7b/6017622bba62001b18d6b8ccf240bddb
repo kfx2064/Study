@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>font size</title>
+<style type="text/css">
+.first {
+	font-size: 16px;
+}
+.second {
+	font-size: 50em;
+}
+</style>
+</head>
+<body>
+<p class="first">There is no easy day.</p>
+<p class="second">Easy day is yesterday.</p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form component</title>
+</head>
+<body>
+<form action="/go_logic/done">
+	<label for="iptText">¿Ã∏ß</label>
+	<input type="text" id="iptText" name="username" value=""><br>
+</form>
+</body>
+</html>

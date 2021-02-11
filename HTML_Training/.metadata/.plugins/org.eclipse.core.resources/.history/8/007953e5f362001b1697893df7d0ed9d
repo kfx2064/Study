@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>div style</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div class="one">
+
+</div>
+<div class="two">
+
+</div>
+<div class="">
+
+</div>
+<div class="">
+
+</div>
+</body>
+</html>

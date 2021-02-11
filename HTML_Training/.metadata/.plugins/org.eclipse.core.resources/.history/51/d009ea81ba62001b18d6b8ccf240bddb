@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>font weight</title>
+<style type="text/css">
+.title {
+	font-weight: bold;
+}	
+.content {
+	font-weight: normal;
+}
+</style>
+</head>
+<body>
+
+</body>
+</html>

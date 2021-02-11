@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form component</title>
+</head>
+<body>
+<input type="text">
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>min</title>
+<style type="text/css">
+div {
+	width: 500px;
+	height: 500px;
+	min-width: 400px;
+	min-height: 400px;
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+</body>
+</html>

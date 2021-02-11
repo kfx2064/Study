@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>bootstrap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../bootstrap5/css/bootstrap.css">
+<script src="../bootstrap5/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="mb-3 mt-3">
+		<label for="iptId" class="form-label">ID</label>
+		<input type="email" class="form-control" id="iptId" placeholder="bongbong3">
+	</div>
+	<div class="mb-3">
+		<label for="txtDesc" class="form-label">Ό³Έν</label>
+	</div>
+</div>
+</body>
+</html>

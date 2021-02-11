@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>color</title>
+<style type="text/css">
+.one {
+	width: 100px;
+	height: 100px;
+	border-width: 5px;
+	border-color: black;
+	border-style: dotted;
+}
+.two {
+	width: 100px;
+	height: 100px;
+	border-width: 5px;
+	border-color: blue;
+	border-style: dashed;
+}
+.three {
+	width: 100px;
+	height: 100px;
+	border-width: 5px;
+	border-color: green;
+	border-style: double;
+}
+.four {
+	width: 100px;
+	height: 100px;
+	border-width: 5px;
+	border-color: red;
+	border-style: solid;
+}
+</style>
+</head>
+<body>
+<div class="one">
+1
+</div><br><br>
+<div class="two">
+2
+</div><br><br>
+<div class="three">
+3
+</div><br><br>
+<div class="four">
+4
+</div>
+</body>
+</html>

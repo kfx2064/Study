@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>input submit</title>
+<style type="text/css">
+.btn_submit {
+
+
+}
+</style>
+</head>
+<body>
+제출버튼<input type="submit" class="btn_submit" value="submit"/>
+</body>
+</html>

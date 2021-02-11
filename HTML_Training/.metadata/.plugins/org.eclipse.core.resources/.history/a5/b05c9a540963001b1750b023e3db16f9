@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text align</title>
+<style type="text/css">
+body {
+	text-align: center;
+}
+.align_c {
+	width: 300px;
+	height: 200px;
+	border: 1px solid black;
+	margin: 10px auth 10px auto;
+	text-align: left;
+}
+</style>
+</head>
+<body>
+<p class="align_c">
+	<span>Nice day.</span>
+</p>
+</body>
+</html>

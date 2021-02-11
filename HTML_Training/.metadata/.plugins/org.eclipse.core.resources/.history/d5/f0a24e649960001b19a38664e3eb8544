@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form component</title>
+</head>
+<body>
+<input type="radio" id="earth" name="planet" value="earth">
+<label for="earth">Earth</label>
+<input type="radio" id="mars" name="planet" value="mars">
+</body>
+</html>

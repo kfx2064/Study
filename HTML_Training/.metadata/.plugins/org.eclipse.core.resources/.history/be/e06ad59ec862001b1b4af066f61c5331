@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>submit</title>
+<style type="text/css">
+.btn_submit:hover {
+
+}
+.btn_submit:active {
+
+}
+.ipt_text:focus {
+
+}
+</style>
+</head>
+<body>
+
+</body>
+</html>

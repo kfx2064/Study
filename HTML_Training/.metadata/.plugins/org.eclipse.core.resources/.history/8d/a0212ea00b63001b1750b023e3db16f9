@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>under line inline</title>
+<style type="text/css">
+.cl_inline {
+	display: inline;
+}
+</style>
+</head>
+<body>
+<!-- 
+블록과 인라인
+블록은 한 줄을 다 차지한다.
+인라인은 한 줄을 다 차지하지 않고 자신의 영역만 차지한다.
+ -->
+<ul>
+	<li>전자</li>
+	<li>기계</li>
+	<li>화학</li>
+	<li>IT</li>
+</ul>
+<ul>
+	<li class="cl_inline">회계</li>
+	<li class="cl_inline">인사</li>
+	<li class="cl_inline">재무</li>
+	<li class="cl_inline">구매</li>
+</ul>
+</body>
+</html>

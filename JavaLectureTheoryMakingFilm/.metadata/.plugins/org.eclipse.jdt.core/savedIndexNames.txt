@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\forGit\Study\JavaLectureTheoryMakingFilm\.metadata\.plugins\org.eclipse.jdt.core
+179114711.index
+2127357000.index
+4131146742.index

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>table</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./bootstrap5/css/bootstrap.css">
+<script src="./bootstrap5/js/bootstrap.js"></script>
+</head>
+<body>
+<table class="table">
+	<tr>
+		<td class="table-primary">한국</td>
+		<td class="table-secondary">IT</td>
+		<td class="table-success">전자</td>
+		<td class="table-danger">기계</td>
+		<td class="table-warning">조선</td>
+		<td class="table-info">전기</td>
+		<td class="table-light">화학</td>
+		<td class="table-dark"></td>
+	</tr>
+</table>
+</body>
+</html>

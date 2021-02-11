@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vertical align</title>
+<style type="text/css">
+.div_css {
+	border: 1px solid black;
+	width: 300px;
+	height: 200px;
+}
+.h3one {
+
+}
+.h3two {
+
+}
+.h3three {
+
+}
+</style>
+</head>
+<body>
+<div class="div_css">
+	<h3 class="h3one"></h3>
+</div>
+<div class="div_css">
+	<h3 class="h3two"></h3>
+</div>
+<div class="div_css">
+	<h3 class="h3three"></h3>
+</div>
+</body>
+</html>

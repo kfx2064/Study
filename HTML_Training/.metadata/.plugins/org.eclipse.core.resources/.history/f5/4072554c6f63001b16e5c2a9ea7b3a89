@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>property</title>
+</head>
+<body>
+<table>
+	<tr>
+		<td class="sam"></td>
+		<td class="sam"></td>
+		<td class="sam"></td>
+	</tr>
+	<tr>
+		<td class="lg"></td>
+		<td class="lg"></td>
+		<td class="lg"></td>
+	</tr>
+	<tr>
+		<td class="sk"></td>
+		<td class="sk"></td>
+		<td class="sk"></td>
+		<td class="sk"></td>
+	</tr>
+	<tr>
+		
+	</tr>
+</table>
+</body>
+</html>

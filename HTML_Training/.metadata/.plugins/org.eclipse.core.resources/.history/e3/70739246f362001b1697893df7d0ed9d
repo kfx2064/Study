@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>border width</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div class="one">
+1
+</div><br><br>
+<div class="two">
+2
+</div><br><br>
+<div class="three">
+3
+</div>
+</body>
+</html>

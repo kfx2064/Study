@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>list style</title>
+<style type="text/css">
+ol {
+	list-style-type: decimal;
+	list-style-type: decimal-leading-zero;
+	/* list-style-type: lower-alpha;
+	list-style-type: upper-alpha;
+	list-style-type: lower-roman;
+	list-style-type: upper-roman; */
+}
+</style>
+</head>
+<body>
+<ol>
+	<li>반도체</li>
+	<li>스마트폰</li>
+	<li>가전</li>
+	<li>전장</li>
+</ol>
+</body>
+</html>

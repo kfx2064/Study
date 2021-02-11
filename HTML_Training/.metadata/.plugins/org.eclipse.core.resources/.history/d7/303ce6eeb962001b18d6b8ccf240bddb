@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>font size</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<p class="first">Good day is today.</p>
+<p class="second">Do your best and wait your destiny.</p>
+</body>
+</html>

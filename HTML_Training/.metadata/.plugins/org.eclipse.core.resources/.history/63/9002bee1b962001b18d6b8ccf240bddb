@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>font size</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<p class="first"></p>
+<p class="second"></p>
+</body>
+</html>

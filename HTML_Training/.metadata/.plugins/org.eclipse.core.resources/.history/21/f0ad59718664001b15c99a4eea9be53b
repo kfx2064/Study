@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>table</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./bootstrap5/css/bootstrap.css">
+<script src="./bootstrap5/js/bootstrap.js"></script>
+</head>
+<body>
+<table class="table table-primary">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+</body>
+</html>

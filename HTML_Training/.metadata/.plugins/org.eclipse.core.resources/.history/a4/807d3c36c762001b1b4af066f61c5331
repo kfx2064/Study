@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text decoration</title>
+</head>
+<body>
+<p class="decounder">아래에 선긋기</p>
+<p class="decoover">위에 선긋기</p>
+<p class="decolinethrough">중간 선긋기</p>
+<p class="doceblink">깜빡임</p>
+</body>
+</html>

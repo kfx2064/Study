@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form component</title>
+</head>
+<body>
+<form action="/go_logic/done">
+	<label for="iptText">이름</label><br>
+	<input type="text" id="iptText" name="username" value=""><br>
+	<label for="iptPhone">전화번호</label><br>
+	<input type="password" id="iptPhone" name="phone" value=""><br>
+	<input type="submit" value="제출">
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>border</title>
+<style type="text/css">
+.one {
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+}
+.two {
+
+}
+.three {
+
+}
+</style>
+</head>
+<body>
+<div class="one">
+
+</div>
+<div class="two">
+
+</div>
+<div class="three">
+
+</div>
+</body>
+</html>

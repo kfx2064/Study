@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>font type</title>
+</head>
+<body>
+<b>굵은 글씨입니다.</b>
+굵은 글씨입니다.<br><br>
+<i>이탤릭체 글쓰입니다.</i>
+이탤릭체 글쓰입니다.<br><br>
+</body>
+</html>

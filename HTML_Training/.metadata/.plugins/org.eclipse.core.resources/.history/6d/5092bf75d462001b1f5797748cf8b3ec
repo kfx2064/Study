@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>min</title>
+<style type="text/css">
+div {
+	min-width: 600px;
+	min-height: 600px;
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+</body>
+</html>

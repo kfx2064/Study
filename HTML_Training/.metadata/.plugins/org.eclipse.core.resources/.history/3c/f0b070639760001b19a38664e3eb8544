@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form component</title>
+</head>
+<body>
+<form>
+	<input type="checkbox" id="chk_submit" name="data_submit" value="data_submit">
+	<label for="chk_submit"></label>
+</form>
+</body>
+</html>

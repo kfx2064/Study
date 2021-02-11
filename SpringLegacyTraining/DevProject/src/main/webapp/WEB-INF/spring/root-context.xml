@@ -10,7 +10,7 @@
 						   http://www.springframework.org/schema/context
 						   https://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://127.0.0.1:3307/dev_db"></property>
 		<property name="username" value="root"></property>
@@ -26,7 +26,7 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 
-	<mybatis-spring:scan base-package="org.hdcd.mapper" />
+	<mybatis-spring:scan base-package="org.hdcd.mapper" />-->
 
 	<context:component-scan base-package="org.hdcd.service"></context:component-scan>
 	<context:component-scan base-package="org.hdcd.dao"></context:component-scan>

@@ -246,7 +246,6 @@ public class BigInt01 {
          * 감사합니다.
          */
 
-
     }
 
 }

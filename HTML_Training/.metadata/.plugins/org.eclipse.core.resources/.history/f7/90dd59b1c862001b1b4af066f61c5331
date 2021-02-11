@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>submit</title>
+<style type="text/css">
+.btn_submit:hover {
+	background-color: black;'
+}
+.btn_submit:active {
+	background-color: yellow;
+}
+.ipt_text:focus {
+	background-color: red;
+}
+</style>
+</head>
+<body>
+<input type="text" class="ipt_text"><br>
+제출버튼<input type="submit" class="btn_submit" value="submit">
+</body>
+</html>

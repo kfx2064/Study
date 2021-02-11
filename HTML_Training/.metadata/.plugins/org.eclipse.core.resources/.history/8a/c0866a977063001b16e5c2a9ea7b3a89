@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>property</title>
+<style type="text/css">
+table {
+	width: 400px;
+}
+table tr td {
+	border: 1px solid black;
+}
+.sam {
+	padding: 10px;
+	background-color: blue;
+}
+.lg {
+	padding: 20px;
+}
+.sk {
+	padding: 30px;
+}
+.hd {
+	padding: 40px;
+}
+</style>
+</head>
+<body>
+<table>
+	<tr>
+		<td class="sam">삼성</td>
+		<td class="sam">반도체</td>
+		<td class="sam">스마트폰</td>
+	</tr>
+	<tr>
+		<td class="lg">엘지</td>
+		<td class="lg">가전</td>
+		<td class="lg">전장</td>
+	</tr>
+	<tr>
+		<td class="sk">sk</td>
+		<td class="sk">텔레콤</td>
+		<td class="sk">반도체</td>
+	</tr>
+	<tr>
+		<td class="hd">현대</td>
+		<td class="hd">자동차</td>
+		<td class="hd">수소차</td>
+	</tr>
+</table>
+</body>
+</html>

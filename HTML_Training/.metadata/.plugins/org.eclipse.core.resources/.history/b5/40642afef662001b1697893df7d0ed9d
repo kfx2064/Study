@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>margin</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div class="one">
+Just do it.
+</div>
+<div class="two">
+Just do it.
+</div>
+<div class="three">
+Just do it.
+</div>
+</body>
+</html>

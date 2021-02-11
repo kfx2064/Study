@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text transform</title>
+<style type="text/css">
+.upscale {
+	text-transform: uppercase;
+}
+.downsacle {
+	text-transform: lowercase;
+}
+.camelcase {
+	text-transform: capitalize;
+}
+</style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text decoration</title>
+<style type="text/css">
+.decounder {
+	text-decoration: underline;
+}
+.decoover {
+	text-decoration: overline;
+}
+.decolinethrought {
+	text-decoration: line-through;
+}
+.decoblink {
+	text-decoration: blink;
+}
+</style>
+</head>
+<body>
+<p class=""></p>
+<p class=""></p>
+<p class=""></p>
+<p class=""></p>
+</body>
+</html>

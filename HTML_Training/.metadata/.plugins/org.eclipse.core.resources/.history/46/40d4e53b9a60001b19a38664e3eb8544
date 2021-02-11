@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form component</title>
+</head>
+<body>
+<input type="checkbox" id="chk_data" name="data" value="data">
+<label for="chk_data">ตฅภฬลอ</label>
+</body>
+</html>

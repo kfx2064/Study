@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Grid</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./bootstrap5/css/bootstrap.css">
+<script src="./bootstrap5/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">1</div>
+	</div>
+</div>
+</body>
+</html>

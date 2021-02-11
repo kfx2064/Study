@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>inline</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<ul>
+	<li>전자</li>
+	<li>기계</li>
+	<li>화학</li>
+	<li>IT</li>
+</ul>
+<ul>
+	<li class="cl_inline">회계</li>
+	<li class="cl_inline">인사</li>
+	<li class="cl_inline">재무</li>
+	<li class="cl_inline">구매</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>table</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./bootstrap5/css/bootstrap.css">
+<script src="./bootstrap5/js/bootstrap.js"></script>
+</head>
+<body>
+<table class="table">
+	<tr>
+		<td class="bg-primary">삼성전자</td>
+		<td class="bg-secondary">반도체</td>
+		<td class="bg-success">스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-secondary">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+	<tr>
+		<td>SK이노베이션</td>
+		<td>석유</td>
+		<td>가스</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-success">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-danger">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-warning">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-info">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-light">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-dark">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+<table class="table table-striped">
+	<tr>
+		<td>삼성전자</td>
+		<td>반도체</td>
+		<td>스마트폰</td>
+	</tr>
+	<tr>
+		<td>엘지전자</td>
+		<td>가전</td>
+		<td>전장</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<style type="text/css">
+div.one {
+	width: 300px;
+	height: 100px;
+	overflow: hidden;
+}
+div.two {
+	width: 300px;
+	height: 100px;
+	overflow: scroll;
+}
+</style>
+</head>
+<body>
+<div class="one">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</div>
+<div class="two">
+
+</div>
+</body>
+</html>

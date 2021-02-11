@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>input submit</title>
+<style type="text/css">
+.btn_submit:hover {
+	backgroud-color: black;
+}
+.btn_submit:active {
+	
+}
+.btn_submit:focus {
+	
+}
+</style>
+</head>
+<body>
+제출버튼<input type="submit" class="btn_submit" value="submit"/>
+</body>
+</html>

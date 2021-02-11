@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>font family</title>
+<style type="text/css">
+body {
+	/* font-family: Georgia; */
+	/* font-family: Times; */
+	font-family: Arial;
+}
+.css_font {
+	/* font-family: "Verdana"; */
+	font-family: "sans-serif";
+}
+</style>
+</head>
+<body>
+<h1>Easy day is yesterday.</h1>
+<p class="css_font">There is no easy day.</p>
+</body>
+</html>

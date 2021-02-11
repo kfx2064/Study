@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>list style</title>
+<style type="text/css">
+ul {
+	list-style-type: circle;
+}
+</style>
+</head>
+<body>
+<ul>
+	<li>삼성전자</li>
+	<li>현대차</li>
+	<li>sk하이닉스</li>
+	<li>lg화학</li>
+</ul>
+</body>
+</html>
