@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<input type="text" id="iptTxtFirst" value="Good day." />
+<script>
+function fnFocus() {
+	document.getElementById("iptTxtFirst").value = "Stay, Calm down.";
+}
+
+document.getElementById("iptTxtFirst").addEventListener("focus", fnFocus);
+</script>
+</body>
+</html>

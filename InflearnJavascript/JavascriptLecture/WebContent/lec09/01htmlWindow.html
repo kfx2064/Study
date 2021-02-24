@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+/*  
+ 	window.innerWidth;
+ 	window.innerHeight;
+	윈도우의 내용 영역의 안쪽 높이를 반환한다.
+ 	윈도우의 내용 영역의 내부 너비를 반환한다.
+ */
+var vWidth = window.innerWidth;
+var vHeight = window.innerHeight;
+
+document.write("vWidth : " + vWidth + "<br>");
+document.write("vHeight : " + vHeight + "<br>");
+
+/*
+ * window.open("url", "name", "specs");
+ */
+var showWindow = window.open("HelloWorld.html"
+								, "childWindow", "width=500,height=250");
+showWindow.document.write("showWindow.name : " + showWindow.name + "<br>");
+
+var screenShowWindow = window.open("", "screenShowWindow", "width=650,height=300");
+screenShowWindow.document.write("screenLeft : " + screenShowWindow.screenLeft + "<br>");
+screenShowWindow.document.write("screenLeft : " + screenShowWindow.screenTop + "<br>");
+
+var getWindowLocation = window.parent.location;
+document.write("getWindowLocation : " + getWindowLocation);
+</script>
+</head>
+<body>
+
+</body>
+</html>

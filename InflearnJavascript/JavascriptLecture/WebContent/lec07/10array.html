@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var arrData1 = new Array("반도체", "모바일", "가전제품", "전장", "배터리");
+
+document.write("arrData1 : " + arrData1 + "<br>");
+
+arrData1.sort();
+
+document.write("arrData1 : " + arrData1 + "<br>");
+
+arrData1.sort(function(a, b) {
+	return a > b;
+});
+document.write("arrData1 : " + arrData1 + "<br>");
+
+arrData1.reverse();
+document.write("arrData1 : " + arrData1 + "<br>");
+</script>
+</head>
+<body>
+
+</body>
+</html>

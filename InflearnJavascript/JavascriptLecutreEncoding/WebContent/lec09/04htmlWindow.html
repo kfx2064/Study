@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var newWindow;
+function openNewWin() {
+	newWindow = window.open("", "", "width=300, height=300");
+}
+
+function newWinResizeTo() {
+	newWindow.resizeTo(700, 600);
+	newWindow.focus();
+}
+
+function newWinResizeBy() {
+	newWindow.resizeBy(-100, -50);
+	newWindow.focus();
+}
+</script>
+</head>
+<body>
+<button onclick="openNewWin()">새 창 열기</button>
+<button onclick="newWinResizeTo()">창의 크기를 조절합니다.</button>
+<button onclick="newWinResizeBy()">창을 작게 만듭니다.</button>
+</body>
+</html>

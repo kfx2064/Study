@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var lHref = window.location.href;
+var lHostname = window.location.hostname;
+var lPathname = window.location.pathname;
+
+document.write("href : " + lHref + "<br>");
+document.write("hostname : " + lHostname + "<br>");
+document.write("pathname : " + lPathname + "<br>");
+
+var lProtocol = window.location.protocol;
+document.write("protocol : " + lProtocol + "<br>");
+
+function btnOnClick() {
+	window.location.assign("https://www.naver.com");
+}
+</script>
+</head>
+<body>
+<input type="button" onclick="btnOnClick()" value="button"/>
+</body>
+</html>

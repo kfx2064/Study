@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var arrCompany1 = ["삼성", "엘지", "SK", "현대"];
+document.write(arrCompany1 + "<br>");
+
+var arrCompany2 = new Array("반도체", "바이오", "배터리", "조선", "에너지", "자동차");
+document.write(arrCompany2 + "<br>");
+
+document.write("길이 : " + arrCompany1.length + "<br>");
+document.write("길이 : " + arrCompany2.length + "<br>");
+
+document.write("회사 : " + arrCompany1[0] + "<br>");
+document.write("회사 : " + arrCompany1[1] + "<br>");
+document.write("회사 : " + arrCompany1[2] + "<br>");
+document.write("회사 : " + arrCompany1[3] + "<br>");
+
+document.write("산업 : " + arrCompany2[0] + "<br>");
+document.write("산업 : " + arrCompany2[1] + "<br>");
+document.write("산업 : " + arrCompany2[2] + "<br>");
+document.write("산업 : " + arrCompany2[3] + "<br>");
+document.write("산업 : " + arrCompany2[4] + "<br>");
+document.write("산업 : " + arrCompany2[5] + "<br>");
+
+var arr1Length = arrCompany1.length;
+
+for (var i = 0; i < arr1Length; i++) {
+	var getCompanyData = arrCompany1[i];
+	document.write("반복문 회사 : " + getCompanyData + "<br>");
+}
+
+var arr2Length = arrCompany2.length;
+
+for (var i = 0; i < arr2Length; i++) {
+	var getCompanyData = arrCompany2[i];
+	document.write("반복문 산업 : " + getCompanyData + "<br>");
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

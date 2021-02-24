@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<input type="text" id="iptFirst" value="Easy day is yesterday." 
+		onfocus="fnFocus()" onblur="fnBlur()" />
+<input type="text" id="iptSecond" value="There is no easy day." />
+<script>
+function fnFocus() {
+	document.getElementById("iptFirst").value = "Ready to read.";
+}
+
+function fnBlur() {
+	document.getElementById("iptFirst").value = "Ready, Aim, Fire.";
+} 
+</script>
+</body>
+</html>

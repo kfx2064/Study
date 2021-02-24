@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+function Oracle() {
+	this.dbName = "oracle";
+	this.solutionName = "OracleERP";
+	this.printInfo = function() {
+		document.write("오라클의 데이터베이스 : " + this.dbName + "<br>");
+		document.write("오라클의 솔루션 : " + this.solutionName + "<br>");
+	}
+}
+var vOracle = new Oracle();
+vOracle.printInfo();
+
+function MariaDB(tName) {
+	this.dbName = "Maria";
+	this.solution = "Database";
+	this.printInfo = function() {
+		document.write(this.dbName + " " + tName + " " + this.solution);
+	}
+}
+
+var vM = new MariaDB("DB");
+vM.printInfo();
+</script>
+</head>
+<body>
+
+</body>
+</html>

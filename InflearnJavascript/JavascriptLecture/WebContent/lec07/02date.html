@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var vDate = new Date();
+
+var vYear = vDate.getFullYear();
+document.write("연도 : " + vYear + "<br>");
+
+var vMonth = vDate.getMonth();
+document.write("월 : " + (vMonth + 1) + "<br>");
+
+var vDate = vDate.getDate();
+document.write("날짜 : " + vDate + "<br>");
+
+var showDate = vYear + "-" + (vMonth + 1) + "-" + vDate;
+document.write("날짜 포맷 : " + showDate + "<br>");
+
+var cvtMonth = vMonth + 1;
+if (cvtMonth < 10) {
+	cvtMonth = "0" + cvtMonth;	
+}
+
+showDate = vYear + "-" + cvtMonth + "-" + vDate;
+document.write("변환된 날짜 포맷 : " + showDate + "<br>");
+</script>
+</head>
+<body>
+
+</body>
+</html>

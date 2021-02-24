@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<p>버튼을 붙여보겠습니다.</p>
+<button onclick="attachButton()">클릭</button>
+<div id="testDiv">
+</div>
+<button onclick="glueButton()">div에 클릭 붙이기</button>
+<script>
+function attachButton() {
+	var vBtn = document.createElement("button");
+	var vText = document.createTextNode("클릭하세요");
+	
+	vBtn.appendChild(vText);
+	document.body.appendChild(vBtn);
+}
+
+function glueButton() {
+	var vPar = document.createElement("p");
+	var vText = document.createTextNode("There is no easy day.");
+	vPar.appendChild(vText);
+	document.getElementById("testDiv").appendChild(vPar);
+}
+</script>
+</body>
+</html>

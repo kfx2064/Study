@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var strData1 = "삼성-현대-SK-LG-롯데";
+
+var arrData1 = strData1.split("-");
+document.write("arrData1 : " + arrData1 + "<br>");
+
+var strData2 = "전자:화학:기계:전기:IT";
+
+var arrData2 =  strData2.split(":");
+document.write("arrData2 : " + arrData2 + "<br>");
+
+var length1 = arrData1.length;
+var length2 = arrData2.length;
+
+for (var i = 0; i < length1; i++) {
+	var getData = arrData1[i];
+	document.write(getData + "<br>");
+}
+
+for (var i = 0; i < length2; i++) {
+	var getData = arrData2[i];
+	document.write(getData + "<br>");
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

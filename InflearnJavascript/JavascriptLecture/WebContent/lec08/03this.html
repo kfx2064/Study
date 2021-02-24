@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var databaseName = "Oracle";
+
+function diffThis() {
+	var databaseName = "MariaDB";
+	document.write("데이터베이스 : " + databaseName + "<br>");
+	document.write("데이터베이스 : " + this.databaseName + "<br>");
+}
+
+diffThis();
+
+function writingName() {
+	document.write("데이터베이스 회사 : " + this.databaseName + "<br>");
+	this.databaseName = "Tibero";
+	document.write("데이터베이스 회사 : " + this.databaseName + "<br>");
+}
+
+writingName();
+</script>
+</head>
+<body>
+
+</body>
+</html>

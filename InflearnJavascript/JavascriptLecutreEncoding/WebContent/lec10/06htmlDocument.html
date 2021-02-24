@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<p id="pName"></p>
+<div class="divSecond"></div>
+<span></span>
+<form id="frmSample" action="sendData" method="post">
+	<input type="text" id="iptTxtSample" name="iptTxtSample" value="good day."/>	
+</form>
+<script>
+var vGetSample = document.getElementById("iptTxtSample"); 
+
+console.log(vGetSample);
+
+var valueGetSample = vGetSample.value;
+console.log(valueGetSample);
+
+document.write("<br>valueGetSample : " + valueGetSample);
+
+var vFormSample = document.getElementById("frmSample");
+vFormSample.submit();
+</script>
+</body>
+</html>

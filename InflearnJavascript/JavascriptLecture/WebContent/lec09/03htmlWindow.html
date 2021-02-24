@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+var thisWindow;
+function openNewWin() {
+	thisWindow = window.open("", "thisWindow", "width=300, height=150");
+	thisWindow.document.write("Good luck to you.");
+}
+
+function moveNewWin() {
+	thisWindow.moveTo(600, 200);
+	thisWindow.focus();
+}
+</script>
+</head>
+<body>
+<button onclick="openNewWin()">새 창 열기</button>
+<button onclick="moveNewWin()">움직이기</button>
+</body>
+</html>

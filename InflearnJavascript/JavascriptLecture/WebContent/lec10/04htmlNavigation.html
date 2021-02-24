@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+/**
+ * 이번 강의는 네비게이터에 대한 강의입니다.
+ 방문자의 브라우저에 대한 정보를 담고 있습니다.
+ 우선 쿠키인에이블에 대해 학습하겠습니다.
+ 쿠키인에이블은 쿠키가 활성화되어 있으면 true, 비활성화되어 있으면 false를 리턴합니다.
+ */
+var vCookie = window.navigator.cookieEnabled;
+document.write("cookie : " + vCookie + "<br>");
+
+var vAppName = window.navigator.appName;
+document.write("appName : " + vAppName + "<br>");
+
+/**
+ * 브라우저의 응용 프로그램을 반환합니다.
+ 브라우저도 프로그램입니다. 그래서 브라우저의 응용 프로그램 값을 리턴할 수 있습니다.
+ */
+ 
+var vAppCodeName = window.navigator.appCodeName;
+document.write("appCodeName : " + vAppCodeName + "<br>");
+
+/**
+ * 브라우저의 응용 프로그램 코드 이름을 반환하는 속성 값입니다.
+ 이를 통해 어떤 브라우저를 사용했는지 파악이 가능합니다.
+ */
+ 
+var vProduct = window.navigator.product;
+document.write("product : " + vProduct + "<br>");
+/**
+ * 브라우저의 엔진의 제품 이름을 반환합니다.
+ 브라우저에는 엔진이 존재합니다.
+ 이런 것에 대한 자세한 정보를 아시고 싶으시면 브라우저에 대해 학습을 깊게 하시는 것을 권장합니다.
+ 브라우저에는 크롬, 엣지, 파이어폭스, 웨일 등이 있습니다.
+ 이런 브라우저 종류에 따라서 엔진의 정보가 달라질 수 있습니다.
+ */
+ 
+var vAppVersion = window.navigator.appVersion;
+document.write("appVersion : " + vAppVersion + "<br>");
+/**
+ * 브라우저에 대한 버전 정보를 반환합니다.
+ */
+ 
+var vUserAgent = window.navigator.userAgent;
+document.write("userAgent : " + vUserAgent + "<br>");
+/**
+ * 브라우저로 보낸 사용자 에이전트 헤더를 반환합니다.
+ 어렵죠?
+		 강의 해드리는 저에게도 어려울 때가 많은 용어입니다.
+		 그냥 일하면서 에이전트 헤더라고만 인식하고 있습니다.
+		 깊게 아시려면 http와 웹브라우저에 대해 학습하셔야 합니다.
+		 그냥 이런 정보를 반환하는구나, 하고 인식하고 계시면 좋습니다.
+ */
+ 
+var vPlatform = window.navigator.platform;
+document.write("platform : " + vPlatform + "<br>"); 
+/**
+ * 브라우저의 플랫폼 정보, 즉 브라우저의 운영체제가 무엇인지 반환합니다.
+ */
+ 
+var vLanguage = window.navigator.language;
+document.write("language : " + vLanguage + "<br>");
+/**
+ * 브라우저의 언어를 반환합니다.
+ 한국이기 때문에 한국어인 ko가 반환되겠죠?
+ */
+ 
+/**
+ * 이제 네비게이터 객체에 대해 알아볼 것은 최대한 알아본 것 같습니다.
+ 이런 종류의 브라우저 정보 등을 알아보는 것은 브라우저 자체에 대한 컨트롤을 할 때 주로 사용합니다.
+ 그렇기 때문에 자주 쓰이는 경우는 별로 없습니다.
+ */
+</script>
+</head>
+<body>
+
+</body>
+</html>
