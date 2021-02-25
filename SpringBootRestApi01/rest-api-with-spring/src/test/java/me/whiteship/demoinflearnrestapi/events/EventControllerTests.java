@@ -1,6 +1,7 @@
 package me.whiteship.demoinflearnrestapi.events;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.whiteship.demoinflearnrestapi.common.BaseControllerTest;
 import me.whiteship.demoinflearnrestapi.common.RestDocsConfiguration;
 import me.whiteship.demoinflearnrestapi.common.TestDescription;
 import org.junit.Test;
@@ -36,31 +37,10 @@ import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.li
  * @WebMvcTest는 웹용 빈만 등록하지 repository 빈을 등록하지 않는다.
  * RestDocs 테스트 용으로는 활용하면 안 될 듯 하다.
  */
-@RunWith(SpringRunner.class)
-//@WebMvcTest
-@SpringBootTest
-@AutoConfigureMockMvc
-// RestDocs용 annotation
-@AutoConfigureRestDocs
-@Import(RestDocsConfiguration.class)
-@ActiveProfiles("test")
-public class EventControllerTests {
-
-    /**
-     * MockMvc는  서버를 띄우지 않아서 빠른 편이다.
-     * 하지만 DispatcherServlet을 만들기 때문에 단위 테스트보다는 느리다.
-     */
-    @Autowired
-    MockMvc mockMvc;
-
-    @Autowired
-    ObjectMapper objectMapper;
+public class EventControllerTests extends BaseControllerTest {
 
     @Autowired
     EventRepository eventRepository;
-
-    @Autowired
-    ModelMapper modelMapper;
 
     /**
      * repository 빈을 등록할 때 MockBean을 사용한다.
@@ -271,7 +251,33 @@ public class EventControllerTests {
                 .andExpect(jsonPath("id").exists())
                 .andExpect(jsonPath("_links.self").exists())
                 .andExpect(jsonPath("_links.profile").exists())
-                .andDo(document("get-an-event"))
+                .andDo(document("get-events",
+                        // links.adoc 문서 만드는 메서드.
+                        links(
+                                linkWithRel("self").description("link to self"),
+                                linkWithRel("profile").description("link to profile an existing event")
+                        ),
+                        // relaxedReponseFields를 쓰면 일부만 응답 데이터로 rest docs를 만들 수 있음.
+                        // relaxed보다는 responseFields를 활용하여 응답 데이터를 만드는 것을 권장함.
+                        responseFields (
+                                fieldWithPath("id").description("Identifier of new event"),
+                                fieldWithPath("name").description("Name of new event"),
+                                fieldWithPath("description").description("description of new event"),
+                                fieldWithPath("beginEnrollmentDateTime").description("date time of begin of new event"),
+                                fieldWithPath("closeEnrollmentDateTime").description("date time of close of new event"),
+                                fieldWithPath("beginEventDateTime").description("date time of begin of new event"),
+                                fieldWithPath("endEventDateTime").description("date time of end of new event"),
+                                fieldWithPath("location").description("location of new event"),
+                                fieldWithPath("basePrice").description("base price of new event"),
+                                fieldWithPath("maxPrice").description("max price of new event"),
+                                fieldWithPath("limitOfEnrollment").description("limit of enrollment"),
+                                fieldWithPath("free").description("it tells is this event is free or not"),
+                                fieldWithPath("offline").description("it tells is this event is offline event or not"),
+                                fieldWithPath("eventStatus").description("event status"),
+                                fieldWithPath("_links.self.href").description("link to self"),
+                                fieldWithPath("_links.profile.href").description("link to profile")
+                        )
+                ));
         ;
     }
 
