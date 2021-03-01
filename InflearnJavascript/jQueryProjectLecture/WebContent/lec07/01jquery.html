@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnOne").click(function() {
+		$("p:only-child").css("background-color", "green");
+	});
+	
+	$("#btnTwo").click(function() {
+		$("p:only-of-type").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<div style="border: 1px solid black;">
+	<P>ÀÎ»ç</P>
+	<P>³ë¹«</P>
+	<P>Àç¹«</P>
+</div>
+<div style="border: 1px solid black;">
+	<P>»ï¼º</P>
+</div>	
+<div style="border: 1px solid black;">
+	<span>GM</span>
+	<P>Æø½º¹Ù°Õ</P>
+	<p>BMW</p>
+</div>
+<button id="btnOne">only-child</button>
+<button id="btnTwo">only-of-type</button>
+</body>
+</html>

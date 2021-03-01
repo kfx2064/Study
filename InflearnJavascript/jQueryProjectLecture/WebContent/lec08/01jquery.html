@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnOne").click(function() {
+		$("li:eq(3)").css("background-color", "green");
+	});
+	
+	$("#btnTwo").click(function() {	
+		$("li:gt(2)").css("background-color", "green");
+	});
+	
+	$("#btnThree").click(function() {
+		$("li:lt(2)").css("background-color", "green");
+	});
+	
+	$("#btnFour").click(function() {
+		$("ul:not(#industry)").css("background-color", "green");
+	});		
+});
+</script>
+</head>
+<body>
+<ul id="company">
+	<li>삼성</li>
+	<li>엘지</li>
+	<li>에스케이</li>
+	<li>현대기아</li>
+	<li>롯데</li>
+</ul>
+<ul id="industry">
+	<li>휴대폰</li>
+	<li>반도체</li>
+	<li>바이오</li>
+	<li>모빌리티</li>
+	<li>케미칼</li>
+</ul>
+<button id="btnOne">eq</button>
+<button id="btnTwo">gt</button>
+<button id="btnThree">lt</button>
+<button id="btnFour">not</button>
+</body>
+</html>

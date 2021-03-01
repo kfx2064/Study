@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnEven").click(function() {
+		$("p:even").css("background-color", "green");
+	});
+	
+	$("#btnOdd").click(function() {
+		$("p:odd").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<h1>여러 개의 태그에서 실습을 하겠습니다.</h1>
+<p>한국전력</p>
+<p>한국가스공사</p>
+<p>한국석유공사</p>
+<p>한국도로공사</p>
+<p>한국철도공사</p>
+<p>한국항만공사</p>
+<button id="btnEven">even</button>
+<button id="btnOdd">odd</button>
+</body>
+</html>

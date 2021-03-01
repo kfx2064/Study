@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.divCss * {
+	display: block;	
+}
+</style>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("a+p").css("border", "5px solid black");
+	});
+});
+</script>
+</head>
+<body>
+<div class="divCss">
+	<a href="#">Moon shoot.</a>
+	<p>
+		<span>멀리를 겨냥하고</span>
+		<a href="#">쏘세요.</a>
+	</p>
+	<p>
+		<span>그 과정에서</span>
+		<a href="#">많은 것을 이룹니다.</a>
+	</p>
+</div>
+<button id="btnClick">클릭</button>
+</body>
+</html>

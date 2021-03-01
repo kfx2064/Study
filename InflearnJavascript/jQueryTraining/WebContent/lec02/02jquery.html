@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#is").click(function() {
+		$("[id=choose]").css("background-color", "green");
+	});
+	
+	$("#is_not").click(function() {
+		$("p[class!='intro']").css("background-color", "red");
+	});
+});
+</script>
+</head>
+<body>
+<p class="intro">I live in Italy.</p>
+<p lang="it">Ciao bella!</p>
+<ul id="choose">
+	<li>Goofy</li>
+	<li>Mickey</li>
+	<li>Pluto</li>
+</ul>
+<button id="is">태그와 값이 같음</button>
+<button id="is_not">태그와 값이 다름</button>
+</body>
+</html>

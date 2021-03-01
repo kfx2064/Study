@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnFirst").click(function() {
+		$("p:last").css("background-color", "green");
+	});
+	
+	$("#btnSecond").click(function() {
+		$("p:last-child").css("background-color", "green");
+	});
+	
+	$("#btnThird").click(function() {
+		$("p:last-of-type").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<button id="btnFirst">bFirst</button>
+<button id="btnSecond">bSecond</button>
+<button id="btnThird">bThird</button>
+<div>
+	<p>반도체</p>
+	<p>휴대폰</p>
+	<p>가전제품</p>
+</div>
+<div>
+	<p>전장</p>
+	<p>휴대폰</p>
+	<p>가전제품</p>
+	<h1>LG전자의 사업 구성이죠.</h1>
+</div>
+<div>
+	<p>자동차</p>
+	<p>로봇</p>
+	<p>부품</p>
+</div>
+</body>
+</html>

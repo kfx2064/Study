@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnFirst").click(function() {
+		$("p:first").css("background-color", "green");
+	});
+	
+	$("#btnSecond").click(function() {
+		$("p:first-child").css("background-color", "green");
+	});
+	
+	$("#btnThird").click(function() {
+		$("p:first-of-type").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<div style="border: 1px solid black;">
+	<p>아메리카노</p>
+	<p>카페라떼</p>
+	<p>카페모카</p>
+</div>
+<div style="border: 1px solid black;">
+	<!-- <h1>특별한 커피</h1> -->
+	<p>아포가토</p>
+	<p>카라멜 마끼아또</p>
+	<p>더치커피</p>
+</div>
+<div style="border: 1px solid black;">
+	<p>초코 케이크</p>
+	<p>치즈 케이크</p>
+	<p>당근 케이크</p>
+</div>
+<button id="btnFirst">First</button>
+<button id="btnSecond">Second</button>
+<button id="btnThird">Third</button>
+</body>
+</html>

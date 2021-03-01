@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<button id="btnEvent" onclick="fnAddClickEvent()">클릭</button>
+<button onclick="fnRemoveEvent()">제거</button>
+<script>
+function fnAddClickEvent() {
+	alert("클릭");
+}
+
+function fnRemoveEvent() {
+	document.getElementById("btnEvent").removeEventListener("click", fnAddClickEvent);
+}
+</script>
+</body>
+</html>

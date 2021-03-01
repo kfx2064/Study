@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#nth-child").click(function() {
+		$("p:nth-child(1)").css("background-color", "green");
+	});
+	
+	$("#nth-of-type").click(function() {
+		$("p:nth-of-type(1)").css("background-color", "green");
+	});
+	
+	$("#nth-last-child").click(function() {
+		$("p:nth-last-child(1)").css("background-color", "green");
+	});
+	
+	$("#nth-last-of-type").click(function() {
+		$("p:nth-last-of-type(1)").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<h1>body에 있는 heading.</h1>
+<p>body의 첫 번째 단락.</p>
+<p>body의 두 번째 단락.</p>
+<div style="border: 1px solid black;">
+	<span>div의 span 요소</span>
+	<p>div의 첫 번째 단락</p>
+	<p>div의 두 번째 단락</p>
+	<p>div의 마지막 단락</p>
+</div><br>
+<div style="border: 1px solid black;">
+	<p>다른 div의 첫 번째 단락</p>
+	<p>다른 div의 두 번째 단락</p>
+	<p>다른 div의 마지막 단락</p>
+</div>
+<p>body의 마지막 단락</p>
+<button id="nth-child">nth-child</button>
+<button id="nth-of-type">nth-of-type</button>
+<button id="nth-last-child">nth-last-child</button>
+<button id="nth-last-of-type">nth-last-of-type</button>
+</body>
+</html>

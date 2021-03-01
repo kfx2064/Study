@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	
+	var showFlag = 0;
+	
+	$("button").click(function() {
+		
+		if (showFlag == 0) {
+			$("#pId").text("Nice day.");
+			showFlag = 1;
+		} else {
+			$("#pId").text("Good day.");
+			showFlag = 0;
+		}
+		
+	});
+});
+</script>
+</head>
+<body>
+<p id="pId">Good day.</p>
+<button>Click</button>
+</body>
+</html>

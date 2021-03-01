@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<input type="text" id="iptTxtFirst" value="Easy day is yesterday."/>
+<button onclick="fnH1Change()">onclick</button>
+<script>
+function fnH1Change() {
+	var getData = document.getElementById("iptTxtFirst");
+	console.log(getData);
+	console.log(getData.value);
+	document.getElementById("iptTxtFirst").value = "There is no easy day.";
+}
+</script>
+</body>
+</html>

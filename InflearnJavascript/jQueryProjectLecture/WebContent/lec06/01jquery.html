@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnChild").click(function() {
+		$("p:nth-child(2)").css("background-color", "green");
+	});
+	
+	$("#btnOfType").click(function() {
+		$("p:nth-of-type(2)").css("background-color", "green");
+	});
+	
+	$("#btnLastChild").click(function() {
+		$("p:nth-last-child(2)").css("background-color", "green");
+	});
+	
+	$("#btnLastOfType").click(function() {
+		$("p:nth-last-of-type(2)").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<h1>여러 나라들</h1>
+<p>교역 상대국입니다.</p>
+<p>중요 국가들이죠.</p>
+<div>
+	<p>한국</p>
+	<p>미국</p>
+	<p>중국</p>
+</div>
+<div>
+	<h1>싱가포르</h1>
+	<p>베트남</p>
+	<p>말레이시아</p>
+	<p>인도네시아</p>
+</div>
+<div>
+	<p>프랑스</p>
+	<p>독일</p>
+	<p>영국</p>
+</div>
+<p>러시아</p>
+<button id="btnChild">nthChild</button>
+<button id="btnOfType">nthOfType</button>
+<button id="btnLastChild">nthLastChild</button>
+<button id="btnLastOfType">nthLastOfType</button>
+</body>
+</html>

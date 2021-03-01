@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$(".pClass, #pId").text("좋은 날과 안 좋은 날은 여러분의 인생에서 번갈아 찾아옵니다.");
+	});
+});
+</script>
+</head>
+<body>
+<h1>좋은 날씨입니다.</h1>
+<h1 class="pClass">좋은 하루네요.</h1>
+<h1>매일 열심히 노력하세요.</h1>
+<h1 id="pId">언젠간 노력의 결실이 맺어질 것입니다.</h1>
+<button id="btnClick">클릭</button>
+</body>
+</html>
