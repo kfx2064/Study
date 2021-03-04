@@ -22,12 +22,8 @@ import static org.mockito.Mockito.mock;
 @ExtendWith(MockitoExtension.class)
 public class StudyServiceTest {
 
-    @Mock MemberService memberService;
-
-    @Mock StudyRepository studyRepository;
-
     @Test
-    void createStudyService() {
+    void createStudyService(@Mock MemberService memberService, @Mock StudyRepository studyRepository) {
         StudyService studyService = new StudyService(memberService, studyRepository);
         Assert.assertNotNull(studyService);
     }
