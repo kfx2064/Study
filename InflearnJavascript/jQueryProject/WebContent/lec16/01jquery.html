@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#h1IdF").click(function(event) {
+		//$("#pId1").text(event.currentTarget.innerHTML);
+		console.log(event.currentTarget);
+	});
+	
+	$("#h1IdS").click(function(event) {
+		$("#pId2").text(event.currentTarget.innerHTML);
+	});
+});
+</script>
+</head>
+<body>
+<h1 id="h1IdF">Do your best</h1>
+<h1 id="h1IdS">wait your destiny.</h1>
+<p id="pId1"></p>
+<p id="pId2"></p>
+</body>
+</html>

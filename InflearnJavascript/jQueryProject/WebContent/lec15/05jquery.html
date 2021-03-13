@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var pText = $("#pId").text();
+            $("#pId").on("click", {msg: pText}, fnSendData);
+
+            function fnSendData(event) {
+                $("#pShow").text(event.data.msg);
+            }
+        });
+    </script>
+</head>
+<body>
+<p id="pId">There is no easy day.</p>
+<p id="pShow"></p>
+</body>
+</html>

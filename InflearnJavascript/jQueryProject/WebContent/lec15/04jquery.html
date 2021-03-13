@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#pId").on({
+                mouseover: function () {
+                    $("#pId").css("background-color", "green");
+                },
+                mouseout: function () {
+                    $("#pId").css("background-color", "yellow");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<p id="pId">Easy day is yesterday.</p>
+</body>
+</html>
