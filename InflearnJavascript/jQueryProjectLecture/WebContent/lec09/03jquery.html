@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("ul[id!=ulSecond]").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<p>리스트입니다.</p>
+<ul id="ulFirst">
+	<li>F-22</li>
+	<li>F-15</li>
+	<li>F-16</li>
+</ul>
+<ul id="ulSecond">
+	<li>F-35</li>
+	<li>F-18</li>
+</ul>
+<button id="btnClick">click</button>
+</body>
+</html>

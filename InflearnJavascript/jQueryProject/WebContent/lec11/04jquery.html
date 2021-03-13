@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("h1:contains(day)").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<h1>Easy day is yesterday.</h1>
+<h2>There is no easy day.</h2>
+<h3>Do your best and wait your destiny.</h3>
+<p>천천히 걸어도 좋습니다. 목표에 도달하기만 한다면.</p>
+<p>명확한 목표 의식을 가지세요. 없는 것보단 있는 것이 좋습니다.</p>
+<p>너무 먼 목표보다는 가까운 목표를 노리세요. 그것이 더 효과가 좋습니다.</p>
+<h1>때론 달리고, 때론 걸으세요.</h1>
+<h2>중요한 것은 도착지에 다다르느냐입니다.</h2>
+<h3>도착지에서는 잠시 쉬어가도 좋겠죠?</h3>
+<button id="btnClick">click</button>
+</body>
+</html>

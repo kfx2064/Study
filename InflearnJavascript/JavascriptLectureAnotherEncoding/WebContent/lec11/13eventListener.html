@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<button id="showBtn">Click this.</button>
+<p id="paragraph">좋은 덕담 하나 해드릴게요.</p>
+<script>
+var getId = document.getElementById("showBtn");
+getId.addEventListener("mouseover", fnFirst);
+getId.addEventListener("mousedown", fnSecond);
+getId.addEventListener("click", fnThird);
+getId.addEventListener("mouseout", fnFourth);
+
+function fnFirst() {
+	document.getElementById("paragraph").innerHTML = "버터시며 노력하세요.";
+}
+
+function fnSecond() {
+	document.getElementById("paragraph").innerHTML = "좋은 결과가 높은 확률로 여러분을 찾아 올 것입니다.";
+}
+
+function fnThird() {
+	document.getElementById("paragraph").innerHTML = "결과가 당신을 배신한다 하더라도,";
+}
+
+function fnFourth() {
+	document.getElementById("paragraph").innerHTML = "슬퍼하지 말고 다시 앞으로 걸어가세요. 그것이 끝이 아닙니다.";
+}
+</script>
+</body>
+</html>

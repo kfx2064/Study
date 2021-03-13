@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnHidden").click(function() {
+		$("h2:hidden").show(1000);
+	});
+	
+	$("#btnVisible").click(function() {
+		$("h2:visible").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<h2>This is good day to live.</h2>
+<h2 style="display:none;">There is no easy day.</h2>
+<h2>Easy day is yesterday.</h2>
+<h2 style="display:none;">Do your best and wait your destiny.</h2>
+<h2>Do not confuse. Focus your task.</h2>
+<h2>Stay calm. Keep going.</h2>
+<button id="btnHidden">숨긴 거 보이기</button>
+<button id="btnVisible">보이기</button>
+</body>
+</html>

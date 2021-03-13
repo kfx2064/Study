@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#pIdF").mousedown(function() {
+		$("#pIdF").css("background-color", "green");
+	});
+	
+	$("#pIdF").mouseup(function() {
+		$("#pIdF").css("background-color", "yellow");
+	});
+});
+</script>
+</head>
+<body>
+<p id="pIdF">There is no easy day.</p>
+<p id="pIdS">Do your best and wait your destiny.</p>
+</body>
+</html>

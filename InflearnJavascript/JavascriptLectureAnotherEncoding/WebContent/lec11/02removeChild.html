@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<ul id="ulList">
+	<li>바나나</li>
+	<li>수박</li>
+	<li>귤</li>
+	<li>사과</li>
+</ul>
+<button onclick="btnRemoveChild()">리스트 클릭하시면 지워집니다.</button>
+<div id="divBox">
+	<span id="spText">Nice day.</span>
+	<button onclick="btnAnotherRemove()">spText 클릭 시 지워집니다.</button>
+	<button onclick="btnParentAllRemove()">btnParentAllRemove 클릭 시 지워집니다.</button>
+	<button onclick="btnAllRemove()">divBox를 다 삭제합니다.</button>
+</div>
+<script>
+function btnRemoveChild() {
+	var getList = document.getElementById("ulList");
+	getList.removeChild(getList.childNodes[0]);
+}
+
+function btnAnotherRemove() {
+	document.getElementById("spText").parentNode.removeChild(document.getElementById("spText"));
+}
+
+function btnParentAllRemove() {
+	document.getElementById("divBox").removeChild(document.getElementById("spText"));
+}
+
+function btnAllRemove() {
+	document.getElementsByTagName("body")[0].removeChild(document.getElementById("divBox"));
+}
+</script>
+</body>
+</html>

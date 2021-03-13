@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnInput").click(function() {
+		$(":input").css("background-color", "green");
+	});
+	
+	$("#btnText").click(function() {
+		$(":text").css("background-color", "green");
+	});
+	
+	$("#btnSubmit").click(function() {
+		$(":submit").css("background-color", "green");
+	});
+	
+	$("#btnReset").click(function() {
+		$(":reset").css("background-color", "green");
+	});
+	
+	$("#btnButton").click(function() {
+		$(":button").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<p>경영지원부서 목록</p>
+<ul>
+	<li>인사</li>
+	<li>재무</li>
+	<li>회계</li>
+	<li>총무</li>
+	<li>기획</li>
+</ul>
+<input type="text" id="iptFirst" value="Paper"><br>
+<input type="text" id="iptSecond" value="Pen"><br>
+<input type="password" id="iptPassword" value="1234"><br>
+<input type="radio" id="iptRadio"><br>
+<hr>
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+<input type="button" value="button">
+<hr>
+<button id="btnInput">input click</button>
+<button id="btnText">input text</button>
+<button id="btnSubmit">input submit</button>
+<button id="btnReset">input reset</button>
+<button id="btnButton">input button</button> 
+</body>
+</html>

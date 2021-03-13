@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		//$(":enabled").css("background-color", "green");
+		//$(":disabled").css("background-color", "green");
+		//$("#iptCity[disabled=disabled]").css("background-color", "green");
+		$("#iptId").css("background-color", "green");
+	});
+	
+	$("#btnSel").click(function() {
+		var selVal = $("#selJobs option:selected").text();
+		alert("selVal : " + selVal);
+	});
+	
+	$("#btnRadio").click(function() {
+		var getVal = $(".rdoComp:checked").val();
+		alert("getVal : " + getVal);
+	});
+});
+</script>
+</head>
+<body>
+ID : <input type="text" id="iptId" value="bongbong3"><br>
+Password : <input type="text" id="iptPassword" value="1234"><br>
+Name : <input type="text" id="iptName" value="JeongTaeHyun" disabled="disabled"><br>
+City : <input type="text" id="iptCity" value="Anyang" disabled="disabled"><br>
+<select id="selJobs">
+	<option value="SW">SW engineer</option>
+	<option value="Machine">Machine engineer</option>
+	<option value="Electronics">Electronics engineer</option>
+	<option value="Administrator">Administrator</option>
+	<option value="Book">Book keeper</option>
+</select>
+삼성<input type="radio" class="rdoComp" value="samsung">
+LG<input type="radio" class="rdoComp" value="LG">
+<button id="btnClick">click</button>
+<button id="btnSel">select</button>
+<button id="btnRadio">radio</button>
+</body>
+</html>

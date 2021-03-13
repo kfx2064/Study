@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$(":empty").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<h1>샘플 테이블입니다.</h1>
+<table border="1">
+	<tr>
+		<th>삼성</th>
+		<th>LG</th>
+		<th>SK</th>
+		<th>현대</th>
+	</tr>
+	<tr>
+		<td>삼성전자</td>
+		<td>LG전자</td>
+		<td>SK하이닉스</td>
+		<td>현대자동차</td>
+	</tr>
+	<tr>
+		<td>삼성SDI</td>
+		<td></td>
+		<td>SK이노베이션</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>LG화학</td>
+		<td></td>
+		<td>현대오토에버</td>
+	</tr>
+</table>
+<button id="btnClick">click</button>
+</body>
+</html>

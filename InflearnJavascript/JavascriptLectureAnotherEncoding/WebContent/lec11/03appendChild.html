@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<ul id="ulList">
+	<li>석탄</li>
+	<li id="iron">철광석</li>
+	<li>갈륨</li>
+	<li>리튬</li>
+</ul>
+<button onclick="fnAppendChild()">추가합니다.</button>
+<button onclick="fnRemoveChild()">삭제합니다.</button>
+<button onclick="fnRemoveTagName()">하나씩 삭제합니다.</button>
+<script>
+function fnAppendChild() {
+	var makeNode = document.createElement("li");
+	var vText = document.createTextNode("석유");
+	makeNode.appendChild(vText);
+	document.getElementById("ulList").appendChild(makeNode);
+}
+
+function fnRemoveChild() {
+	var getElement = document.getElementById("ulList");
+	getElement.removeChild(document.getElementById("iron"));
+}
+
+function fnRemoveTagName() {
+	var getElement = document.getElementById("ulList");
+	getElement.removeChild(document.getElementsByTagName("li")[0]);
+}
+</script>
+</body>
+</html>

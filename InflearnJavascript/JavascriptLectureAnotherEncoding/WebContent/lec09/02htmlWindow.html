@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+function blankWindow() {
+	window.open("https://www.naver.com", "_blank", "width=600,height=300");
+}
+
+function parentWindow() {
+	window.open("https://www.naver.com", "_blank", "width=600,height=300");
+}
+
+function selfWindow() {
+	window.open("https://www.naver.com", "_self", "width=600,height=300");
+}
+
+function topWindow() {
+	window.open("https://www.naver.com", "_top", "width=600,height=300");
+}
+</script>
+</head>
+<body>
+<button onclick="blankWindow()">Blank window</button>
+<button onclick="parentWindow()">Parent window</button>
+<button onclick="selfWindow()">Self window</button>
+<button onclick="topWindow()">Top window</button>
+</body>
+</html>

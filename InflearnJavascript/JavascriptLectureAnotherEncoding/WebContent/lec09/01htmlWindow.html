@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+s<title>Insert title here</title>
+<script>
+var vWidth = window.innerWidth;
+var vHeight = window.innerHeight;
+
+document.write("vWidth : " + vWidth + "<br>");
+document.write("vHeight : " + vHeight + "<br>");
+
+var showWindow = window.open("HelloWorld.html", "childWindow", "width=500,height=250");
+
+var screenShowWindow = window.open("", "screenShowWindow", "width=650,height=300");
+screenShowWindow.document.write("screenLeft : " + screenShowWindow.screenLeft + "<br>");
+screenShowWindow.document.write("screenLeft : " + screenShowWindow.screenTop + "<br>");
+
+var getWindowLocation = window.parent.location;
+document.write("getWindowLocation : " + getWindowLocation);
+</script>
+</head>
+<body>
+
+</body>
+</html>

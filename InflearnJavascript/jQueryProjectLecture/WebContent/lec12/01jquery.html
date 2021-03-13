@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnPid").click(function() {
+		$("#pId").css("background-color", "green");
+	});
+	
+	$("#btnSpan").click(function() {
+		$("span").css("background-color", "yellow");
+	});
+});
+</script>
+</head>
+<body>
+<p id="pId">만약 화창한 날씨라면, 미리 우산을 준비하세요.</p>
+<span>비 오는 날에 내리는 비를 대비할 수 있습니다.</span>
+<button id="btnPid">pId button</button>
+<button id="btnSpan">span button</button>
+</body>
+</html>

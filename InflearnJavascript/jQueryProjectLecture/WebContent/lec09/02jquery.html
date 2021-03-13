@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("[id=pId]").css("background-color", "green");
+	});
+});
+</script>
+</head>
+<body>
+<p>석탄</p>
+<p>석유</p>
+<p id="pId">LPG</p>
+<p>LNG</p>
+<p>목재</p>
+<button id="btnClick">Click</button>
+</body>
+</html>
