@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#formId").submit(function() {
+                alert("저장되었습니다.");
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="formId">
+    이름 : <input type="text" id="iptName" name="iptName" value="정태현">
+    비밀번호 : <input type="password" id="iptPassword" name="iptPassword" value="1234">
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>

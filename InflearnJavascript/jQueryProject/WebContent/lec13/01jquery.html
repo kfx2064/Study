@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+   $("#iptName").focus(function() {
+        $("#iptName").css("background-color", "green");
+   });
+
+   $("#iptName").blur(function() {
+        $("#iptName").css("background-color", "yellow");
+   });
+});
+</script>
+</head>
+<body>
+이름 : <input type="text" id="iptName" name="iptName"><br>
+전화번호 : <input type="text" id="iptPhone" name="iptPhone">
+</body>
+</html>
