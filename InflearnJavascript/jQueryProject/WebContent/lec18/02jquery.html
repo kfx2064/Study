@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnFirst").click(function() {
+		$("#divFirst").hide(2000)
+					.show(2000);
+	});
+	
+	$("#btnSecond").click(function() {
+		$("#divFirst").slideUp(2000)
+					.slideDown(2000);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divFirst" style="border: 1px solid black; width: 400px; height: 200px;">
+적군을 노리는 중에 적군도 당신을 노립니다.<br>
+당신의 등은 전우가 지켜줍니다.<br>
+전장의 총알은 눈이 없습니다.<br>
+해당 나라의 화폐는 그 나라의 신용도를 의미합니다.<br>
+은행은 여러분의 최후의 보루이자 든든한 우산이 되어 줄 수 있습니다.<br>
+여러분이 대비를 한다면 말이죠.<br>
+</div>
+<button id="btnFirst">hide and show</button>
+<button id="btnSecond">slideUp and down</button>
+</body>
+</html>
