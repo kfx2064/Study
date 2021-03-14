@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClickF").click(function(event) {
+		$("#h1Id").text("이벤트 : " + event.type);
+	});
+	
+	$("#btnClickS").mousedown(function(event) {
+		$("#h1Id").text("이벤트 : " + event.type);
+	});
+});
+</script>
+</head>
+<body>
+<h1 id="h1Id">이벤트 종류입니다.</h1>
+<button id="btnClickF">click first</button>
+<button id="btnClickS">click second</button>
+</body>
+</html>

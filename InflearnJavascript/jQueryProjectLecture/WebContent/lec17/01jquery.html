@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnHide").click(function() {
+		$("#divFirst").hide(1000);
+	});
+	
+	$("#btnShow").click(function() {
+		$("#divFirst").show(1000);
+	});
+	
+	$("#btnToggle").click(function() {
+		$("#divFirst").toggle(1000);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divFirst" style="border: 1px solid black; width: 400px; height: 400px;">
+Easy day is yesterday.<br>
+There is no easy day.<br>
+할 거면 하고 안 할 거면 하지 마라.<br>
+언제나 조심하고 겸손하라.<br>
+네가 누군가를 노리고 있을 때, 또 다른 누군가도 너를 노리고 있다.<br>
+언제나 정진하라. 세상의 마지막이 언제인지 모르니까.<br>
+</div>
+<button id="btnHide">hide</button>
+<button id="btnShow">show</button>
+<button id="btnToggle">toggle</button>
+</body>
+</html>
