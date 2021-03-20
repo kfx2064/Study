@@ -6,14 +6,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#btnClick").click(function(event) {
-		$("#pId").text("시간입니다. : " + event.timeStamp);
+	$("#btnClick").click(function() {
+		$("#aId").attr("href", "https://www.google.co.kr");
+		$("#aId").text("Google");
 	});
 });
 </script>
 </head>
 <body>
-<p id="pId">시간입니다.</p>
+<a id="aId" href="https://www.naver.com">Naver</a>
 <button id="btnClick">click</button>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		var divId1Border = $("#divId1").css("border");
+		var divId2Border = $("#divId2").css("border");
+		
+		console.log(divId1Border);
+		console.log(divId2Border);
+		
+		var divId1BgColor = $("#divId1").css("background-color");
+		var divId2BgColor = $("#divId2").css("background-color");
+		
+		console.log(divId1BgColor);
+		console.log(divId2BgColor);
+		
+		var divId1Width = $("#divId1").css("width");
+		var divId2Width = $("#divId2").css("width");
+		
+		console.log(divId1Width);
+		console.log(divId2Width);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divId1" style="border: 1px solid black; width: 200px; height: 200px; 
+					background-color: lightblue;"></div>
+<div id="divId2" style="border: 1px solid green; width: 300px; height: 300px;
+					background-color: lightgreen;"></div>
+<button id="btnClick">click</button>
+</body>
+</html>

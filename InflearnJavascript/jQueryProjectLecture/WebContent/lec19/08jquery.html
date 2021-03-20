@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	/* $("#btnClick").click(function() {
+		$("#divFirst").offset({top: 700, left: 100});
+	}); */
+	
+	$("#btnClick").click(function() {
+		var makeNewPosition = new Object();
+		makeNewPosition.top = 200;
+		makeNewPosition.left = 200;
+		$("#divFirst").offset(makeNewPosition);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divFirst" style="border: 1px solid black;
+			width: 200px; height: 200px; background-color: lightblue;">
+</div>
+<button id="btnClick">click</button>
+</body>
+</html>

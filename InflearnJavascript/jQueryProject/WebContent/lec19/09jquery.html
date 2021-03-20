@@ -6,14 +6,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#btnClick").click(function(event) {
-		$("#pId").text("시간입니다. : " + event.timeStamp);
+	$("#btnClick").click(function() {
+		var getPos = $("#divId").position();
+		console.log(getPos);
 	});
 });
 </script>
 </head>
 <body>
-<p id="pId">시간입니다.</p>
+<div id="divId" style="border: 1px solid black; width: 200px; height: 200px;
+				background-color: lightblue;">
+</div>
 <button id="btnClick">click</button>
 </body>
 </html>

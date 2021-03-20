@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick1").click(function() {
+		$("#pIdFirst").text("Good day to live.");
+	});
+	
+	$("#btnClick2").click(function() {
+		$("#pIdSecond").html("Where are you from?");
+	});
+	
+	$("#btnClick3").click(function() {
+		$("#iptTxt").val("Do or do not.");
+	});
+});
+</script>
+</head>
+<body>
+<p id="pIdFirst">Do your best and wait your destiny.</p>
+<p id="pIdSecond">Wait your time.</p>
+<input type="text" id="iptTxt" value="진인사대천명" />
+<button id="btnClick1">click1</button>
+<button id="btnClick2">click2</button>
+<button id="btnClick3">click3</button>
+</body>
+</html>

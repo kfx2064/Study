@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("#divId1").css("background-color", "lightgreen");
+		$("#divId2").css("background-color", "lightblue");
+	});
+	
+	$("#btnModify").click(function() {
+		$("#divId1").css({"background-color": "red", "border": "3px solid black"});
+		$("#divId2").css({"background-color": "blue", "border": "5px solid green"});
+	});
+});
+</script>
+</head>
+<body>
+<div id="divId1" style="width: 200px; height: 200px; background-color: lightblue;"></div>
+<div id="divId2" style="width: 200px; height: 200px; background-color: lightgreen;"></div>
+<button id="btnClick">click</button>
+<button id="btnModify">modify</button>
+</body>
+</html>

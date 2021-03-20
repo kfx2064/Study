@@ -6,14 +6,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#btnClick").click(function(event) {
-		$("#pId").text("시간입니다. : " + event.timeStamp);
+	$("#btnClick").click(function() {
+		
+		var pTag1 = "<li>롯데</li>";
+		var pTag2 = "<li>한화</li>";
+		var pTag3 = "<li>현대중공업</li>";
+		
+		$("#ulList").append(pTag1, pTag2, pTag3);
 	});
 });
 </script>
 </head>
 <body>
-<p id="pId">시간입니다.</p>
+<ul id="ulList">
+	<li>삼성</li>
+	<li>엘지</li>
+	<li>현대</li>
+	<li>에스케이</li>
+</ul>
 <button id="btnClick">click</button>
 </body>
 </html>

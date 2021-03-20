@@ -6,14 +6,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#btnClick").click(function(event) {
-		$("#pId").text("시간입니다. : " + event.timeStamp);
+	$("#btnClick").click(function() {
+		$("#ulId").append("<li>Tesla</li>");
+	});
+	
+	$("#btnPrepend").click(function() {
+		$("#ulId").prepend("<li>Amazon</li>");
 	});
 });
 </script>
 </head>
 <body>
-<p id="pId">시간입니다.</p>
+<ul id="ulId">
+	<li>Samsung</li>
+	<li>LG</li>
+	<li>SK</li>
+	<li>Hyundai</li>
+</ul>
 <button id="btnClick">click</button>
+<button id="btnPrepend">prepend</button>
 </body>
 </html>

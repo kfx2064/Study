@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		var vHeight = $("#divId").height();
+		var vWidth = $("#divId").width();
+		var vInHeight = $("#divId").innerHeight();
+		var vInWidth = $("#divId").innerWidth();
+		var vOutHeight = $("#divId").outerHeight();
+		var vOutWidth = $("#divId").outerWidth();
+		
+		console.log("vHeight : " + vHeight);
+		console.log("vWidth : " + vWidth);
+		console.log("vInHeight : " + vInHeight);
+		console.log("vInWidth : " + vInWidth);
+		console.log("vOutHeight : " + vOutHeight);
+		console.log("vOutWidth : " + vOutWidth);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divId"
+	style="border: 1px solid black;
+			width: 300px; height: 200px;
+			padding: 1px; margin: 5px;
+			background-color: lightblue;">
+			
+</div>
+<button id="btnClick">click</button>
+</body>
+</html>

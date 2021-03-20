@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick1").click(function() {
+		var getVal = $("#iptTxt").prop("value");
+		console.log("getVal : " + getVal);
+		
+		var getId = $("#iptTxt").prop("id");
+		console.log("getId : " + getId);
+		
+		var getType = $("#iptTxt").prop("type");
+		console.log("getType : " + getType);
+	});
+});
+</script>
+</head>
+<body>
+<input type="text" id="iptTxt" value="Easy day is yesterday."/>
+<button id="btnClick1">click1</button> 
+</body>
+</html>

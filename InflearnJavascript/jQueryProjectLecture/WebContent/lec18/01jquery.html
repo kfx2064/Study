@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	var writeTextUseHTML = "";
+	
+	$("#btnClick").click(function() {
+		$("#pFirst").hide(3000, showMessage());
+	});
+	
+	function showMessage() {
+		alert("텍스트를 바꿔보겠습니다.");
+		makeText();
+		$("#pFirst").html(writeTextUseHTML);
+	}
+	
+	function makeText() {
+		writeTextUseHTML = "Easy day.<br>";
+		writeTextUseHTML += "Nicely doen.<br>";
+		writeTextUseHTML += "If you can, do it.<br>";
+		writeTextUseHTML += "결과를 예상하지 마라.<br>";
+		writeTextUseHTML += "과정을 즐겨도 좋다.<br>";
+		writeTextUseHTML += "최선을 다하고 나머진 하늘에 맡겨라.<br>";
+		writeTextUseHTML += "어떤 결과가 나오든 받아들여라.<br>";
+		writeTextUseHTML += "세상의 마지막인 결과라면 덤덤하게 맞이하라.<br>";
+		writeTextUseHTML += "세상의 마지막이 아니라면 좌절하지 말고 다시 걸어가라.<br>";
+		writeTextUseHTML += "또 다른 내일이 당신을 반겨준다.<br>";
+	}
+});
+</script>
+</head>
+<body>
+<p id="pFirst">
+This is good day to live.<br>
+Fox three.<br>
+Easy day is yesterday.<br>
+There is no easy day.<br>
+Do your best and wait your destiny.<br>
+진인사대천명<br>
+일은 사람이 하고 결과는 하늘에 맡긴다.<br>
+수신제가치국평천하<br>
+자신을 바로 닦고 집안을 돌본 후에 나라를 다스리고 천하를 평정한다.<br>
+</p>
+<button id="btnClick">click</button>
+</body>
+</html>

@@ -6,14 +6,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#btnClick").click(function(event) {
-		$("#pId").text("시간입니다. : " + event.timeStamp);
+	$("#btnClick").click(function() {
+		$("#pId").append("<b> Easy day is yesterday.</b>");
 	});
 });
 </script>
 </head>
 <body>
-<p id="pId">시간입니다.</p>
+<p id="pId">This is good day to live.</p>
 <button id="btnClick">click</button>
 </body>
 </html>

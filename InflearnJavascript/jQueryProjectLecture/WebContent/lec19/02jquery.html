@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		var aHref = $("#aId").attr("href");
+		console.log("aHref : " + aHref);
+		
+		var vIptTxtVal = $("#iptTxt").attr("value");
+		console.log("vIptTxtVal : " + vIptTxtVal);
+		
+		var vIptTxtId = $("#iptTxt").attr("id");
+		console.log("vIptTxtId : " + vIptTxtId);
+	});
+});
+</script>
+</head>
+<body>
+<a id="aId" href="https://www.naver.com">naver</a>
+<input type="text" id="iptTxt" value="Easy day."/>
+<button id="btnClick">click</button>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnUp").click(function() {
+		$("#divFirst").slideUp(3000);
+	});
+	
+	$("#btnDown").click(function() {
+		$("#divFirst").slideDown(5000);
+	});
+	
+	$("#btnToggle").click(function() {
+		$("#divFirst").slideToggle(1000);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divFirst" style="border: 1px solid black; width: 500px; height: 500px;">
+Do your best and wait your destiny.<br>
+Fine dining make health body.<br>
+Easy day is yesterday.<br>
+There is no easy day.<br>
+정진하라. 하루 20분이라도.<br>
+인내하라. 목표에 도달할 때까지.<br>
+좌절하지 마라. 결과가 너를 만족시키지 못한다 하더라도.<br>
+쓰러지지 마라. 마지막이 너를 배신한다 하더라도.<br>
+</div>
+<button id="btnUp">슬라이드업</button>
+<button id="btnDown">슬라이드다운</button>
+<button id="btnToggle">슬라이드토글</button>
+</body>
+</html>

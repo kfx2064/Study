@@ -6,14 +6,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#btnClick").click(function(event) {
-		$("#pId").text("시간입니다. : " + event.timeStamp);
-	});
+	var getOffSet = $("#divFirst").offset();
+	console.log("Top : " + getOffSet.top);
+	console.log("Left : " + getOffSet.left);
+	console.log(getOffSet);
 });
 </script>
 </head>
 <body>
-<p id="pId">시간입니다.</p>
+<div id="divFirst" style="border: 1px solid black; width: 200px; height: 200px;">
+
+</div>
 <button id="btnClick">click</button>
 </body>
 </html>
