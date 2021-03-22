@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick1").click(function() {
+		$("<h1>Nice day.</h1>").appendTo("#pId1");
+	});
+	
+	$("#btnClick2").click(function() {
+		$("<h1>Shiny weather.</h1>").prependTo("#pId2");
+	});
+});
+</script>
+</head>
+<body>
+<p id="pId1">There is no easy day.</p>
+<p id="pId2">Easy day is yesterday.</p>
+<button id="btnClick1">click1</button>
+<button id="btnClick2">click2</button>
+</body>
+</html>

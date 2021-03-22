@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btn1").click(function() {
+		var getClone = $("#pId1").clone(true);
+		$("#divOut").append(getClone);
+	});
+	
+	$("#btn2").click(function() {
+		var getClone = $("#pId2").clone(true);
+		$("#divOut").append(getClone);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divOut" style="width: 500px; height: 500px; border: 1px solid black;">
+	<p id="pId1">There is no easy day.</p>
+	<p id="pId2">Easy day is yesterday.</p>
+</div>
+<button id="btn1">btn1</button>
+<button id="btn2">btn2</button>
+</body>
+</html>

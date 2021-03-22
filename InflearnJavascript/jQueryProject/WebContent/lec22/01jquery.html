@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	var cuttingData = "";
+	
+	$("#btn1").click(function() {
+		cuttingData = $("#pId1").detach();
+	});
+	
+	$("#btn2").click(function() {
+		$("#div1").append(cuttingData);
+	});
+});
+</script>
+</head>
+<body>
+<div id="div1" style="border: 1px solid black; width: 500px; height: 500px;">
+	<p id="pId1">과거를 기억하고 현재를 열심히 살며 미래를 대비한다.</p>
+	<p id="pId2">흘러간 시간은 되돌리기 힘들고 앞으로 다가오는 시간은 막기 힘들다.</p>
+	<p id="pId3">죽으면 끝이지만 닥치면 현실이 된다. 대비하라.</p>
+</div>
+<button id="btn1">detach</button>
+<button id="btn2">append</button>
+</body>
+</html>

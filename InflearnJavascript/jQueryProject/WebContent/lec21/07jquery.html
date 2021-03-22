@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick1").click(function() {
+		$("<h1>Easy day.</h1>").insertBefore("#pId1");
+	});
+	
+	$("#btnClick2").click(function() {
+		$("<h2>There is no easy day.</h2>").insertAfter("#pId2");
+	});
+});
+</script>
+</head>
+<body>
+<p id="pId1">시간은 금이다.</p>
+<p id="pId2">때론 침묵이 달변보다 나을 때가 있다.</p>
+<button id="btnClick1">click1</button>
+<button id="btnClick2">click2</button>
+</body>
+</html>

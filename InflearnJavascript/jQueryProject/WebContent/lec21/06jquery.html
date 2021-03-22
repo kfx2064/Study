@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnPid1").click(function() {
+		$("#pId1").before("<h1>Nicely done.</h1>");
+	});
+	
+	$("#btnPid2").click(function() {
+		$("#pId2").after("<h1>Easy day.</h1>");
+	});
+});
+</script>
+</head>
+<body>
+<p id="pId1">There is no easy day.</p>
+<p id="pId2">Easy day is yesterday.</p>
+<button id="btnPid1">btnPid1</button>
+<button id="btnPid2">btnPid2</button>
+</body>
+</html>

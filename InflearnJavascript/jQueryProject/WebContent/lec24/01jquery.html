@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		var hasClassYn = $("p").hasClass("pId3");
+		//var hasClassYn = $("p").hasClass("pId4");
+		console.log(hasClassYn);
+	});
+});
+</script>
+</head>
+<body>
+<p class="pId1">There is no easy day.</p>
+<p class="pId2">Do or do not. There is no try.</p>
+<p class="pId3">Easy day is yesterday.</p>
+<button id="btnClick">click</button>
+</body>
+</html>
