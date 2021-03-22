@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		var getId = $("#divId1").prop("id");
+		console.log("getId : " + getId);
+		
+		var getStyle = $("#divId1").prop("style");
+		console.log("getStyle : " + getStyle);
+		console.log(getStyle);
+	});
+});
+</script>
+</head>
+<body>
+<div id="divId1" style="border: 1px solid black; width: 200px; height: 200px;"></div>
+<button id="btnClick">click</button>
+</body>
+</html>

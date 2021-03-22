@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.bgColor {
+	background-color: yellow;
+}
+
+.brLine {
+	padding: 20px;
+}
+</style>
+<script>
+$(document).ready(function() {
+	$("#btnClick1").click(function() {
+		$("#div1").addClass("bgColor");
+	});
+	
+	$("#btnClick2").click(function() {
+		$("#div2").addClass("bgColor brLine");
+	});
+});
+</script>
+</head>
+<body>
+<div id="div1" style="width: 200px; height: 200px; border: 1px solid black;">
+</div>
+<div id="div2" style="width: 200px; height: 200px; border: 1px solid black;">
+</div>
+<button id="btnClick1">click1</button>
+<button id="btnClick2">click2</button>
+</body>
+</html>

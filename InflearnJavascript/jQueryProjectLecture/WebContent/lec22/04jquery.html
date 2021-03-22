@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.showText {
+	background-color: red;
+}
+
+.focusText {
+	background-color: yellow;
+}
+
+.recoveryText {
+	background-color: green;
+}
+</style>
+<script>
+$(document).ready(function() {
+	$("#btnClick1").click(function() {
+		$("p").removeClass("showText");
+	});
+	
+	$("#btnClick2").click(function() {
+		$("p").removeClass("focusText");
+	});
+	
+	$("#btnClick3").click(function() {
+		$("p").removeClass("recoveryText");
+	});
+});
+</script>
+</head>
+<body>
+<div id="divContents">
+	<p class="showText">There is no easy day.</p>
+	<p class="focusText">Easy day is yesterday.</p>
+	<p class="recoveryText">Nice day, shiny weather.</p>
+</div>
+<button id="btnClick1">click1</button>
+<button id="btnClick2">click2</button>
+<button id="btnClick3">click3</button>
+</body>
+</html>
