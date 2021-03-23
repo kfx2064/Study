@@ -53,4 +53,11 @@ public class EChartController {
         return "echart/echartStackedHorizontalBarChart";
     }
 
+    @GetMapping("/echartMixedLineAndBarChart")
+    public String echartMixedLineAndBarChart(Model model) throws Exception {
+        logger.info("EChartController, echartMixedLineAndBarChart.");
+
+        return "echart/echartMixedLineAndBarChart";
+    }
+
 }
