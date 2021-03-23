@@ -39,4 +39,11 @@ public class EChartController {
         return "echart/echartStackedLineChart";
     }
 
+    @GetMapping("/echartStackedColumnChart")
+    public String echartStackedColumnChart(Model model) throws Exception {
+        logger.info("EChartController, echartStackedColumnChart.");
+
+        return "echart/echartStackedColumnChart";
+    }
+
 }
