@@ -18,4 +18,18 @@ public class EChartController {
         return "echart/echartBarChart";
     }
 
+    @GetMapping("/echartSmoothLineChart")
+    public String echartSmoothLineChart(Model model) throws Exception {
+        logger.info("EChartController, echartSmoothLineChart.");
+
+        return "echart/echartSmoothLineChart";
+    }
+
+    @GetMapping("/echartBasicAreaChart")
+    public String echartBasicAreaChart(Model model) throws Exception {
+        logger.info("EChartController, echartBasicAreaChart.");
+
+        return "echart/echartBasicAreaChart";
+    }
+
 }
