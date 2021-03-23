@@ -19,6 +19,11 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@RequestMapping(value = "layout.do", method = RequestMethod.GET)
+	public String layout(Model model) {
+		return "layout";
+	}
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
