@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webjars/jquery/3.6.0/dist/jquery.js"></script>
+    <script src="/webjars/chart.js/3.0.0-beta.9/dist/chart.js"></script>
+    <script src="/js/echarts/dist/echarts.js"></script>
+    <script>
+        $(document).ready(function() {
+            //var getRsList = [[${resultList}]];
+            var getRsList = "";
+
+            // 버튼 클릭
+            $("#btnClick").click(function() {
+                fnSetChart(getRsList);
+            });
+        });
+
+        function fnSetChart(getRsList) {
+            var chartDom = document.getElementById("myChart");
+            var myChart = echarts.init(chartDom);
+
+            var options = "";
+
+            options = {
+                title: {
+                    text: '세계경제지수',
+                    subtext: '수출물량'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['2020년', '2021년']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    boundaryGap: [0, 0.01]
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['한국', '미국', '러시아', '일본', '중국', '인도']
+                },
+                series: [
+                    {
+                        name: '2020년',
+                        type: 'bar',
+                        data: [18203, 23489, 29034, 104970, 131744, 630230]
+                    },
+                    {
+                        name: '2021년',
+                        type: 'bar',
+                        data: [19325, 23438, 31000, 121594, 134141, 681807]
+                    }
+                ]
+            };
+
+            myChart.setOption(options)
+        }
+    </script>
+</head>
+<body>
+<h1>BarChart.</h1>
+<button id="btnClick">그래프</button>
+<canvas id="myChart" width="800" height="400"></canvas>
+</body>
+</html>

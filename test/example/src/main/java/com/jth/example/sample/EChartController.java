@@ -67,4 +67,18 @@ public class EChartController {
         return "echart/echartAreaPiecesChart";
     }
 
+    @GetMapping("/echartWorldTotalPopulationChart")
+    public String echartWorldTotalPopulationChart(Model model) throws Exception {
+        logger.info("EChartController, echartWorldTotalPopulationChart.");
+
+        return "echart/echartWorldTotalPopulationChart";
+    }
+
+    @GetMapping("/echartBrushSelectOnColumnChart")
+    public String echartBrushSelectOnColumnChart(Model model) throws Exception {
+        logger.info("EChartController, echartBrushSelectOnColumnChart.");
+
+        return "echart/echartBrushSelectOnColumnChart";
+    }
+
 }
