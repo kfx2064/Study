@@ -1,0 +1,93 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webjars/jquery/3.6.0/dist/jquery.js"></script>
+    <script src="/webjars/chart.js/3.0.0-beta.9/dist/chart.js"></script>
+    <script src="/js/echarts/dist/echarts.js"></script>
+    <script>
+        $(document).ready(function() {
+            //var getRsList = [[${resultList}]];
+            var getRsList = "";
+
+            // 버튼 클릭
+            $("#btnClick").click(function() {
+                fnSetChart(getRsList);
+            });
+        });
+
+        function fnSetChart(getRsList) {
+            var chartDom = document.getElementById("myChart");
+            var myChart = echarts.init(chartDom);
+
+            var options = "";
+
+            options = {
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false
+                },
+                yAxis: {
+                    type: 'value',
+                    boundaryGap: [0, '30%']
+                },
+                visualMap: {
+                    type: 'piecewise',
+                    show: false,
+                    dimension: 0,
+                    seriesIndex: 0,
+                    pieces: [{
+                        gt: 1,
+                        lt: 3,
+                        color: 'rgba(0, 0, 180, 0.4)'
+                    }, {
+                        gt: 5,
+                        lt: 7,
+                        color: 'rgba(0, 0, 180, 0.4)'
+                    }]
+                },
+                series: [
+                    {
+                        type: 'line',
+                        smooth: 0.6,
+                        symbol: 'none',
+                        lineStyle: {
+                            color: '#5470C6',
+                            width: 5
+                        },
+                        markLine: {
+                            symbol: ['none', 'none'],
+                            label: {show: false},
+                            data: [
+                                {xAxis: 1},
+                                {xAxis: 3},
+                                {xAxis: 5},
+                                {xAxis: 7}
+                            ]
+                        },
+                        areaStyle: {},
+                        data: [
+                            ['2019-10-10', 200],
+                            ['2019-10-11', 560],
+                            ['2019-10-12', 750],
+                            ['2019-10-13', 580],
+                            ['2019-10-14', 250],
+                            ['2019-10-15', 300],
+                            ['2019-10-16', 450],
+                            ['2019-10-17', 300],
+                            ['2019-10-18', 100]
+                        ]
+                    }
+                ]
+            };
+
+            myChart.setOption(options)
+        }
+    </script>
+</head>
+<body>
+<h1>BarChart.</h1>
+<button id="btnClick">그래프</button>
+<canvas id="myChart" width="800" height="400"></canvas>
+</body>
+</html>

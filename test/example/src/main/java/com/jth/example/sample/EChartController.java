@@ -60,4 +60,11 @@ public class EChartController {
         return "echart/echartMixedLineAndBarChart";
     }
 
+    @GetMapping("/echartAreaPiecesChart")
+    public String echartAreaPiecesChart(Model model) throws Exception {
+        logger.info("EChartController, echartAreaPiecesChart.");
+
+        return "echart/echartAreaPiecesChart";
+    }
+
 }
