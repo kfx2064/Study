@@ -32,4 +32,11 @@ public class EChart2Controller {
         return "echart/pie/echartDoughnutChart";
     }
 
+    @GetMapping("/pie/echartNestedPiesChart")
+    public String echartNestedPiesChart(Model model) throws Exception {
+        logger.info("EChart2Controller, echartNestedPiesChart.");
+
+        return "echart/pie/echartNestedPiesChart";
+    }
+
 }
