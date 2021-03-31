@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("span").parent().css("background-color", "red");
+	});
+});
+</script>
+</head>
+<body>
+<div style="border: 1px solid black; width: 500px; height: 500px;">
+	<ul>
+		<li>삼성
+			<span>삼성전자</span>
+			<span>삼성SDI</span>
+			<span>삼성SDS</span>
+		</li>
+		<li>엘지
+			<span>엘지전자</span>
+			<span>엘지화학</span>
+			<span>엘지CNS</span>
+		</li>
+	</ul>
+</div>
+<button id="btnClick">click</button>
+</body>
+</html>

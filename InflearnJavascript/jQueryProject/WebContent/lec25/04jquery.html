@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnChil").click(function() {
+		var vSpan = $("#divCaps").children("span");
+		console.log(vSpan);
+	});
+	
+	$("#btnChilSpantag").click(function() {
+		$("#divCaps").children("span").css("background-color", "red");
+	});
+});
+</script>
+</head>
+<body>
+<div id="divCaps">
+	<p>삼성
+		<span>삼성전자</span>
+		<span>삼성SDI</span>
+		<span>삼성SDS</span>
+	</p>
+	<p>LG
+		<span>LG전자</span>
+		<span>LG화학</span>
+		<span>LGCNS</span>
+	</p>
+	<span>네이버</span>
+	<span>카카오</span>
+</div>
+<button id="btnChil">자식</button>
+<button id="btnChilSpantag">자식Span</button>
+</body>
+</html>

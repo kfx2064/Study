@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnChildren").click(function() {
+		var vChildren = $("#divCaps").children();
+		console.log(vChildren);
+	});
+	
+	$("#btnChildrenCss").click(function() {
+		$("#divCaps").children().css("background-color", "red");
+	});
+	
+	$("#btnChildrenChildren").click(function() {
+		var vChil = $("#divCaps").children().children();
+		console.log(vChil);
+	});
+	
+	$("#btnChildrenChildrenCss").click(function() {
+		$("#divCaps").children().children().css("background-color", "red");
+	});
+});
+</script>
+</head>
+<body>
+<div id="divCaps" style="border: 1px solid black; width: 500px; height: 500px;">
+	<p>SK
+		<span>SK텔레콤</span>
+		<span>SK하이닉스</span>
+		<span>SK이노베이션</span>
+	</p>
+	<p>현대자동차
+		<span>현대자동차</span>
+		<span>기아자동차</span>
+		<span>현대오토에버</span>
+	</p>
+</div>
+<button id="btnChildren">자식</button>
+<button id="btnChildrenCss">자식CSS</button>
+<button id="btnChildrenChildren">자식의 자식</button>
+<button id="btnChildrenChildrenCss">자식의 자식의 CSS</button>
+</body>
+</html>
