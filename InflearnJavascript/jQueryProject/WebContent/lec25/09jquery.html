@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#btnClass").click(function () {
+        $("p").filter(".pClass").css("background-color", "red");
+    });
+
+    $("#btnId").click(function () {
+        $("p").filter("#pId").css("background-color", "lightblue");
+    });
+});
+</script>
+</head>
+<body>
+<p>석유</p>
+<p id="pId">LPG</p>
+<p class="pClass">LNG</p>
+<p class="pClass">셰일가스</p>
+<p>태양광</p>
+<p>수소</p>
+<p>태양열</p>
+<p>풍력</p>
+<p>전기</p>
+<button id="btnClass">btnClass</button>
+<button id="btnId">btnId</button>
+</body>
+</html>

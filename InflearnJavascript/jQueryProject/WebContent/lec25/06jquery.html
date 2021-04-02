@@ -20,6 +20,27 @@ $(document).ready(function() {
 		var vSib = $("#sGoogle").siblings().nextAll();
 		console.log(vSib);
 	});
+	
+	$("#btnSiblingsNextUntil").click(function() {
+		var vSib = $("#sGoogle").siblings().nextUntil();
+		console.log(vSib);
+	});
+	
+	$("#btnSiblingsPrev").click(function() {
+		var vSib = $("#sGoogle").siblings().prev();
+		console.log(vSib);
+	});
+	
+	$("#btnSiblingsPrevAll").click(function() {
+		var vSib = $("#sGoogle").siblings().prevAll();
+		console.log(vSib);
+	});
+	
+	$("#btnSiblingsPrevUntil").click(function() {
+		var vSib = $("#sGoogle").siblings().prevUntil();
+		console.log(vSib);
+	});
+	
 });
 </script>
 </head>
@@ -37,5 +58,9 @@ $(document).ready(function() {
 <button id="btnSiblings">siblings</button>
 <button id="btnSiblingsNext">siblingsNext</button>
 <button id="btnSiblingsNextAll">siblingsNextAll</button>
+<button id="btnSiblingsNextUntil">siblingsNextUntil</button>
+<button id="btnSiblingsPrev">siblingsPrev</button>
+<button id="btnSiblingsPrevAll">siblingsPrevAll</button>
+<button id="btnSiblingsPrevUntil">siblingsPrevUntil</button>
 </body>
 </html>

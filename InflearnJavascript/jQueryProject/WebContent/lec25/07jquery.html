@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    $("#btnFirst").click(function () {
+        var pFirst = $("p").first();
+        console.log("first")
+        console.log(pFirst);
+    });
+
+    $("#btnSecond").click(function () {
+        var pLast = $("p").last();
+        console.log("last");
+        console.log(pLast);
+    });
+
+    $("#btnFirstColor").click(function () {
+        $("p").first().css("background-color", "red");
+    });
+
+    $("#btnSecondColor").click(function () {
+        $("p").last().css("background-color", "yellow");
+    });
+
+});
+</script>
+</head>
+<body>
+<p>삼성전자</p>
+<p>네이버</p>
+<p>카카오</p>
+<p>LG전자</p>
+<p>SK하이닉스</p>
+<p>현대자동차</p>
+<button id="btnFirst">first</button>
+<button id="btnSecond">second</button>
+<button id="btnFirstColor">first color</button>
+<button id="btnSecondColor">second color</button>
+</body>
+</html>

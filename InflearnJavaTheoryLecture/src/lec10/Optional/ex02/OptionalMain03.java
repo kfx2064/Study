@@ -16,6 +16,8 @@ public class OptionalMain03 {
 
         System.out.println("문자열 길이 : " + originalString.length());
 
+        Optional<String> s2 = Optional.ofNullable(originalString).map(s -> s.trim());
+
         String s1 = Optional.ofNullable(originalString)
                             .map(s -> s.trim())
                             .orElseGet(() -> {
