@@ -261,7 +261,7 @@ public class EventControllerTests extends BaseControllerTest {
 
         this.mockMvc.perform(MockMvcRequestBuilders.post("/api/events/")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(this.objectMapper.writeValueAsString(eventDto)))
+                .content(this.objectMapper.writeValueAsString(event)))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].objectName").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].field").exists())

@@ -1,0 +1,111 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webjars/jquery/3.6.0/dist/jquery.js"></script>
+    <script src="/webjars/chart.js/3.0.0-beta.9/dist/chart.js"></script>
+    <script src="/js/echarts/dist/echarts.js"></script>
+    <script>
+        $(document).ready(function() {
+            //var getRsList = [[${resultList}]];
+            var getRsList = "";
+
+            // 버튼 클릭
+            $("#btnClick").click(function() {
+                fnSetChart(getRsList);
+            });
+        });
+
+        function fnSetChart(getRsList) {
+            var chartDom = document.getElementById("myChart");
+            var myChart = echarts.init(chartDom);
+
+            var options = "";
+
+            options = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                },
+                legend: {
+                    data: ['전자', '기계', '조선', 'IT', '화학', '정유', '전기']
+                },
+                series: [
+                    {
+                        name: '국내 산업',
+                        type: 'pie',
+                        selectedMode: 'single',
+                        radius: [0, '30%'],
+                        label: {
+                            position: 'inner',
+                            fontSize: 14,
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            {value: 1548, name: '전자'},
+                            {value: 775, name: '기계'},
+                            {value: 679, name: '조선', selected: true}
+                        ]
+                    },
+                    {
+                        name: '국내 산업',
+                        type: 'pie',
+                        radius: ['45%', '60%'],
+                        labelLine: {
+                            length: 30,
+                        },
+                        label: {
+                            formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                            backgroundColor: '#F6F8FC',
+                            borderColor: '#8C8D8E',
+                            borderWidth: 1,
+                            borderRadius: 4,
+
+                            rich: {
+                                a: {
+                                    color: '#6E7079',
+                                    lineHeight: 22,
+                                    align: 'center'
+                                },
+                                hr: {
+                                    borderColor: '#8C8D8E',
+                                    width: '100%',
+                                    borderWidth: 1,
+                                    height: 0
+                                },
+                                b: {
+                                    color: '#4C5058',
+                                    fontSize: 14,
+                                    fontWeight: 'bold',
+                                    lineHeight: 33
+                                },
+                                per: {
+                                    color: '#fff',
+                                    backgroundColor: '#4C5058',
+                                    padding: [3, 4],
+                                    borderRadius: 4
+                                }
+                            }
+                        },
+                        data: [
+                            {value: 1048, name: 'IT'},
+                            {value: 912, name: '화학'},
+                            {value: 758, name: '정유'},
+                            {value: 651, name: '전기'}
+                        ]
+                    }
+                ]
+            };
+
+            myChart.setOption(options);
+        }
+    </script>
+</head>
+<body>
+<h1>PieChart.</h1>
+<button id="btnClick">그래프</button>
+<canvas id="myChart" width="800" height="400"></canvas>
+</body>
+</html>

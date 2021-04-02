@@ -1,0 +1,78 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webjars/jquery/3.6.0/dist/jquery.js"></script>
+    <script src="/webjars/chart.js/3.0.0-beta.9/dist/chart.js"></script>
+    <script src="/js/echarts/dist/echarts.js"></script>
+    <script>
+        $(document).ready(function() {
+            //var getRsList = [[${resultList}]];
+            var getRsList = "";
+
+            // 버튼 클릭
+            $("#btnClick").click(function() {
+                fnSetChart(getRsList);
+            });
+        });
+
+        function fnSetChart(getRsList) {
+            var chartDom = document.getElementById("myChart");
+            var myChart = echarts.init(chartDom);
+
+            var options = "";
+
+            options = {
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    top: '5%',
+                    left: 'center'
+                },
+                series: [
+                    {
+                        name: '시설이용현황',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: '40',
+                                fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            {value: 1048,   name: '종합자료실'},
+                            {value: 735,    name: '생도열람실'},
+                            {value: 580,    name: '일반열람실'},
+                            {value: 484,    name: '시청각실'},
+                            {value: 300,    name: '논문자료실'}
+                        ]
+                    }
+                ]
+            };
+
+            myChart.setOption(options)
+        }
+    </script>
+</head>
+<body>
+<h1>PieChart.</h1>
+<button id="btnClick">그래프</button>
+<canvas id="myChart" width="800" height="400"></canvas>
+</body>
+</html>

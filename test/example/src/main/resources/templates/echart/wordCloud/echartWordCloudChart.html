@@ -1,0 +1,191 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webjars/jquery/3.6.0/dist/jquery.js"></script>
+    <script src="/webjars/chart.js/3.0.0-beta.9/dist/chart.js"></script>
+    <script src="/js/echarts/dist/echarts.js"></script>
+    <script src="/js/echarts-wordcloud/dist/echarts-wordcloud.js"></script>
+    <script>
+        $(document).ready(function() {
+            //var getRsList = [[${resultList}]];
+            var getRsList = "";
+
+            // 버튼 클릭
+            $("#btnClick").click(function() {
+                fnSetChart(getRsList);
+            });
+        });
+
+        function fnSetChart(getRsList) {
+            var chartDom = document.getElementById("myChart");
+            var myChart = echarts.init(chartDom);
+
+            var options = "";
+
+            options = {
+                tooltip: {},
+                title : {
+                    text: '책 대출 순위',
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 3,
+                    sizeRange: [15, 55],
+                    rotationRange: [-45, 45],
+                    //shape: 'circle',
+                    //shape: 'cardioid',
+                    //shape: 'diamond',
+                    //shape: 'triangle-forward',
+                    //shape: 'triangle',
+                    shape: 'star',
+                    //shape: 'pentagon',
+                    width: 600,
+                    height: 400,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                    data: [
+                        {
+                            name: '수도원에 간 CEO',
+                            value: 10000,
+                            textStyle: {
+                                normal: {
+                                    color: 'black'
+                                },
+                                emphasis: {
+                                    color: 'blue'
+                                }
+                            }
+                        },
+                        {
+                            name: '삼국지',
+                            value: 4055
+                        },
+                        {
+                            name: '수호지',
+                            value: 2467
+                        },
+                        {
+                            name: '춘추',
+                            value: 2244
+                        },
+                        {
+                            name: '목민심서',
+                            value: 1898
+                        },
+                        {
+                            name: '징비록',
+                            value: 1484
+                        },
+                        {
+                            name: '데미안',
+                            value: 1112
+                        },
+                        {
+                            name: '초격차',
+                            value: 965
+                        },
+                        {
+                            name: '설탕, 커피, 그리고 폭력',
+                            value: 847
+                        },
+                        {
+                            name: '총, 균, 쇠',
+                            value: 582
+                        },
+                        {
+                            name: '렉서스와 올리브 나무',
+                            value: 555
+                        },
+                        {
+                            name: '전쟁론',
+                            value: 550
+                        },
+                        {
+                            name: '군주론',
+                            value: 462
+                        },
+                        {
+                            name: '성경',
+                            value: 366
+                        },
+                        {
+                            name: '블랙스완',
+                            value: 360
+                        },
+                        {
+                            name: '프로페셔널의 조건',
+                            value: 282
+                        },
+                        {
+                            name: '검사내전',
+                            value: 273
+                        },
+                        {
+                            name: '호모 사피엔스',
+                            value: 273
+                        },
+                        {
+                            name: '호모 데우스',
+                            value: 273
+                        },
+                        {
+                            name: '레미제라블',
+                            value: 273
+                        },
+                        {
+                            name: '운명',
+                            value: 273
+                        },
+                        {
+                            name: '정의란 무엇인가',
+                            value: 273
+                        },
+                        {
+                            name: '잿더미의 유산',
+                            value: 273
+                        },
+                        {
+                            name: '난중일기',
+                            value: 273
+                        },
+                        {
+                            name: '벌레',
+                            value: 273
+                        },
+                        {
+                            name: '수학의 정석',
+                            value: 265
+                        }
+                    ]
+                } ]
+            };
+
+            myChart.setOption(options);
+        }
+    </script>
+</head>
+<body>
+<h1>WordCloud.</h1>
+<button id="btnClick">그래프</button>
+<canvas id="myChart" width="800" height="400"></canvas>
+</body>
+</html>
