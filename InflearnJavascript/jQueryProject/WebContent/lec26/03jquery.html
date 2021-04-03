@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#btn1").click(function () {
+        $("div").has("span").css("background-color", "lightblue");
+    });
+
+    $("#btn2").click(function () {
+        $("div").has("p").css("background-color", "lightgreen");
+    });
+});
+</script>
+</head>
+<body>
+<div>삼성그룹
+    <span>삼성전자</span>
+    <span>삼성SDI</span>
+    <span>삼성SDS</span>
+    <span>삼성생명</span>
+</div>
+<div>한화그룹
+    <p>한화/기계</p>
+    <p>한화/방산</p>
+    <p>한화솔루션</p>
+    <p>한화생명</p>
+</div>
+<div>LS그룹
+    <h4>LS전선</h4>
+    <h4>LS일렉트릭</h4>
+    <h4>LS니꼬동제련</h4>
+</div>
+<button id="btn1">버튼1</button>
+<button id="btn2">버튼2</button>
+</body>
+</html>

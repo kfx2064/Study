@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#btn1").click(function() {
+        fnEach();
+    });
+});
+
+function fnEach() {
+    $("li").each(function () {
+        var getText = $(this).text();
+        document.write(getText);
+    });
+}
+</script>
+</head>
+<body>
+<ul>
+    <li>삼성전자</li>
+    <li>현대자동차</li>
+    <li>LG전자</li>
+    <li>SK하이닉스</li>
+</ul>
+<button id="btn1">버튼1</button>
+</body>
+</html>

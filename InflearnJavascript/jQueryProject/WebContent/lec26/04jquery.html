@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#btn1").click(function () {
+        //var isTrue = $("#divCaps").is("div");
+        var isTrue = $("#divCaps").is("p");
+        console.log(isTrue);
+    });
+});
+</script>
+</head>
+<body>
+<div id="divCaps">
+    <p>한국전력</p>
+    <p>한국가스공사</p>
+    <p>한국석유공사</p>
+    <p>한국수자원공사</p>
+</div>
+<button id="btn1">버튼1</button>
+</body>
+</html>
