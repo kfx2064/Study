@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#btn1").click(function () {
+        $("p").add("span").css("background-color", "lightblue");
+    });
+
+    $("#btn2").click(function () {
+        $("p").add("span").add("h3").css("background-color", "lightgreen");
+    });
+});
+</script>
+</head>
+<body>
+<h1>우리나라 대표 IT 기업</h1>
+<p>네이버</p>
+<span>네이버</span>
+<span>네이버페이</span>
+<span>네이버웹툰</span>
+<span>네이버커머스</span>
+<h3>NC소프트</h3>
+<h3>넥슨</h3>
+<h3>넷마블</h3>
+<p>카카오</p>
+<span>카카오</span>
+<span>카카오페이</span>
+<span>카카오뱅크</span>
+<span>카카오모빌리티</span>
+<h3>쿠팡</h3>
+<h3>11번가</h3>
+<h3>SSG.COM</h3>
+<button id="btn1">하나 추가</button>
+<button id="btn2">둘 추가</button>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#btnTwo").click(function () {
+        $("p").filter("#pId1,#pId2").css("background-color", "red");
+    });
+
+    $("#btnThree").click(function () {
+        $("p").filter("#pId1,#pId2,.pClass").css("background-color", "lightblue");
+    });
+});
+</script>
+</head>
+<body>
+<p>삼성전자</p>
+<p id="pId1">LG전자</p>
+<p id="pId2">SK하이닉스</p>
+<p>현대자동차</p>
+<p>삼성SDI</p>
+<p class="pClass">LG화학</p>
+<p class="pClass">SK텔레콤</p>
+<p class="pClass">기아자동차</p>
+<p>삼성SDS</p>
+<p>LGCNS</p>
+<p id="ppId">SKC&C</p>
+<p>현대오토에버</p>
+<button id="btnTwo">둘</button>
+<button id="btnThree">셋</button>
+</body>
+</html>
