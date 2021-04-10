@@ -1,0 +1,16 @@
+package ver2_lec05.thread04.one;
+
+public class DoRunnable implements Runnable {
+
+	private String message;
+	private int interruptInterval;
+	
+	public DoRunnable() {
+	}
+	
+	@Override
+	public void run() {
+		
+	}
+	
+}

@@ -1,0 +1,16 @@
+package lec09.ex02.r;
+
+import javafx.application.Application;
+
+public class TestMain {
+	
+	public static void main(String[] args) {
+		
+		DataContainer.addPane(new MyPane1());
+		DataContainer.addPane(new MyPane2());
+		
+		Application.launch(args);
+		
+	}
+
+}

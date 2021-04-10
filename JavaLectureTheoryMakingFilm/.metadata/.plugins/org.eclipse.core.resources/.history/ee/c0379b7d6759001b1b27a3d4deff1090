@@ -1,0 +1,7 @@
+package lec09.ex02.r;
+
+import javafx.scene.layout.Pane;
+
+public class MyPane1 extends Pane {
+
+}

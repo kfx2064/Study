@@ -1,0 +1,10 @@
+package ver2_lec05.generics02.ex01;
+
+public class ExeMain {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

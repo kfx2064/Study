@@ -1,0 +1,33 @@
+package lec09.ex02.h;
+
+import javafx.application.Application;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class MainView extends Application {
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		
+		stage.setTitle("title");
+		
+		BorderPane root = new BorderPane();
+		
+		MenuBar menuBar = new MenuBar();
+		
+		Menu menu1 = new Menu("메뉴1");
+		Menu menu2 = new Menu("메뉴2");
+		Menu menu3 = new Menu("메뉴3");
+		menuBar.getMenus().add(menu1);
+		menuBar.getMenus().addAll(menu2, menu3);
+		
+		MenuItem menuItem11 = new MenuItem("하위메뉴11");
+		MenuItem menuItem12 = new MenuItem("하위메뉴12");
+		menu1.getItems().addAll(menuItem11, menuItem12);
+		
+	}
+	
+}

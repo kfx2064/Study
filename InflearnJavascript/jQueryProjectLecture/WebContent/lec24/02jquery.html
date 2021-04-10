@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.dClass {
+	background-color: green;
+}
+</style>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$(".pClass").wrap("<div class='dClass'></div>")
+	});
+});
+</script>
+</head>
+<body>
+<p class="pClass">Easy day is yesterday.</p>
+<p class="pClass">There is no easy day.</p>
+<p class="pClass">Nice day.</p>
+<button id="btnClick">click</button>
+</body>
+</html>

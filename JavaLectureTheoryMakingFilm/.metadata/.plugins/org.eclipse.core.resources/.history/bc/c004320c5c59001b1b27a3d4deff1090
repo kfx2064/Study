@@ -1,0 +1,9 @@
+package lec09.ex02.d;
+
+import javafx.application.Application;
+
+public class MainView extends Application {
+	
+	
+
+}

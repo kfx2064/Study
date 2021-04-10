@@ -1,0 +1,32 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+
+public class IOManyFunction15 {
+	
+	public static void main(String[] args) {
+		
+		String path = String.valueOf("C:\\dev\\FileIO\\file2.txt");
+		
+		OutputStreamWriter outputStreamWriter = null;
+		
+		try {
+			
+			outputStreamWriter = new OutputStreamWriter(new FileOutputStream(path), "utf-8");
+			outputStreamWriter.write("국방부 utf-8\r\n");
+			outputStreamWriter.append("육해공\r\n");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				outputStreamWriter.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+}

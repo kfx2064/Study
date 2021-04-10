@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.bgColor1 {
+	background-color: green;
+}
+</style>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("p").toggleClass("bgColor1");
+	});
+});
+</script>
+</head>
+<body>
+<p class="bgColor1">This is good day to live.</p>
+<p>One step, and another step.</p>
+<p>할 수 있다면 해라. 위험이 큰 것만 아니라면 안 하고 후회하지 마라.</p>
+<button id="btnClick">click</button>
+</body>
+</html>

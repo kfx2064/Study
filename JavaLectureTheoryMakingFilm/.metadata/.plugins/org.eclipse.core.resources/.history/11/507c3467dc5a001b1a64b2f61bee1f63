@@ -1,0 +1,114 @@
+package lec09.ex03.f;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.util.Callback;
+
+public class MainView extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+		BorderPane root = new BorderPane();
+		root.setPadding(new Insets(10));
+		
+		TableView<ProductVo> tableView = new TableView<ProductVo>();
+		root.setCenter(tableView);
+		
+		TableColumn<ProductVo, String> tc1 = new TableColumn<ProductVo, String>("품목번호");
+		TableColumn<ProductVo, String> tc2 = new TableColumn<ProductVo, String>("품목명");
+		TableColumn<ProductVo, Integer> tc3 = new TableColumn<ProductVo, Integer>("단가");
+		TableColumn<ProductVo, Boolean> tc4 = new TableColumn<ProductVo, Boolean>("버튼");
+		TableColumn<ProductVo, Boolean> tc5 = new TableColumn<ProductVo, Boolean>("선택");
+		TableColumn<ProductVo, String> tc6 = new TableColumn<ProductVo, String>("콤보");
+		tableView.getColumns().setAll(tc1, tc2, tc3, tc4, tc5, tc6);
+		
+		tc1.setCellValueFactory(new PropertyValueFactory<ProductVo, String>("productNo"));
+		tc2.setCellValueFactory(new PropertyValueFactory<ProductVo, String>("productName"));
+		tc3.setCellValueFactory(new PropertyValueFactory<ProductVo, Integer>("price"));
+		tc4.setCellValueFactory(new PropertyValueFactory<ProductVo, Boolean>("checkYn"));
+		tc5.setCellValueFactory(new PropertyValueFactory<ProductVo, Boolean>("checkYn"));
+		tc6.setCellValueFactory(new PropertyValueFactory<ProductVo, String>("productCode"));
+		
+		tc4.setCellFactory(new Callback<TableColumn<ProductVo,Boolean>, TableCell<ProductVo,Boolean>>() {
+			@Override
+			public TableCell<ProductVo, Boolean> call(TableColumn<ProductVo, Boolean> param) {
+				TableCell<ProductVo, Boolean> tableCell = new TableCell<ProductVo, Boolean>(){
+					private Button btn = new Button("버튼1");
+					{
+						btn.setStyle("-fx-font-size:12pt; -fx-padding:0");
+						btn.setMaxHeight(20);
+						btn.setMinHeight(20);
+						btn.setPrefSize(100, 20);
+						
+						btn.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								int index = getTableRow().getIndex();
+								ProductVo productVo2 = tableView.getItems().get(index);
+								
+								productVo2.setProductCode("B");
+								
+								tableView.refresh();
+								tableView.getSelectionModel().select(index);
+							}
+						});
+					}
+					
+					@Override
+					protected void updateItem(Boolean item, boolean empty) {
+						if (item != null && item == true && !empty) {
+							this.setGraphic(btn);
+						} else {
+							this.setGraphic(null);
+						}
+					}
+					
+				};
+				return tableCell;
+			}
+		});
+		
+		tc5.setCellFactory(new Callback<TableColumn<ProductVo,Boolean>, TableCell<ProductVo,Boolean>>() {
+			@Override
+			public TableCell<ProductVo, Boolean> call(TableColumn<ProductVo, Boolean> param) {
+				TableCell<ProductVo, Boolean> tableCell = new TableCell<ProductVo, Boolean>() {
+					private CheckBox check = new CheckBox();
+					{
+						check.setAlignment(Pos.CENTER);
+						
+						check.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								int index = getTableRow().getIndex();
+								ProductVo productVo = tableView.getItems().get(index);
+								
+								if (productVo != null) {
+									productVo.setCheckYn(check.isSelected());
+								}
+								
+								tableView.refresh();
+								tableView.getSelectionModel().select(index);
+							}
+						});
+					}
+				}
+				return null;
+			}
+		});
+		
+	}
+
+}

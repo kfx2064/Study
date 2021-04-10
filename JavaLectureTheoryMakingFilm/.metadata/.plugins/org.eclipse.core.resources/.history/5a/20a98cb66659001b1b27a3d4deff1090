@@ -1,0 +1,16 @@
+package lec09.ex02.q;
+
+import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
+public class MainView extends Application {
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		
+		Image iamge = new Image("file:lec09/ex02/q/");
+		
+	}
+
+}

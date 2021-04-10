@@ -1,0 +1,8 @@
+package lec09.ex02.r;
+
+import javafx.application.Application;
+
+public class TestMain {
+	
+
+}

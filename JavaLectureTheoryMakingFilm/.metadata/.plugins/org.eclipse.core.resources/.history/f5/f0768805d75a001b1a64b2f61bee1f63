@@ -1,0 +1,23 @@
+package lec09.ex03.d;
+
+import javafx.application.Application;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class MainView extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+
+		BorderPane root = new BorderPane();
+		
+		TableView<ProductVo> tableView = new TableView<ProductVo>();
+		root.setCenter(tableView);
+		
+		TableColumn<ProductVo, String> tc1 = new TableColumn<ProductVo, String>("품목번호");
+		
+	}
+
+}

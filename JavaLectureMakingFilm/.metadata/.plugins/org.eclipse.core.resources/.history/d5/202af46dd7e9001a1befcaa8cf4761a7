@@ -1,0 +1,32 @@
+package ver2_lec05.collectionframework03.samplecode08.repository.impl;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
+public class DataRepository {
+	
+	private static DataRepository instance = new DataRepository();
+	
+	public static DataRepository getInstance() {
+		return instance;
+	}
+	
+	public LinkedHashMap<String, Object> savedDataLkMap = null;
+	public ArrayList<String> saveDataArrList = null;
+	
+	private DataRepository() {
+		
+		System.out.println("DataRepository »ý¼ºÀÚ");
+		
+		savedDataLkMap = new LinkedHashMap<String, Object>();
+		saveDataArrList = new ArrayList<String>();
+		
+		savedDataLkMap.put("", "");
+		savedDataLkMap.put("", "");
+		savedDataLkMap.put("", "");
+		savedDataLkMap.put("", "");
+		savedDataLkMap.put("", "");
+		
+	}
+
+}

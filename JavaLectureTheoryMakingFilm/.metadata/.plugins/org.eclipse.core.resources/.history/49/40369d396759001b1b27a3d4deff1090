@@ -1,0 +1,9 @@
+package lec09.ex02.r;
+
+import java.util.Map;
+
+public class DataContainer {
+	
+	public static final Map<Class<? extends Pane>, Pane> paneMap = new 
+
+}

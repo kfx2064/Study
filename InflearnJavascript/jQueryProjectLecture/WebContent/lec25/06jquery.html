@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnSiblings").click(function() {
+		var sSib = $("#sGoogle").siblings();
+		console.log(sSib);
+	});
+	
+	$("#btnSiblingsNext").click(function() {
+		var sSib = $("#sGoogle").siblings().next();
+		console.log(sSib);	
+	});
+		
+	$("#btnSiblingsNextAll").click(function() {
+		var sSib = $("#sGoogle").siblings().nextAll();
+		console.log(sSib);
+	});
+	
+	$("#btnSiblingsNextUntil").click(function() {
+		var sSib = $("#sGoogle").siblings().nextUntil();
+		console.log(sSib);
+	});
+	
+	$("#btnSiblingsPrev").click(function() {
+		var sSib = $("#sGoogle").siblings().prev();
+		console.log(sSib);
+	});
+	
+	$("#btnSiblingsPrevAll").click(function() {
+		var sSib = $("#sGoogle").siblings().prevAll();
+		console.log(sSib);
+	});
+	
+	$("#btnSiblingsPrevUntil").click(function() {
+		var sSib = $("#sGoogle").siblings().prevUntil();
+		console.log(sSib);
+	});
+});
+</script>
+</head>
+<body>
+<span id="sGoogle">구글</span>
+<span>알파벳</span>
+<span>아마존</span>
+<span>페이스북</span>
+<span>인스타그램</span>
+<span>마이크로소프트</span>
+<span>넷플릭스</span>
+<span>인텔</span>
+<span>IBM</span>
+<span>퀄컴</span>
+<button id="btnSiblings">siblings</button>
+<button id="btnSiblingsNext">next</button>
+<button id="btnSiblingsNextAll">nextall</button>
+<button id="btnSiblingsNextUntil">nextuntil</button>
+<button id="btnSiblingsPrev">prev</button>
+<button id="btnSiblingsPrevAll">prevall</button>
+<button id="btnSiblingsPrevUntil">prevuntil</button>
+</body>
+</html>

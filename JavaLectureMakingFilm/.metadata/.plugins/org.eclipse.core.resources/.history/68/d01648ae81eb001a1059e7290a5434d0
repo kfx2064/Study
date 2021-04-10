@@ -1,0 +1,60 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+
+public class IOManyFunction12 {
+	
+	public static void readFile(String path) throws Exception {
+		
+		FileInputStream fis = new FileInputStream(path);
+		byte[] byteBowl = new byte[10];
+		while (true) {
+			int read = fis.read(byteBowl);
+			if (read == -1) {
+				break;
+			}
+			String message = new String(byteBowl, 0, read);
+		}
+		
+		fis.close();
+	}
+	
+	public static void readBuffer(String path) throws Exception {
+		
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path));
+		byte[] byteBowl = new byte[10];
+		while (true) {
+			int read = bis.read(byteBowl);
+			if (read == -1) {
+				break;
+			}
+			String message = new String(byteBowl, 0, read);
+		}
+		
+		bis.close();
+	}
+	
+	public static void main(String[] args) throws Exception {
+		
+		String path = String.valueOf("C:\\dev\\FileIO\\fileSpeed.txt");
+		
+		long start1 = System.currentTimeMillis();
+		for (int i = 0; i < 50; i++) {
+			readFile(path);
+		}
+		long end1 = System.currentTimeMillis();
+		System.out.println("일반적인 파일인풋스트림으로 걸린 시간 : " + (end1 - start1));
+		
+		long start2 = System.currentTimeMillis();
+		for (int i = 0; i < 50; i++) {
+			readBuffer(path);
+		}
+		long end2 = System.currentTimeMillis();
+		System.out.println("버퍼를 사용한 스트림으로 걸린 시간 : " + (end2 - start2));
+		
+		
+		
+	}
+
+}

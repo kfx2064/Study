@@ -1,0 +1,23 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.FileInputStream;
+
+public class IOManyFunction05 {
+	
+	public static void main(String[] args) {
+		
+		FileInputStream fis = null;
+		
+		try {
+			
+			fis = new FileInputStream("C:\\dev\\FileIOTextFile.txt");
+			
+			byte[] by = new byte[10];l
+			
+		} catch (Exception e) {
+			
+		}
+		
+	}
+
+}

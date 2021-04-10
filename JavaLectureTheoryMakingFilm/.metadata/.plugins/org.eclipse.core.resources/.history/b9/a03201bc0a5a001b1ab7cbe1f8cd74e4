@@ -1,0 +1,26 @@
+package lec09.ex03.c;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+public class MainUI extends Application {
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		try {
+			
+			Object load = FXMLLoader.load(getClass().getResource("MainLayout.fxml"));
+			
+			stage.setScene(new Scene((Pane) load));
+			
+			stage.show();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

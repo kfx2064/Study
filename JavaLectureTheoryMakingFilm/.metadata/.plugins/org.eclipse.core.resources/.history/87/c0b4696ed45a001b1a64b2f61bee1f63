@@ -1,0 +1,20 @@
+package lec09.ex03.c;
+
+public class CodeVo {
+	
+	private String codeNo;
+	private String codeName;
+	private String codeDetail;
+	
+	public CodeVo() {
+		
+	}
+	
+	public CodeVo(String codeNo, String codeName) {
+		this.codeNo = codeNo;
+		this.codeName = codeName;
+	}
+	
+	
+
+}

@@ -1,0 +1,35 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class IOManyFunction07 {
+	
+	public static void main(String[] args) {
+		
+		String target = String.valueOf("C:\\dev\\FileIOTextFile.txt");
+		String destination = String.valueOf("C:\\dev\\FileIOTextFileDuplicated.txt");
+		
+		try {
+			
+			File destinationFile = new File(destination);
+			
+			if (destinationFile.exists()) {
+				String message = String.valueOf("이미 파일이 존재하여 복사가 불가합니다.");
+				throw new Exception(message);
+			}
+			
+			FileInputStream fis = new FileInputStream(target);
+			
+			FileOutputStream fos = new FileOutputStream(destination);
+			
+			byte[] byteBowl = new byte[1024];
+			
+		} catch (Exception e) {
+			
+		}
+		
+	}
+
+}

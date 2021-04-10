@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;lec04.OOP3&apos; to &apos;lec04.OOP03&apos;&#x0D;&#x0A;- Original project: &apos;InflearnJava&apos;&#x0D;&#x0A;- Original element: &apos;InflearnJava/src/lec04.OOP3&apos;&#x0D;&#x0A;- Renamed element: &apos;InflearnJava/src/lec04.OOP03&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;lec04.OOP3&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;lec04.OOP3" name="lec04.OOP03" qualified="false" references="true" stamp="1604223010959" textual="false" version="1.0"/>
+</session>

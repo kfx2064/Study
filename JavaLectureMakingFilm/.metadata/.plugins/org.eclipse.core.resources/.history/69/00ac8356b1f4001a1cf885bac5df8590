@@ -1,0 +1,24 @@
+package ver2_lec05.networking06.network01;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+public class network01 {
+	
+	public static void main(String[] args) {
+		
+		try {
+		
+			URL url = new URL("https://www.naver.com");
+			
+			URLConnection urlConnection = url.openConnection();
+			InputStream inputStream = urlConnection.getInputStream();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

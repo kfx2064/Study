@@ -1,0 +1,21 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.FileInputStream;
+
+public class IOManyFunction04 {
+	
+	public static void main(String[] args) {
+		
+		FileInputStream fis = null;
+		
+		try {
+			
+		} catch (Exception e) {
+			
+		} finally {
+			
+		}
+		
+	}
+
+}

@@ -1,0 +1,30 @@
+package lec09.ex03.f;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class MainView extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+		BorderPane root = new BorderPane();
+		root.setPadding(new Insets(10));
+		
+		TableView<ProductVo> tableView = new TableView<ProductVo>();
+		root.setCenter(tableView);
+		
+		TableColumn<ProductVo, String> tc1 = new TableColumn<ProductVo, String>("품목번호");
+		TableColumn<ProductVo, String> tc2 = new TableColumn<ProductVo, String>("품목명");
+		TableColumn<ProductVo, Integer> tc3 = new TableColumn<ProductVo, Integer>("단가");
+		TableColumn<ProductVo, Boolean> tc4 = new TableColumn<ProductVo, Boolean>("버튼");
+		TableColumn<ProductVo, Boolean> tc5 = new TableColumn<ProductVo, Boolean>("선택");
+		TableColumn<ProductVo, String> tc6 = new TableColumn<ProductVo, String>("콤보");
+		
+	}
+
+}

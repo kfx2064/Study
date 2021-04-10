@@ -1,0 +1,7 @@
+package lec09.ex02.j;
+
+import javafx.fxml.Initializable;
+
+public class Controller implements Initializable {
+
+}

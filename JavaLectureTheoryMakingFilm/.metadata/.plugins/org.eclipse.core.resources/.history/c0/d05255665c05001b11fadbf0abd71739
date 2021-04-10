@@ -1,0 +1,19 @@
+package lec04.OOP02;
+
+public class PropertyOfClass {
+	
+	public static int entityCount;
+	
+	public String goodsNo;
+	public String goodsName;
+	public String goodsPrice;
+
+	public enum EnumDataType {
+		INSERT, UPDATE, DELETE, NORMAL
+	}
+	
+	static {
+		
+	}
+
+}

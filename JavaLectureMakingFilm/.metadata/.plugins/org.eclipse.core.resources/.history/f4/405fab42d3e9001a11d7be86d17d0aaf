@@ -1,0 +1,31 @@
+package ver2_lec05.collectionframework03;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class ListSpeedTest {
+	
+	public static void main(String[] args) {
+		
+		long startMillis = System.currentTimeMillis();
+		ArrayList arList = new ArrayList();
+		
+		for (int i = 0; i < 100000; i++) {
+			arList.add(i);
+		}
+		
+		long endMillis = System.currentTimeMillis();
+		long diffMillis = endMillis - startMillis;
+		
+		System.out.println("Â÷ÀÌ : " + diffMillis);
+		
+		startMillis = System.currentTimeMillis();
+		LinkedList lkList = new LinkedList(); 
+		
+		for (int i = 0; i < 100000; i++) {
+			lkList.add(i);
+		}
+		
+	}
+
+}

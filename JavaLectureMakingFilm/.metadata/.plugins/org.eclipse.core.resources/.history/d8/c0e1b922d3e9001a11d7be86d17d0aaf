@@ -1,0 +1,21 @@
+package ver2_lec05.collectionframework03;
+
+import java.util.ArrayList;
+
+public class ListSpeedTest {
+	
+	public static void main(String[] args) {
+		
+		long startMillis = System.currentTimeMillis();
+		ArrayList arList = new ArrayList();
+		
+		for (int i = 0; i < 100000; i++) {
+			arList.add(i);
+		}
+		
+		long endMillis = System.currentTimeMillis();
+		long diffMillis = endMillis - startMillis;
+		
+	}
+
+}

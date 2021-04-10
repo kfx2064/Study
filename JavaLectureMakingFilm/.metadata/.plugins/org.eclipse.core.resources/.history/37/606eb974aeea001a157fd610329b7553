@@ -1,0 +1,26 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.FileOutputStream;
+
+public class IOManyFunction06 {
+	
+	public static void main(String[] args) {
+		
+		String path = String.valueOf("C:\\dev\\FileIOTextFile.txt");
+		FileOutputStream fos = null;
+		
+		try { 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				
+			} catch (Exception e) {
+				
+			}
+		}
+		
+	}
+
+}

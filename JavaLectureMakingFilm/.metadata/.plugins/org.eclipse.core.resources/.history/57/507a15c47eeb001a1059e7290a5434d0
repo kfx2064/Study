@@ -1,0 +1,24 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+
+public class IOManyFunction10 {
+
+	public static void main(String[] args) {
+		
+		String path = String.valueOf("C:\\dev\\FileIO\\file2.txt");
+		
+		BufferedInputStream bis = null;
+		
+		try {
+			
+			bis = new BufferedInputStream(new FileInputStream(path));
+			
+		} catch (Exception e) {
+			
+		}
+		
+	}
+
+}

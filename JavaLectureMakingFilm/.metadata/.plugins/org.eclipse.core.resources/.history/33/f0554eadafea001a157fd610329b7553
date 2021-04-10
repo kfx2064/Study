@@ -1,0 +1,12 @@
+package ver2_lec05.fileIO05.training02;
+
+public class IOManyFunction07 {
+	
+	public static void main(String[] args) {
+		
+		String target = String.valueOf("C:\\dev\\FileIOTextFile.txt");
+		String destination = String.valueOf("C:\\dev\\FileIOTextFileDuplicated.txt");
+		
+	}
+
+}

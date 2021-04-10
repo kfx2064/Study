@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#btnEven").click(function() {
+		$("p").filter(":even").css("background-color", "lightblue");
+	});
+	
+	$("#btnOdd").click(function() {
+		$("p").filter(":odd").css("background-color", "lightgreen");
+	});
+});
+</script>
+</head>
+<body>
+<p>모니터</p>
+<p>컴퓨터</p>
+<p>마우스</p>
+<p>키보드</p>
+<p>노트북</p>
+<p>스마트폰</p>
+<p>태블릿</p>
+<p>스마트워치</p>
+<button id="btnEven">even</button>
+<button id="btnOdd">odd</button>
+</body>
+</html>

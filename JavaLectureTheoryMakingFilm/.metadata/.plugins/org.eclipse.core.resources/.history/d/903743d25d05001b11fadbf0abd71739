@@ -1,0 +1,11 @@
+package lec04.OOP02;
+
+public class PropertyMain {
+	
+	public static void main(String[] args) {
+		
+		PropertyOfClass propertyOfClass = new PropertyOfClass();
+		
+	}
+
+}

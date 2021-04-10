@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
+			minWidth="-Infinity" prefHeight="132.0" prefWidth="373.0" 
+			xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+			fx:controller="lec09.ex03.c.MainController">
+	<children>
+		<Button fx:id="btn" layoutX="50.0" layoutY="79.0" mnemonicParsing="false" text="자료3 선택" />
+		
+		<TextField fx:id="textField" layoutX="169.0" layoutY="79.0" prefHeight="23.0" prefWidth="173.0" />
+	</children>
+</AnchorPane>

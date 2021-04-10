@@ -1,0 +1,11 @@
+package ver2_lec05.collectionframework03.samplecode08.repository.impl;
+
+public class DataRepository {
+	
+	private static DataRepository instance = new DataRepository();
+	
+	public static DataRepository getInstance() {
+		return instance;
+	}
+
+}

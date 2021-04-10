@@ -1,0 +1,12 @@
+package lec09.ex02.r;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javafx.scene.layout.Pane;
+
+public class DataContainer {
+	
+	public static final Map<Class<? extends Pane>, Pane> paneMap = new HashMap<Class<? extends Pane>, Pane>(); 
+
+}

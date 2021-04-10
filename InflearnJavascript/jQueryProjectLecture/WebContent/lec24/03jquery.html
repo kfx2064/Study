@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+div {
+	background-color: green;
+}
+</style>
+<script>
+$(document).ready(function() {
+	$("#btnClick").click(function() {
+		$("p").wrapAll("<div></div>");
+	});
+});
+</script>
+</head>
+<body>
+<p>There is no easy day.</p>
+<p>Easy day is yesterday.</p>
+<p>Nicely done.</p>
+<button id="btnClick">click</button>
+</body>
+</html>

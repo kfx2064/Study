@@ -1,0 +1,9 @@
+package lec09.ex01.o;
+
+public class TestMain {
+	
+	public static void main(String[] args) throws Exception {
+		
+	}
+
+}

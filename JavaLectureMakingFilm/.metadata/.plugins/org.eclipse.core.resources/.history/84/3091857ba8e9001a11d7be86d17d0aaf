@@ -1,0 +1,9 @@
+package ver2_lec04;
+
+public class AnonyClassMainMethod {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

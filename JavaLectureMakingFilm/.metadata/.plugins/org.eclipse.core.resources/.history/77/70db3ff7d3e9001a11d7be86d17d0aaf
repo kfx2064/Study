@@ -1,0 +1,13 @@
+package ver2_lec05.collectionframework03;
+
+import java.util.HashSet;
+
+public class Set06 {
+	
+	public static void main(String[] args) {
+		
+		HashSet hashSet = new HashSet();
+		
+	}
+
+}

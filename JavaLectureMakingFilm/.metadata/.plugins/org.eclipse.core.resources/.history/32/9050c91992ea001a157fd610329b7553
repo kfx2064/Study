@@ -1,0 +1,11 @@
+package ver2_lec05.fileIO05.training01;
+
+public class FileManyFunction01 {
+	
+	public static void main(String[] args) throws Exception {
+		
+		
+		
+	}
+
+}

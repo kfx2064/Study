@@ -1,0 +1,18 @@
+package ver2_lec05.exception01;
+
+public class TryCatchFinally02 {
+	
+	public static void main(String[] args) {
+		
+		try {
+			
+		} catch (Exception e) {
+			System.out.println("예외가 발생하였습니다.");
+		} finally {
+			System.out.println("try-catch-finally 구문이 종료되었습니다.");
+		}
+		
+		
+	}
+
+}

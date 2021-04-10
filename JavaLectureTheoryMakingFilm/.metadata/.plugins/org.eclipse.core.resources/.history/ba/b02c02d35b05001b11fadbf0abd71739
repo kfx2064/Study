@@ -1,0 +1,7 @@
+package lec04.OOP02;
+
+public class PropertyOfClass {
+	
+	public static int entityCount;
+
+}

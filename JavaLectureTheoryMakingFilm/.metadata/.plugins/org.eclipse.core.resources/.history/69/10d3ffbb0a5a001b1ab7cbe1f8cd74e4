@@ -1,0 +1,62 @@
+package lec09.ex03.c;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.FlowPane;
+
+public class MainController implements Initializable {
+	
+	@FXML
+	private FlowPane flowPane;
+	
+	@FXML
+	private Button btn;
+	
+	@FXML
+	private TextField textField;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+	
+		ToggleGroup group = new ToggleGroup();
+		
+		String[][] data = {{"01", "자료1"}, {"02", "자료2"}, {"03", "자료3"}, {"04", "자료4"}};
+		for (String[] arr : data) {
+			RadioButton r = new RadioButton(arr[1]);
+			flowPane.getChildren().add(r);
+			r.setUserData(arr[0]);
+			group.getToggles().add(r);
+		}
+		
+		btn.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				group.selectToggle(group.getToggles().get(2));
+			}
+		});
+		
+		group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+				RadioButton r = (RadioButton) newValue;
+				textField.setText("선택 : " + r.getText() + " : " + r.getUserData());
+			}
+		});
+		
+	}
+
+}

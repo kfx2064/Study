@@ -1,0 +1,11 @@
+package ver2_lec05.fileIO05.training02;
+
+public class IOManyFunction09 {
+	
+	public static void main(String[] args) {
+		
+		String path = String.valueOf("C:\\dev\\FileIO\\file2.txt");
+		
+	}
+
+}

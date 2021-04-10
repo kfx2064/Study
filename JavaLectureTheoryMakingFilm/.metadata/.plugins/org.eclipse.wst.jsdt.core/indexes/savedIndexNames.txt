@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\dev\github\Study\JavaLectureTheoryMakingFilm\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3684215655.index
+3698655800.index
+1945045024.index
+3738425850.index
+1209056548.index
+305652923.index
+2760612494.index

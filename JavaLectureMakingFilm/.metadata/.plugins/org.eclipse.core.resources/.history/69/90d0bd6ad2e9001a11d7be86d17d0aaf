@@ -1,0 +1,13 @@
+package ver2_lec05.collectionframework03;
+
+import java.util.LinkedList;
+
+public class LinkedList04 {
+	
+	public static void main(String[] args) {
+		
+		LinkedList lkList = new LinkedList();
+		
+	}
+
+}

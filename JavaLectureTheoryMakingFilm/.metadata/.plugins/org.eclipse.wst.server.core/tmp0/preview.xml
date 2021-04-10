@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server port="8080">
+  <module context="HtmlExercise" name="HtmlExercise" path="C:/dev/github/Study/JavaLectureTheoryMakingFilm/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/HtmlExercise" type="static"/>
+</server>

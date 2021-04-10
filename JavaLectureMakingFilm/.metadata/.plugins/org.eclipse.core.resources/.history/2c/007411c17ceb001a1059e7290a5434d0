@@ -1,0 +1,20 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.FileReader;
+
+public class IOManyFunction08 {
+	
+	public static void main(String[] args) {
+		
+		FileReader fileReader = null;
+		String path = String.valueOf("C:\\dev\\FileIO\\file.txt");
+		
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

@@ -1,0 +1,13 @@
+package ver2_lec05.networking06.network01;
+
+import java.net.URL;
+
+public class network01 {
+	
+	public static void main(String[] args) {
+		
+		URL url = new URL("https://www.naver.com");
+		
+	}
+
+}

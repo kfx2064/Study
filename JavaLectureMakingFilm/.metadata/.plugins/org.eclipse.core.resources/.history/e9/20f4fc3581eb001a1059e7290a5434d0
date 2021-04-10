@@ -1,0 +1,47 @@
+package ver2_lec05.fileIO05.training02;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+
+public class IOManyFunction12 {
+	
+	public static void readFile(String path) throws Exception {
+		
+		FileInputStream fis = new FileInputStream(path);
+		byte[] byteBowl = new byte[10];
+		while (true) {
+			int read = fis.read(byteBowl);
+			if (read == -1) {
+				break;
+			}
+			String message = new String(byteBowl, 0, read);
+		}
+		
+		fis.close();
+	}
+	
+	public static void readBuffer(String path) throws Exception {
+		
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path));
+		byte[] byteBowl = new byte[10];
+		while (true) {
+			int read = bis.read(byteBowl);
+			if (read == -1) {
+				break;
+			}
+			String message = new String(byteBowl, 0, read);
+		}
+		
+		bis.close();
+	}
+	
+	public static void main(String[] args) throws Exception {
+		
+		String path = String.valueOf("C:\\dev\\FileIO\\fileSpeed.txt");
+		
+		long start1 = System.currentTimeMillis();
+		for (int i = 0; i < 50; i++)
+		
+	}
+
+}

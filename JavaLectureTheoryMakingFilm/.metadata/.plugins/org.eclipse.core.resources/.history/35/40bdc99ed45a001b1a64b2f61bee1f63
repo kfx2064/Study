@@ -1,0 +1,17 @@
+package lec09.ex03.c;
+
+import javafx.application.Application;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+public class MainView extends Application {
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		
+		AnchorPane pane = new AnchorPane();
+		pane.setPrefSize(300, 150);
+		
+	}
+
+}
