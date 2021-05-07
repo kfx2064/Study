@@ -11,5 +11,8 @@
 	Hello world!<br>
 </h1>
 <P>  The time on the server is ${serverTime}. </P>
+
+${userInfo.userId}<br>
+${userInfo.userName}<br>
 </body>
 </html>
