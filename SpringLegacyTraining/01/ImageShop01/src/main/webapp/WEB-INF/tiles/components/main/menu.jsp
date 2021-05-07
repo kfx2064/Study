@@ -4,6 +4,7 @@
     <table>
         <tr>
             <td width="80"><a href="/"><spring:message code="header.home" /></a></td>
+            <td width="120"><a href="/codeclass/list"><spring:message code="menu.codeclass.list" /></a></td>
         </tr>
     </table>
 </div>
