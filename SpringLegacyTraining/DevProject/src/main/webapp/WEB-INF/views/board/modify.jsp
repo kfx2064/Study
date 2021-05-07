@@ -6,23 +6,6 @@
 <head>
 <title>Board</title>
 <script src="/resources/js/jquery-3.5.1.js"></script>
-<script>
-$(document).ready(function () {
-
-    var formObj = $("#board");
-
-    $("#btnModify").on("click", function () {
-        formObj.attr("action", "/board/modify");
-        formObj.attr("method", "post");
-        formObj.submit();
-    });
-
-    $("#btnList").on("click", function () {
-        self.location = "/board/list";
-    });
-
-});
-</script>
 </head>
 <body>
 <h2>MODIFY</h2>
@@ -45,11 +28,10 @@ $(document).ready(function () {
             <td><font color="red"><form:errors path="content" /></font></td>
         </tr>
     </table>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+    <a href="list">LIST</a>
 </form:form>
-
-<div>
-    <button type="submit" id="btnModify">Modify</button>
-    <button type="submit" id="btnList">List</button>
-</div>
 </body>
 </html>

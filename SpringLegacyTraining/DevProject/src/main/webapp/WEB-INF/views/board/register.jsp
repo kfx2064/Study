@@ -7,21 +7,6 @@
     <title>Board</title>
 </head>
 <script src="<%= request.getContextPath() %>/resources/js/jquery-3.5.1.js"></script>
-<script>
-$(document).ready(function () {
-    var formObj = $("#board");
-
-    $("#btnRegister").on("click", function () {
-        formObj.attr("action", "/board/register");
-        formObj.attr("method", "post");
-        formObj.submit();
-    });
-
-    $("#btnList").on("click", function () {
-        self.location = "/board/list";
-    });
-});
-</script>
 <body>
 <h2>REGISTER</h2>
 <form:form modelAttribute="board" action="register">
@@ -42,10 +27,11 @@ $(document).ready(function () {
             <td><font color="red"><form:errors path="content" /></font></td>
         </tr>
     </table>
+    <div>
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Reset" />
+    </div>
+    <a href="list">LIST</a>
 </form:form>
-<div>
-    <button type="submit" id="btnRegister">Register</button>
-    <button type="submit" id="btnList">List</button>
-</div>
 </body>
 </html>

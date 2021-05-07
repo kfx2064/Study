@@ -8,9 +8,7 @@
     <title>Board</title>
 </head>
 <body>
-<form:form modelAttribute="board" method="POST" action="search">
     <h2>List</h2>
-    TITLE : <form:input path="title"/><input type="submit" value="Search">
     <a href="register">New</a>
     <table border="1">
         <tr>
@@ -19,26 +17,21 @@
             <th align="center" width="100">WRITER</th>
             <th align="center" width="180">REGDATE</th>
         </tr>
-        <c:choose>
-            <c:when test="${empty list}">
-                <tr>
-                    <td colspan="4">
-                        List is empty.
-                    </td>
-                </tr>
-            </c:when>
-            <c:otherwise>
-                <c:forEach items="${list}" var="board">
-                    <tr>
-                        <td align="center">${board.boardNo}</td>
-                        <td align="left"><a href="/board/read?boardNo=${board.boardNo}">${board.title}</a></td>
-                        <td align="right">${board.writer}</td>
-                        <td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regDate}" /></td>
-                    </tr>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>
+        <c:forEach items="${list}" var="board">
+            <tr>
+                <td align="center">${board.boardNo}</td>
+                <td align="left"><a href="/board/read?boardNo=${board.boardNo}">${board.title}</a></td>
+                <td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regDate}"/></td>
+            </tr>
+        </c:forEach>
     </table>
-</form:form>
+
+    <script>
+        var result = "${msg}";
+
+        if (result === "SUCCESS") {
+            alert("처리가 완료되었습니다.");
+        }
+    </script>
 </body>
 </html>

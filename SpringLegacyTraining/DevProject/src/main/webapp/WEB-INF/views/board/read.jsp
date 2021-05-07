@@ -34,7 +34,6 @@ $(document).ready(function () {
 </script>
 <body>
 <h2>READ</h2>
-
 <form:form modelAttribute="board">
     <form:hidden path="boardNo"/>
     <table>
