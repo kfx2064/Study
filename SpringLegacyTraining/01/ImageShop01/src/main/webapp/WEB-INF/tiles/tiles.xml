@@ -5,8 +5,8 @@
     <definition name="main-template" template="/WEB-INF/tiles/layouts/main_template.jsp">
         <put-attribute name="title" value="Main"/>
         <put-attribute name="header" value="/WEB-INF/tiles/components/main/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/tiels/components/main/menu.jsp" />
-        <put-attribute name="footer" value="/WEb-INF/tiles/components/main/footer.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/tiles/components/main/menu.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/components/main/footer.jsp" />
     </definition>
     <definition name="home" extends="main-template">
         <put-attribute name="title" value="Home" />
@@ -15,5 +15,10 @@
     <definition name="codeclass/*" extends="main-template">
         <put-attribute name="title" value="CodeClass"/>
         <put-attribute name="content" value="/WEB-INF/views/codeclass/{1}.jsp"/>
+    </definition>
+    <!-- 코드 관리 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
+    <definition name="codedetail/*" extends="main-template">
+        <put-attribute name="title" value="CodeDetail" />
+        <put-attribute name="content" value="/WEB-INF/views/codedetail/{1}.jsp"/>
     </definition>
 </tiles-definitions>
