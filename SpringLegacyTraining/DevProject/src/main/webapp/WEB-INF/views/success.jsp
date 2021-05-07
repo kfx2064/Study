@@ -3,10 +3,9 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>유저 등록 완료 화면</title>
+    <title>Login Success</title>
 </head>
 <body>
-    <h2>유저 등록 완료 화면</h2>
-    <p>유저 등록이 완료되었습니다.</p>
+    <h3>${result}</h3>
 </body>
 </html>
