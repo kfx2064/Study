@@ -62,7 +62,7 @@
 
     <select id="getMaxSortSeq"
             resultType="int">
-        SELECT  MAX(sort_seq)
+        SELECT  MAX(sort_seq) + 1
         FROM    code_detail
         WHERE   class_code = #{classCode}
     </select>

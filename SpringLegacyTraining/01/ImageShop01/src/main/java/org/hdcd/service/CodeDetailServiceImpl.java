@@ -11,13 +11,14 @@ import java.util.List;
 public class CodeDetailServiceImpl implements CodeDetailService {
 
     @Autowired
-    private CodeDetailMapper mapper;
+    public CodeDetailMapper mapper;
 
     @Override
     public void register(CodeDetail codeDetail) throws Exception {
         String classCode = codeDetail.getClassCode();
+        System.out.println("classCode : " + classCode);
         int maxSortSeq = mapper.getMaxSortSeq(classCode);
-
+        
         codeDetail.setSortSeq(maxSortSeq + 1);
 
         mapper.create(codeDetail);

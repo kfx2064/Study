@@ -1,9 +1,11 @@
 package org.hdcd.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.hdcd.common.domain.CodeDetail;
 
 import java.util.List;
 
+@Mapper
 public interface CodeDetailMapper {
 
     public void create(CodeDetail codeDetail) throws Exception;
