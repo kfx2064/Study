@@ -23,4 +23,6 @@ public interface MemberMapper {
 
     public void deleteAuth(int userNo) throws Exception;
 
+    public int countAll() throws Exception;
+
 }
