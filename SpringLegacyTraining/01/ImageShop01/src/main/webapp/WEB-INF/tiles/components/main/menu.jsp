@@ -8,6 +8,7 @@
 
             <sec:authorize access="!isAuthenticated()">
                 <td width="120"><a href="/board/list"><spring:message code="menu.board.member" /></a></td>
+                <td width="120"><a href="/notice/list"><spring:message code="menu.notice.member" /></a></td>
             </sec:authorize>
 
             <sec:authorize access="isAuthenticated()">
@@ -24,11 +25,17 @@
                     <td width="120">
                         <a href="/board/list"><spring:message code="menu.board.member" /></a>
                     </td>
+                    <td width="120">
+                        <a href="/notice/list"><spring:message code="menu.notice.admin" /></a>
+                    </td>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_MEMBER')">
-                        <td width="120">
-                            <a href="/board/list"><spring:message code="menu.board.member" /></a>
-                        </td>
+                    <td width="120">
+                        <a href="/board/list"><spring:message code="menu.board.member" /></a>
+                    </td>
+                    <td width="120">
+                        <a href="/notice/list"><spring:message code="menu.notice.member" /></a>
+                    </td>
                 </sec:authorize>
             </sec:authorize>
 
