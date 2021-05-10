@@ -6,6 +6,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <h2><spring:message code="board.header.list" /></h2>
 
+<form:form modelAttribute="pgrq" method="get" action="list${pgrq.toUriStringByPage(1)}">
+    <form:select path="searchType" items="${searchTypeCodeValueList}" itemValue="value" itemLabel="label" />
+
+    <form:input path="keyword"/>
+    <button id="searchBtn"><spring:message code="action.search" /></button>
+</form:form>
+
 <sec:authorize access="hasRole('ROLE_MEMBER')">
     <a href="register"><spring:message code="action.new" /></a>
 </sec:authorize>
@@ -30,7 +37,9 @@
                 <tr>
                     <td align="center">${board.boardNo}</td>
                     <td align="left">
-                        <a href="/board/read${pagination.makeQuery(pagination.pageRequest.page)}&boardNo=${board.boardNo}">${board.title}</a>
+                        <a href="/board/read${pgrq.toUriString(pgrq.page)}&boardNo=${board.boardNo}">
+                            <c:out value="${board.title}" />
+                        </a>
                     </td>
                     <td align="right">${board.writer}</td>
                     <td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regDate}" /></td>
