@@ -9,6 +9,10 @@
 <form:form modelAttribute="board">
     <form:hidden path="boardNo" />
 
+    <%-- 현재 페이지 번호와 페이징 크기를 숨겨진 필드 요소를 사용하여 전달한다. --%>
+    <form:hidden path="page" />
+    <form:hidden path="sizePerPage" />
+
     <table>
         <tr>
             <td><spring:message code="board.title" /></td>
@@ -50,11 +54,18 @@
     $(document).ready(function () {
         var formObj = $("#board");
 
+        var pageObj = $("#page");
+        var sizePerPageObj = $("#sizePerPage");
+
+        var pageVal = pageObj.val();
+        var sizePerPageVal = sizePerPageObj.val();
+
         $("#btnEdit").on("click", function () {
             var boardNo = $("#boardNo");
             var boardNoVal = boardNo.val();
 
-            self.location = "/board/modify?boardNo=" + boardNoVal;
+            self.location = "/board/modify?boardNo=" + boardNoVal
+                + "&page=" + pageVal + "&sizePerPage=" + sizePerPageVal;
         });
 
         $("#btnRemove").on("click", function () {
@@ -63,7 +74,7 @@
         });
 
         $("#btnList").on("click", function () {
-            self.location = "/board/list";
+            self.location = "/board/list?" + "page=" + pageVal + "&sizePerPage=" + sizePerPageVal;
         });
     });
 </script>

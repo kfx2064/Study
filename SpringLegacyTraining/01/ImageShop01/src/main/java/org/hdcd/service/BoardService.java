@@ -1,5 +1,6 @@
 package org.hdcd.service;
 
+import org.hdcd.common.domain.PageRequest;
 import org.hdcd.domain.Board;
 
 import java.util.List;
@@ -14,6 +15,9 @@ public interface BoardService {
 
     public void remove(Integer boardNo) throws Exception;
 
-    public List<Board> list() throws Exception;
+    public List<Board> list(PageRequest pageRequest) throws Exception;
+
+    // 게시글 전체 건수를 반환한다.
+    public int count() throws Exception;
 
 }

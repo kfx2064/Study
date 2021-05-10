@@ -1,5 +1,6 @@
 package org.hdcd.mapper;
 
+import org.hdcd.common.domain.PageRequest;
 import org.hdcd.domain.Board;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface BoardMapper {
 
     public void delete(Integer boardNo) throws Exception;
 
-    public List<Board> list() throws Exception;
+    public List<Board> list(PageRequest pageRequest) throws Exception;
+
+    public int count() throws Exception;
 
 }
