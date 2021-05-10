@@ -18,7 +18,7 @@ public class Board implements Serializable {
     private Date regDate;
 
     // 페이징 요청 정보를 멤버변수로 선언한다.
-    private PageRequest pageRequest;
+    /*private PageRequest pageRequest;*/
 
     public int getBoardNo() {
         return boardNo;
@@ -60,21 +60,19 @@ public class Board implements Serializable {
         this.regDate = regDate;
     }
 
-    // 페이징 요청 멤버변수를 사용하여 페이징정보를 반환한다.
-    public int getPage() {
+    /*public int getPage() {
         return pageRequest.getPage();
     }
     public int getSizePerPage() {
         return pageRequest.getSizePerPage();
     }
 
-    // 페이징요청 멤버변수의 Getter/Setter 메서드를 정의한다.
     public PageRequest getPageRequest() {
         return pageRequest;
     }
     public void setPageRequest(PageRequest pageRequest) {
         this.pageRequest = pageRequest;
-    }
+    }*/
 
     @Override
     public String toString() {

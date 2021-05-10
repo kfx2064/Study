@@ -1,5 +1,6 @@
 package org.hdcd.controller;
 
+import org.hdcd.common.domain.CodeLabelValue;
 import org.hdcd.common.domain.PageRequest;
 import org.hdcd.common.domain.Pagination;
 import org.hdcd.common.security.domain.CustomUser;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/board")
@@ -52,21 +56,30 @@ public class BoardController {
 
         Pagination pagination = new Pagination();
         pagination.setPageRequest(pageRequest);
-        pagination.setTotalCount(service.count());
+        pagination.setTotalCount(service.count(pageRequest));
         model.addAttribute("pagination", pagination);
+
+        List<CodeLabelValue> searchTypeCodeValueList = new ArrayList<>();
+        searchTypeCodeValueList.add(new CodeLabelValue("n", "---"));
+        searchTypeCodeValueList.add(new CodeLabelValue("t", "Title"));
+        searchTypeCodeValueList.add(new CodeLabelValue("c", "Content"));
+        searchTypeCodeValueList.add(new CodeLabelValue("w", "Writer"));
+        searchTypeCodeValueList.add(new CodeLabelValue("tc", "Title OR Content"));
+        searchTypeCodeValueList.add(new CodeLabelValue("cw", "Content OR Writer"));
+        searchTypeCodeValueList.add(new CodeLabelValue("tcw", "Title OR Content OR Writer"));
+
+        model.addAttribute("searchTypeCodeValueList", searchTypeCodeValueList);
     }
 
     @RequestMapping(value = "/read", method = RequestMethod.GET)
     public void read(int boardNo
             , @ModelAttribute("pgrq") PageRequest pageRequest
             , Model model) throws Exception {
-        /*model.addAttribute(service.read(boardNo));*/
 
         // 조회한 게시글 상세정보를 뷰에 전달한다.
         Board board = service.read(boardNo);
-        board.setPageRequest(pageRequest);
-        model.addAttribute(board);
 
+        model.addAttribute(board);
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
@@ -76,6 +89,9 @@ public class BoardController {
 
         rttr.addAttribute("page", pageRequest.getPage());
         rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+
+        rttr.addAttribute("searchType", pageRequest.getSearchType());
+        rttr.addAttribute("keyword", pageRequest.getKeyword());
 
         rttr.addFlashAttribute("msg", "SUCCESS");
 
@@ -87,11 +103,10 @@ public class BoardController {
     public void modifyForm(int boardNo
             , @ModelAttribute("pgrq") PageRequest pageRequest
             , Model model) throws Exception {
-        /*model.addAttribute(service.read(boardNo));*/
 
         // 조회한 게시글 상세정보를 뷰에 전달한다.
         Board board = service.read(boardNo);
-        board.setPageRequest(pageRequest);
+
         model.addAttribute(board);
     }
 
@@ -102,6 +117,9 @@ public class BoardController {
 
         rttr.addAttribute("page", pageRequest.getPage());
         rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+
+        rttr.addAttribute("searchType", pageRequest.getSearchType());
+        rttr.addAttribute("keyword", pageRequest.getKeyword());
 
         rttr.addFlashAttribute("msg", "SUCCESS");
 
