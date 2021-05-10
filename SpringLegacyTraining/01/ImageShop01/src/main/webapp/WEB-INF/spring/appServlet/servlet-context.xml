@@ -23,6 +23,10 @@
 		<beans:property name="order" value="2" />
 	</beans:bean>
 
+	<context:component-scan base-package="org.hdcd.controller" />
+
+	<context:component-scan base-package="org.hdcd.common.security" />
+
 	<!-- Tiles 뷰 리졸버 -->
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
@@ -37,7 +41,5 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	
-	<context:component-scan base-package="org.hdcd.controller" />
 
 </beans:beans>
