@@ -5,6 +5,7 @@ import org.hdcd.common.domain.CodeLabelValue;
 import org.hdcd.service.CodeDetailService;
 import org.hdcd.service.CodeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/codedetail")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class CodeDetailController {
 
     @Autowired
