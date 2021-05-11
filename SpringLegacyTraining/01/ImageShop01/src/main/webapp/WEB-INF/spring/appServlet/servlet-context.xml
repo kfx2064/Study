@@ -31,6 +31,16 @@
 
 	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
 
+	<beans:bean id="accessLoggingInterceptor" class="org.hdcd.common.interceptor.AccessLoggingInterceptor"></beans:bean>
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**"/>
+			<beans:ref bean="accessLoggingInterceptor" />
+		</interceptor>
+	</interceptors>
+
 	<!-- Tiles 뷰 리졸버 -->
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
