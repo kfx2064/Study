@@ -1,11 +1,17 @@
 package org.hdcd.controller;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.ibatis.ognl.IteratorEnumeration;
 import org.hdcd.domain.Item;
 import org.hdcd.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -16,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
@@ -125,6 +133,80 @@ public class ItemController {
         return createFileName;
     }
 
-    // 이어서...
+    @ResponseBody
+    @RequestMapping("/display")
+    public ResponseEntity<byte[]> displayFile(Integer itemId) throws Exception {
+        InputStream in = null;
+        ResponseEntity<byte[]> entity = null;
+
+        String fileName = itemService.getPreview(itemId);
+
+        try {
+            String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+            MediaType mType = getMediaType(formatName);
+            HttpHeaders headers = new HttpHeaders();
+            in = new FileInputStream(uploadPath + File.separator + fileName);
+
+            if (mType != null) {
+                headers.setContentType(mType);
+            }
+
+            entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+        } finally {
+            in.close();
+        }
+        return entity;
+    }
+
+    private MediaType getMediaType(String formatName) {
+        if (formatName != null) {
+            if (formatName.equals("JPG")) {
+                return MediaType.IMAGE_JPEG;
+            }
+
+            if (formatName.equals("GIF")) {
+                return MediaType.IMAGE_GIF;
+            }
+
+            if (formatName.equals("PNG")) {
+                return MediaType.IMAGE_PNG;
+            }
+        }
+        return null;
+    }
+
+    @ResponseBody
+    @RequestMapping("/download")
+    public ResponseEntity<byte[]> downloadFile(Integer itemId, Authentication authentication) throws Exception {
+        InputStream in = null;
+        ResponseEntity<byte[]> entity = null;
+        String fullName = itemService.getPicture(itemId);
+
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            in = new FileInputStream(uploadPath + File.separator + fullName);
+            String fileName = fullName.substring(fullName.indexOf("_") + 1);
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.add("Content-Disposition", "attachment; filename=\""
+                    + new String(fileName.getBytes("UTF-8"), "ISO-8859-1"));
+            entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+        } finally {
+            in.close();
+        }
+        return entity;
+    }
+
+    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    public String read(Integer itemId, Model model) throws Exception {
+        Item item = itemService.read(itemId);
+        model.addAttribute(item);
+        return "item/read";
+    }
 
 }
