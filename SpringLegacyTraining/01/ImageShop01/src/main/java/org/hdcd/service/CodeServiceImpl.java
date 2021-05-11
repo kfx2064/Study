@@ -1,6 +1,7 @@
 package org.hdcd.service;
 
 import org.hdcd.common.domain.CodeLabelValue;
+import org.hdcd.domain.PayCoin;
 import org.hdcd.mapper.CodeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

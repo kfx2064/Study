@@ -1,11 +1,14 @@
 package org.hdcd.controller;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.ibatis.ognl.IteratorEnumeration;
+import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Item;
+import org.hdcd.domain.Member;
 import org.hdcd.service.ItemService;
+import org.hdcd.service.MemberService;
+import org.hdcd.service.UserItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +28,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @Controller
@@ -34,7 +38,17 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    // 업무로직을 처리할 서비스 객체를 멤버변수로 선언한다.
+    @Autowired
+    private MemberService memberService;
+
+    @Autowired
+    private UserItemService userItemService;
+
     public String uploadPath;
+
+    @Autowired
+    private MessageSource messageSource;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public void list(Model model) throws Exception {
@@ -207,6 +221,29 @@ public class ItemController {
         Item item = itemService.read(itemId);
         model.addAttribute(item);
         return "item/read";
+    }
+
+    // 상품 구매 요청을 처리한다.
+    @RequestMapping(value = "/buy", method = RequestMethod.POST)
+    public String buy(Integer itemId, RedirectAttributes rttr, Authentication authentication) throws Exception {
+        CustomUser customUser = (CustomUser) authentication.getPrincipal();
+        Member member = customUser.getMember();
+
+        int userNo = member.getUserNo();
+        member.setCoin(memberService.getCoin(userNo));
+        Item item = itemService.read(itemId);
+        userItemService.register(member, item);
+
+        String message = messageSource.getMessage("item.purchaseComplete", null, Locale.KOREAN);
+        rttr.addFlashAttribute("msg", message);
+
+        return "redirect:/item/success";
+    }
+
+    // 상품 구매 성공 화면을 표시한다.
+    @RequestMapping(value = "/success", method = RequestMethod.GET)
+    public String success() throws Exception {
+        return "item/success";
     }
 
 }

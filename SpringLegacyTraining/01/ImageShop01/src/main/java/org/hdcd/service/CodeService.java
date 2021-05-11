@@ -1,6 +1,7 @@
 package org.hdcd.service;
 
 import org.hdcd.common.domain.CodeLabelValue;
+import org.hdcd.domain.PayCoin;
 
 import java.util.List;
 
