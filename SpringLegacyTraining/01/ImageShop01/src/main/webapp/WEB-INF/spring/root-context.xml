@@ -4,6 +4,7 @@
 	   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	   xmlns:tx="http://www.springframework.org/schema/tx"
 	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
 	   xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring
 	   https://mybatis.org/schema/mybatis-spring-1.2.xsd
 	   	http://www.springframework.org/schema/beans
@@ -11,9 +12,12 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx
-		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- AOP 활성화 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
@@ -54,6 +58,9 @@
 
 	<!-- org.hdcd.common.service 패키지를 컴포넌트 스캔 대상으로 한다. -->
 	<context:component-scan base-package="org.hdcd.common.service"></context:component-scan>
+
+	<!-- org.hdcd.common.aop 패키지를 컴포넌트 스캔 대상으로 한다. -->
+	<context:component-scan base-package="org.hdcd.common.aop"></context:component-scan>
 
 	<!-- 메시지 프로퍼티 파일을 지정한다. -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
