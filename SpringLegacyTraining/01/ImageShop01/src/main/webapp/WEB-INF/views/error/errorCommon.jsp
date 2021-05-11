@@ -1,16 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jth45
-  Date: 2021-05-11
-  Time: 오후 2:33
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<h2><spring:message code="common.error.errorOccured" /></h2>
 
-</body>
-</html>
+<a href="javascript:window.history.back();"><spring:message code="common.error.backPage" /></a><br>
+<a href="/"><spring:message code="common.error.returnHome" /></a>

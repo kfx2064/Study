@@ -4,6 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Member;
 import org.hdcd.domain.UserItem;
+import org.hdcd.exception.NotMyItemException;
 import org.hdcd.service.UserItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -60,6 +61,13 @@ public class UserItemController {
     public ResponseEntity<byte[]> download(int userItemNo, Authentication authentication) throws Exception {
         UserItem userItem = service.read(userItemNo);
 
+        CustomUser customUser = (CustomUser) authentication.getPrincipal();
+        Member member = customUser.getMember();
+
+        if (userItem.getUserNo() != member.getUserNo()) {
+            throw new NotMyItemException("It is Not My Item.");
+        }
+
         String fullName = userItem.getPictureUrl();
 
         InputStream in = null;
@@ -82,5 +90,11 @@ public class UserItemController {
             in.close();
         }
         return entity;
+    }
+
+    @RequestMapping(value = "/notMyItem", method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+    public void notMyItem(Model model) throws Exception {
+
     }
 }

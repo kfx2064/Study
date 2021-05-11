@@ -25,8 +25,9 @@
 	</beans:bean>
 
 	<context:component-scan base-package="org.hdcd.controller" />
-
 	<context:component-scan base-package="org.hdcd.common.security" />
+
+	<context:component-scan base-package="org.hdcd.common.controller" />
 
 	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
 

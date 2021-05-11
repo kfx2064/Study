@@ -47,6 +47,8 @@
 	<!-- org.hdcd.service 패키지를 컴포넌트 스캔 대상으로 한다. -->
 	<context:component-scan base-package="org.hdcd.service"></context:component-scan>
 
+	<context:component-scan base-package="org.hdcd.common.exception"></context:component-scan>
+
 	<!-- 메시지 프로퍼티 파일을 지정한다. -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
