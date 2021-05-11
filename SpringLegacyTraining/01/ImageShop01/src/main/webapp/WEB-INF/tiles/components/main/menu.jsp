@@ -10,6 +10,8 @@
                 <td width="120"><a href="/board/list"><spring:message code="menu.board.member" /></a></td>
                 <td width="120"><a href="/notice/list"><spring:message code="menu.notice.member" /></a></td>
                 <td width="120"><a href="/item/list"><spring:message code="menu.item.member" /></a></td>
+                <%-- 자료실을 메뉴에 추가한다. --%>
+                <td width="120"><a href="/pds/list"><spring:message code="menu.pds.member" /></a></td>
             </sec:authorize>
 
             <sec:authorize access="isAuthenticated()">
@@ -32,6 +34,9 @@
                     <td width="120">
                         <a href="/item/list"><spring:message code="menu.item.admin" /></a>
                     </td>
+                    <td width="120">
+                        <a href="/pds/list"><spring:message code="menu.pds.admin" /></a>
+                    </td>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_MEMBER')">
                     <td width="120">
@@ -52,6 +57,8 @@
                     <%-- 구매상품과 구매내역을 메뉴에 추가한다. --%>
                     <td width="120"><a href="/useritem/list"><spring:message code="menu.useritem.list" /></a></td>
                     <td width="120"><a href="/coin/listPay"><spring:message code="menu.coin.listPay" /></a></td>
+                    <%-- 자료실을 메뉴에 추가한다. --%>
+                    <td width="120"><a href="/pds/list"><spring:message code="menu.pds.member" /></a></td>
                 </sec:authorize>
             </sec:authorize>
 
