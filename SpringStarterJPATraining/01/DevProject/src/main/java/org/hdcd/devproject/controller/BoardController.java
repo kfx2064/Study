@@ -1,71 +1,44 @@
 package org.hdcd.devproject.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hdcd.devproject.domain.Board;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
-    @GetMapping(value = "/get", params = "register")
-    public String registerForm() {
-        log.info("registerForm");
-
-        return "board/register";
-    }
-
-    @PostMapping(value = "/post", params = "register")
-    public String register() {
-        log.info("register");
-
-        return "board/list";
-    }
-
-    @GetMapping(value = "/get", params = "modify")
-    public String modifyForm() {
-        log.info("modifyForm");
-
-        return "board/modify";
-    }
-
-    @PostMapping(value = "/post", params = "modify")
-    public String modify() {
+    @PostMapping("/{boardNo}")
+    public ResponseEntity<String> modify(@PathVariable("boardNo") int boadNo, @RequestBody Board board) {
         log.info("modify");
 
-        return "board/list";
+        ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+
+        return entity;
     }
 
-    @GetMapping(value = "/get", params = "remove")
-    public String removeForm() {
-        log.info("removeForm");
+    @PutMapping(value = "/{boardNo}", consumes = "application/json")
+    public ResponseEntity<String> modifyByJson(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modifyByJson");
 
-        return "board/remove";
+        ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+
+        return entity;
     }
 
-    @PostMapping(value = "/post", params = "remove")
-    public String remove() {
-        log.info("remove");
+    @PutMapping(value = "/{boardNo}", consumes = "application/xml")
+    public ResponseEntity<String> modifyByXml(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
+        log.info("modifyByXml boardNo : " + boardNo);
 
-        return "board/list";
-    }
+        log.info("modifyByXml board : " + board);
 
-    @GetMapping(value = "/get", params = "list")
-    public String list() {
-        log.info("list");
+        ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 
-        return "board/list";
-    }
-
-    @GetMapping(value = "/get", params = "read")
-    public String read() {
-        log.info("read");
-
-        return "board/read";
+        return entity;
     }
 
 }
