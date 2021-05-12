@@ -28,4 +28,9 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/formHome")
+    public String formHome() {
+        return "formHome";
+    }
+
 }
