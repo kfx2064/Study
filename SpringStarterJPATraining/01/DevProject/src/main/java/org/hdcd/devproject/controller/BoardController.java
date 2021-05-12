@@ -12,46 +12,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board")
 public class BoardController {
 
-    @GetMapping(value = "/register")
+    @GetMapping(value = "/get", params = "register")
     public String registerForm() {
         log.info("registerForm");
 
-        return "success";
+        return "board/register";
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/post", params = "register")
     public String register() {
         log.info("register");
 
-        return "success";
+        return "board/list";
     }
 
-    @GetMapping("/modify")
+    @GetMapping(value = "/get", params = "modify")
     public String modifyForm() {
         log.info("modifyForm");
 
-        return "success";
+        return "board/modify";
     }
 
-    @PostMapping("/modify")
+    @PostMapping(value = "/post", params = "modify")
     public String modify() {
         log.info("modify");
 
-        return "success";
+        return "board/list";
     }
 
-    @PostMapping("/remove")
+    @GetMapping(value = "/get", params = "remove")
+    public String removeForm() {
+        log.info("removeForm");
+
+        return "board/remove";
+    }
+
+    @PostMapping(value = "/post", params = "remove")
     public String remove() {
         log.info("remove");
 
-        return "success";
+        return "board/list";
     }
 
-    @GetMapping("/list")
+    @GetMapping(value = "/get", params = "list")
     public String list() {
         log.info("list");
 
-        return "success";
+        return "board/list";
+    }
+
+    @GetMapping(value = "/get", params = "read")
+    public String read() {
+        log.info("read");
+
+        return "board/read";
     }
 
 }

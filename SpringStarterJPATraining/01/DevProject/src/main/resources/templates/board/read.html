@@ -4,6 +4,13 @@
     <title>BOARD</title>
 </head>
 <body>
-  <h3>READ</h3>
+    <h3>READ</h3>
+
+    <form method="get" th:action="@{/board/get}">
+        <button type="submit" name="modify">Modify</button>
+        <button type="submit" name="remove">REMOVE</button>
+    </form>
+
+    <a th:href="@{/board/get?list}">LIST</a>
 </body>
 </html>
