@@ -1,9 +1,15 @@
 package org.hdcd.devproject.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hdcd.devproject.domain.Member;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.time.LocalDate;
 
 @Slf4j
 @Controller
@@ -16,79 +22,37 @@ public class MemberController {
         return "registerForm";
     }
 
-    @GetMapping("/register")
-    public String registerByParameter(String userId, String password) {
-        log.info("registerByParameter");
+    @GetMapping("/registerByGet01")
+    public String registerByGet01(String userId, @DateTimeFormat(pattern = "yyyyMMdd") LocalDate dateOfBirth) {
+        log.info("registerByGet01");
 
         log.info("userId = " + userId);
 
-        log.info("password = " + password);
+        log.info("dateOfBirth = " + dateOfBirth);
 
         return "success";
     }
 
-    @GetMapping("/register/{userId}")
-    public String registerByPath(String userId) {
-        log.info("registerByPath");
+    @GetMapping("/registerByGet02")
+    public String registerByGet02(Member member) {
+        log.info("registerByGet02");
 
-        log.info("userId = " + userId);
+        log.info("member.getUserId() = " + member.getUserId());
 
-        return "success";
-    }
-
-    @PostMapping("/register01")
-    public String register01(String userId) {
-        log.info("register01");
-
-        log.info("userId = " + userId);
+        log.info("member.getDateOfBirth(){ = " + member.getDateOfBirth());
 
         return "success";
     }
 
-    @PostMapping("/register02")
-    public String register02(String userId, String password) {
-        log.info("register02");
+    @PostMapping("/register")
+    public String register(Member member) {
+        log.info("register");
 
-        log.info("userId = " + userId);
+        log.info("member.getUserId() = " + member.getUserId());
 
-        log.info("password = " + password);
+        log.info("member.getPassword() = " + member.getPassword());
 
-        return "success";
-    }
-
-    @PostMapping("/register03")
-    public String register03(String password, String userId) {
-        log.info("register03");
-
-        log.info("userId = " + userId);
-
-        log.info("password = " + password);
-
-        return "success";
-    }
-
-    @PostMapping("/register04")
-    public String register04(String userId, String password, String coin) {
-        log.info("register04");
-
-        log.info("userId = " + userId);
-
-        log.info("password = " + password);
-
-        log.info("coin = " + coin);
-
-        return "success";
-    }
-
-    @PostMapping("/register05")
-    public String register05(String userId, String password, int coin) {
-        log.info("register05");
-
-        log.info("userId = " + userId);
-
-        log.info("password = " + password);
-
-        log.info("coin = " + coin);
+        log.info("member.getDateOfBirth() = " + member.getDateOfBirth());
 
         return "success";
     }
