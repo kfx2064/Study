@@ -1,86 +1,52 @@
 package org.hdcd.devproject.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hdcd.devproject.domain.Member;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
+import java.util.*;
 
 @Slf4j
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
-    public String home(Locale locale, Model model) {
+    @ResponseBody
+    @GetMapping("/goHome05")
+    public Map<String, Member> home05() {
+        log.info("home05");
 
-        log.info("Welcome home! The client locale is " + locale + ".");
+        Map<String, Member> map = new HashMap<String, Member>();
 
-        LocalDateTime now = LocalDateTime.now();
+        Member member = new Member();
+        map.put("key1", member);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일 (E) a h시 m분 s초");
-        String formattedNow = now.format(formatter);
+        Member member2 = new Member();
+        map.put("key2", member2);
 
-        model.addAttribute("serverTime", formattedNow);
-
-        return "home";
+        return map;
     }
 
-    @GetMapping("/formHome")
-    public String formHome() {
-        return "formHome";
+    @ResponseBody
+    @GetMapping("/goHome06")
+    public ResponseEntity<Void> home06() {
+        log.info("home06");
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping("/ajaxHome")
-    public String ajaxHome() {
-        return "ajaxHome";
-    }
+    @ResponseBody
+    @GetMapping("/goHome07")
+    public ResponseEntity<String> home07() {
+        log.info("home07");
 
-    @GetMapping("/goHome0101")
-    public void home0101() {
-        log.info("home0101");
-    }
-
-    @GetMapping("/sub/goHome0102")
-    public void home0102() {
-        log.info("home0102");
-    }
-
-    @GetMapping("/goHome0201")
-    public String home0201() {
-        log.info("home0201");
-
-        return "home0201";
-    }
-
-    @GetMapping("/sub/goHome0202")
-    public String home0202() {
-        log.info("home0202");
-
-        return "home0202";
-    }
-
-    @GetMapping("/sub/goHome0203")
-    public String home0203() {
-        log.info("home0203");
-
-        return "sub/home0203";
-    }
-
-    @GetMapping("/goHome0204")
-    public String home0204() {
-        log.info("home0204");
-
-        return "redirect:/sub/goHome0205";
-    }
-
-    @GetMapping("/sub/goHome0205")
-    public String home0205() {
-        log.info("home0205");
-
-        return "/sub/home0205";
+        return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
     }
 
 }

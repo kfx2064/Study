@@ -23,14 +23,4 @@ public class LombokTests {
         System.out.println(board);
     }
 
-    @Test
-    public void testMemberBuilder() {
-        Member member = Member.builder()
-                .userId("userId1")
-                .password("password1")
-                .build();
-
-        System.out.println(member);
-    }
-
 }
