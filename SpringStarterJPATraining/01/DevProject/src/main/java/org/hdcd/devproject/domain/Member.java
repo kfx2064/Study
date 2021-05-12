@@ -13,7 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 public class Member {
 
-    private String userId;
-    private String password;
+    private String userId = "hongkd";
+    private String password = "1234";
+    private Address address;
+    private List<Card> cardList;
 
 }
