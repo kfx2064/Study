@@ -7,74 +7,72 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
-    $("#putBtn").on("click", function () {
+    $("#getBtn").on("click", function () {
         var boardNo = $("#boardNo");
-        var title = $("#title");
-        var content = $("#content");
-        var writer = $("#writer");
-
         var boardNoVal = boardNo.val();
-        var titleVal = title.val();
-        var contentVal = content.val();
-        var writerVal = writer.val();
 
-        var boardObject = {
-            boardNo : boardNoVal,
-            title : titleVal,
-            content : contentVal,
-            writer : writerVal
-        };
+        console.log(boardNoVal);
+
+        $.get("/board/" + boardNoVal, function (data) {
+            console.log(data);
+
+            alert(JSON.stringify(data));
+        });
+    });
+
+    $("#getJsonBtn").on("click", function () {
+        var boardNo = $("#boardNo");
+        var boardNoVal = boardNo.val();
+
+        console.log(boardNoVal);
 
         $.ajax({
-            type: "put",
-            url: "/board/" + boardNoVal,
-            data: JSON.stringify(boardObject),
-            contentType: "application/json; charset=UTF-8",
-            success: function (result) {
+            type : "get",
+            url : "/board/" + boardNoVal,
+            headers : {
+                "Accept" : "application/json"
+            },
+            success : function (result) {
                 console.log("result : " + result);
-                if (result == "SUCCESS") {
-                    alert("SUCCESS");
-                }
+
+                alert(JSON.stringify(result));
             }
         });
     });
 
-    $("#putHeaderBtn").on("click", function () {
+    $("#getXmlBtn").on("click", function () {
         var boardNo = $("#boardNo");
-        var title = $("#title");
-        var content = $("#content");
-        var writer = $("#writer");
-
         var boardNoVal = boardNo.val();
-        var titleVal = title.val();
-        var contentVal = content.val();
-        var writerVal = writer.val();
 
-        var boardObject = {
-            boardNo: boardNoVal,
-            title: titleVal,
-            content: contentVal,
-            writer: writerVal
-        };
+        console.log(boardNoVal);
 
         $.ajax({
-            type: "put",
-            url: "/board/" + boardNoVal,
-            headers: {
-                "X-HTTP-Method-Override" : "PUT"
+            type : "get",
+            url : "/board/" + boardNoVal,
+            headers : {
+                "Accept" : "application/xml"
             },
-            data: JSON.stringify(boardObject),
-            contentType: "application/json; charset=UTF-8",
-            success: function (result) {
+            success : function (result) {
                 console.log("result : " + result);
-                if (result === "SUCCESS") {
-                    alert("SUCCESS");
-                }
+
+                alert(xmlToString(result));
             }
         });
     });
 
 });
+
+function xmlToString(xmlData) {
+    var xmlString;
+
+    if (window.ActiveXObject) {
+        xmlString = xmlData.xml;
+    } else {
+        xmlString = (new XMLSerializer()).serializeToString(xmlData);
+    }
+
+    return xmlString;
+}
 </script>
 <body>
     <h1>Ajax Home</h1>
@@ -87,8 +85,9 @@ $(document).ready(function () {
     </form>
 
     <div>
-        <button id="putBtn">MODIFY(put)</button>
-        <button id="putHeaderBtn">MODIFY(put with header)</button>
+        <button id="getBtn">READ</button>
+        <button id="getJsonBtn">READ (JSON)</button>
+        <button id="getXmlBtn">READ (XML)</button>
     </div>
 </body>
 </html>

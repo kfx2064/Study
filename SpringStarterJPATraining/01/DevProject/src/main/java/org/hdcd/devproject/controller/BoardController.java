@@ -7,36 +7,57 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
-    @PostMapping("/{boardNo}")
-    public ResponseEntity<String> modify(@PathVariable("boardNo") int boadNo, @RequestBody Board board) {
-        log.info("modify");
+    @GetMapping(value = "/{boardNo}", produces = "application/xml")
+    public ResponseEntity<Board> readToXml(@PathVariable("boardNo") int boardNo) {
+        log.info("readToXml");
 
-        ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+        Board board = new Board();
 
-        return entity;
-    }
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("홍길동");
+        board.setRegDate(LocalDateTime.now());
 
-    @PutMapping(value = "/{boardNo}", consumes = "application/json")
-    public ResponseEntity<String> modifyByJson(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
-        log.info("modifyByJson");
-
-        ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+        ResponseEntity<Board> entity = new ResponseEntity<Board>(board, HttpStatus.OK);
 
         return entity;
     }
 
-    @PutMapping(value = "/{boardNo}", consumes = "application/xml")
-    public ResponseEntity<String> modifyByXml(@PathVariable("boardNo") int boardNo, @RequestBody Board board) {
-        log.info("modifyByXml boardNo : " + boardNo);
+    @GetMapping(value = "/{boardNo}", produces = "application/json")
+    public ResponseEntity<Board> readToJson(@PathVariable("boardNo") int boardNo) {
+        log.info("readToJson");
 
-        log.info("modifyByXml board : " + board);
+        Board board = new Board();
 
-        ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("홍길동");
+        board.setRegDate(LocalDateTime.now());
+
+        ResponseEntity<Board> entity = new ResponseEntity<Board>(board, HttpStatus.OK);
+
+        return entity;
+    }
+
+    @GetMapping("/{boardNo}")
+    public ResponseEntity<Board> read(@PathVariable("boardNo") int boardNo) {
+        log.info("read");
+
+        Board board = new Board();
+
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("홍길동");
+        board.setRegDate(LocalDateTime.now());
+
+        ResponseEntity<Board> entity = new ResponseEntity<Board>(board, HttpStatus.OK);
 
         return entity;
     }
