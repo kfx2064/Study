@@ -7,6 +7,8 @@ import org.hdcd.devproject.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -17,194 +19,51 @@ import java.util.List;
 @Controller
 public class MemberController {
 
-    @GetMapping("/read01")
-    public String read01(Model model) {
-        log.info("read01");
+    @GetMapping("/registerForm")
+    public String registerForm() {
+        log.info("registerForm");
 
-        model.addAttribute("userId", "hongkd");
-        model.addAttribute("password", "1234");
-        model.addAttribute("email", "aaa@ccc.com");
-        model.addAttribute("userName", "홍길동");
-        model.addAttribute("birthDay", "1989-09-07");
-
-        return "read01";
+        return "registerForm";
     }
 
-    @GetMapping("/read02")
-    public String read02(Model model) {
-        log.info("read02");
+    @PostMapping("/register01")
+    public String register01(String userId) {
+        log.info("register01");
 
-        Member member = new Member();
+        log.info("userId = " + userId);
 
-        member.setUserId("hongkd");
-        member.setPassword("1234");
-        member.setEmail("aaa@ccc.com");
-        member.setUserName("홍길동");
-
-        LocalDate dateOfBirth = LocalDate.of(1988, 10, 7);
-        member.setDateOfBirth(dateOfBirth);
-
-        model.addAttribute(member);
-
-        return "read02";
+        return "result01";
     }
 
-    @GetMapping("/read03")
-    public String read03(Model model) {
-        log.info("read03");
+    @PostMapping("/register02")
+    public String register02(@ModelAttribute("userId") String userId) {
+        log.info("register02");
 
-        Member member = new Member();
+        log.info("userId = " + userId);
 
-        member.setUserId("hongkd");
-        member.setPassword("1234");
-        member.setEmail("aaa@ccc.com");
-        member.setUserName("홍길동");
-
-        LocalDate dateOfBirth = LocalDate.of(1988, 10, 7);
-        member.setDateOfBirth(dateOfBirth);
-
-        model.addAttribute("user", member);
-
-        return "read03";
+        return "result02";
     }
 
-    @GetMapping("/read04")
-    public String read04(Model model) {
-        log.info("read04");
+    @PostMapping("/register03")
+    public String register03(@ModelAttribute("userId") String userId, @ModelAttribute("password") String password) {
+        log.info("register03");
 
-        String[] carArray = {"saab", "audi"};
+        log.info("userId = " + userId);
 
-        List<String> carList = new ArrayList<String>();
-        carList.add("saab");
-        carList.add("audi");
+        log.info("password = " + password);
 
-        String[] hobbyArray = {"Music", "Movie"};
-        List<String> hobbyList = new ArrayList<String>();
-        hobbyList.add("Music");
-        hobbyList.add("Movie");
-
-        model.addAttribute("carArray", carArray);
-        model.addAttribute("carList", carList);
-
-        model.addAttribute("hobbyArray", hobbyArray);
-        model.addAttribute("hobbyList", hobbyList);
-
-        return "read04";
+        return "result03";
     }
 
-    @GetMapping("/read05")
-    public String read05(Model model) {
-        log.info("read05");
+    @PostMapping("/register04")
+    public String register04(Member member) {
+        log.info("register04");
 
-        Member member = new Member();
+        log.info("userId = " + member.getUserId());
 
-        Address address = new Address();
-        address.setPostCode("080908");
-        address.setLocation("seoul");
-        member.setAddress(address);
+        log.info("password = " + member.getPassword());
 
-        List<Card> cardList = new ArrayList<Card>();
-
-        Card card1 = new Card();
-        card1.setNo("123456");
-
-        YearMonth validMonth = YearMonth.of(2020, 9);
-        card1.setValidMonth(validMonth);
-
-        cardList.add(card1);
-
-        Card card2 = new Card();
-        card2.setNo("456786");
-
-        YearMonth validMonth2 = YearMonth.of(2022, 11);
-        card2.setValidMonth(validMonth2);
-
-        cardList.add(card2);
-
-        member.setCardList(cardList);
-
-        model.addAttribute("user", member);
-
-        return "read05";
-    }
-
-    @GetMapping("/read06")
-    public String read06(Model model) {
-        log.info("read06");
-        
-        Member member = new Member();
-        
-        member.setUserId("hongkd");
-        member.setPassword("1234");
-        member.setEmail("aaa@ccc.com");
-        member.setUserName("홍길동");
-
-        member.setGender("female");
-
-        member.setDeveloper("Y");
-        member.setForeigner(true);
-
-        member.setNationality("Australia");
-
-        member.setCars("saab");
-
-        String[] carArray = {"saab", "audi"};
-
-        member.setCarArray(carArray);
-
-        List<String> carList = new ArrayList<String>();
-        carList.add("saab");
-        carList.add("audi");
-
-        member.setCarList(carList);
-
-        member.setHobby("Movie");
-
-        String[] hobbyArray = {"Music", "Movie"};
-
-        member.setHobbyArray(hobbyArray);
-
-        List<String> hobbyList = new ArrayList<String>();
-        hobbyList.add("Music");
-        hobbyList.add("Movie");
-
-        member.setHobbyList(hobbyList);
-
-        Address address = new Address();
-        address.setPostCode("080908");
-        address.setLocation("seoul");
-        member.setAddress(address);
-
-        List<Card> cardList = new ArrayList<Card>();
-
-        Card card1 = new Card();
-        card1.setNo("123456");
-
-        YearMonth validMonth = YearMonth.of(2020, 9);
-        card1.setValidMonth(validMonth);
-
-        cardList.add(card1);
-
-        Card card2 = new Card();
-        card2.setNo("456786");
-
-        YearMonth validMonth2 = YearMonth.of(2022, 11);
-        card2.setValidMonth(validMonth2);
-
-        cardList.add(card2);
-
-        member.setCardList(cardList);
-
-        LocalDate dateOfBirth = LocalDate.of(1988, 10, 7);
-        member.setDateOfBirth(dateOfBirth);
-
-        String introduction = "안녕하세요.\n반갑습니다.";
-
-        member.setIntroduction(introduction);
-
-        model.addAttribute("user", member);
-
-        return "read06";
+        return "result04";
     }
 
 }
