@@ -5,9 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<h2>Home0402</h2>
-<div>
-  <a href="../home0401.html" th:href="@{/home0401}">Home0401로 이동</a>
-</div>
+<table border="1" th:width="memberId=${member.userId}">
+    <tr>
+        <td>${member.userId}</td>
+        <td th:text="${memberId}">member.userId</td>
+    </tr>
+</table>
 </body>
 </html>

@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<h1>Home0301</h1>
-
-<img src="../static/images/player.png" th:src="@{/image/player.png}"/>
+<th:block th:each="hobby : ${member.hobbyArray}">
+    <p th:text="${hobby}">hobby</p>
+</th:block>
 </body>
 </html>

@@ -18,10 +18,15 @@ public class Member {
     private String userName;
 
     private String email;
+    private String gender;
 
     private LocalDate dateOfBirth;
 
     private Address address;
+
+    private List<Card> cardList;
+
+    private String hobby;
 
     private String[] hobbyArray;
     private List<String> hobbyList;
