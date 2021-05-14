@@ -22,6 +22,8 @@ public class Member {
 
     private LocalDate dateOfBirth;
 
+    private boolean foreigner;
+
     private Address address;
 
     private List<Card> cardList;
