@@ -17,8 +17,12 @@ import java.time.LocalDateTime;
 @RequestMapping("/board")
 public class BoardController {
 
-    @Autowired
     private BoardService service;
+
+    @Autowired
+    public BoardController(BoardService service) {
+        this.service = service;
+    }
 
     @GetMapping("/register")
     public void registerForm(Board board, Model model) throws Exception {

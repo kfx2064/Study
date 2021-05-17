@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-    @Autowired
     private BoardDAO dao;
+
+    @Autowired
+    public BoardServiceImpl(BoardDAO dao) {
+        this.dao = dao;
+    }
 
     @Override
     public void register(Board board) throws Exception {

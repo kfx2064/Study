@@ -14,8 +14,12 @@ import java.util.List;
 @Repository
 public class BoardDAO {
 
-    @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public BoardDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public void create(Board board) throws Exception {
         String query = "INSERT INTO board (title, content, writer) VALUES(?, ?, ?)";
