@@ -13,20 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MemberController {
 
-    @GetMapping("/registerForm")
-    public String registerForm(Model model) {
-        log.info("registerForm");
-
-        Member member = new Member();
-
-        member.setEmail("aaa@ccc.com");
-        member.setUserName("홍길동");
-
-        model.addAttribute("member", member);
-
-        return "registerForm";
-    }
-
     @PostMapping("/register")
     public String register(@Validated Member member, BindingResult result) {
         log.info("register");
@@ -36,10 +22,34 @@ public class MemberController {
         }
 
         log.info("member.getUserId() = " + member.getUserId());
-        log.info("member.getUserName() = " + member.getUserName());
-        log.info("member.getEmail() = " + member.getEmail());
+        log.info("member.getGender() = " + member.getGender());
 
-        return "result";
+        return "success";
+    }
+
+    @GetMapping("/registerForm01")
+    public String registerForm01(Model model) {
+        log.info("registerForm01");
+
+        model.addAttribute("member", new Member());
+
+        return "registerForm";
+    }
+
+    @GetMapping("/registerForm02")
+    public String registerForm02(Model model) {
+        log.info("registerForm02");
+
+        Member member = new Member();
+
+        member.setPassword("1234");
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        member.setGender("female");
+
+        model.addAttribute("member", member);
+
+        return "registerForm";
     }
 
 }
