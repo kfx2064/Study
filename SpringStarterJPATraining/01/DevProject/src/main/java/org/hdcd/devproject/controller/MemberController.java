@@ -26,7 +26,9 @@ public class MemberController {
 
         Member member = new Member();
 
-        member.setPassword("1234");
+        String introduction = "안녕하세요.\n반갑습니다.";
+
+        member.setIntroduction(introduction);
 
         model.addAttribute("member", member);
 
@@ -37,7 +39,7 @@ public class MemberController {
     public String register(Member member) {
         log.info("register");
 
-        log.info("member.getPassword() = " + member.getPassword());
+        log.info("member.getIntroduction() = " + member.getIntroduction());
 
         return "result";
     }
