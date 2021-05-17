@@ -54,7 +54,7 @@ public class MemberController {
         }
 
         log.info("member.getUserId() = " + member.getUserId());
-        log.info("member.getGender() = " + member.getGender());
+        log.info("member.getGender() = #" + member.getGender() + "#");
 
         return "success";
     }
