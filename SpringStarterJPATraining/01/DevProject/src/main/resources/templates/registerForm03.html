@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Spring Form</h2>
+
+<form action="result2.html" th:action="@{/register2}" th:object="${member}" method="POST">
+  <table>
+    <tr>
+      <td>소유차량</td>
+      <td>
+        <select th:field="*{carList}" multiple="multiple">
+          <option th:each="element : ${carCodeMap}" th:value="${element.key}" th:text="${element.value}">Volvo</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+  <button name="register" type="submit">등록</button>
+</form>
+</body>
+</html>
