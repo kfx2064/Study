@@ -1,7 +1,6 @@
 package org.hdcd.devproject.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.hdcd.devproject.domain.CodeLabelValue;
 import org.hdcd.devproject.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Controller
@@ -21,37 +18,54 @@ public class MemberController {
     public String registerForm01(Model model) {
         log.info("registerForm01");
 
-        Map<String, String> hobbyMap = new HashMap<String, String>();
-        hobbyMap.put("01", "Sports");
-        hobbyMap.put("02", "Music");
-        hobbyMap.put("03", "Movie");
-
-        model.addAttribute("hobbyMap", hobbyMap);
-
         model.addAttribute("member", new Member());
 
-        return "registerForm01";
+        return "registerForm";
     }
 
     @GetMapping("/registerForm02")
     public String registerForm02(Model model) {
         log.info("registerForm02");
 
-        List<CodeLabelValue> hobbyCodeList = new ArrayList<CodeLabelValue>();
-        hobbyCodeList.add(new CodeLabelValue("01", "Sports"));
-        hobbyCodeList.add(new CodeLabelValue("02", "Music"));
-        hobbyCodeList.add(new CodeLabelValue("03", "Movie"));
+        Member member = new Member();
+        member.setDeveloper("Y");
+        member.setForeigner(true);
 
-        model.addAttribute("hobbyCodeList", hobbyCodeList);
+        member.setHobby("Movie");
 
-        model.addAttribute("member", new Member());
+        String[] hobbyArray = {"Music", "Movie"};
 
-        return "registerForm02";
+        member.setHobbyArray(hobbyArray);
+
+        List<String> hobbyList = new ArrayList<String>();
+        hobbyList.add("Music");
+        hobbyList.add("Movie");
+
+        member.setHobbyList(hobbyList);
+
+        model.addAttribute("member", member);
+
+        return "registerForm";
     }
 
     @PostMapping("/register")
     public String register(Member member, Model model) {
         log.info("register");
+        log.info("member.isForeigner() = " + member.isForeigner());
+        log.info("member.getDeveloper() = " + member.getDeveloper());
+        log.info("member.getHobby() = " + member.getHobby());
+
+        String[] hobbyArray = member.getHobbyArray();
+
+        if (hobbyArray != null) {
+            log.info("hobbyArray != null = " + hobbyArray.length);
+
+            for (int i = 0; i < hobbyArray.length; i++) {
+                log.info("hobbyArray[" + i + "] = " + hobbyArray);
+            }
+        } else {
+            log.info("hobbyArray == null");
+        }
 
         List<String> hobbyList = member.getHobbyList();
 
@@ -65,7 +79,7 @@ public class MemberController {
             log.info("hobbyList == null");
         }
 
-        model.addAttribute("hobbyList", hobbyList);
+        model.addAttribute("member", member);
 
         return "result";
     }

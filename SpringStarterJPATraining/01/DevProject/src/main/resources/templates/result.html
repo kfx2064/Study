@@ -9,9 +9,36 @@
 
 <table>
     <tr>
-        <td>취미(hobbyList) : </td>
+        <td>개발자여부</td>
+        <td th:text="${member.foreigner}">
+            ${member.foreigner}
+        </td>
+    </tr>
+    <tr>
+        <td>외국인여부</td>
+        <td th:text="${member.developer}">
+            ${member.developer}
+        </td>
+    </tr>
+    <tr>
+        <td>취미(hobby)</td>
+        <td th:text="${member.hobby}">
+            ${member.hobby}
+        </td>
+    </tr>
+    <tr>
+        <td>취미(hobbyArray)</td>
         <td>
-            <th:block th:each="hobby : {hobbyList}">
+            <th:block th:each="hobby : ${member.hobbyArray}">
+                <span th:text="${hobby}">hobby</span>
+                <br/>
+            </th:block>
+        </td>
+    </tr>
+    <tr>
+        <td>취미(hobbyList)</td>
+        <td>
+            <th:block th:each="hobby : ${member.hobbyList}">
                 <span th:text="${hobby}">hobby</span>
                 <br/>
             </th:block>
