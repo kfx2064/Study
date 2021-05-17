@@ -7,8 +7,13 @@
 <body>
 <h3>Result</h3>
 
-<h4>gender : </h4>
-
-<span th:text="${gender}">gender</span>
+<table>
+    <tr>
+        <td>성별</td>
+        <td th:text="${member.gender}">
+            ${member.gender}
+        </td>
+    </tr>
+</table>
 </body>
 </html>
