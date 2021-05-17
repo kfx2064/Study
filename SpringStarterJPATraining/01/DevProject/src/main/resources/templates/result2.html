@@ -7,8 +7,10 @@
 <body>
 <h3>Result</h3>
 
-<h4>nationality : </h4>
+<h4>carList : </h4>
 
-<span th:text="${nationality}">nationality</span>
+<th:block th:each="car : ${carList}">
+  <p th:text="${car}">car</p>
+</th:block>
 </body>
 </html>
