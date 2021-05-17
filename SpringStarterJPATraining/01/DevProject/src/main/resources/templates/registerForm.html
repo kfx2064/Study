@@ -11,7 +11,7 @@
         <tr>
             <td>유저ID</td>
             <td>
-                <input type="text" name="text" th:field="*{userId}"/>
+                <input type="text" name="text" th:field="*{userId}" />
                 <font color="red">
                     <span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">userId의 에러 메시지</span>
                 </font>
@@ -26,9 +26,18 @@
                 </font>
             </td>
         </tr>
+        <tr>
+            <td>E-MAIL</td>
+            <td>
+                <input type="text" name="text" th:field="*{email}" />
+                <font color="red">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email의 에러 메시지</span>
+                </font>
+            </td>
+        </tr>
     </table>
 
-    <button type="submit">등록</button>
+    <button name="register" type="submit">등록</button>
 </form>
 </body>
 </html>
