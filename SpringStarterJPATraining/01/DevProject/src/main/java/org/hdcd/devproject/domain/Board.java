@@ -8,9 +8,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Board implements Serializable {
 
     private static final long serialVersionUID = 8379774232276870327L;

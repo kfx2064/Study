@@ -2,9 +2,12 @@ package org.hdcd.devproject.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hdcd.devproject.domain.Board;
+import org.hdcd.devproject.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -14,52 +17,66 @@ import java.time.LocalDateTime;
 @RequestMapping("/board")
 public class BoardController {
 
-    @GetMapping(value = "/{boardNo}", produces = "application/xml")
-    public ResponseEntity<Board> readToXml(@PathVariable("boardNo") int boardNo) {
-        log.info("readToXml");
+    @Autowired
+    private BoardService service;
 
-        Board board = new Board();
-
-        board.setTitle("제목");
-        board.setContent("내용입니다.");
-        board.setWriter("홍길동");
-        board.setRegDate(LocalDateTime.now());
-
-        ResponseEntity<Board> entity = new ResponseEntity<Board>(board, HttpStatus.OK);
-
-        return entity;
+    @GetMapping("/register")
+    public void registerForm(Board board, Model model) throws Exception {
+        log.info("registerForm");
     }
 
-    @GetMapping(value = "/{boardNo}", produces = "application/json")
-    public ResponseEntity<Board> readToJson(@PathVariable("boardNo") int boardNo) {
-        log.info("readToJson");
+    @PostMapping("/register")
+    public String register(Board board, Model model) throws Exception {
+        log.info("register");
 
-        Board board = new Board();
+        service.register(board);
 
-        board.setTitle("제목");
-        board.setContent("내용입니다.");
-        board.setWriter("홍길동");
-        board.setRegDate(LocalDateTime.now());
+        model.addAttribute("msg", "등록이 완료되었습니다.");
 
-        ResponseEntity<Board> entity = new ResponseEntity<Board>(board, HttpStatus.OK);
-
-        return entity;
+        return "board/success";
     }
 
-    @GetMapping("/{boardNo}")
-    public ResponseEntity<Board> read(@PathVariable("boardNo") int boardNo) {
+    @GetMapping("/list")
+    public void list(Model model) throws Exception {
+        log.info("list");
+
+        model.addAttribute("list", service.list());
+    }
+
+    @GetMapping("/read")
+    public void read(int boardNo, Model model) throws Exception {
         log.info("read");
 
-        Board board = new Board();
+        model.addAttribute(service.read(boardNo));
+    }
 
-        board.setTitle("제목");
-        board.setContent("내용입니다.");
-        board.setWriter("홍길동");
-        board.setRegDate(LocalDateTime.now());
+    @PostMapping("/remove")
+    public String remove(int boardNo, Model model) throws Exception {
+        log.info("remove");
 
-        ResponseEntity<Board> entity = new ResponseEntity<Board>(board, HttpStatus.OK);
+        service.remove(boardNo);
 
-        return entity;
+        model.addAttribute("msg", "삭제가 완료되었습니다.");
+
+        return "board/success";
+    }
+
+    @GetMapping("/modify")
+    public void modifyForm(int boardNo, Model model) throws Exception {
+        log.info("modifyForm");
+
+        model.addAttribute(service.read(boardNo));
+    }
+
+    @PostMapping("/modify")
+    public String modify(Board board, Model model) throws Exception {
+        log.info("modify");
+
+        service.modify(board);
+
+        model.addAttribute("msg", "수정이 완료되었습니다.");
+
+        return "board/success";
     }
 
 }
