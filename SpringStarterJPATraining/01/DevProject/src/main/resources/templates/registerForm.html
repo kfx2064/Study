@@ -8,18 +8,15 @@
 <h2>Spring Form</h2>
 
 <form action="result.html" th:action="@{/register}" th:object="${member}" method="POST">
+    <input type="hidden" name="userId" th:field="*{userId}" />
     <table>
         <tr>
-            <td>성별</td>
+            <td>이름</td>
             <td>
-                <input type="radio" th:field="*{gender}" th:value="male" />
-                <label th:for="${#ids.prev('gender')}">Male</label>
-                <br/>
-                <input type="radio" th:field="*{gender}" th:value="female" />
-                <label th:for="${#ids.prev('gender')}">Female</label>
-                <br/>
-                <input type="radio" th:field="*{gender}" th:value="other" />
-                <label th:for="${#ids.prev('gender')}">Other</label>
+                <input type="text" name="text" th:field="*{userName}" />
+                <font color="red"><span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">
+                    userName의 에러 메시지
+                </span></font>
             </td>
         </tr>
     </table>

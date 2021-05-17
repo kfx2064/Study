@@ -7,8 +7,15 @@
 <body>
 <h3>Result</h3>
 
-<h4>nationality : </h4>
-
-<span th:text="${nationality}">nationality</span>
+<table border="1">
+    <tr>
+        <td>유저ID</td>
+        <td th:text="${member.userId}">${member.userId}</td>
+    </tr>
+    <tr>
+        <td>이름</td>
+        <td th:text="${member.userName}">${member.userName}</td>
+    </tr>
+</table>
 </body>
 </html>
