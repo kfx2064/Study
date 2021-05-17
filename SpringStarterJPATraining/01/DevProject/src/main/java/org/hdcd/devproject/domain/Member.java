@@ -1,10 +1,8 @@
 package org.hdcd.devproject.domain;
 
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -13,8 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 public class Member {
 
+    @NotBlank
     private String userId;
 
     private String userName;
+
+    private String email;
 
 }
