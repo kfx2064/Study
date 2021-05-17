@@ -6,46 +6,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 @Slf4j
 @Controller
 public class HomeController {
 
-    @GetMapping("/home0101")
-    public String home0101(Model model) {
-        int coin = 1000;
+    @GetMapping("/")
+    public String home(Locale locale, Model model) {
+        log.info("Welcome home! The client locale is " + locale + ".");
 
-        model.addAttribute("coin", coin);
-
-        return "home0101";
-    }
-
-    @GetMapping("/home0201")
-    public String home0201(Model model) {
-        Date date = new Date();
-
-        model.addAttribute("now", date);
-
-        return "home0201";
-    }
-
-    @GetMapping("/home0301")
-    public String home0301(Model model) {
-        String str = "Hello, World!";
-
-        model.addAttribute("str", str);
-
-        return "home0301";
-    }
-
-    @GetMapping("/home0401")
-    public String home0401(Model model) {
         LocalDateTime now = LocalDateTime.now();
 
-        model.addAttribute("now", now);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일 (E) a h시 m분 s초");
+        String formattedNow = now.format(formatter);
 
-        return "home0401";
+        model.addAttribute("serverTime", formattedNow);
+
+        return "home";
     }
 
 }

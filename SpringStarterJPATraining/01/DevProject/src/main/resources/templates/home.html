@@ -5,6 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1 th:text="${msg}">greeting</h1>
+<h1>
+    Hello world!<br>
+    <span th:text="#{welcome.message}"></span>
+    <br/>
+    <span th:text="#{welcome.message('홍길동')}"></span>
+</h1>
+
+<p th:text="|The time on the server is ${serverTime}.|">The time on the server is ${serverTime}.</p>
 </body>
 </html>
