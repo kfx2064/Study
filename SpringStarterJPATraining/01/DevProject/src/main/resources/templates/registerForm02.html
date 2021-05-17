@@ -6,14 +6,15 @@
 </head>
 <body>
 <h2>Spring Form</h2>
+
 <form action="result.html" th:action="@{/register}" th:object="${member}" method="POST">
   <table>
     <tr>
-      <td>취미(hobbyList) : </td>
+      <td>성별</td>
       <td>
-        <th:block th:each="hobbyCode : ${hobbyCodeList}">
-          <input type="checkbox" th:field="*{hobbyList}" th:value="${hobbyCode.value}" />
-          <label th:for="${#ids.prev('hobbyList')}" th:text="${hobbyCode.label}">Sports</label>
+        <th:block th:each="genderCode : ${genderCodeList}">
+          <input type="radio" th:field="*{gender}" th:value="${genderCode.value}" />
+          <label th:for="${#ids.prev('gender')}" th:text="${genderCode.label}">Sports</label>
         </th:block>
       </td>
     </tr>

@@ -1,6 +1,7 @@
 package org.hdcd.devproject.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hdcd.devproject.domain.CodeLabelValue;
 import org.hdcd.devproject.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -18,68 +21,42 @@ public class MemberController {
     public String registerForm01(Model model) {
         log.info("registerForm01");
 
+        Map<String, String> genderCodeMap = new HashMap<String, String>();
+        genderCodeMap.put("01", "Male");
+        genderCodeMap.put("02", "Female");
+        genderCodeMap.put("03", "Other");
+
+        model.addAttribute("genderCodeMap", genderCodeMap);
+
         model.addAttribute("member", new Member());
 
-        return "registerForm";
+        return "registerForm01";
     }
 
     @GetMapping("/registerForm02")
     public String registerForm02(Model model) {
         log.info("registerForm02");
 
-        Member member = new Member();
-        member.setDeveloper("Y");
-        member.setForeigner(true);
+        List<CodeLabelValue> genderCodeList = new ArrayList<CodeLabelValue>();
 
-        member.setHobby("Movie");
+        genderCodeList.add(new CodeLabelValue("01", "Male"));
+        genderCodeList.add(new CodeLabelValue("02", "Female"));
+        genderCodeList.add(new CodeLabelValue("03", "Other"));
 
-        String[] hobbyArray = {"Music", "Movie"};
+        model.addAttribute("genderCodeList", genderCodeList);
 
-        member.setHobbyArray(hobbyArray);
+        model.addAttribute("member", new Member());
 
-        List<String> hobbyList = new ArrayList<String>();
-        hobbyList.add("Music");
-        hobbyList.add("Movie");
-
-        member.setHobbyList(hobbyList);
-
-        model.addAttribute("member", member);
-
-        return "registerForm";
+        return "registerForm02";
     }
 
     @PostMapping("/register")
     public String register(Member member, Model model) {
         log.info("register");
-        log.info("member.isForeigner() = " + member.isForeigner());
-        log.info("member.getDeveloper() = " + member.getDeveloper());
-        log.info("member.getHobby() = " + member.getHobby());
 
-        String[] hobbyArray = member.getHobbyArray();
+        log.info("member.getGender() = " + member.getGender());
 
-        if (hobbyArray != null) {
-            log.info("hobbyArray != null = " + hobbyArray.length);
-
-            for (int i = 0; i < hobbyArray.length; i++) {
-                log.info("hobbyArray[" + i + "] = " + hobbyArray);
-            }
-        } else {
-            log.info("hobbyArray == null");
-        }
-
-        List<String> hobbyList = member.getHobbyList();
-
-        if (hobbyList != null) {
-            log.info("hobbyList != null = " + hobbyList.size());
-
-            for (int i = 0; i < hobbyList.size(); i++) {
-                log.info("hobbyList(" + i + ") = " + hobbyList.get(i));
-            }
-        } else {
-            log.info("hobbyList == null");
-        }
-
-        model.addAttribute("member", member);
+        model.addAttribute("gender", member.getGender());
 
         return "result";
     }
