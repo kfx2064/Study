@@ -1,6 +1,8 @@
 package org.hdcd.devproject;
 
+import com.querydsl.core.BooleanBuilder;
 import org.hdcd.devproject.domain.Member;
+import org.hdcd.devproject.domain.QMember;
 import org.hdcd.devproject.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +58,7 @@ public class MemberTests {
     }
 
     @Test
-    public void testModify01() {
+    public void testModify() {
         Optional<Member> memberOptional = memberRepository.findById(1L);
 
         if (memberOptional.isPresent()) {
@@ -69,130 +69,123 @@ public class MemberTests {
         }
     }
 
-    @Transactional
     @Test
-    public void testModify02() {
-        String userId = "user1";
-        String newUserName = "Alexander";
-        int count = memberRepository.updateMemberNameById(userId, newUserName);
-
-        System.out.println("count = " + count);
-    }
-
-    @Test
-    public void testRemove01() {
+    public void testRemove() {
         memberRepository.deleteById(1L);
-    }
-
-    @Transactional
-    @Test
-    public void testRemove02() {
-        String userId = "user1";
-        int count = memberRepository.deleteMemberById(userId);
-
-        System.out.println("count = " + count);
     }
 
     @Test
     public void testList01() {
-        List<Member> memberList = memberRepository.getList01("user7");
+        BooleanBuilder builder = new BooleanBuilder();
 
-        for (Member member : memberList) {
-            System.out.println(member);
-        }
-    }
+        QMember member = QMember.member;
 
-    @Test
-    public void testGetListByUserId() {
-        List<Object[]> memberList = memberRepository.getListByUserId("user7");
+        builder.and(member.userId.eq("user7"));
 
-        for (Object[] member : memberList) {
-            System.out.println(member[0]);
-            System.out.println(member[1]);
-            System.out.println(member[2]);
+        Iterable<Member> memberList = memberRepository.findAll(builder);
+
+        for (Member m : memberList) {
+            System.out.println(m);
         }
     }
 
     @Test
     public void testList02() {
-        List<Member> memberList = memberRepository.getList02("password8");
+        BooleanBuilder builder = new BooleanBuilder();
 
-        for (Member member : memberList) {
-            System.out.println(member);
+        QMember member = QMember.member;
+
+        builder.and(member.userPw.eq("password8"));
+
+        Iterable<Member> memberList = memberRepository.findAll(builder);
+
+        for (Member m : memberList) {
+            System.out.println(m);
         }
     }
 
     @Test
     public void testList03() {
-        List<Member> memberList = memberRepository.getList03("user7", "password7");
+        BooleanBuilder builder = new BooleanBuilder();
 
-        for (Member member : memberList) {
-            System.out.println(member);
+        QMember member = QMember.member;
+
+        builder.and(member.userId.eq("user7"));
+        builder.and(member.userPw.eq("password7"));
+
+        Iterable<Member> memberList = memberRepository.findAll(builder);
+
+        for (Member m : memberList) {
+            System.out.println(m);
         }
     }
 
     @Test
     public void testList04() {
-        List<Member> memberList = memberRepository.getList04("alex");
+        BooleanBuilder builder = new BooleanBuilder();
 
-        for (Member member : memberList) {
-            System.out.println(member);
+        QMember member = QMember.member;
+
+        builder.and(member.userName.like("%alex%"));
+
+        Iterable<Member> memberList = memberRepository.findAll(builder);
+
+        for (Member m : memberList) {
+            System.out.println(m);
         }
     }
 
     @Test
     public void testList05() {
-        Collection<Member> memberList = memberRepository.getList05();
+        BooleanBuilder builder = new BooleanBuilder();
 
-        for (Member member : memberList) {
-            System.out.println(member);
-        }
-    }
+        QMember member = QMember.member;
 
-    @Test
-    public void testList06() {
-        Pageable pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
+        builder.and(member.userNo.gt(0));
 
-        Page<Member> page = memberRepository.getList06(pageRequest);
+        Iterable<Member> memberList = memberRepository.findAll(builder);
 
-        int totalPages = page.getTotalPages();
-
-        System.out.println(page);
-        System.out.println("totalPages : " + totalPages);
-
-        Pageable pageable = page.getPageable();
-
-        int pageNumber = pageable.getPageNumber();
-        int pageSize = pageable.getPageSize();
-
-        System.out.println(pageable);
-        System.out.println("pageNumber : " + pageNumber);
-        System.out.println("pageSize : " + pageSize);
-
-        List<Member> memberList = page.getContent();
-
-        for (Member member : memberList) {
-            System.out.println(member);
-        }
-    }
-
-    @Test
-    public void testList07() {
-        Collection<Member> memberList = memberRepository.getList07();
-
-        for (Member member : memberList) {
-            System.out.println(member);
+        for (Member m : memberList) {
+            System.out.println(m);
         }
     }
 
     @Test
     public void testList08() {
-        Pageable pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
+        BooleanBuilder builder = new BooleanBuilder();
 
-        List<Member> memberList = memberRepository.getList08(pageRequest);
+        QMember member = QMember.member;
 
-        for (Member member : memberList) {
-            System.out.println(member);
+        builder.and(member.userNo.gt(0));
+
+        Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
+
+        Page<Member> result = memberRepository.findAll(builder, pageable);
+
+        System.out.println("PAGE SIZE : " + result.getSize());
+        System.out.println("TOTAL PAGES : " + result.getTotalPages());
+        System.out.println("TOTAL COUNT : " + result.getTotalElements());
+        System.out.println("NEXT : " + result.nextPageable());
+
+        List<Member> memberList = result.getContent();
+
+        for (Member m : memberList) {
+            System.out.println(m);
+        }
+    }
+
+    @Test
+    public void testList06() {
+        BooleanBuilder builder = new BooleanBuilder();
+
+        QMember member = QMember.member;
+
+        builder.and(member.userNo.gt(0));
+
+        Iterable<Member> memberList = memberRepository.findAll(builder, Sort.by(Sort.Direction.DESC, "userNo"));
+
+        for (Member m : memberList) {
+            System.out.println(m);
         }
     }
 
