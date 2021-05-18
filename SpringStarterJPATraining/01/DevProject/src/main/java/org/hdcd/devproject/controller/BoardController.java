@@ -1,5 +1,6 @@
 package org.hdcd.devproject.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hdcd.devproject.domain.Board;
 import org.hdcd.devproject.service.BoardService;
@@ -13,16 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @Slf4j
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
-    private BoardService service;
-
-    @Autowired
-    public BoardController(BoardService service) {
-        this.service = service;
-    }
+    private final BoardService service;
 
     @GetMapping("/register")
     public void registerForm(Board board, Model model) throws Exception {
@@ -32,6 +29,8 @@ public class BoardController {
     @PostMapping("/register")
     public String register(Board board, Model model) throws Exception {
         log.info("register");
+
+        board.setRegDate(LocalDateTime.now());
 
         service.register(board);
 
@@ -48,14 +47,14 @@ public class BoardController {
     }
 
     @GetMapping("/read")
-    public void read(int boardNo, Model model) throws Exception {
+    public void read(Long boardNo, Model model) throws Exception {
         log.info("read");
 
         model.addAttribute(service.read(boardNo));
     }
 
     @PostMapping("/remove")
-    public String remove(int boardNo, Model model) throws Exception {
+    public String remove(Long boardNo, Model model) throws Exception {
         log.info("remove");
 
         service.remove(boardNo);
@@ -66,7 +65,7 @@ public class BoardController {
     }
 
     @GetMapping("/modify")
-    public void modifyForm(int boardNo, Model model) throws Exception {
+    public void modifyForm(Long boardNo, Model model) throws Exception {
         log.info("modifyForm");
 
         model.addAttribute(service.read(boardNo));

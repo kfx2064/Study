@@ -1,44 +1,52 @@
 package org.hdcd.devproject.service;
 
+import lombok.RequiredArgsConstructor;
 import org.hdcd.devproject.dao.BoardDAO;
 import org.hdcd.devproject.domain.Board;
+import org.hdcd.devproject.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class BoardServiceImpl implements BoardService {
 
-    private BoardDAO dao;
-
-    @Autowired
-    public BoardServiceImpl(BoardDAO dao) {
-        this.dao = dao;
-    }
+    private final BoardRepository repository;
 
     @Override
+    @Transactional
     public void register(Board board) throws Exception {
-        dao.create(board);
+        repository.save(board);
     }
 
     @Override
-    public Board read(Integer boardNo) throws Exception {
-        return dao.read(boardNo);
+    @Transactional
+    public Board read(Long boardNo) throws Exception {
+        return repository.getOne(boardNo);
     }
 
     @Override
+    @Transactional
     public void modify(Board board) throws Exception {
-        dao.update(board);
+        Board boardEntity = repository.getOne(board.getBoardNo());
+
+        boardEntity.setTitle(board.getTitle());
+        boardEntity.setContent(board.getContent());
     }
 
     @Override
-    public void remove(Integer boardNo) throws Exception {
-        dao.delete(boardNo);
+    @Transactional
+    public void remove(Long boardNo) throws Exception {
+        repository.deleteById(boardNo);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Board> list() throws Exception {
-        return dao.list();
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "boardNo"));
     }
 }

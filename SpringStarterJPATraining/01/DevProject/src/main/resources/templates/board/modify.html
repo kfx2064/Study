@@ -53,7 +53,7 @@ $(document).ready(function() {
             <td><textarea name="content" th:field="*{content}"></textarea></td>
             <td>
                 <font color="red">
-                    <span th:if="${#fiedls.hasErrors('content')}" th:errors="*{content}">
+                    <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
                         content의 에러 메시지
                     </span>
                 </font>
