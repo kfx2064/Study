@@ -25,8 +25,10 @@ import java.util.List;
 public class Member {
 
     @Id
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userNo;
 
+    private String userId;
     private String userPw;
     private String userName;
 

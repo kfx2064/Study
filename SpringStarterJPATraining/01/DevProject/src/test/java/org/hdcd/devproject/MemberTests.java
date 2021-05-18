@@ -68,7 +68,7 @@ public class MemberTests {
     @Test
     public void testRead() {
         System.out.println("###_1 findById before");
-        Optional<Member> memberOptional = memberRepository.findById("jupiter");
+        Optional<Member> memberOptional = memberRepository.findById(1L);
         System.out.println("###_1 findById after");
 
         System.out.println("###_2 print before");
@@ -83,7 +83,7 @@ public class MemberTests {
     @Test
     public void testModify(){
         System.out.println("###_1 findById before");
-        Optional<Member> memberOptional = memberRepository.findById("jupiter");
+        Optional<Member> memberOptional = memberRepository.findById(1L);
         System.out.println("###_1 findById after");
 
         if (memberOptional.isPresent()) {
@@ -99,7 +99,7 @@ public class MemberTests {
     @Test
     public void testRemove() {
         System.out.println("###_1 deleteById before");
-        memberRepository.deleteById("jupiter");
+        memberRepository.deleteById(3L);
         System.out.println("###_1 deleteById after");
     }
 
