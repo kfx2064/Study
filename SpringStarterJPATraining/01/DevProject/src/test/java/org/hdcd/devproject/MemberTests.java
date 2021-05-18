@@ -6,9 +6,14 @@ import org.hdcd.devproject.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +24,22 @@ public class MemberTests {
     MemberRepository memberRepository;
 
     @Test
-    public void testList01() {
+    public void testRegister() {
+
+        for (int i = 0; i < 10; i++) {
+            long userNo = i + 1;
+            Member member = new Member();
+            member.setUserId("user" + userNo);
+            member.setUserPw("password" + userNo);
+            member.setUserName("alex" + userNo);
+
+            memberRepository.save(member);
+        }
+
+    }
+
+    @Test
+    public void testListAll() {
         Iterable<Member> memberList = memberRepository.findAll();
 
         for (Member member : memberList) {
@@ -28,18 +48,12 @@ public class MemberTests {
     }
 
     @Test
-    public void testList02() {
-        List<Long> idList = new ArrayList<Long>();
+    public void testRead() {
+        Optional<Member> memberOptional = memberRepository.findById(1L);
 
-        Long id1 = 1L;
-        Long id2 = 2L;
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
 
-        idList.add(id1);
-        idList.add(id2);
-
-        Iterable<Member> memberList = memberRepository.findAllById(idList);
-
-        for (Member member : memberList) {
             System.out.println(member);
         }
     }
@@ -51,92 +65,114 @@ public class MemberTests {
         if (memberOptional.isPresent()) {
             Member member = memberOptional.get();
             member.setUserName("Alexander");
-
             memberRepository.save(member);
         }
     }
 
     @Test
-    public void testRead() {
-        Optional<Member> memberOptional = memberRepository.findById(1L);
+    public void testRemove() {
+        memberRepository.deleteById(1L);
+    }
 
-        if (memberOptional.isPresent()) {
-            Member member = memberOptional.get();
+    @Test
+    public void testFindMemberByUserId() {
+        List<Member> memberList = memberRepository.findMemberByUserId("user7");
+
+        for (Member member : memberList) {
             System.out.println(member);
         }
     }
 
     @Test
-    public void testRegister01() {
-        Member member1 = new Member();
-        member1.setUserId("jupiter");
-        member1.setUserPw("1234");
-        member1.setUserName("Alex");
+    public void testList01() {
+        List<Member> memberList = memberRepository.findByUserId("user7");
 
-        memberRepository.save(member1);
-
-        Member member2 = new Member();
-        member2.setUserId("venus");
-        member2.setUserPw("4567");
-        member2.setUserName("Olivia");
-
-        memberRepository.save(member2);
-
-        Member member3 = new Member();
-        member3.setUserId("mercury");
-        member3.setUserPw("9876");
-        member3.setUserName("Tyler");
-
-        memberRepository.save(member3);
-    }
-
-    @Test
-    public void testRemove01() {
-        memberRepository.deleteById(2L);
-    }
-
-    @Test
-    public void testRemove02() {
-        Optional<Member> memberOptional = memberRepository.findById(1L);
-
-        if (memberOptional.isPresent()) {
-            Member member = memberOptional.get();
-
-            memberRepository.delete(member);
+        for (Member member : memberList) {
+            System.out.println(member);
         }
     }
 
     @Test
-    public void testRemove03() {
-        memberRepository.deleteAll();
+    public void testList02() {
+        List<Member> memberList = memberRepository.findByUserPw("password8");
+
+        for (Member member : memberList) {
+            System.out.println(member);
+        }
     }
 
     @Test
-    public void testRegister02() {
-        List<Member> memberList = new ArrayList<Member>();
+    public void testList03() {
+        List<Member> memberList = memberRepository.findByUserIdAndUserPw("user7", "password7");
 
-        Member member1 = new Member();
-        member1.setUserId("jupiter");
-        member1.setUserPw("1234");
-        member1.setUserName("Alex");
+        for (Member member : memberList) {
+            System.out.println(member);
+        }
+    }
 
-        memberList.add(member1);
+    @Test
+    public void testList04() {
+        List<Member> memberList = memberRepository.findByUserNameContaining("alex");
 
-        Member member2 = new Member();
-        member2.setUserId("venus");
-        member2.setUserPw("4567");
-        member2.setUserName("Olivia");
+        for (Member member : memberList) {
+            System.out.println(member);
+        }
+    }
 
-        memberList.add(member2);
+    @Test
+    public void testList05() {
+        Collection<Member> memberList = memberRepository.findByUserNoGreaterThan(0L);
 
-        Member member3 = new Member();
-        member3.setUserId("mercury");
-        member3.setUserPw("9876");
-        member3.setUserName("Tyler");
+        for (Member member : memberList) {
+            System.out.println(member);
+        }
+    }
 
-        memberList.add(member3);
+    @Test
+    public void testList06() {
+        Pageable pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
 
-        memberRepository.saveAll(memberList);
+        Page<Member> page = memberRepository.findByUserNoGreaterThan(0L, pageRequest);
+
+        int totalPages = page.getTotalPages();
+
+        System.out.println(page);
+        System.out.println("totalPages : " + totalPages);
+
+        Pageable pageable = page.getPageable();
+
+        int pageNumber = pageable.getPageNumber();
+        int pageSize = pageable.getPageSize();
+
+        System.out.println(pageable);
+        System.out.println("pageNumber : " + pageNumber);
+        System.out.println("pageSize : " + pageSize);
+
+        List<Member> memberList = page.getContent();
+
+        for (Member member : memberList) {
+            System.out.println(member);
+        }
+    }
+
+    @Test
+    public void testList07() {
+        Collection<Member> memberList = memberRepository.findByUserNoGreaterThanOrderByUserNoDesc(0L);
+
+        for (Member member : memberList) {
+            System.out.println(member);
+        }
+    }
+
+    @Test
+    public void testList08() {
+        Pageable pageRequest = PageRequest.of(0, 10);
+
+        List<Member> memberList = memberRepository.findByUserNoGreaterThanOrderByUserNoDesc(0L, pageRequest);
+
+        for (Member member : memberList) {
+            System.out.println(member);
+        }
     }
 
 }
