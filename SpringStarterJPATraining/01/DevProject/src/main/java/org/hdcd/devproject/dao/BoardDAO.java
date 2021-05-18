@@ -34,7 +34,7 @@ public class BoardDAO {
                     public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
                         Board board = new Board();
 
-                        board.setBoardNo(rs.getInt("board_no"));
+                        board.setBoardNo(rs.getLong("board_no"));
                         board.setTitle(rs.getString("title"));
                         board.setContent(rs.getString("content"));
                         board.setWriter(rs.getString("writer"));
@@ -69,7 +69,7 @@ public class BoardDAO {
                     public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
                         Board board = new Board();
 
-                        board.setBoardNo(rs.getInt("board_no"));
+                        board.setBoardNo(rs.getLong("board_no"));
                         board.setTitle(rs.getString("title"));
                         board.setContent(rs.getString("content"));
                         board.setWriter(rs.getString("writer"));
