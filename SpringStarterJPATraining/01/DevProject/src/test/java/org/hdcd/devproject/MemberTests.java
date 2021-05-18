@@ -99,7 +99,7 @@ public class MemberTests {
     @Test
     public void testRemove() {
         System.out.println("###_1 deleteById before");
-        memberRepository.deleteById(3L);
+        memberRepository.deleteById(1L);
         System.out.println("###_1 deleteById after");
     }
 
