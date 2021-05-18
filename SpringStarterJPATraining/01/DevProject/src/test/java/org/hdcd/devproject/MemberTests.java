@@ -1,6 +1,5 @@
 package org.hdcd.devproject;
 
-import org.hdcd.devproject.constant.Gender;
 import org.hdcd.devproject.domain.Member;
 import org.hdcd.devproject.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
@@ -10,13 +9,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@Commit
 @SpringBootTest
 public class MemberTests {
 
@@ -35,7 +35,6 @@ public class MemberTests {
 
             memberRepository.save(member);
         }
-
     }
 
     @Test
@@ -59,24 +58,44 @@ public class MemberTests {
     }
 
     @Test
-    public void testModify() {
+    public void testModify01() {
         Optional<Member> memberOptional = memberRepository.findById(1L);
 
         if (memberOptional.isPresent()) {
             Member member = memberOptional.get();
             member.setUserName("Alexander");
+
             memberRepository.save(member);
         }
     }
 
+    @Transactional
     @Test
-    public void testRemove() {
-        memberRepository.deleteById(1L);
+    public void testModify02() {
+        String userId = "user1";
+        String newUserName = "Alexander";
+        int count = memberRepository.updateMemberNameById(userId, newUserName);
+
+        System.out.println("count = " + count);
     }
 
     @Test
-    public void testFindMemberByUserId() {
-        List<Member> memberList = memberRepository.findMemberByUserId("user7");
+    public void testRemove01() {
+        memberRepository.deleteById(1L);
+    }
+
+    @Transactional
+    @Test
+    public void testRemove02() {
+        String userId = "user1";
+        int count = memberRepository.deleteMemberById(userId);
+
+        System.out.println("count = " + count);
+    }
+
+    @Test
+    public void testList01() {
+        List<Member> memberList = memberRepository.getList01("user7");
 
         for (Member member : memberList) {
             System.out.println(member);
@@ -84,17 +103,19 @@ public class MemberTests {
     }
 
     @Test
-    public void testList01() {
-        List<Member> memberList = memberRepository.findByUserId("user7");
+    public void testGetListByUserId() {
+        List<Object[]> memberList = memberRepository.getListByUserId("user7");
 
-        for (Member member : memberList) {
-            System.out.println(member);
+        for (Object[] member : memberList) {
+            System.out.println(member[0]);
+            System.out.println(member[1]);
+            System.out.println(member[2]);
         }
     }
 
     @Test
     public void testList02() {
-        List<Member> memberList = memberRepository.findByUserPw("password8");
+        List<Member> memberList = memberRepository.getList02("password8");
 
         for (Member member : memberList) {
             System.out.println(member);
@@ -103,7 +124,7 @@ public class MemberTests {
 
     @Test
     public void testList03() {
-        List<Member> memberList = memberRepository.findByUserIdAndUserPw("user7", "password7");
+        List<Member> memberList = memberRepository.getList03("user7", "password7");
 
         for (Member member : memberList) {
             System.out.println(member);
@@ -112,7 +133,7 @@ public class MemberTests {
 
     @Test
     public void testList04() {
-        List<Member> memberList = memberRepository.findByUserNameContaining("alex");
+        List<Member> memberList = memberRepository.getList04("alex");
 
         for (Member member : memberList) {
             System.out.println(member);
@@ -121,7 +142,7 @@ public class MemberTests {
 
     @Test
     public void testList05() {
-        Collection<Member> memberList = memberRepository.findByUserNoGreaterThan(0L);
+        Collection<Member> memberList = memberRepository.getList05();
 
         for (Member member : memberList) {
             System.out.println(member);
@@ -132,7 +153,7 @@ public class MemberTests {
     public void testList06() {
         Pageable pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
 
-        Page<Member> page = memberRepository.findByUserNoGreaterThan(0L, pageRequest);
+        Page<Member> page = memberRepository.getList06(pageRequest);
 
         int totalPages = page.getTotalPages();
 
@@ -157,7 +178,7 @@ public class MemberTests {
 
     @Test
     public void testList07() {
-        Collection<Member> memberList = memberRepository.findByUserNoGreaterThanOrderByUserNoDesc(0L);
+        Collection<Member> memberList = memberRepository.getList07();
 
         for (Member member : memberList) {
             System.out.println(member);
@@ -166,9 +187,9 @@ public class MemberTests {
 
     @Test
     public void testList08() {
-        Pageable pageRequest = PageRequest.of(0, 10);
+        Pageable pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
 
-        List<Member> memberList = memberRepository.findByUserNoGreaterThanOrderByUserNoDesc(0L, pageRequest);
+        List<Member> memberList = memberRepository.getList08(pageRequest);
 
         for (Member member : memberList) {
             System.out.println(member);
