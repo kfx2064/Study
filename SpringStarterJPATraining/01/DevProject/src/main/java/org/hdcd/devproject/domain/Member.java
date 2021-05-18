@@ -22,24 +22,14 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode(of = "userNo")
 @Entity
-@Table(name = "tb_user")
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo;
-
-    @Column(name = "uid", length = 50, nullable = false)
     private String userId;
-    @Column(name = "upw", length = 100, nullable = false)
     private String userPw;
-    @Column(name = "uname", length = 100, nullable = true)
     private String userName;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    private LocalDateTime joinDate;
 
     @CreationTimestamp
     private LocalDateTime regDate;
