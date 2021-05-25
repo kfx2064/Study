@@ -182,6 +182,30 @@ public class MemberTests {
 
         builder.and(member.userNo.gt(0));
 
+        Pageable pageable = PageRequest.of(0, 10);
+
+        Page<Member> result = memberRepository.findAll(builder, pageable);
+
+        System.out.println("PAGE SIZE : " + result.getSize());
+        System.out.println("TOTAL PAGES : " + result.getTotalPages());
+        System.out.println("TOTAL COUNT : " + result.getTotalElements());
+        System.out.println("NEXT : " + result.nextPageable());
+
+        List<Member> memberList = result.getContent();
+
+        for (Member m : memberList) {
+            System.out.println(m);
+        }
+    }
+
+    @Test
+    public void testList07() {
+        BooleanBuilder builder = new BooleanBuilder();
+
+        QMember member = QMember.member;
+
+        builder.and(member.userNo.gt(0));
+
         Iterable<Member> memberList = memberRepository.findAll(builder, Sort.by(Sort.Direction.DESC, "userNo"));
 
         for (Member m : memberList) {

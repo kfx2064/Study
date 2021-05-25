@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@ToString
 @EqualsAndHashCode(of = "userNo")
+@ToString
 @Entity
 public class Member {
 
