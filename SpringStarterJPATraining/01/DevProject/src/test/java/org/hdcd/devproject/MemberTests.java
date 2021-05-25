@@ -75,142 +75,30 @@ public class MemberTests {
     }
 
     @Test
-    public void testList01() {
+    public void testGetSearchPage() {
         BooleanBuilder builder = new BooleanBuilder();
 
-        QMember member = QMember.member;
+        QMember board = QMember.member;
 
-        builder.and(member.userId.eq("user7"));
-
-        Iterable<Member> memberList = memberRepository.findAll(builder);
-
-        for (Member m : memberList) {
-            System.out.println(m);
-        }
-    }
-
-    @Test
-    public void testList02() {
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QMember member = QMember.member;
-
-        builder.and(member.userPw.eq("password8"));
-
-        Iterable<Member> memberList = memberRepository.findAll(builder);
-
-        for (Member m : memberList) {
-            System.out.println(m);
-        }
-    }
-
-    @Test
-    public void testList03() {
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QMember member = QMember.member;
-
-        builder.and(member.userId.eq("user7"));
-        builder.and(member.userPw.eq("password7"));
-
-        Iterable<Member> memberList = memberRepository.findAll(builder);
-
-        for (Member m : memberList) {
-            System.out.println(m);
-        }
-    }
-
-    @Test
-    public void testList04() {
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QMember member = QMember.member;
-
-        builder.and(member.userName.like("%alex%"));
-
-        Iterable<Member> memberList = memberRepository.findAll(builder);
-
-        for (Member m : memberList) {
-            System.out.println(m);
-        }
-    }
-
-    @Test
-    public void testList05() {
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QMember member = QMember.member;
-
-        builder.and(member.userNo.gt(0));
-
-        Iterable<Member> memberList = memberRepository.findAll(builder);
-
-        for (Member m : memberList) {
-            System.out.println(m);
-        }
-    }
-
-    @Test
-    public void testList08() {
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QMember member = QMember.member;
-
-        builder.and(member.userNo.gt(0));
+        builder.and(board.userNo.gt(0));
 
         Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
 
-        Page<Member> result = memberRepository.findAll(builder, pageable);
+        Page<Object[]> result = memberRepository.getSearchPage("name", "alex", pageable);
 
-        System.out.println("PAGE SIZE : " + result.getSize());
-        System.out.println("TOTAL PAGES : " + result.getTotalPages());
-        System.out.println("TOTAL COUNT : " + result.getTotalElements());
-        System.out.println("NEXT : " + result.nextPageable());
+        System.out.println("PAGE SIZE: " + result.getSize());
+        System.out.println("TOTAL PAGES: " + result.getTotalPages());
+        System.out.println("TOTAL COUNT: " + result.getTotalElements());
+        System.out.println("NEXT: " + result.nextPageable());
 
-        List<Member> memberList = result.getContent();
+        List<Object[]> list = result.getContent();
 
-        for (Member m : memberList) {
-            System.out.println(m);
+        for (Object[] b : list) {
+            System.out.println(b[0]);
+            System.out.println(b[1]);
+            System.out.println(b[2]);
+            System.out.println(b[3]);
+            System.out.println(b[4]);
         }
     }
-
-    @Test
-    public void testList06() {
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QMember member = QMember.member;
-
-        builder.and(member.userNo.gt(0));
-
-        Pageable pageable = PageRequest.of(0, 10);
-
-        Page<Member> result = memberRepository.findAll(builder, pageable);
-
-        System.out.println("PAGE SIZE : " + result.getSize());
-        System.out.println("TOTAL PAGES : " + result.getTotalPages());
-        System.out.println("TOTAL COUNT : " + result.getTotalElements());
-        System.out.println("NEXT : " + result.nextPageable());
-
-        List<Member> memberList = result.getContent();
-
-        for (Member m : memberList) {
-            System.out.println(m);
-        }
-    }
-
-    @Test
-    public void testList07() {
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QMember member = QMember.member;
-
-        builder.and(member.userNo.gt(0));
-
-        Iterable<Member> memberList = memberRepository.findAll(builder, Sort.by(Sort.Direction.DESC, "userNo"));
-
-        for (Member m : memberList) {
-            System.out.println(m);
-        }
-    }
-
 }
