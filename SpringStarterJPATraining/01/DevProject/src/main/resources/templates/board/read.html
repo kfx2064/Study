@@ -5,12 +5,12 @@
 </head>
 <script src="/webjars/jquery/2.1.4/dist/jquery.min.js"></script>
 <script>
-$(document).ready(function () {
+$(document).ready(function() {
     var formObj = $("#board");
 
     console.log(formObj);
 
-    $("#btnModify").on("click", function () {
+    $("#btnModify").on("click", function() {
         var boardNo = $("#boardNo");
         var boardNoVal = boardNo.val();
 
@@ -44,9 +44,7 @@ $(document).ready(function () {
         </tr>
         <tr>
             <td>Content</td>
-            <td>
-                <textarea name="content" th:field="*{content}" readonly="readonly"></textarea>
-            </td>
+            <td><textarea name="content" th:field="*{content}" readonly="readonly"></textarea></td>
         </tr>
     </table>
 </form>

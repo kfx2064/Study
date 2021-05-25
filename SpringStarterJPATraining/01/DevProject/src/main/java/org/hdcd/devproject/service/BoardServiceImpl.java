@@ -24,7 +24,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Board read(Long boardNo) throws Exception {
         return repository.getOne(boardNo);
     }
@@ -35,7 +35,6 @@ public class BoardServiceImpl implements BoardService {
         Board boardEntity = repository.getOne(board.getBoardNo());
 
         boardEntity.setTitle(board.getTitle());
-        boardEntity.setContent(board.getContent());
     }
 
     @Override

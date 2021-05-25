@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 
@@ -23,63 +24,48 @@ public class BoardController {
 
     @GetMapping("/register")
     public void registerForm(Board board, Model model) throws Exception {
-        log.info("registerForm");
+
     }
 
     @PostMapping("/register")
-    public String register(Board board, Model model) throws Exception {
-        log.info("register");
-
-        board.setRegDate(LocalDateTime.now());
-
+    public String register(Board board, RedirectAttributes rttr) throws Exception {
         service.register(board);
 
-        model.addAttribute("msg", "등록이 완료되었습니다.");
+        rttr.addFlashAttribute("msg", "등록이 완료되었습니다.");
 
-        return "board/success";
+        return "redirect:/board/list";
     }
 
     @GetMapping("/list")
     public void list(Model model) throws Exception {
-        log.info("list");
-
         model.addAttribute("list", service.list());
     }
 
     @GetMapping("/read")
     public void read(Long boardNo, Model model) throws Exception {
-        log.info("read");
-
         model.addAttribute(service.read(boardNo));
     }
 
     @PostMapping("/remove")
-    public String remove(Long boardNo, Model model) throws Exception {
-        log.info("remove");
-
+    public String remove(Long boardNo, RedirectAttributes rttr) throws Exception {
         service.remove(boardNo);
 
-        model.addAttribute("msg", "삭제가 완료되었습니다.");
+        rttr.addFlashAttribute("msg", "삭제가 완료되었습니다.");
 
-        return "board/success";
+        return "redirect:/board/list";
     }
 
     @GetMapping("/modify")
     public void modifyForm(Long boardNo, Model model) throws Exception {
-        log.info("modifyForm");
-
         model.addAttribute(service.read(boardNo));
     }
 
     @PostMapping("/modify")
-    public String modify(Board board, Model model) throws Exception {
-        log.info("modify");
-
+    public String modify(Board board, RedirectAttributes rttr) throws Exception {
         service.modify(board);
 
-        model.addAttribute("msg", "수정이 완료되었습니다.");
+        rttr.addFlashAttribute("msg", "수정이 완료되었습니다.");
 
-        return "board/success";
+        return "redirect:/board/list";
     }
-
 }
