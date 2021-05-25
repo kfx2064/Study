@@ -18,7 +18,7 @@ public class Board implements Serializable {
     private static final long serialVersionUID = 8379774232276870327L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long boardNo;
 
     private String title;
