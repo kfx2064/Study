@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hdcd.devproject.domain.Board;
 import org.hdcd.devproject.dto.PaginationDTO;
 import org.hdcd.devproject.service.BoardService;
+import org.hdcd.devproject.vo.CodeLabelValue;
 import org.hdcd.devproject.vo.PageRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -26,7 +30,7 @@ public class BoardController {
     private final BoardService service;
 
     @GetMapping("/register")
-    public void registerForm(Board board, Model model) throws Exception {
+    public void registerForm(Board board, Model model) throws Exception{
 
     }
 
@@ -41,22 +45,28 @@ public class BoardController {
 
     @GetMapping("/list")
     public void list(@ModelAttribute("pgrq") PageRequestVO pageRequestVO, Model model) throws Exception {
-        Page<Board> page = service.list(pageRequestVO);
+        model.addAttribute("list", service.list(pageRequestVO));
 
-        model.addAttribute("pgntn", new PaginationDTO<Board>(page));
+        List<CodeLabelValue> searchTypeCodeValueList = new ArrayList<CodeLabelValue>();
+        searchTypeCodeValueList.add(new CodeLabelValue("n", "---"));
+        searchTypeCodeValueList.add(new CodeLabelValue("t", "Title"));
+        searchTypeCodeValueList.add(new CodeLabelValue("c", "Content"));
+        searchTypeCodeValueList.add(new CodeLabelValue("w", "Writer"));
+        searchTypeCodeValueList.add(new CodeLabelValue("tc", "Title OR Content"));
+        searchTypeCodeValueList.add(new CodeLabelValue("cw", "Content OR Writer"));
+        searchTypeCodeValueList.add(new CodeLabelValue("tcw", "Title OR Content OR Writer"));
+
+        model.addAttribute("searchTypeCodeValueList", searchTypeCodeValueList);
     }
 
     @GetMapping("/read")
-    public void read(Long boardNo, @ModelAttribute("pgrq") PageRequestVO pageRequestVO, Model model) throws Exception {
+    public void read(Long boardNo, Model model) throws Exception {
         model.addAttribute(service.read(boardNo));
     }
 
     @PostMapping("/remove")
-    public String remove(Long boardNo, PageRequestVO pageRequestVO, RedirectAttributes rttr) throws Exception {
+    public String remove(Long boardNo, RedirectAttributes rttr) throws Exception {
         service.remove(boardNo);
-
-        rttr.addAttribute("page", pageRequestVO.getPage());
-        rttr.addAttribute("sizePerPage", pageRequestVO.getSizePerPage());
 
         rttr.addFlashAttribute("msg", "삭제가 완료되었습니다.");
 
@@ -64,17 +74,13 @@ public class BoardController {
     }
 
     @GetMapping("/modify")
-    public void modifyForm(Long boardNo,
-                           @ModelAttribute("pgrq") PageRequestVO pageRequestVO, Model model) throws Exception {
+    public void modifyForm(Long boardNo, Model model) throws Exception {
         model.addAttribute(service.read(boardNo));
     }
 
     @PostMapping("/modify")
-    public String modify(Board board, PageRequestVO pageRequestVO, RedirectAttributes rttr) throws Exception {
+    public String modify(Board board, RedirectAttributes rttr) throws Exception {
         service.modify(board);
-
-        rttr.addFlashAttribute("page", pageRequestVO.getPage());
-        rttr.addFlashAttribute("sizePerPage", pageRequestVO.getSizePerPage());
 
         rttr.addFlashAttribute("msg", "수정이 완료되었습니다.");
 
