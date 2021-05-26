@@ -6,6 +6,7 @@
 <script src="/webjars/jquery/2.1.4/dist/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
+
     var formObj = $("#board");
 
     console.log(formObj);
@@ -14,7 +15,7 @@ $(document).ready(function() {
         var boardNo = $("#boardNo");
         var boardNoVal = boardNo.val();
 
-        self.location = "/board/modify?boardNo=" + boardNoVal;
+        self.location = "/board/modify[(${pgrq.toUriString()})]" + "&boardNo=" + boardNoVal;
     });
 
     $("#btnRemove").on("click", function() {
@@ -23,8 +24,9 @@ $(document).ready(function() {
     });
 
     $("#btnList").on("click", function() {
-        self.location = "/board/list";
+        self.location = "/board/list[${pgrq.toUriString()}]";
     });
+
 });
 </script>
 <body>
@@ -32,6 +34,8 @@ $(document).ready(function() {
 
 <form id="board" th:object="${board}" method="POST">
     <input type="hidden" name="boardNo" th:field="*{boardNo}" />
+    <input type="hidden" name="page" th:value="${pgrq.page}" />
+    <input type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
 
     <table>
         <tr>
@@ -49,10 +53,8 @@ $(document).ready(function() {
     </table>
 </form>
 
-<div>
-    <button type="submit" id="btnModify">Modify</button>
-    <button type="submit" id="btnRemove">Remove</button>
-    <button type="submit" id="btnList">List</button>
-</div>
+<button type="submit" id="btnModify">Modify</button>
+<button type="submit" id="btnRemove">Remove</button>
+<button type="submit" id="btnList">List</button>
 </body>
 </html>

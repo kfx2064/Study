@@ -1,6 +1,8 @@
 package org.hdcd.devproject.service;
 
 import org.hdcd.devproject.domain.Board;
+import org.hdcd.devproject.vo.PageRequestVO;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -14,6 +16,6 @@ public interface BoardService {
 
     public void remove(Long boardNo) throws Exception;
 
-    public List<Board> list() throws Exception;
+    public Page<Board> list(PageRequestVO pageRequestVO) throws Exception;
 
 }

@@ -6,17 +6,19 @@
 <script src="/webjars/jquery/2.1.4/dist/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
+
     var formObj = $("#board");
 
     $("#btnModify").on("click", function() {
-        formObj.attr("action", "/board/modify");
+        formObj.attr("action", "/board/modify") ;
         formObj.attr("method", "post");
         formObj.submit();
     });
 
     $("#btnList").on("click", function() {
-        self.location = "/board/list";
+        self.location = "list[(${pgrq.toUriString()})]";
     });
+
 });
 </script>
 <body>
@@ -24,6 +26,9 @@ $(document).ready(function() {
 
 <form id="board" action="success.html" th:action="@{modify}" th:object="${board}" method="POST">
     <input type="hidden" name="boardNo" th:field="*{boardNo}" />
+
+    <input type="hidden" name="page" th:value="${pgrq.page}"/>
+    <input type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
 
     <table>
         <tr>
@@ -39,7 +44,7 @@ $(document).ready(function() {
         </tr>
         <tr>
             <td>Writer</td>
-            <td><input type="text" name="writer" th:field="*{writer}" /></td>
+            <td><input type="text" name="writer" th:field="*{writer}"></td>
             <td>
                 <font color="red">
                     <span th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}">
@@ -60,11 +65,11 @@ $(document).ready(function() {
             </td>
         </tr>
     </table>
+</form>
 
 <div>
     <button type="submit" id="btnModify">Modify</button>
     <button type="submit" id="btnList">List</button>
 </div>
-</form>
 </body>
 </html>

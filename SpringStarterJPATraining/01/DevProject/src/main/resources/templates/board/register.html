@@ -31,7 +31,9 @@ $(document).ready(function() {
             <td><input type="text" name="title" th:field="*{title}" /></td>
             <td>
                 <font color="red">
-                    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title의 에러 메시지</span>
+                    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+                        title의 에러 메시지
+                    </span>
                 </font>
             </td>
         </tr>
