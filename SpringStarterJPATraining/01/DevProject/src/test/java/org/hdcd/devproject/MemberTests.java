@@ -1,22 +1,14 @@
 package org.hdcd.devproject;
 
-import com.querydsl.core.BooleanBuilder;
+import org.hdcd.devproject.domain.Address;
 import org.hdcd.devproject.domain.Member;
-import org.hdcd.devproject.domain.QMember;
 import org.hdcd.devproject.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.test.annotation.Commit;
 
-import java.util.List;
 import java.util.Optional;
 
-@Commit
 @SpringBootTest
 public class MemberTests {
 
@@ -24,24 +16,10 @@ public class MemberTests {
     MemberRepository memberRepository;
 
     @Test
-    public void testRegister() {
+    public void testList() {
+        Iterable<Member> members = memberRepository.findAll();
 
-        for (int i = 0; i < 10; i++) {
-            long userNo = i + 1;
-            Member member = new Member();
-            member.setUserId("user" + userNo);
-            member.setUserPw("password" + userNo);
-            member.setUserName("alex" + userNo);
-
-            memberRepository.save(member);
-        }
-    }
-
-    @Test
-    public void testListAll() {
-        Iterable<Member> memberList = memberRepository.findAll();
-
-        for (Member member : memberList) {
+        for (Member member : members) {
             System.out.println(member);
         }
     }
@@ -63,7 +41,27 @@ public class MemberTests {
 
         if (memberOptional.isPresent()) {
             Member member = memberOptional.get();
-            member.setUserName("Alexander");
+
+            System.out.println(member);
+
+            member.setUserId("mars");
+
+            memberRepository.save(member);
+        }
+    }
+
+    @Test
+    public void testModifyAddress() {
+        Optional<Member> memberOptional = memberRepository.findById(1L);
+
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
+
+            System.out.println(member);
+
+            Address address = member.getAddress();
+
+            address.setLocation("London");
 
             memberRepository.save(member);
         }
@@ -75,30 +73,62 @@ public class MemberTests {
     }
 
     @Test
-    public void testGetSearchPage() {
-        BooleanBuilder builder = new BooleanBuilder();
+    public void testRemoveAddress() {
+        Optional<Member> memberOptional = memberRepository.findById(1L);
 
-        QMember board = QMember.member;
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
 
-        builder.and(board.userNo.gt(0));
+            System.out.println(member);
 
-        Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "userNo");
+            member.setAddress(null);
 
-        Page<Object[]> result = memberRepository.getSearchPage("name", "alex", pageable);
-
-        System.out.println("PAGE SIZE: " + result.getSize());
-        System.out.println("TOTAL PAGES: " + result.getTotalPages());
-        System.out.println("TOTAL COUNT: " + result.getTotalElements());
-        System.out.println("NEXT: " + result.nextPageable());
-
-        List<Object[]> list = result.getContent();
-
-        for (Object[] b : list) {
-            System.out.println(b[0]);
-            System.out.println(b[1]);
-            System.out.println(b[2]);
-            System.out.println(b[3]);
-            System.out.println(b[4]);
+            memberRepository.save(member);
         }
     }
+
+    @Test
+    public void testRegister() {
+        Member member1 = new Member();
+        member1.setUserId("jupiter");
+        member1.setUserPw("1234");
+
+        memberRepository.save(member1);
+
+        Member member2 = new Member();
+        member2.setUserId("venus");
+        member2.setUserPw("4567");
+
+        memberRepository.save(member2);
+
+        Member member3 = new Member();
+        member3.setUserId("mercury");
+        member3.setUserPw("9876");
+
+        memberRepository.save(member3);
+    }
+
+    @Test
+    public void testRegisterWithAddress() {
+        Member member1 = new Member();
+        member1.setUserId("jupiter");
+        member1.setUserPw("1234");
+
+        Address address = new Address("111-222", "Seoul");
+        member1.setAddress(address);
+
+        memberRepository.save(member1);
+    }
+
+    @Test
+    public void testListWithAddress() {
+        Iterable<Member> members = memberRepository.findAll();
+
+        for (Member member : members) {
+            System.out.println(member);
+
+            System.out.println(member.getAddress());
+        }
+    }
+
 }

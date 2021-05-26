@@ -1,22 +1,19 @@
 package org.hdcd.devproject.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import java.time.YearMonth;
+import javax.persistence.Embeddable;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode(of = {"cardNo", "validMonth"})
 @ToString
+@Embeddable
 public class Card {
 
-    @NotBlank
-    private String no;
-
-    @Future
-    private YearMonth validMonth;
+    private String cardNo;
+    private String validMonth;
 
 }
