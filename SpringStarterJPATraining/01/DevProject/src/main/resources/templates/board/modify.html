@@ -10,13 +10,13 @@ $(document).ready(function() {
     var formObj = $("#board");
 
     $("#btnModify").on("click", function() {
-        formObj.attr("action", "/board/modify") ;
+        formObj.attr("action", "/board/modify");
         formObj.attr("method", "post");
         formObj.submit();
     });
 
     $("#btnList").on("click", function() {
-        self.location = "list[(${pgrq.toUriString()})]";
+        self.location = "/board/list";
     });
 
 });
@@ -26,9 +26,6 @@ $(document).ready(function() {
 
 <form id="board" action="success.html" th:action="@{modify}" th:object="${board}" method="POST">
     <input type="hidden" name="boardNo" th:field="*{boardNo}" />
-
-    <input type="hidden" name="page" th:value="${pgrq.page}"/>
-    <input type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
 
     <table>
         <tr>

@@ -1,11 +1,9 @@
 package org.hdcd.devproject.service;
 
 import lombok.RequiredArgsConstructor;
-import org.hdcd.devproject.dao.BoardDAO;
 import org.hdcd.devproject.domain.Board;
 import org.hdcd.devproject.repository.BoardRepository;
 import org.hdcd.devproject.vo.PageRequestVO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -48,14 +46,32 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<Board> list(PageRequestVO pageRequestVO) throws Exception {
-        int pageNumber = pageRequestVO.getPage() - 1;
-        int sizePerPage = pageRequestVO.getSizePerPage();
+    public List<Board> list(PageRequestVO pageRequestVO) throws Exception {
 
-        Pageable pageRequest = PageRequest.of(pageNumber, sizePerPage, Sort.Direction.DESC, "boardNo");
+        String searchType = pageRequestVO.getSearchType();
+        String keyword = pageRequestVO.getKeyword();
 
-        Page<Board> page = repository.findAll(pageRequest);
+        List<Board> list = null;
+        if (searchType != null && searchType.length() > 0) {
+            if (searchType.equals("t")) {
+                list = repository.searchByTitle(keyword);
+            } else if (searchType.equals("w")) {
+                list = repository.searchByWriter(keyword);
+            } else if (searchType.equals("c")) {
+                list = repository.searchByContent(keyword);
+            } else if (searchType.equals("tc")) {
+                list = repository.searchByTitleOrContent(keyword, keyword);
+            } else if (searchType.equals("cw")) {
+                list = repository.searchByContentOrWriter(keyword, keyword);
+            } else if (searchType.equals("tcw")) {
+                list = repository.searchByTitleOrContentOrWriter(keyword, keyword, keyword);
+            } else {
+                list = repository.listAll();
+            }
+        } else {
+            list = repository.listAll();
+        }
 
-        return page;
+        return list;
     }
 }
