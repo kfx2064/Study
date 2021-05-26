@@ -1,7 +1,9 @@
 package org.hdcd.devproject.service;
 
+import com.querydsl.core.BooleanBuilder;
 import lombok.RequiredArgsConstructor;
 import org.hdcd.devproject.domain.Board;
+import org.hdcd.devproject.domain.QBoard;
 import org.hdcd.devproject.repository.BoardRepository;
 import org.hdcd.devproject.vo.PageRequestVO;
 import org.springframework.data.domain.Page;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -46,6 +49,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Board> list(PageRequestVO pageRequestVO) throws Exception {
 
         String searchType = pageRequestVO.getSearchType();
@@ -54,24 +58,120 @@ public class BoardServiceImpl implements BoardService {
         List<Board> list = null;
         if (searchType != null && searchType.length() > 0) {
             if (searchType.equals("t")) {
-                list = repository.searchByTitle(keyword);
+                list = searchByTitle(keyword);
             } else if (searchType.equals("w")) {
-                list = repository.searchByWriter(keyword);
+                list = searchByWrite(keyword);
             } else if (searchType.equals("c")) {
-                list = repository.searchByContent(keyword);
+                list = searchByContent(keyword);
             } else if (searchType.equals("tc")) {
-                list = repository.searchByTitleOrContent(keyword, keyword);
+                list = searchByTitleOrContent(keyword, keyword);
             } else if (searchType.equals("cw")) {
-                list = repository.searchByContentOrWriter(keyword, keyword);
+                list = searchByContentOrWriter(keyword, keyword);
             } else if (searchType.equals("tcw")) {
-                list = repository.searchByTitleOrContentOrWriter(keyword, keyword, keyword);
+                list = searchByTitleOrContentOrWriter(keyword, keyword, keyword);
             } else {
-                list = repository.listAll();
+                list = listAll();
             }
         } else {
-            list = repository.listAll();
+            list = listAll();
         }
 
         return list;
     }
+
+    private List<Board> listAll() {
+        QBoard board = QBoard.board;
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(board.boardNo.gt(0));
+
+        List<Board> list = new ArrayList<Board>();
+
+        repository.findAll(builder).forEach(b -> list.add(b));
+
+        return list;
+    }
+
+    private List<Board> searchByTitle(String title) {
+        QBoard board = QBoard.board;
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(board.title.like("%" + title + "%"));
+
+        List<Board> list = new ArrayList<Board>();
+
+        repository.findAll(builder).forEach(b -> list.add(b));;
+
+        return list;
+    }
+
+    private List<Board> searchByWrite(String writer) {
+        QBoard board = QBoard.board;
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(board.writer.like("%" + writer + "%"));
+
+        List<Board> list = new ArrayList<Board>();
+
+        repository.findAll(builder).forEach(b -> list.add(b));
+
+        return list;
+    }
+
+    private List<Board> searchByContent(String content) {
+        QBoard board = QBoard.board;
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(board.content.like("%" + content + "%"));
+
+        List<Board> list = new ArrayList<Board>();
+
+        repository.findAll(builder).forEach(b -> list.add(b));
+
+        return list;
+    }
+
+    private List<Board> searchByTitleOrContent(String title, String content) {
+        QBoard board = QBoard.board;
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(board.title.like("%" + title + "%"))
+                .or(board.content.like("%" + content + "%"));
+
+        List<Board> list = new ArrayList<Board>();
+
+        repository.findAll(builder).forEach(b -> list.add(b));
+
+        return list;
+    }
+
+    private List<Board> searchByContentOrWriter(String content, String writer) {
+        QBoard board = QBoard.board;
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(board.content.like("%" + content + "%"))
+                .or(board.writer.like("%" + writer + "%"));
+
+        List<Board> list = new ArrayList<Board>();
+
+        repository.findAll(builder).forEach(b -> list.add(b));
+
+        return list;
+    }
+
+    private List<Board> searchByTitleOrContentOrWriter(String title, String content, String writer) {
+        QBoard board = QBoard.board;
+
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(board.title.like("%" + title + "%"))
+                .or(board.content.like("%" + content + "%"))
+                .or(board.writer.like("%" + writer + "%"));
+
+        List<Board> list = new ArrayList<Board>();
+
+        repository.findAll(builder).forEach(b -> list.add(b));
+
+        return list;
+    }
+
 }
