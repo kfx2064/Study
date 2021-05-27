@@ -86,32 +86,6 @@ public class MemberTests {
         memberRepository.deleteById(1L);
     }
 
-    @Test
-    public void testRegisterWithItem() {
-        Item item = new Item();
-        item.setItemName("apple");
-        item.setPrice(1000);
-
-        itemRepository.save(item);
-
-        Item item2 = new Item();
-        item2.setItemName("orange");
-        item2.setPrice(2000);
-
-        itemRepository.save(item2);
-
-        Member member = new Member();
-
-        member.setUserId("jupiter");
-        member.setUserPw("1234");
-        member.setUserName("Alex");
-
-        member.getItems().add(item);
-        member.getItems().add(item2);
-
-        memberRepository.save(member);
-    }
-
     @Transactional
     @Test
     public void testListWithItemAtTransactional() {
@@ -119,7 +93,6 @@ public class MemberTests {
 
         for (Member member : members) {
             System.out.println(member);
-
             List<Item> items = member.getItems();
             for (Item item : items) {
                 System.out.println(item);
@@ -143,23 +116,29 @@ public class MemberTests {
         }
     }
 
-    @Transactional
     @Test
-    public void testModifyItemAtTransactional() {
-        Optional<Member> memberOptional = memberRepository.findById(1L);
+    public void testRegisterWithItem() {
+        Item item = new Item();
+        item.setItemName("apple");
+        item.setPrice(1000);
 
-        if (memberOptional.isPresent()) {
-            Member member = memberOptional.get();
+        itemRepository.save(item);
 
-            List<Item> items = member.getItems();
-            Item firstItem = items.get(0);
+        Item item2 = new Item();
+        item2.setItemName("orange");
+        item2.setPrice(2000);
 
-            System.out.println(firstItem);
+        itemRepository.save(item2);
 
-            firstItem.setItemName("banana");
+        Member member = new Member();
+        member.setUserId("jupiter");
+        member.setUserPw("1234");
+        member.setUserName("Alex");
 
-            memberRepository.save(member);
-        }
+        member.addItem(item);
+        member.addItem(item2);
+
+        memberRepository.save(member);
     }
 
     @Transactional
@@ -172,6 +151,26 @@ public class MemberTests {
 
             List<Item> items = member.getItems();
             items.remove(0);
+
+            memberRepository.save(member);
+        }
+    }
+
+    @Transactional
+    @Test
+    public void testModifyItemAtTransactional() {
+        Optional<Member> memberOptional = memberRepository.findById(1L);
+
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
+
+            List<Item> items = member.getItems();
+
+            Item firstItem = items.get(0);
+
+            System.out.println(firstItem);
+
+            firstItem.setItemName("banana");
 
             memberRepository.save(member);
         }

@@ -34,8 +34,14 @@ public class Member {
     private LocalDateTime updDate;
 
     @ManyToMany
-    @JoinTable(name = "user_item", joinColumns = @JoinColumn(name = "user_no"),
+    @JoinTable(name = "user_item",
+        joinColumns = @JoinColumn(name = "user_no"),
         inverseJoinColumns = @JoinColumn(name = "item_no"))
     private List<Item> items = new ArrayList<Item>();
+
+    public void addItem(Item item) {
+        items.add(item);
+        item.getMembers().add(this);
+    }
 
 }

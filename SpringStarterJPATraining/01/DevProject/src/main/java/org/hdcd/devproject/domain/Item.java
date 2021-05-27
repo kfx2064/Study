@@ -9,11 +9,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @EqualsAndHashCode(of = "itemNo")
-@ToString
+@ToString(exclude = "members")
 @Entity
 public class Item {
 
@@ -30,4 +32,19 @@ public class Item {
     private LocalDateTime regDate;
     @UpdateTimestamp
     private LocalDateTime updDate;
+
+    @ManyToMany(mappedBy = "items")
+    private List<Member> members = new ArrayList<Member>();
+
+    public void addMember(Member member) {
+        members.add(member);
+
+        member.getItems().add(this);
+    }
+
+    public void removeMember(Member member) {
+        members.remove(member);
+
+        member.getItems().remove(this);
+    }
 }
