@@ -9,26 +9,30 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = "userNo")
+@EqualsAndHashCode(of = "memberDetailNo")
 @ToString
 @Entity
-public class Member {
+@Table(name = "member_detail")
+public class MemberDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_no")
-    private Long userNo;
+    @Column(name = "user_detail_no")
+    private Long memberDetailNo;
 
-    private String userId;
-    private String userPw;
+    private String userName;
+    private String email;
 
     @CreationTimestamp
     private LocalDateTime regDate;
     @UpdateTimestamp
     private LocalDateTime updDate;
+
+    @OneToOne
+    @JoinColumn(name = "user_no")
+    private Member member;
 
 }
