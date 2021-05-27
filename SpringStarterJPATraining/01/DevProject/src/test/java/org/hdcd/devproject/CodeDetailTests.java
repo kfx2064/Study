@@ -29,13 +29,16 @@ public class CodeDetailTests {
     }
 
     @Test
-    public void testRead() {
-        Optional<CodeDetail> codeDetailOptional = codeDetailRepository.findById(1L);
+    public void testListWithCodeGroup() {
+        Iterable<CodeDetail> codeDetailList = codeDetailRepository.findAll();
 
-        if (codeDetailOptional.isPresent()) {
-            CodeDetail codeDetail = codeDetailOptional.get();
-
+        for (CodeDetail codeDetail : codeDetailList) {
             System.out.println(codeDetail);
+
+            CodeGroup codeGroup = codeDetail.getCodeGroup();
+            if (codeGroup != null) {
+                System.out.println(codeGroup);
+            }
         }
     }
 
@@ -55,13 +58,14 @@ public class CodeDetailTests {
     }
 
     @Test
-    public void testRemove() {
-        codeDetailRepository.deleteById(1L);
-    }
+    public void testRead() {
+        Optional<CodeDetail> codeDetailOptional = codeDetailRepository.findById(1L);
 
-    @Test
-    public void testRemoveAll() {
-        codeDetailRepository.deleteAll();
+        if (codeDetailOptional.isPresent()) {
+            CodeDetail codeDetail = codeDetailOptional.get();
+
+            System.out.println(codeDetail);
+        }
     }
 
     @Test
@@ -109,18 +113,13 @@ public class CodeDetailTests {
     }
 
     @Test
-    public void testListWithCodeGroup() {
-        Iterable<CodeDetail> codeDetailList = codeDetailRepository.findAll();
+    public void testRemove() {
+        codeDetailRepository.deleteById(1L);
+    }
 
-        for (CodeDetail codeDetail : codeDetailList) {
-            System.out.println(codeDetail);
-
-            CodeGroup codeGroup = codeDetail.getCodeGroup();
-
-            if (codeGroup != null) {
-                System.out.println(codeGroup);
-            }
-        }
+    @Test
+    public void testRemoveAll() {
+        codeDetailRepository.deleteAll();
     }
 
 }
