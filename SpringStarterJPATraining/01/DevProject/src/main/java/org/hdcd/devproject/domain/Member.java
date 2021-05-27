@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "userNo")
-@ToString(exclude = "items")
+@ToString(exclude = "userItems")
 @Entity
 public class Member {
 
@@ -33,15 +33,15 @@ public class Member {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    @ManyToMany
-    @JoinTable(name = "user_item",
-        joinColumns = @JoinColumn(name = "user_no"),
-        inverseJoinColumns = @JoinColumn(name = "item_no"))
-    private List<Item> items = new ArrayList<Item>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<UserItem> userItems = new ArrayList<UserItem>();
 
-    public void addItem(Item item) {
-        items.add(item);
-        item.getMembers().add(this);
+    public void addUserItem(UserItem userItem) {
+        userItems.add(userItem);
+    }
+
+    public void removeUserItem(UserItem userItem) {
+        userItems.remove(userItem);
     }
 
 }

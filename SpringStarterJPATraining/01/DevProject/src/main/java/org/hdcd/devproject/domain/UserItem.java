@@ -4,16 +4,34 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(of = {"userNo", "itemId"})
+@Entity
+@IdClass(UserItemId.class)
 public class UserItem {
 
-    private int userNo;
-    private int itemId;
-    private String itemName;
-    private Integer price;
-    private String description;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "user_no")
+    private Member member;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "item_no")
+    private Item item;
+
+    private int amount;
+
+    @CreationTimestamp
+    private LocalDateTime regDate;
+    @UpdateTimestamp
+    private LocalDateTime updDate;
+
 }

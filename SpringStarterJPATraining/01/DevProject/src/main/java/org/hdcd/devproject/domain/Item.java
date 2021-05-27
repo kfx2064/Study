@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "itemNo")
-@ToString(exclude = "members")
+@ToString
 @Entity
 public class Item {
 
@@ -33,18 +33,4 @@ public class Item {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    @ManyToMany(mappedBy = "items")
-    private List<Member> members = new ArrayList<Member>();
-
-    public void addMember(Member member) {
-        members.add(member);
-
-        member.getItems().add(this);
-    }
-
-    public void removeMember(Member member) {
-        members.remove(member);
-
-        member.getItems().remove(this);
-    }
 }
