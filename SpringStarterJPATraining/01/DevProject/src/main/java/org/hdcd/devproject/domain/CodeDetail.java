@@ -24,7 +24,6 @@ public class CodeDetail {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codeDetailNo;
 
-    private String groupCode;
     private String codeValue;
 
     private String codeName;
