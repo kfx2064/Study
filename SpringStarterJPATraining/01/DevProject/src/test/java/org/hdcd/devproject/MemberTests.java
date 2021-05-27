@@ -1,8 +1,10 @@
 package org.hdcd.devproject;
 
 import org.hdcd.devproject.domain.Address;
+import org.hdcd.devproject.domain.Item;
 import org.hdcd.devproject.domain.Member;
 import org.hdcd.devproject.domain.MemberDetail;
+import org.hdcd.devproject.repository.ItemRepository;
 import org.hdcd.devproject.repository.MemberDetailRepository;
 import org.hdcd.devproject.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Commit
@@ -21,7 +24,29 @@ public class MemberTests {
     MemberRepository memberRepository;
 
     @Autowired
-    MemberDetailRepository memberDetailRepository;
+    ItemRepository itemRepository;
+
+    @Test
+    public void testRegister() {
+        Item item = new Item();
+        item.setItemName("apple");
+        item.setPrice(1000);
+
+        itemRepository.save(item);
+
+        Item item2 = new Item();
+        item2.setItemName("orange");
+        item2.setPrice(2000);
+
+        itemRepository.save(item2);
+
+        Member member = new Member();
+        member.setUserId("jupiter");
+        member.setUserPw("1234");
+        member.setUserName("Alex");
+
+        memberRepository.save(member);
+    }
 
     @Test
     public void testList() {
@@ -29,57 +54,6 @@ public class MemberTests {
 
         for (Member member : members) {
             System.out.println(member);
-        }
-    }
-
-    @Test
-    public void testRegister() {
-        Member member1 = new Member();
-        member1.setUserId("jupiter");
-        member1.setUserPw("1234");
-
-        memberRepository.save(member1);
-
-        Member member2 = new Member();
-        member2.setUserId("venus");
-        member2.setUserPw("4567");
-
-        memberRepository.save(member2);
-
-        Member member3 = new Member();
-        member3.setUserId("mercury");
-        member3.setUserPw("9876");
-
-        memberRepository.save(member3);
-    }
-
-    @Transactional
-    @Test
-    public void testRegisterWithDetailAtTransactional() {
-        Member member1 = new Member();
-        member1.setUserId("jupiter");
-        member1.setUserPw("1234");
-
-        MemberDetail memberDetail1 = new MemberDetail();
-        memberDetail1.setUserName("Alex");
-        memberDetail1.setEmail("jupiter@onnote.net");
-
-        memberDetail1.setMember(member1);
-
-        member1.setMemberDetail(memberDetail1);
-
-        memberRepository.save(member1);
-    }
-
-    @Test
-    public void testModify() {
-        Optional<Member> memberOptional = memberRepository.findById(1L);
-
-        if (memberOptional.isPresent()) {
-            Member member = memberOptional.get();
-            member.setUserPw("5678");
-
-            memberRepository.save(member);
         }
     }
 
@@ -95,63 +69,109 @@ public class MemberTests {
     }
 
     @Test
-    public void testRemove() {
-        memberRepository.deleteById(1L);
-    }
-
-    @Test
-    public void testListWithDetail() {
-        Iterable<Member> members = memberRepository.findAll();
-
-        for (Member member : members) {
-            System.out.println(member);
-
-            System.out.println(member.getMemberDetail());
-        }
-    }
-
-    @Test
-    public void testReadWithDetail() {
+    public void testModify() {
         Optional<Member> memberOptional = memberRepository.findById(1L);
 
         if (memberOptional.isPresent()) {
             Member member = memberOptional.get();
 
-            System.out.println(member);
-
-            System.out.println(member.getMemberDetail());
-        }
-    }
-
-    @Test
-    public void testRemoveWithDetail() {
-        Optional<Member> memberOptional = memberRepository.findById(1L);
-
-        if (memberOptional.isPresent()) {
-            Member member = memberOptional.get();
-            System.out.println(member);
-
-            MemberDetail memberDetail = member.getMemberDetail();
-            System.out.println(memberDetail);
-
-            member.setMemberDetail(null);
+            member.setUserName("Julian");
 
             memberRepository.save(member);
         }
     }
 
     @Test
-    public void testModifyDetail() {
+    public void testRemove() {
+        memberRepository.deleteById(1L);
+    }
+
+    @Test
+    public void testRegisterWithItem() {
+        Item item = new Item();
+        item.setItemName("apple");
+        item.setPrice(1000);
+
+        itemRepository.save(item);
+
+        Item item2 = new Item();
+        item2.setItemName("orange");
+        item2.setPrice(2000);
+
+        itemRepository.save(item2);
+
+        Member member = new Member();
+
+        member.setUserId("jupiter");
+        member.setUserPw("1234");
+        member.setUserName("Alex");
+
+        member.getItems().add(item);
+        member.getItems().add(item2);
+
+        memberRepository.save(member);
+    }
+
+    @Transactional
+    @Test
+    public void testListWithItemAtTransactional() {
+        Iterable<Member> members = memberRepository.findAll();
+
+        for (Member member : members) {
+            System.out.println(member);
+
+            List<Item> items = member.getItems();
+            for (Item item : items) {
+                System.out.println(item);
+            }
+        }
+    }
+
+    @Transactional
+    @Test
+    public void testReadWithItemAtTransactional() {
         Optional<Member> memberOptional = memberRepository.findById(1L);
 
         if (memberOptional.isPresent()) {
             Member member = memberOptional.get();
             System.out.println(member);
 
-            MemberDetail memberDetail = member.getMemberDetail();
-            System.out.println(memberDetail);
+            List<Item> items = member.getItems();
+            for (Item item : items) {
+                System.out.println(item);
+            }
+        }
+    }
 
-            memberDetail.setUserName("Alexander");
+    @Transactional
+    @Test
+    public void testModifyItemAtTransactional() {
+        Optional<Member> memberOptional = memberRepository.findById(1L);
+
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
+
+            List<Item> items = member.getItems();
+            Item firstItem = items.get(0);
+
+            System.out.println(firstItem);
+
+            firstItem.setItemName("banana");
+
+            memberRepository.save(member);
+        }
+    }
+
+    @Transactional
+    @Test
+    public void testRemoveItemAtTransactional() {
+        Optional<Member> memberOptional = memberRepository.findById(1L);
+
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
+
+            List<Item> items = member.getItems();
+            items.remove(0);
 
             memberRepository.save(member);
         }
