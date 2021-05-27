@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-@Table(name = "item")
+@Table(name = "item2")
 public class Item {
 
     @Id
@@ -33,10 +33,13 @@ public class Item {
     private String description;
 
     @Transient
-    private MultipartFile picture;
+    private List<MultipartFile> pictures;
 
     @Column(length = 200)
     private String pictureUrl;
+
+    @Column(length = 200)
+    private String pictureUrl2;
 
     @CreationTimestamp
     private LocalDateTime regDate;

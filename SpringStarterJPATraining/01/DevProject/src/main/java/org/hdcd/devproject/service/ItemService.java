@@ -18,4 +18,6 @@ public interface ItemService {
 
     public String getPicture(Long itemId) throws Exception;
 
+    public String getPicture2(Long itemId) throws Exception;
+
 }

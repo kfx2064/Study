@@ -52,15 +52,23 @@ public class ItemController {
 
     @PostMapping("/register")
     public String register(Item item, Model model) throws Exception {
-        MultipartFile file = item.getPicture();
+        List<MultipartFile> pictures = item.getPictures();
 
-        log.info("originalName : " + file.getOriginalFilename());
-        log.info("size : " + file.getSize());
-        log.info("contentType : " + file.getContentType());
+        for (int i = 0; i < pictures.size(); i++) {
+            MultipartFile file = pictures.get(i);
 
-        String createdFileName = uploadFile(file.getOriginalFilename(), file.getBytes());
+            log.info("originalName: " + file.getOriginalFilename());
+            log.info("size: " + file.getSize());
+            log.info("contentType: " + file.getContentType());
 
-        item.setPictureUrl(createdFileName);
+            String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
+
+            if (i == 0) {
+                item.setPictureUrl(savedName);
+            } else if (i == 1) {
+                item.setPictureUrl2(savedName);
+            }
+        }
 
         this.itemService.regist(item);
 
@@ -80,16 +88,24 @@ public class ItemController {
 
     @PostMapping("/modify")
     public String modify(Item item, Model model) throws Exception {
-        MultipartFile file = item.getPicture();
+        List<MultipartFile> pictures = item.getPictures();
 
-        if (file != null && file.getSize() > 0) {
-            log.info("originalName: " + file.getOriginalFilename());
-            log.info("size: " + file.getSize());
-            log.info("contentType: " + file.getContentType());
+        for (int i = 0; i < pictures.size(); i++) {
+            MultipartFile file = pictures.get(i);
 
-            String createdFileName = uploadFile(file.getOriginalFilename(), file.getBytes());
+            if (file != null && file.getSize() > 0) {
+                log.info("originalName: " + file.getOriginalFilename());
+                log.info("size: " + file.getSize());
+                log.info("contentType: " + file.getContentType());
 
-            item.setPictureUrl(createdFileName);
+                String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
+
+                if (i == 0) {
+                    item.setPictureUrl(savedName);
+                } else if (i == 1) {
+                    item.setPictureUrl2(savedName);
+                }
+            }
         }
 
         this.itemService.modify(item);
@@ -120,13 +136,13 @@ public class ItemController {
     private String uploadFile(String originalName, byte[] fileData) throws Exception {
         UUID uid = UUID.randomUUID();
 
-        String createdFileName = uid.toString() + "_" + originalName;
+        String savedName = uid.toString() + "_" + originalName;
 
-        File target = new File(uploadPath, createdFileName);
+        File target = new File(uploadPath, savedName);
 
         FileCopyUtils.copy(fileData, target);
 
-        return createdFileName;
+        return savedName;
     }
 
     @ResponseBody
@@ -136,6 +152,39 @@ public class ItemController {
         ResponseEntity<byte[]> entity = null;
 
         String fileName = itemService.getPicture(itemId);
+
+        log.info("FILE NAME: " + fileName);
+
+        try {
+            String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+
+            MediaType mType = getMediaType(formatName);
+
+            HttpHeaders headers = new HttpHeaders();
+
+            in = new FileInputStream(uploadPath + File.separator + fileName);
+
+            if (mType != null) {
+                headers.setContentType(mType);
+            }
+
+            entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+        } finally {
+            in.close();
+        }
+        return entity;
+    }
+
+    @ResponseBody
+    @GetMapping("/display2")
+    public ResponseEntity<byte[]> displayFile2(Long itemId) throws Exception {
+        InputStream in = null;
+        ResponseEntity<byte[]> entity = null;
+
+        String fileName = itemService.getPicture2(itemId);
 
         log.info("FILE NAME: " + fileName);
 

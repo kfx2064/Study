@@ -26,6 +26,7 @@ $(document).ready(function() {
         method="POST" enctype="multipart/form-data">
   <input type="hidden" name="itemId" th:field="*{itemId}" />
   <input type="hidden" name="pictureUrl" th:field="*{pictureUrl}" />
+  <input type="hidden" name="pictureUrl2" th:field="*{pictureUrl2}" />
 
   <table>
     <tr>
@@ -52,12 +53,24 @@ $(document).ready(function() {
     </tr>
     <tr>
       <td>파일</td>
-      <td><img src="display?itemId=${item.itemId}" th:src="@{|display?itemId=${item.itemId}|}" width="210" height="240"></td>
+      <td><img src="display?itemId=${item.itemId}" th:src="'display?itemId=' + ${item.itemId}"
+               width="210" height="240"></td>
       <td></td>
     </tr>
     <tr>
       <td>파일</td>
-      <td><input type="file" name="picture" /></td>
+      <td><input type="file" name="pictures" /></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>파일</td>
+      <td><img src="display2?itemId=${item.itemId}" th:src="@{|display2?itemId=${item.itemId}|}"
+            width="210" height="240"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>파일</td>
+      <td><input type="file" name="pictures" /></td>
       <td></td>
     </tr>
     <tr>

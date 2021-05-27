@@ -36,6 +36,9 @@ public class ItemServiceImpl implements ItemService {
         itemEntity.setPrice(item.getPrice());
         itemEntity.setDescription(item.getDescription());
         itemEntity.setPictureUrl(item.getPictureUrl());
+        itemEntity.setPictureUrl2(item.getPictureUrl2());
+
+        repository.save(itemEntity);
     }
 
     @Override
@@ -54,5 +57,11 @@ public class ItemServiceImpl implements ItemService {
     public String getPicture(Long itemId) throws Exception {
         Item item = repository.getOne(itemId);
         return item.getPictureUrl();
+    }
+
+    @Override
+    public String getPicture2(Long itemId) throws Exception {
+        Item item = repository.getOne(itemId);
+        return item.getPictureUrl2();
     }
 }
