@@ -52,23 +52,19 @@ public class MemberDetailTests {
         }
     }
 
-    @Transactional
     @Test
     public void testRegisterWithMember() {
-        Long userNo = 1L;
-
         Member member1 = new Member();
-        member1.setUserNo(userNo);
         member1.setUserId("jupiter");
         member1.setUserPw("1234");
+
+        memberRepository.save(member1);
 
         MemberDetail memberDetail1 = new MemberDetail();
         memberDetail1.setUserName("Alex");
         memberDetail1.setEmail("jupiter@onnote.net");
 
-        member1.setMemberDetail(memberDetail1);
-
-        memberRepository.save(member1);
+        memberDetail1.setMember(member1);
 
         memberDetailRepository.save(memberDetail1);
     }
@@ -99,6 +95,45 @@ public class MemberDetailTests {
     @Test
     public void testRemove() {
         memberDetailRepository.deleteById(1L);
+    }
+
+    @Test
+    public void testListWithMember() {
+        Iterable<MemberDetail> memberDetails = memberDetailRepository.findAll();
+
+        for (MemberDetail memberDetail : memberDetails) {
+            System.out.println(memberDetail);
+
+            System.out.println(memberDetail.getMember());
+        }
+    }
+
+    @Test
+    public void testReadWithMember() {
+        Optional<MemberDetail> memberDetailOptional = memberDetailRepository.findById(1L);
+
+        if (memberDetailOptional.isPresent()) {
+            MemberDetail memberDetail = memberDetailOptional.get();
+
+            System.out.println(memberDetail);
+
+            System.out.println(memberDetail.getMember());
+        }
+    }
+
+    @Test
+    public void testModifyMember() {
+        Optional<MemberDetail> memberDetailOptional = memberDetailRepository.findById(1L);
+
+        if (memberDetailOptional.isPresent()) {
+            MemberDetail memberDetail = memberDetailOptional.get();
+
+            Member member = memberDetail.getMember();
+
+            member.setUserPw("5678");
+
+            memberDetailRepository.save(memberDetail);
+        }
     }
 
 }

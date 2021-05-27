@@ -30,8 +30,7 @@ public class Member {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_no")
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private MemberDetail memberDetail;
 
 }
