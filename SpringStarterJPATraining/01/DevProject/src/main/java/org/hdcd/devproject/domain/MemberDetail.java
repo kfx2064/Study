@@ -26,13 +26,12 @@ public class MemberDetail {
     private String userName;
     private String email;
 
+    @Column(name = "user_no")
+    private Long userNo;
+
     @CreationTimestamp
     private LocalDateTime regDate;
     @UpdateTimestamp
     private LocalDateTime updDate;
-
-    @OneToOne
-    @JoinColumn(name = "user_no")
-    private Member member;
 
 }

@@ -14,12 +14,11 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "userNo")
-@ToString
+@ToString(exclude = "memberDetail")
 @Entity
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_no")
     private Long userNo;
 
@@ -30,5 +29,9 @@ public class Member {
     private LocalDateTime regDate;
     @UpdateTimestamp
     private LocalDateTime updDate;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_no")
+    private MemberDetail memberDetail;
 
 }

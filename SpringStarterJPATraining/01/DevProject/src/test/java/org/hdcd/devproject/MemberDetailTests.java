@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -51,20 +52,13 @@ public class MemberDetailTests {
         }
     }
 
-    @Test
-    public void testListWithMember() {
-        Iterable<MemberDetail> memberDetails = memberDetailRepository.findAll();
-
-        for (MemberDetail memberDetail : memberDetails) {
-            System.out.println(memberDetail);
-
-            System.out.println(memberDetail.getMember());
-        }
-    }
-
+    @Transactional
     @Test
     public void testRegisterWithMember() {
+        Long userNo = 1L;
+
         Member member1 = new Member();
+        member1.setUserNo(userNo);
         member1.setUserId("jupiter");
         member1.setUserPw("1234");
 
@@ -72,7 +66,7 @@ public class MemberDetailTests {
         memberDetail1.setUserName("Alex");
         memberDetail1.setEmail("jupiter@onnote.net");
 
-        memberDetail1.setMember(member1);
+        member1.setMemberDetail(memberDetail1);
 
         memberRepository.save(member1);
 
@@ -99,19 +93,6 @@ public class MemberDetailTests {
             MemberDetail memberDetail = memberDetailOptional.get();
 
             System.out.println(memberDetail);
-        }
-    }
-
-    @Test
-    public void testReadWithMember() {
-        Optional<MemberDetail> memberDetailOptional = memberDetailRepository.findById(1L);
-
-        if (memberDetailOptional.isPresent()) {
-            MemberDetail memberDetail = memberDetailOptional.get();
-
-            System.out.println(memberDetail);
-
-            System.out.println(memberDetail.getMember());
         }
     }
 
