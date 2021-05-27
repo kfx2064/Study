@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "groupCode")
-@ToString(exclude = "codeDetails")
+@ToString
 @Entity
 public class CodeGroup {
 
@@ -28,9 +28,5 @@ public class CodeGroup {
     private LocalDateTime regDate;
     @UpdateTimestamp
     private LocalDateTime updDate;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "group_code")
-    private List<CodeDetail> codeDetails;
 
 }
