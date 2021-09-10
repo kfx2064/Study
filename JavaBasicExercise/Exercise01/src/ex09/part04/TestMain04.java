@@ -1,22 +1,22 @@
-package ex09.part03;
+package ex09.part04;
 
-public class TestMain01 {
+public class TestMain04 {
 
     public static void main(String[] args) {
 
-        TestMain01 test = new TestMain01();
+        TestMain04 test = new TestMain04();
 
-        Math add = (int x, int y) -> x + y;
-        Math substract = (x, y) -> x - y;
+        Math add = (x, y) -> x + y;
+        Math substract = (int x, int y) -> x - y;
         Math multiply = (int x, int y) -> {
             return x * y;
         };
         Math divide = (x, y) -> x / y;
 
-        System.out.println("20 + 5 = " + test.operate(20, 5, add));
-        System.out.println("20 - 5 = " + test.operate(20, 5, substract));
-        System.out.println("20 * 5 = " + test.operate(20, 5, multiply));
-        System.out.println("20 / 5 = " + test.operate(20, 5, divide));
+        System.out.println("20 + 5 = " + test.operation(20, 5, add));
+        System.out.println("20 - 5 = " + test.operation(20, 5, substract));
+        System.out.println("20 * 5 = " + test.operation(20, 5, multiply));
+        System.out.println("20 / 5 = " + test.operation(20, 5, divide));
 
         Echo msg1 = (msg) -> {
             System.out.println("Hello! " + msg);
@@ -32,7 +32,7 @@ public class TestMain01 {
 
     }
 
-    private int operate(int x, int y, Math math) {
+    private int operation(int x, int y, Math math) {
         return math.operation(x, y);
     }
 
