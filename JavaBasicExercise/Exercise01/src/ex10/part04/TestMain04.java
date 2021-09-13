@@ -1,17 +1,17 @@
-package ex10.part03;
+package ex10.part04;
 
-public class TestMain01 {
+public class TestMain04 {
 
     public static void main(String[] args) {
 
-        TestMain01 test = new TestMain01();
+        TestMain04 test = new TestMain04();
 
         Math add = (x, y) -> x + y;
         Math substract = (int x, int y) -> x - y;
         Math multiply = (int x, int y) -> {
             return x * y;
         };
-        Math divide = (x, y) -> x / y;
+        Math divide = (int x, int y) -> x / y;
 
         System.out.println("20 + 5 = " + test.operation(20, 5, add));
         System.out.println("20 - 5 = " + test.operation(20, 5, substract));
@@ -19,24 +19,15 @@ public class TestMain01 {
         System.out.println("20 / 5 = " + test.operation(20, 5, divide));
 
         Echo msg1 = msg -> System.out.println("Hello! " + msg);
-<<<<<<< HEAD
-        Echo msg2 = (msg) -> System.out.println("Hello! " + msg);
-=======
         Echo msg2 = (msg) -> {
             System.out.println("Hello! " + msg);
         };
->>>>>>> origin/master
 
         msg1.echo("a");
         msg2.echo("b");
 
-<<<<<<< HEAD
-        Process process = () -> System.out.println("Good day.");
-=======
-        Process process = () -> System.out.println("Hello world!");
->>>>>>> origin/master
+        Process process = () -> System.out.println("good day.");
         process.echo();
-
     }
 
     interface Math {
@@ -44,11 +35,7 @@ public class TestMain01 {
     }
 
     private int operation(int x, int y, Math math) {
-<<<<<<< HEAD
-        return math.operation(x,  y);
-=======
         return math.operation(x, y);
->>>>>>> origin/master
     }
 
     interface Echo {
