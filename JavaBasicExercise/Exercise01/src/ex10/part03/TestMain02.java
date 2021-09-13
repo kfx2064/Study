@@ -26,11 +26,7 @@ public class TestMain02 {
         msg1.echo("a");
         msg2.echo("b");
 
-<<<<<<< HEAD
-        Process process = () -> System.out.println("Hello world!");
-=======
         Process process = () -> System.out.println("Good day.");
->>>>>>> origin/master
         process.echo();
 
     }
@@ -50,8 +46,4 @@ public class TestMain02 {
     interface Process {
         void echo();
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 }
