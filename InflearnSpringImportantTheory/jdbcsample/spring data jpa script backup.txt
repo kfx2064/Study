@@ -1,0 +1,29 @@
+-- Database: springdata
+
+-- DROP DATABASE springdata;
+
+CREATE DATABASE springdata
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Korean_Korea.949'
+    LC_CTYPE = 'Korean_Korea.949'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+-- Table: public.account
+
+-- DROP TABLE public.account;
+
+CREATE TABLE IF NOT EXISTS public.account
+(
+    id integer,
+    username character varying(255) COLLATE pg_catalog."default",
+    password character varying(255) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.account
+    OWNER to postgres;
