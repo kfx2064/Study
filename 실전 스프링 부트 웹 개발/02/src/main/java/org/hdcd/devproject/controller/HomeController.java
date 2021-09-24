@@ -3,6 +3,8 @@ package org.hdcd.devproject.controller;
 import org.hdcd.devproject.domain.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -90,6 +91,46 @@ public class HomeController {
         Member member = new Member();
 
         return member;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome04", method = RequestMethod.GET)
+    public List<Member> home04() {
+        logger.info("home04");
+
+        List<Member> list = new ArrayList<>();
+
+        Member member = new Member();
+        list.add(member);
+
+        Member member2 = new Member();
+        list.add(member2);
+
+        return list;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome05", method = RequestMethod.GET)
+    public Map<String, Member> home05() {
+        logger.info("home05");
+
+        Map<String, Member> map = new HashMap<>();
+
+        Member member = new Member();
+        map.put("key1", member);
+
+        Member member2 = new Member();
+        map.put("key2", member2);
+
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome06", method = RequestMethod.GET)
+    public ResponseEntity<Void> home06() {
+        logger.info("home06");
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
