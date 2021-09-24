@@ -6,6 +6,55 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
+    $("#getBtn").on("click", function () {
+        var boardNo = $("#boardNo");
+        var boardNoVal = boardNo.val();
+
+        console.log(boardNoVal);
+
+        $.get("/board/" + boardNoVal, function (data) {
+            console.log(data);
+            alert(JSON.stringify(data));
+        });
+    });
+
+    $("#getJsonBtn").on("click", function () {
+        var boardNo = $("#boardNo");
+        var boardNoVal = boardNo.val();
+        console.log(boardNoVal);
+
+        $.ajax({
+            type : "get",
+            url : "/board/" + boardNoVal,
+            headers : {
+                "Accept" : "application/json"
+            },
+            success : function (result) {
+                console.log("result : " + result);
+                alert(JSON.stringify(result));
+            }
+        });
+    });
+
+    $("#getXmlBtn").on("click", function () {
+        var boardNo = $("#boardNo");
+        var boardNoVal = boardNo.val();
+
+        console.log(boardNoVal);
+
+        $.ajax({
+            type : "get",
+            url : "/board/" + boardNoVal,
+            headers : {
+                "Accept" : "application/xml"
+            },
+            success : function (result) {
+                console.log("result : " + result);
+                alert(xmlToString(result));
+            }
+        });
+    });
+
     $("#putBtn").on("click", function() {
         var boardNo = $("#boardNo");
         var title = $("#title");
@@ -138,6 +187,18 @@ $(document).ready(function() {
     });
 
 });
+
+function xmlToString(xmlData) {
+    var xmlString;
+
+    if (window.ActiveXObject) {
+        xmlString = xmlData.xml;
+    } else {
+        xmlString = (new XMLSerializer()).serializeToString(xmlData);
+    }
+
+    return xmlString;
+}
 </script>
 <body>
 <h1>Ajax Home</h1>
@@ -149,9 +210,9 @@ $(document).ready(function() {
 </form>
 
 <div>
-    <button id="putBtn">MODIFY(put)</button>
-    <button id="putHeaderBtn">MODIFY(put with header)</button>
-    <button id="putXmlBtn">MODIFY(put xml)</button>
+    <button id="getBtn">READ</button>
+    <button id="getJsonBtn">READ(JSON)</button>
+    <button id="getXmlBtn">READ(XML)</button>
 </div>
 </body>
 </html>
