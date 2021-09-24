@@ -1,11 +1,13 @@
 package org.hdcd.devproject.controller;
 
+import org.hdcd.devproject.domain.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -78,6 +80,16 @@ public class HomeController {
     public String home0205() {
         logger.info("home0205");
         return "/sub/home0205";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome0301", method = RequestMethod.GET)
+    public Member home0301() {
+        logger.info("home0301");
+
+        Member member = new Member();
+
+        return member;
     }
 
 }

@@ -1,4 +1,4 @@
-package org.hdcd.devproject.vo;
+package org.hdcd.devproject.domain;
 
 import java.util.Date;
 
