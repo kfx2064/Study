@@ -5,5 +5,9 @@
 </head>
 <body>
 <h3>Modify</h3>
+<form method="post" th:action="@{/board/post}">
+    <button type="submit" name="modify">Modify</button>
+</form>
+<a th:href="@{/board/get?list}">LIST</a>
 </body>
 </html>

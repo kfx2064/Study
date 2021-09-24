@@ -13,41 +13,54 @@ public class BoardController {
 
     private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET, params = "register")
     public String registerForm() {
         logger.info("registerForm.");
 
-        return "success";
+        return "board/register";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/post", method = RequestMethod.POST, params = "register")
     public String register() {
         logger.info("register");
 
-        return "success";
+        return "board/list";
     }
 
-    @RequestMapping(value = "/modify", method = RequestMethod.GET)
+    @RequestMapping(value = "/get", method = RequestMethod.GET, params = "modify")
     public String modifyForm() {
         logger.info("modifyForm");
-        return "success";
+        return "board/modify";
     }
 
-    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    @RequestMapping(value = "/post", method = RequestMethod.POST, params = "modify")
     public String modify() {
         logger.info("modify");
-        return "success";
+        return "board/list";
     }
 
-    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    @RequestMapping(value = "/get", method = RequestMethod.GET, params = "remove")
+    public String removeForm() {
+        logger.info("removeForm");
+        return "board/remove";
+    }
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST, params = "remove")
     public String remove() {
         logger.info("remove");
-        return "success";
+        return "board/list";
     }
 
-    @RequestMapping("/list")
-    public void list() {
+    @RequestMapping(value = "/get", method = RequestMethod.GET, params = "list")
+    public String list() {
         logger.info("list");
+        return "board/list";
+    }
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET, params = "read")
+    public String read() {
+        logger.info("read");
+        return "board/read";
     }
 
 }

@@ -5,5 +5,10 @@
 </head>
 <body>
 <h3>Read</h3>
+<form method="get" th:action="@{/board/get}">
+  <button type="submit" name="modify">Modify</button>
+  <button type="submit" name="remove">REMOVE</button>
+</form>
+<a th:href="@{/board/get?list}">LIST</a>
 </body>
 </html>

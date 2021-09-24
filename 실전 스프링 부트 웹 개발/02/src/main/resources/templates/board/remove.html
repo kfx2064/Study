@@ -1,12 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Home</title>
+    <title>BOARD</title>
 </head>
 <body>
-<h3>Register</h3>
+<h3>Remove</h3>
 <form method="post" th:action="@{/board/post}">
-    <button type="submit" name="register">Register</button>
+    <button type="submit" name="remove">Remove</button>
 </form>
 <a th:href="@{/board/get?list}">LIST</a>
 </body>
