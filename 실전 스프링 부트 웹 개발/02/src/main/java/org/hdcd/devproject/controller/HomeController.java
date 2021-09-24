@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.xml.validation.Validator;
 import java.text.DateFormat;
 import java.util.*;
 
@@ -131,6 +132,55 @@ public class HomeController {
         logger.info("home06");
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome07", method = RequestMethod.GET)
+    public ResponseEntity<String> home07() {
+        logger.info("home07");
+        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome08", method = RequestMethod.GET)
+    public ResponseEntity<Member> home08() {
+        logger.info("home08");
+
+        Member member = new Member();
+
+        return new ResponseEntity<>(member, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome09", method = RequestMethod.GET)
+    public ResponseEntity<List<Member>> home09() {
+        logger.info("home09");
+
+        List<Member> list = new ArrayList<>();
+
+        Member member = new Member();
+        list.add(member);
+
+        Member member2 = new Member();
+        list.add(member2);
+
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/goHome10", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Member>> home10() {
+        logger.info("home10");
+
+        Map<String, Member> map = new HashMap<>();
+
+        Member member = new Member();
+        map.put("key1", member);
+
+        Member member2 = new Member();
+        map.put("key2", member2);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
 }
