@@ -40,4 +40,44 @@ public class HomeController {
         return "ajaxHome";
     }
 
+    @RequestMapping(value = "/goHome0101", method = RequestMethod.GET)
+    public void home0101() {
+        logger.info("home0101");
+    }
+
+    @RequestMapping(value = "/sub/goHome0102", method = RequestMethod.GET)
+    public void home0102() {
+        logger.info("home0102");
+    }
+
+    @RequestMapping(value = "/goHome0201", method = RequestMethod.GET)
+    public String home0201() {
+        logger.info("home0201");
+        return "home0201";
+    }
+
+    @RequestMapping(value = "/sub/goHome0202", method = RequestMethod.GET)
+    public String home0202() {
+        logger.info("home0202");
+        return "home0202";
+    }
+
+    @RequestMapping(value = "/sub/goHome0203", method = RequestMethod.GET)
+    public String home0203() {
+        logger.info("home0203");
+        return "sub/home0203";
+    }
+
+    @RequestMapping(value = "/goHome0204", method = RequestMethod.GET)
+    public String home0204() {
+        logger.info("home0204");
+        return "redirect:/sub/goHome0205";
+    }
+
+    @RequestMapping(value = "/sub/goHome0205", method = RequestMethod.GET)
+    public String home0205() {
+        logger.info("home0205");
+        return "/sub/home0205";
+    }
+
 }
