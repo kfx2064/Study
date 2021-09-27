@@ -1,10 +1,13 @@
 package org.hdcd.devproject.controller;
 
+import org.hdcd.devproject.domain.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MemberController {
@@ -32,26 +35,69 @@ public class MemberController {
         return "success";
     }
 
-    @RequestMapping(value = "/register01", method = RequestMethod.POST)
-    public String register01(String userId) {
-        logger.info("register01");
+    @RequestMapping(value = "/register/{userId}/{coin}", method = RequestMethod.GET)
+    public String registerByPath(@PathVariable("userId") String userId
+            , @PathVariable("coin") int coin) {
+        logger.info("registerByPath");
         logger.info("userId = " + userId);
+        logger.info("coin = " + coin);
+        return "success";
+    }
+
+    @RequestMapping(value = "/register01", method = RequestMethod.POST)
+    public String register01(Member member) {
+        logger.info("register01");
+        logger.info("member.getUserId() = " + member.getUserName());
+        logger.info("member.getPassword() = " + member.getPassword());
+        logger.info("member.getCoin() = " + member.getCoin());
         return "success";
     }
 
     @RequestMapping(value = "/register02", method = RequestMethod.POST)
-    public String register02(String userId, String password) {
+    public String register02(Member member, int coin) {
         logger.info("register02");
-        logger.info("userId = " + userId);
-        logger.info("password = " + password);
+        logger.info("member.getUserId() = " + member.getUserName());
+        logger.info("member.getPassword() = " + member.getPassword());
+        logger.info("member.getCoin() = " + member.getCoin());
+        logger.info("coin = " + coin);
+        return "success";
+    }
+
+    @RequestMapping(value = "/register0201", method = RequestMethod.POST)
+    public String register0201(String username) {
+        logger.info("register0201");
+        logger.info("userId = " + username);
+        return "success";
+    }
+
+    @RequestMapping(value = "/register0202", method = RequestMethod.POST)
+    public String register0202(@RequestParam("userId") String username) {
+        logger.info("register0202");
+        logger.info("userId = " + username);
         return "success";
     }
 
     @RequestMapping(value = "/register03", method = RequestMethod.POST)
-    public String register03(String password, String userId) {
+    public String register03(int uid, Member member) {
         logger.info("register03");
-        logger.info("userId = " + userId);
-        logger.info("password = " + password);
+        logger.info("uid = " + uid);
+        logger.info("member.getUserId() = " + member.getUserName());
+        logger.info("member.getPassword() = " + member.getPassword());
+        logger.info("member.getCoin() = " + member.getCoin());
+        return "success";
+    }
+
+    @RequestMapping(value = "/register0301", method = RequestMethod.POST)
+    public String register0301(String memberId) {
+        logger.info("register0301");
+        logger.info("userId = " + memberId);
+        return "success";
+    }
+
+    @RequestMapping(value = "/register0302", method = RequestMethod.POST)
+    public String register0302(@RequestParam("userId") String memberId) {
+        logger.info("register0302");
+        logger.info("userId = " + memberId);
         return "success";
     }
 
