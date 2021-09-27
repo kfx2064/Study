@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>Register Form</h1>
+<a th:href="@{register?userId=hongkd&password=1234}">register?userId=hongkd&amp;password=1234</a>
+<a th:href="@{register/hongkd}">register/hongkd</a>
+<br>
+<form th:action="@{/register01}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    coin : <input type="text" name="coin" value="100"><br>
+    <input type="submit" value="register01">
+</form>
+<form th:action="@{/register02}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    coin : <input type="text" name="coin" value="100"><br>
+    <input type="submit" value="register02">
+</form>
+<form th:action="@{/register03}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    coin : <input type="text" name="coin" value="100"><br>
+    <input type="submit" value="register03">
+</form>
+<form th:action="@{/register04}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    coin : <input type="text" name="coin" value="100"><br>
+    <input type="submit" value="register04">
+</form>
+<form th:action="@{/register05}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    coin : <input type="text" name="coin" value="100"><br>
+    <input type="submit" value="register05">
+</form>
+</body>
+</html>
