@@ -2,65 +2,149 @@
 <head>
     <title>Home</title>
 </head>
+<script src="/static/js/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#registerBtn01").on("click", function() {
+            $.get("/register/hongkd", function(result) {
+                console.log("result : " + result);
+                if (result === "SUCCESS") {
+                    alert("SUCCESS");
+                }
+            });
+        });
+
+        $("#registerBtn02").on("click", function () {
+            var userId = $("#userId");
+            var password = $("#password");
+            var userIdVal = userId.val();
+            var passwordVal = password.val();
+            var userObject = {
+                userId : userIdVal,
+                password : passwordVal
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register/hongkd/pw01",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function (result) {
+                    console.log("result : " + result);
+                    if (result === "SUCCESS") {
+                        alert("SUCCESS");
+                    }
+                }
+            });
+        });
+
+        $("#registerBtn03").on("click", function() {
+
+            var userId = $("#userId");
+            var password = $("#password");
+            var userIdVal = userId.val();
+            var passwordVal = password.val();
+
+            var userObject = {
+                userId : userIdVal,
+                password : passwordVal
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register03",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result) {
+                    console.log("result : " + result);
+                    if (result === "SUCCESS") {
+                        alert("SUCCESS");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn04").on("click", function () {
+
+            var userId = $("#userId");
+            var password = $("#password");
+            var userIdVal = userId.val();
+            var passwordVal = password.val();
+
+            var userObject = {
+                userId : userIdVal,
+                password : passwordVal
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register04",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function (result) {
+                    console.log("result : " + result);
+                    if (result === "SUCCESS") {
+                        alert("SUCCESS");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn05").on("click", function () {
+
+            var userId = $("#userId");
+            var password = $("#password");
+            var userIdVal = userId.val();
+            var passwordVal = password.val();
+
+            var userObject = {
+                userId : userIdVal,
+                password : passwordVal
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register05?userId=user01",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function (result) {
+                    console.log("result : " + result);
+                    if (result === "SUCCESS") {
+                        alert("SUCCESS");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn06").on("click", function () {
+            var userId = $("#userId");
+            var password = $("#password");
+            var userIdVal = userId.val();
+            var passwordVal = password.val();
+
+            var userObject = {
+                userId : userIdVal,
+                password : passwordVal
+            }
+
+            $.ajax({
+                type : "post",
+                url : "/register/hongkd",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function (result) {
+                    console.log("result : " + result);
+
+                }
+            });
+        })
+    });
+</script>
 <body>
 <h2>Register Form</h2>
-<form th:action="@{/registerFile01}" method="post" enctype="multipart/form-data">
-    <input type="file" name="picture">
-    <input type="submit">
-</form>
-<form th:action="@{/registerFile02}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="picture">
-    <input type="submit">
-</form>
-<form th:action="@{/registerFile03}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="picture">
-    <input type="submit">
-</form>
-<form th:action="@{/registerFile04}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="picture">
-    <input type="submit">
-</form>
-<form th:action="@{/registerFile05}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="picture"><br>
-    <input type="file" name="picture2">
-    <input type="submit">
-</form>
-<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="pictureList[0]">
-    <br>
-    <input type="file" name="pictureList[1]">
-    <input type="submit">
-</form>
-<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="pictureList"><br>
-    <input type="file" name="pictureList">
-    <input type="submit">
-</form>
-<form th:action="@{/registerFile07}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="pictureList[0]">
-    <br>
-    <input type="file" name="pictureList[1]">
-    <input type="submit">
-</form>
-<form th:action="@{/regsterFile08}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    <input type="file" name="pictureList" multiple>
-    <input type="submit">
-</form>
+
 </body>
 </html>
