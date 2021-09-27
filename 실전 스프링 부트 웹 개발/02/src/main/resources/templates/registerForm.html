@@ -3,39 +3,64 @@
     <title>Home</title>
 </head>
 <body>
-<h1>Register Form</h1>
-<a th:href="@{register?userId=hongkd&password=1234}">register?userId=hongkd&amp;password=1234</a>
-<a th:href="@{register/hongkd}">register/hongkd</a>
-<br>
-<form th:action="@{/register01}" method="post">
-    userId : <input type="text" name="userId" value="hongkd"><br>
-    password : <input type="text" name="password" value="1234"><br>
-    coin : <input type="text" name="coin" value="100"><br>
-    <input type="submit" value="register01">
+<h2>Register Form</h2>
+<form th:action="@{/registerFile01}" method="post" enctype="multipart/form-data">
+    <input type="file" name="picture">
+    <input type="submit">
 </form>
-<form th:action="@{/register02}" method="post">
+<form th:action="@{/registerFile02}" method="post" enctype="multipart/form-data">
     userId : <input type="text" name="userId" value="hongkd"><br>
     password : <input type="text" name="password" value="1234"><br>
-    coin : <input type="text" name="coin" value="100"><br>
-    <input type="submit" value="register02">
+    <input type="file" name="picture">
+    <input type="submit">
 </form>
-<form th:action="@{/register03}" method="post">
+<form th:action="@{/registerFile03}" method="post" enctype="multipart/form-data">
     userId : <input type="text" name="userId" value="hongkd"><br>
     password : <input type="text" name="password" value="1234"><br>
-    coin : <input type="text" name="coin" value="100"><br>
-    <input type="submit" value="register03">
+    <input type="file" name="picture">
+    <input type="submit">
 </form>
-<form th:action="@{/register04}" method="post">
+<form th:action="@{/registerFile04}" method="post" enctype="multipart/form-data">
     userId : <input type="text" name="userId" value="hongkd"><br>
     password : <input type="text" name="password" value="1234"><br>
-    coin : <input type="text" name="coin" value="100"><br>
-    <input type="submit" value="register04">
+    <input type="file" name="picture">
+    <input type="submit">
 </form>
-<form th:action="@{/register05}" method="post">
+<form th:action="@{/registerFile05}" method="post" enctype="multipart/form-data">
     userId : <input type="text" name="userId" value="hongkd"><br>
     password : <input type="text" name="password" value="1234"><br>
-    coin : <input type="text" name="coin" value="100"><br>
-    <input type="submit" value="register05">
+    <input type="file" name="picture"><br>
+    <input type="file" name="picture2">
+    <input type="submit">
+</form>
+<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="file" name="pictureList[0]">
+    <br>
+    <input type="file" name="pictureList[1]">
+    <input type="submit">
+</form>
+<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="file" name="pictureList"><br>
+    <input type="file" name="pictureList">
+    <input type="submit">
+</form>
+<form th:action="@{/registerFile07}" method="post" enctype="multipart/form-data">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="file" name="pictureList[0]">
+    <br>
+    <input type="file" name="pictureList[1]">
+    <input type="submit">
+</form>
+<form th:action="@{/regsterFile08}" method="post" enctype="multipart/form-data">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="file" name="pictureList" multiple>
+    <input type="submit">
 </form>
 </body>
 </html>

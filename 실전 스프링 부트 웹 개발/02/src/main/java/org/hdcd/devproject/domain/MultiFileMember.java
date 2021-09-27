@@ -1,12 +1,15 @@
 package org.hdcd.devproject.domain;
 
-import java.io.Serializable;
+import org.springframework.web.multipart.MultipartFile;
 
-public class Member implements Serializable {
+import java.util.List;
 
-    private static final long serialVersionUID = 5691454397829345004L;
+public class MultiFileMember {
+
     private String userId;
     private String password;
+
+    private List<MultipartFile> pictureList;
 
     public String getUserId() {
         return userId;
@@ -22,5 +25,13 @@ public class Member implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<MultipartFile> getPictureList() {
+        return pictureList;
+    }
+
+    public void setPictureList(List<MultipartFile> pictureList) {
+        this.pictureList = pictureList;
     }
 }
