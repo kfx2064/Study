@@ -5,6 +5,8 @@ import org.hdcd.devproject.domain.Member;
 import org.hdcd.devproject.domain.MultiFileMember;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -121,6 +123,19 @@ public class MemberController {
         }
 
         return "success";
+    }
+
+    @RequestMapping(value = "/uploadAjax", method = RequestMethod.POST,
+                    produces = "text/plain;charset=utf-8")
+    public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
+        String originlaFilename = file.getOriginalFilename();
+
+        logger.info("originalName : " + originlaFilename);
+
+        ResponseEntity<String> entity =
+                new ResponseEntity<>("UPLOAD SUCCESS" + originlaFilename, HttpStatus.OK);
+
+        return entity;
     }
 
 }

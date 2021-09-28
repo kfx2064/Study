@@ -40,6 +40,12 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
+    public String registerForm() {
+        logger.info("registerForm");
+        return "registerForm";
+    }
+
     @RequestMapping(value = "/formHome", method = RequestMethod.GET)
     public String formHome() {
         return "formHome";

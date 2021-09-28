@@ -5,146 +5,34 @@
 <script src="/static/js/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $("#registerBtn01").on("click", function() {
-            $.get("/register/hongkd", function(result) {
-                console.log("result : " + result);
-                if (result === "SUCCESS") {
-                    alert("SUCCESS");
+
+        $("#inputFile").on("change", function (event) {
+            console.log("change");
+            var files = event.target.files;
+            var file = files[0];
+            console.log(file);
+            var formData = new FormData();
+            formData.append("file", file);
+
+            $.ajax({
+                type : "post",
+                url : "/uploadAjax",
+                data : formData,
+                dataType : "text",
+                processData : false,
+                contentType : false,
+                success : function (data) {
+                    alert(data);
                 }
             });
         });
 
-        $("#registerBtn02").on("click", function () {
-            var userId = $("#userId");
-            var password = $("#password");
-            var userIdVal = userId.val();
-            var passwordVal = password.val();
-            var userObject = {
-                userId : userIdVal,
-                password : passwordVal
-            };
-
-            $.ajax({
-                type : "post",
-                url : "/register/hongkd/pw01",
-                data : JSON.stringify(userObject),
-                contentType : "application/json; charset=utf-8",
-                success : function (result) {
-                    console.log("result : " + result);
-                    if (result === "SUCCESS") {
-                        alert("SUCCESS");
-                    }
-                }
-            });
-        });
-
-        $("#registerBtn03").on("click", function() {
-
-            var userId = $("#userId");
-            var password = $("#password");
-            var userIdVal = userId.val();
-            var passwordVal = password.val();
-
-            var userObject = {
-                userId : userIdVal,
-                password : passwordVal
-            };
-
-            $.ajax({
-                type : "post",
-                url : "/register03",
-                data : JSON.stringify(userObject),
-                contentType : "application/json; charset=utf-8",
-                success : function(result) {
-                    console.log("result : " + result);
-                    if (result === "SUCCESS") {
-                        alert("SUCCESS");
-                    }
-                }
-            });
-
-        });
-
-        $("#registerBtn04").on("click", function () {
-
-            var userId = $("#userId");
-            var password = $("#password");
-            var userIdVal = userId.val();
-            var passwordVal = password.val();
-
-            var userObject = {
-                userId : userIdVal,
-                password : passwordVal
-            };
-
-            $.ajax({
-                type : "post",
-                url : "/register04",
-                data : JSON.stringify(userObject),
-                contentType : "application/json; charset=utf-8",
-                success : function (result) {
-                    console.log("result : " + result);
-                    if (result === "SUCCESS") {
-                        alert("SUCCESS");
-                    }
-                }
-            });
-
-        });
-
-        $("#registerBtn05").on("click", function () {
-
-            var userId = $("#userId");
-            var password = $("#password");
-            var userIdVal = userId.val();
-            var passwordVal = password.val();
-
-            var userObject = {
-                userId : userIdVal,
-                password : passwordVal
-            };
-
-            $.ajax({
-                type : "post",
-                url : "/register05?userId=user01",
-                data : JSON.stringify(userObject),
-                contentType : "application/json; charset=utf-8",
-                success : function (result) {
-                    console.log("result : " + result);
-                    if (result === "SUCCESS") {
-                        alert("SUCCESS");
-                    }
-                }
-            });
-
-        });
-
-        $("#registerBtn06").on("click", function () {
-            var userId = $("#userId");
-            var password = $("#password");
-            var userIdVal = userId.val();
-            var passwordVal = password.val();
-
-            var userObject = {
-                userId : userIdVal,
-                password : passwordVal
-            }
-
-            $.ajax({
-                type : "post",
-                url : "/register/hongkd",
-                data : JSON.stringify(userObject),
-                contentType : "application/json; charset=utf-8",
-                success : function (result) {
-                    console.log("result : " + result);
-
-                }
-            });
-        })
     });
 </script>
 <body>
-<h2>Register Form</h2>
-
+<h1>Register Form</h1>
+<div>
+    <input type="file" id="inputFile">
+</div>
 </body>
 </html>
