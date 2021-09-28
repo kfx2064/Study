@@ -1,17 +1,18 @@
 package org.hdcd.devproject.controller;
 
-import org.hdcd.devproject.domain.FileMember;
-import org.hdcd.devproject.domain.Member;
-import org.hdcd.devproject.domain.MultiFileMember;
+import org.hdcd.devproject.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -19,123 +20,223 @@ public class MemberController {
 
     private final static Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-    @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
-    public String registerForm() {
-        logger.info("registerForm");
-        return "registerForm";
+    @RequestMapping(value = "/read01", method = RequestMethod.GET)
+    public String read01(Model model) {
+        logger.info("read01");
+
+        model.addAttribute("userId", "hongkd");
+        model.addAttribute("password", "1234");
+        model.addAttribute("email", "aaa@ccc.com");
+        model.addAttribute("userName", "홍길동");
+        model.addAttribute("birthDay", "1989-09-07");
+
+        return "read01";
     }
 
-    @RequestMapping(value = "/registerFile01", method = RequestMethod.POST)
-    public String registerFile01(MultipartFile picture) throws Exception {
-        logger.info("registerFile01");
-        logger.info("originalName : " + picture.getOriginalFilename());
-        logger.info("size : " + picture.getSize());
-        logger.info("contentType : " + picture.getContentType());
-        return "success";
+    @RequestMapping(value = "/read02", method = RequestMethod.GET)
+    public String read02(Model model) {
+        logger.info("read02");
+
+        Member member = new Member();
+
+        member.setUserId("hongkd");
+        member.setPassword("1234");
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        member.setBirthDay("1989-09-07");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 1988);
+        cal.set(Calendar.MONTH, 10);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        member.setDateOfBirth(cal.getTime());
+
+        model.addAttribute(member);
+
+        return "read02";
     }
 
-    @RequestMapping(value = "/registerFile02", method = RequestMethod.POST)
-    public String registerFile02(String userId, String password
-            , MultipartFile picture) throws Exception {
-        logger.info("registerFile02");
-        logger.info("userId = " + userId);
-        logger.info("password = " + password);
-        logger.info("originalName = " + picture.getOriginalFilename());
-        logger.info("size : " + picture.getSize());
-        logger.info("contentType : " + picture.getContentType());
-        return "success";
+    @RequestMapping(value = "/read03", method = RequestMethod.GET)
+    public String read03(Model model) {
+        logger.info("read03");
+
+        Member member = new Member();
+
+        member.setUserId("hongkd");
+        member.setPassword("1234");
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        member.setBirthDay("1989-09-07");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 1988);
+        cal.set(Calendar.MONTH, 10);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        member.setDateOfBirth(cal.getTime());
+
+        model.addAttribute("user", member);
+
+        return "read03";
     }
 
-    @RequestMapping(value = "/registerFile03", method = RequestMethod.POST)
-    public String registerFile03(Member member, MultipartFile picture) throws Exception {
-        logger.info("registerFile03");
-        logger.info("userId = " + member.getUserId());
-        logger.info("password = " + member.getPassword());
-        logger.info("originalName = " + picture.getOriginalFilename());
-        logger.info("size : " + picture.getSize());
-        logger.info("contentType : " + picture.getContentType());
-        return "success";
+    @RequestMapping(value = "/read04", method = RequestMethod.GET)
+    public String read04(Model model) {
+        logger.info("read04");
+
+        String[] carArray = {"saab", "audi"};
+
+        List<String> carList = new ArrayList<>();
+        carList.add("saab");
+        carList.add("audi");
+
+        String[] hobbyArray = {"Music", "Movie"};
+
+        List<String> hobbyList = new ArrayList<>();
+        hobbyList.add("Music");
+        hobbyList.add("Movie");
+
+        model.addAttribute("carArray", carArray);
+        model.addAttribute("carList", carList);
+
+        model.addAttribute("hobbyArray", hobbyArray);
+        model.addAttribute("hobbyList", hobbyList);
+
+        return "read04";
     }
 
-    @RequestMapping(value = "/registerFile04", method = RequestMethod.POST)
-    public String registerFile04(FileMember fileMember) throws Exception {
-        logger.info("registerFile04");
-        logger.info("userId = " + fileMember.getUserId());
-        logger.info("password = " + fileMember.getPassword());
-        MultipartFile picture = fileMember.getPicture();
-        logger.info("originalName : " + picture.getOriginalFilename());
-        logger.info("size : " + picture.getSize());
-        logger.info("contentType : " + picture.getContentType());
-        return "success";
+    @RequestMapping(value = "/read05", method = RequestMethod.GET)
+    public String read05(Model model) {
+        logger.info("read05");
+
+        Member member = new Member();
+
+        Address address = new Address();
+        address.setPostCode("080908");
+        address.setLocation("seoul");
+
+        member.setAddress(address);
+
+        List<Card> cardList = new ArrayList<>();
+
+        Card card1 = new Card();
+        card1.setNo("123456");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2020);
+        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.DAY_OF_MONTH, 8);
+
+        card1.setValidMonth(cal.getTime());
+
+        cardList.add(card1);
+
+        Card card2 = new Card();
+        card2.setNo("456786");
+
+        cal.set(Calendar.YEAR, 2022);
+        cal.set(Calendar.MONTH, 11);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        card2.setValidMonth(cal.getTime());
+
+        cardList.add(card2);
+
+        member.setCardList(cardList);
+
+        model.addAttribute("user", member);
+
+        return "read05";
     }
 
-    @RequestMapping(value = "/registerFile05", method = RequestMethod.POST)
-    public String registerFile05(MultipartFile picture, MultipartFile picture2) throws Exception {
-        logger.info("registerFile05");
-        logger.info("picture originalName : " + picture.getOriginalFilename());
-        logger.info("picture size : " + picture.getSize());
-        logger.info("picture contentType : " + picture.getContentType());
+    @RequestMapping(value = "/read06", method = RequestMethod.GET)
+    public String read06(Model model) {
+        logger.info("read06");
 
-        logger.info("picture2 originalName : " + picture2.getOriginalFilename());
-        logger.info("picture2 size : " + picture2.getSize());
-        logger.info("picture2 contentType : " + picture2.getContentType());
-        return "success";
-    }
+        Member member = new Member();
 
-    @RequestMapping(value = "/registerFile06", method = RequestMethod.POST)
-    public String registerFile06(List<MultipartFile> pictureList) throws Exception {
-        logger.info("registerFile06");
-        logger.info("registerFile06 picutreList.size() = " + pictureList.size());
+        member.setUserId("hongkd");
+        member.setPassword("1234");
+        member.setEmail("aaa@ccc.com");
+        member.setUserName("홍길동");
+        member.setBirthDay("1989-09-07");
+        member.setGender("female");
+        member.setDeveloper("Y");
+        member.setForeigner(true);
 
-        for (MultipartFile picture : pictureList) {
-            logger.info("picture originalName : " + picture.getOriginalFilename());
-            logger.info("picture size : " + picture.getSize());
-            logger.info("picture contentType : " + picture.getContentType());
-        }
-        return "success";
-    }
+        member.setNationality("Australia");
 
-    @RequestMapping(value = "/registerFile07", method = RequestMethod.POST)
-    public String registerFile07(MultiFileMember multiFileMember) throws Exception {
-        logger.info("registerFile07");
+        member.setCars("saab");
 
-        List<MultipartFile> pictureList = multiFileMember.getPictureList();
+        String[] carArray = {"saab", "audi"};
 
-        logger.info("registerFile07 pictureList.size() = " + pictureList.size());
+        member.setCarArray(carArray);
 
-        for (MultipartFile picture : pictureList) {
-            logger.info("picture originalName : " + picture.getOriginalFilename());
-            logger.info("picture size : " + picture.getSize());
-            logger.info("picture contentType : " + picture.getContentType());
-        }
-        return "success";
-    }
+        List<String> carList = new ArrayList<>();
+        carList.add("saab");
+        carList.add("audi");
 
-    @RequestMapping(value = "/registerFile08", method = RequestMethod.POST)
-    public String registerFile08(MultipartFile[] pictureList) throws Exception {
-        logger.info("registerFile08");
-        logger.info("registerFile08 pictureList.length = " + pictureList.length);
+        member.setCarList(carList);
 
-        for (MultipartFile picture : pictureList) {
-            logger.info("picture originalName : " + picture.getOriginalFilename());
-            logger.info("picture size : " + picture.getSize());
-            logger.info("picture contentType : " + picture.getContentType());
-        }
+        member.setHobby("Movie");
 
-        return "success";
-    }
+        String[] hobbyArray = {"Music", "Movie"};
 
-    @RequestMapping(value = "/uploadAjax", method = RequestMethod.POST,
-                    produces = "text/plain;charset=utf-8")
-    public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
-        String originlaFilename = file.getOriginalFilename();
+        member.setHobbyArray(hobbyArray);
 
-        logger.info("originalName : " + originlaFilename);
+        List<String> hobbyList = new ArrayList<>();
+        hobbyList.add("Music");
+        hobbyList.add("Movie");
 
-        ResponseEntity<String> entity =
-                new ResponseEntity<>("UPLOAD SUCCESS" + originlaFilename, HttpStatus.OK);
+        member.setHobbyList(hobbyList);
 
-        return entity;
+        Address address = new Address();
+        address.setPostCode("080908");
+        address.setLocation("seoul");
+
+        member.setAddress(address);
+
+        List<Card> cardList = new ArrayList<>();
+
+        Card card1 = new Card();
+        card1.setNo("123456");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2020);
+        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.DAY_OF_MONTH, 8);
+
+        card1.setValidMonth(cal.getTime());
+
+        cardList.add(card1);
+
+        Card card2 = new Card();
+        card2.setNo("456786");
+
+        cal.set(Calendar.YEAR, 2022);
+        cal.set(Calendar.MONTH, 11);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        card2.setValidMonth(cal.getTime());
+
+        cardList.add(card2);
+
+        member.setCardList(cardList);
+
+        cal.set(Calendar.YEAR, 1988);
+        cal.set(Calendar.MONTH, 10);
+        cal.set(Calendar.DAY_OF_MONTH, 7);
+
+        member.setDateOfBirth(cal.getTime());
+
+        String introduction = "안녕하세요.\n반갑습니다.";
+
+        member.setIntroduction(introduction);
+
+        model.addAttribute("user", member);
+
+        return "read06";
     }
 
 }
