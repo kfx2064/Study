@@ -15,6 +15,13 @@ public class Member implements Serializable {
 
     private String email;
 
+    private Date dateOfBirth;
+
+    private Address address;
+
+    private String[] hobbyArray;
+    private List<String> hobbyList;
+
     public String getUserId() {
         return userId;
     }
@@ -45,5 +52,37 @@ public class Member implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String[] getHobbyArray() {
+        return hobbyArray;
+    }
+
+    public void setHobbyArray(String[] hobbyArray) {
+        this.hobbyArray = hobbyArray;
+    }
+
+    public List<String> getHobbyList() {
+        return hobbyList;
+    }
+
+    public void setHobbyList(List<String> hobbyList) {
+        this.hobbyList = hobbyList;
     }
 }
