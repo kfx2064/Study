@@ -6,33 +6,32 @@
 <script>
     $(document).ready(function() {
 
-        $("#inputFile").on("change", function (event) {
-            console.log("change");
-            var files = event.target.files;
-            var file = files[0];
-            console.log(file);
-            var formData = new FormData();
-            formData.append("file", file);
-
-            $.ajax({
-                type : "post",
-                url : "/uploadAjax",
-                data : formData,
-                dataType : "text",
-                processData : false,
-                contentType : false,
-                success : function (data) {
-                    alert(data);
-                }
-            });
-        });
-
     });
 </script>
 <body>
 <h1>Register Form</h1>
-<div>
-    <input type="file" id="inputFile">
-</div>
+<form action="result.html" th:action="@{/register01}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="submit" value="register01">
+</form>
+
+<form action="result.html" th:action="@{/register02}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="submit" value="register02">
+</form>
+
+<form action="result.html" th:action="@{/register03}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="submit" value="register03">
+</form>
+
+<form action="result.html" th:action="@{/register04}" method="post">
+    userId : <input type="text" name="userId" value="hongkd"><br>
+    password : <input type="text" name="password" value="1234"><br>
+    <input type="submit" value="register04">
+</form>
 </body>
 </html>
