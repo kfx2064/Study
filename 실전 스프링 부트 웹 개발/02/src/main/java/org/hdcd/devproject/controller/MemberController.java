@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class MemberController {
@@ -14,43 +15,21 @@ public class MemberController {
     private final static Logger logger = LoggerFactory.getLogger(MemberController.class);
 
     @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
-    public String registerForm() {
+    public String requestForm() {
         logger.info("registerForm");
         return "registerForm";
     }
 
-    @RequestMapping(value = "/register01", method = RequestMethod.POST)
-    public String register01(String userId) {
-        logger.info("register01");
-        logger.info("userId = " + userId);
-        return "result01";
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(Member member, RedirectAttributes rttr) throws Exception {
+        logger.info("register");
+        rttr.addFlashAttribute("msg", "success");
+        return "redirect:/result";
     }
 
-    @RequestMapping(value = "/register02", method = RequestMethod.POST)
-    public String register02(@ModelAttribute("userId") String userId) {
-        logger.info("register02");
-        logger.info("userId = " + userId);
-
-        return "result02";
+    @RequestMapping(value = "/result", method = RequestMethod.GET)
+    public String result() {
+        logger.info("result");
+        return "result";
     }
-
-    @RequestMapping(value = "/register03", method = RequestMethod.POST)
-    public String register03(@ModelAttribute("userId") String userId
-            , @ModelAttribute("password") String password) {
-        logger.info("register03");
-        logger.info("userId = " + userId);
-        logger.info("password = " + password);
-
-        return "result03";
-    }
-
-    @RequestMapping(value = "/register04", method = RequestMethod.POST)
-    public String register04(Member member) {
-        logger.info("register04");
-        logger.info("userId = " + member.getUserId());
-        logger.info("password = " + member.getPassword());
-
-        return "result04";
-    }
-
 }
