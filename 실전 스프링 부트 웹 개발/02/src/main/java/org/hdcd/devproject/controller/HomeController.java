@@ -1,7 +1,9 @@
 package org.hdcd.devproject.controller;
 
+import org.apache.tomcat.jni.Local;
 import org.hdcd.devproject.domain.Address;
 import org.hdcd.devproject.domain.Member;
+import org.hibernate.validator.internal.util.privilegedactions.LoadClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -20,18 +22,17 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @RequestMapping(value = "/home0101", method = RequestMethod.GET)
-    public String home0101(Model model) {
-        model.addAttribute("msg", "<b>Hello world!</b>");
+    public String home0101() {
         return "home0101";
     }
 
     @RequestMapping(value = "/home0201", method = RequestMethod.GET)
-    public String home0102(Model model) {
+    public String home0201(Model model) {
         model.addAttribute("msg", "Hello world!");
         return "home0201";
     }
 
-    @RequestMapping(value = "/home0202", method = RequestMethod.GET)
+    @RequestMapping(value = "/home020", method = RequestMethod.GET)
     public String home0202(Model model) {
         Member member = new Member();
 
@@ -152,4 +153,5 @@ public class HomeController {
 
         return "home0701";
     }
+
 }
