@@ -1,14 +1,12 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:p="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.utlraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{/layouts/main_template}">
 <head>
     <title>Home</title>
 </head>
 <body>
-<div th:replace="~{fragments/header::header}"></div>
-
-<div>
-    <h1 th:text="${msg}">greeting</h1>
+<div layout:fragment="content">
+    <p>Home0201 Content</p>
 </div>
-
-<div th:replace="~{fragments/footer::footer}"></div>
 </body>
 </html>
