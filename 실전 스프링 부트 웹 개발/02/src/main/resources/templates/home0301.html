@@ -2,12 +2,32 @@
 <head>
     <title>Home</title>
 </head>
-<script th:inline="text">
-    var username = [[${username}]];
-</script>
 <body>
-<p th:text="|Hello, ${username}!|">greeting</p>
-<p>Hello, <span th:text="${username}">name</span>!</p>
-<p>Hello, [[${username}]]!</p>
+<table border="1">
+    <tr>
+        <td>${str}</td>
+        <td th:text="${str}"></td>
+    </tr>
+    <tr>
+        <td>${#strings.contains(str, 'Hello')}</td>
+        <td th:text="${#strings.contains(str, 'Hello')}"></td>
+    </tr>
+    <tr>
+        <td>${#strings.containsIgnoreCase(str, 'Hello')}</td>
+        <td th:text="${#strings.containsIgnoreCase(str, 'Hello')}"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 </body>
 </html>

@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Date;
+
 @Controller
 public class HomeController {
 
@@ -14,16 +16,29 @@ public class HomeController {
 
     @RequestMapping(value = "/home0101", method = RequestMethod.GET)
     public String home0101(Model model) {
-        model.addAttribute("msg", "Hello world!");
+        int coin = 1000;
+
+        model.addAttribute("coin", coin);
 
         return "home0101";
     }
 
     @RequestMapping(value = "/home0201", method = RequestMethod.GET)
     public String home0201(Model model) {
-        model.addAttribute("msg", "Hello world!");
+        Date date = new Date();
+
+        model.addAttribute("now", date);
 
         return "home0201";
+    }
+
+    @RequestMapping(value = "/home0301", method = RequestMethod.GET)
+    public String home0301(Model model) {
+        String str = "Hello, World!";
+
+        model.addAttribute("str", str);
+
+        return "home0301";
     }
 
 }
