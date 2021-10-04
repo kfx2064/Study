@@ -1,10 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
-<th:block th:each="hobby : ${member.hobbyList}">
-    <p th:text="${hobby}">hobby</p>
+<th:block th:unless="${member.foreigner}">
+    <p>member.foreigner == false</p>
 </th:block>
 </body>
 </html>

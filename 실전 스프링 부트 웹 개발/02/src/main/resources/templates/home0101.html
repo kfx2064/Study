@@ -3,8 +3,12 @@
     <title>Home</title>
 </head>
 <body>
-<h1>Home0101</h1>
+<th:block th:if="${member.hobbyArray == null}">
+    <p>member.hobbyArray == null</p>
+</th:block>
 
-<a href="home0201.html" th:href="@{/home0201}">Home0201</a>
+<th:block th:if="${member.hobbyArray eq null}">
+    <p>member.hobbyArray eq null</p>
+</th:block>
 </body>
 </html>

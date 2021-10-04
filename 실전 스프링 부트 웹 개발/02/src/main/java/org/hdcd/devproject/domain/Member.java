@@ -14,11 +14,17 @@ public class Member implements Serializable {
     private String userName;
 
     private String email;
+    private String gender;
 
     private Date dateOfBirth;
 
+    private boolean foreigner;
+
     private Address address;
 
+    private List<Card> cardList;
+
+    private String hobby;
     private String[] hobbyArray;
     private List<String> hobbyList;
 
@@ -54,6 +60,14 @@ public class Member implements Serializable {
         this.email = email;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -62,12 +76,36 @@ public class Member implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public boolean isForeigner() {
+        return foreigner;
+    }
+
+    public void setForeigner(boolean foreigner) {
+        this.foreigner = foreigner;
+    }
+
     public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Card> getCardList() {
+        return cardList;
+    }
+
+    public void setCardList(List<Card> cardList) {
+        this.cardList = cardList;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
     }
 
     public String[] getHobbyArray() {
