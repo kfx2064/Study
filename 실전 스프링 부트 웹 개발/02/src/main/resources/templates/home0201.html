@@ -3,10 +3,8 @@
     <title>Home</title>
 </head>
 <body>
-<div th:switch="${member.gender}">
-    <p th:case="M">male</p>
-    <p th:case="F">female</p>
-    <p th:case="*">others</p>
-</div>
+<p>Hello, [[${username}]]!</p>
+<p>Hello, [(${username})]!</p>
+<p th:inline="none">Hello, [[${username}]]!</p>
 </body>
 </html>
