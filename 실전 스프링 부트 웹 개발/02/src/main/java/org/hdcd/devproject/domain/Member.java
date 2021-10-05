@@ -15,18 +15,23 @@ public class Member implements Serializable {
 
     private String email;
     private String gender;
-
-    private Date dateOfBirth;
-
-    private boolean foreigner;
-
-    private Address address;
-
-    private List<Card> cardList;
-
     private String hobby;
     private String[] hobbyArray;
     private List<String> hobbyList;
+    private boolean foreigner;
+    private String developer;
+    private String nationality;
+
+    private Address address;
+
+    private Date dateOfBirth;
+
+    private List<Card> cardList;
+
+    private String cars;
+    private String[] carArray;
+    private List<String> carList;
+    private String introduction;
 
     public String getUserId() {
         return userId;
@@ -68,38 +73,6 @@ public class Member implements Serializable {
         this.gender = gender;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public boolean isForeigner() {
-        return foreigner;
-    }
-
-    public void setForeigner(boolean foreigner) {
-        this.foreigner = foreigner;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public List<Card> getCardList() {
-        return cardList;
-    }
-
-    public void setCardList(List<Card> cardList) {
-        this.cardList = cardList;
-    }
-
     public String getHobby() {
         return hobby;
     }
@@ -122,5 +95,85 @@ public class Member implements Serializable {
 
     public void setHobbyList(List<String> hobbyList) {
         this.hobbyList = hobbyList;
+    }
+
+    public boolean isForeigner() {
+        return foreigner;
+    }
+
+    public void setForeigner(boolean foreigner) {
+        this.foreigner = foreigner;
+    }
+
+    public String getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(String developer) {
+        this.developer = developer;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Card> getCardList() {
+        return cardList;
+    }
+
+    public void setCardList(List<Card> cardList) {
+        this.cardList = cardList;
+    }
+
+    public String getCars() {
+        return cars;
+    }
+
+    public void setCars(String cars) {
+        this.cars = cars;
+    }
+
+    public String[] getCarArray() {
+        return carArray;
+    }
+
+    public void setCarArray(String[] carArray) {
+        this.carArray = carArray;
+    }
+
+    public List<String> getCarList() {
+        return carList;
+    }
+
+    public void setCarList(List<String> carList) {
+        this.carList = carList;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 }

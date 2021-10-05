@@ -7,11 +7,15 @@
 <table border="1">
     <tr>
         <td>유저ID</td>
-        <td th:text="${member.userId}">${member.userId}</td>
+        <td th:text="${member.userId}">userId</td>
     </tr>
     <tr>
         <td>이름</td>
-        <td th:text="${member.userName}">${member.userName}</td>
+        <td th:text="${member.userName}">userName</td>
+    </tr>
+    <tr>
+        <td>E-MAIL</td>
+        <td th:text="${member.email}">email</td>
     </tr>
 </table>
 </body>
