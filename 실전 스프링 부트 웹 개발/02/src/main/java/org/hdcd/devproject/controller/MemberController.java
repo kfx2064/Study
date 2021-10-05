@@ -31,8 +31,9 @@ public class MemberController {
 
         Member member = new Member();
 
-        member.setEmail("aaa@ccc.com");
-        member.setUserName("홍길동");
+        String introduction = "안녕하세요.\n반갑습니다.";
+
+        member.setIntroduction(introduction);
 
         model.addAttribute("member", member);
 
@@ -42,11 +43,7 @@ public class MemberController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Member member) {
         logger.info("register");
-
-        logger.info("member.getUserId() = " + member.getUserId());
-        logger.info("member.getUserName() = " + member.getUserName());
-        logger.info("member.getEmail() = " + member.getEmail());
-
+        logger.info("member.getIntroduction() = " + member.getIntroduction());
         return "result";
     }
 }
