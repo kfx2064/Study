@@ -6,8 +6,13 @@
 <h3>Result</h3>
 <table border="1">
     <tr>
-        <td>소개</td>
-        <td th:text="${member.introduction}">introduction</td>
+        <td>취미(hobbyList) : </td>
+        <td>
+            <th:block th:each="hobby : ${hobbyList}">
+                <span th:text="${hobby}">hobby</span>
+                <br/>
+            </th:block>
+        </td>
     </tr>
 </table>
 </body>
