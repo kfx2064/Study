@@ -23,32 +23,22 @@ public class MemberController {
     public String registerForm01(Model model) {
         logger.info("registerForm01");
 
-        Map<String, String> genderCodeMap = new HashMap<>();
-        genderCodeMap.put("01", "Male");
-        genderCodeMap.put("02", "Female");
-        genderCodeMap.put("03", "Other");
-
-        model.addAttribute("genderCodeMap", genderCodeMap);
-
         model.addAttribute("member", new Member());
 
-        return "registerForm01";
+        return "registerForm";
     }
 
     @RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
     public String registerForm02(Model model) {
         logger.info("registerForm02");
 
-        List<CodeLabelValue> genderCodeList = new ArrayList<>();
-        genderCodeList.add(new CodeLabelValue("01", "Male"));
-        genderCodeList.add(new CodeLabelValue("02", "Female"));
-        genderCodeList.add(new CodeLabelValue("03", "Other"));
+        Member member = new Member();
 
-        model.addAttribute("genderCodeList", genderCodeList);
+        member.setGender("female");
 
-        model.addAttribute("member", new Member());
+        model.addAttribute("member", member);
 
-        return "registerForm02";
+        return "registerForm";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -57,7 +47,7 @@ public class MemberController {
 
         logger.info("member.getGender() = " + member.getGender());
 
-        model.addAttribute("gender", member.getGender());
+        model.addAttribute("member", member);
 
         return "result";
     }
