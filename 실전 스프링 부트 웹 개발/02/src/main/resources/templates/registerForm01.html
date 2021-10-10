@@ -8,11 +8,11 @@
 <form action="result.html" th:action="@{/register}" th:object="${member}" method="POST">
     <table>
         <tr>
-            <td>취미(hobbyList) : </td>
+            <td>성별</td>
             <td>
-                <th:block th:each="element : ${hobbyMap}">
-                    <input type="checkbox" th:field="*{hobbyList}" th:value="${element.key}" />
-                    <label th:for="${#ids.prev('hobbyList')}" th:text="${element.value}">Sports</label>
+                <th:block th:each="element : ${genderCodeMap}">
+                    <input type="radio" th:field="*{gender}" th:value="${element.key}" />
+                    <label th:for="${#ids.prev('gender')}" th:text="${element.value}">Sports</label>
                 </th:block>
             </td>
         </tr>

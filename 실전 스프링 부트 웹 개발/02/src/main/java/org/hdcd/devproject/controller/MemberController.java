@@ -23,70 +23,43 @@ public class MemberController {
     public String registerForm01(Model model) {
         logger.info("registerForm01");
 
+        Map<String, String> genderCodeMap = new HashMap<>();
+        genderCodeMap.put("01", "Male");
+        genderCodeMap.put("02", "Female");
+        genderCodeMap.put("03", "Other");
+
+        model.addAttribute("genderCodeMap", genderCodeMap);
+
         model.addAttribute("member", new Member());
 
-        return "registerForm";
+        return "registerForm01";
     }
 
     @RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
     public String registerForm02(Model model) {
         logger.info("registerForm02");
 
-        Member member = new Member();
+        List<CodeLabelValue> genderCodeList = new ArrayList<>();
+        genderCodeList.add(new CodeLabelValue("01", "Male"));
+        genderCodeList.add(new CodeLabelValue("02", "Female"));
+        genderCodeList.add(new CodeLabelValue("03", "Other"));
 
-        member.setDeveloper("Y");
-        member.setForeigner(true);
+        model.addAttribute("genderCodeList", genderCodeList);
 
-        member.setHobby("Movie");
+        model.addAttribute("member", new Member());
 
-        String[] hobbyArray = {"Music", "Movie"};
-
-        member.setHobbyArray(hobbyArray);
-
-        List<String> hobbyList = new ArrayList<>();
-        hobbyList.add("Music");
-        hobbyList.add("Movie");
-
-        member.setHobbyList(hobbyList);
-
-        model.addAttribute("member", member);
-
-        return "registerForm";
+        return "registerForm02";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Member member, Model model) {
         logger.info("register");
-        logger.info("member.isForeigner() = " + member.isForeigner());
-        logger.info("member.getDeveloper() = " + member.getDeveloper());
-        logger.info("member.getHobby() = " + member.getHobby());
 
-        String[] hobbyArray = member.getHobbyArray();
+        logger.info("member.getGender() = " + member.getGender());
 
-        if (hobbyArray != null) {
-            logger.info("hobbyArray != null = " + hobbyArray.length);
-
-            for (int i = 0; i < hobbyArray.length; i++) {
-                logger.info("hobbyArray[" + i + "] = " + hobbyArray[i]);
-            }
-        } else {
-            logger.info("hobbyArray == null");
-        }
-
-        List<String> hobbyList = member.getHobbyList();
-
-        if (hobbyList != null) {
-            logger.info("hobbyList != null = " + hobbyList.size());
-
-            for (int i = 0; i < hobbyList.size(); i++) {
-                logger.info("hobbyList(" + i + ") = " + hobbyList.get(i));
-            }
-        } else {
-            logger.info("hobbyList == null");
-        }
-
-        model.addAttribute("member", member);
+        model.addAttribute("gender", member.getGender());
 
         return "result";
     }
+
 }
