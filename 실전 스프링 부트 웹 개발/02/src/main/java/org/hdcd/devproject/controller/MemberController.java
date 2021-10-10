@@ -23,37 +23,55 @@ public class MemberController {
     public String registerForm01(Model model) {
         logger.info("registerForm01");
 
-        Map<String, String> hobbyMap = new HashMap<>();
-        hobbyMap.put("01", "Sports");
-        hobbyMap.put("02", "Music");
-        hobbyMap.put("03", "Movie");
-
-        model.addAttribute("hobbyMap", hobbyMap);
-
         model.addAttribute("member", new Member());
 
-        return "registerForm01";
+        return "registerForm";
     }
 
     @RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
     public String registerForm02(Model model) {
         logger.info("registerForm02");
 
-        List<CodeLabelValue> hobbyCodeList = new ArrayList<>();
-        hobbyCodeList.add(new CodeLabelValue("01", "Sports"));
-        hobbyCodeList.add(new CodeLabelValue("02", "Music"));
-        hobbyCodeList.add(new CodeLabelValue("03", "Movie"));
+        Member member = new Member();
 
-        model.addAttribute("hobbyCodeList", hobbyCodeList);
+        member.setDeveloper("Y");
+        member.setForeigner(true);
 
-        model.addAttribute("member", new Member());
+        member.setHobby("Movie");
 
-        return "registerForm02";
+        String[] hobbyArray = {"Music", "Movie"};
+
+        member.setHobbyArray(hobbyArray);
+
+        List<String> hobbyList = new ArrayList<>();
+        hobbyList.add("Music");
+        hobbyList.add("Movie");
+
+        member.setHobbyList(hobbyList);
+
+        model.addAttribute("member", member);
+
+        return "registerForm";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Member member, Model model) {
         logger.info("register");
+        logger.info("member.isForeigner() = " + member.isForeigner());
+        logger.info("member.getDeveloper() = " + member.getDeveloper());
+        logger.info("member.getHobby() = " + member.getHobby());
+
+        String[] hobbyArray = member.getHobbyArray();
+
+        if (hobbyArray != null) {
+            logger.info("hobbyArray != null = " + hobbyArray.length);
+
+            for (int i = 0; i < hobbyArray.length; i++) {
+                logger.info("hobbyArray[" + i + "] = " + hobbyArray[i]);
+            }
+        } else {
+            logger.info("hobbyArray == null");
+        }
 
         List<String> hobbyList = member.getHobbyList();
 
@@ -67,9 +85,8 @@ public class MemberController {
             logger.info("hobbyList == null");
         }
 
-        model.addAttribute("hobbyList", hobbyList);
+        model.addAttribute("member", member);
 
         return "result";
     }
-
 }
