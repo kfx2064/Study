@@ -25,7 +25,7 @@ public class MemberController {
 
         Member member = new Member();
 
-        member.setUserId("hongkd");
+        member.setEmail("aaa@ccc.com");
         member.setUserName("홍길동");
 
         model.addAttribute("member", member);
@@ -39,6 +39,7 @@ public class MemberController {
 
         logger.info("member.getUserId() = " + member.getUserId());
         logger.info("member.getUserName() = " + member.getUserName());
+        logger.info("member.getEmail() = " + member.getEmail());
 
         return "result";
     }
