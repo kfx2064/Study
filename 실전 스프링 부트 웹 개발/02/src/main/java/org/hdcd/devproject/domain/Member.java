@@ -1,6 +1,8 @@
 package org.hdcd.devproject.domain;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,16 +14,19 @@ public class Member implements Serializable {
 
     @NotBlank
     private String userId;
+    @NotBlank
     private String password;
 
     @NotBlank
     @Size(max = 3)
     private String userName;
 
+    @Email
     private String email;
 
     private String gender;
 
+    @Past
     private Date dateOfBirth;
 
     public String getUserId() {

@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -37,12 +38,12 @@ public class MemberController {
 
             for (int i = 0; i < allErrors.size(); i++) {
                 ObjectError objectError = allErrors.get(i);
-                logger.info("allError = " + objectError);
+                logger.info("objectError = " + objectError);
             }
 
             for (int i = 0; i < globalErrors.size(); i++) {
                 ObjectError objectError = globalErrors.get(i);
-                logger.info("globalError = " + objectError);
+                logger.info("objectError = " + objectError);
             }
 
             for (int i = 0; i < fieldErrors.size(); i++) {
@@ -93,5 +94,4 @@ public class MemberController {
 
         return "registerForm";
     }
-
 }
