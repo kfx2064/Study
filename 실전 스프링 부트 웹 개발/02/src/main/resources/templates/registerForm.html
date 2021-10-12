@@ -23,8 +23,8 @@
             <td>
                 <input type="text" name="text" th:field="*{password}" />
                 <font color="red">
-                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
-                        password의 에러 메시지
+                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">
+                        userName의 에러 메시지
                     </span>
                 </font>
             </td>
@@ -34,19 +34,19 @@
             <td>
                 <input type="text" name="text" th:field="*{userName}" />
                 <font color="red">
-                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">
-                        userName의 에러 메시지
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        email의 에러 메시지
                     </span>
                 </font>
             </td>
         </tr>
         <tr>
-            <td>E-MAIL</td>
+            <td>생년월일</td>
             <td>
-                <input type="text" name="text" th:field="*{email}" />
+                <input type="date" name="dateOfBirth" th:field="*{dateOfBirth}" />
                 <font color="red">
-                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
-                        email의 에러 메시지
+                    <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">
+                        dateOfBirth의 에러 메시지
                     </span>
                 </font>
             </td>

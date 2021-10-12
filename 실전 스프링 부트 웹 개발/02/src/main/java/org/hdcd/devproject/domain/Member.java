@@ -19,8 +19,10 @@ public class Member implements Serializable {
     private String userName;
 
     private String email;
-    private String birthDay;
+
     private String gender;
+
+    private Date dateOfBirth;
 
     public String getUserId() {
         return userId;
@@ -54,19 +56,19 @@ public class Member implements Serializable {
         this.email = email;
     }
 
-    public String getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
-    }
-
     public String getGender() {
         return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
