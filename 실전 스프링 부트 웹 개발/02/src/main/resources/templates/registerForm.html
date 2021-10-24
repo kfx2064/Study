@@ -12,9 +12,7 @@
             <td>
                 <input type="text" name="text" th:field="*{userId}" />
                 <font color="red">
-                    <span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">
-                        userId의 에러 메시지
-                    </span>
+                    <span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">userId의 에러 메시지</span>
                 </font>
             </td>
         </tr>
@@ -63,20 +61,72 @@
             </td>
         </tr>
         <tr>
-            <td>성별</td>
+            <td>우편번호</td>
             <td>
-                <input type="radio" th:field="*{gender}" th:value="male" />
-                <label th:for="${#ids.prev('gender')}">Male</label>
-                <br/>
-                <input type="radio" th:field="*{gender}" th:value="female" />
-                <label th:for="${#ids.prev('gender')}">Female</label>
-                <br/>
-                <input type="radio" th:field="*{gender}" th:value="other" />
-                <label th:for="${#ids.prev('gender')}">Other</label>
+                <input type="text" name="text" th:field="*{address.postCode}" />
+                <font color="red">
+                    <span th:if="${#fields.hasErrors('address.postCode')}" th:errors="*{address.postCode}">
+                        address.postCode의 에러 메시지
+                    </span>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td>
+                <input type="text" name="text" th:field="*{address.location}" />
+                <font color="red">
+                    <span th:if="${#fields.hasErrors('address.location')}" th:errors="*{address.location}">
+                        address.location의 에러 메시지
+                    </span>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td>카드1 - 번호</td>
+            <td>
+                <input type="text" name="text" th:field="*{cardList[0].no}" />
+                <font color="red">
+                    <span th:if="${#fields.hasErrors('cardList[0].no')}" th:errors="*{cardList[0].no}">
+                        cardList[0].no의 에러 메시지
+                    </span>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td>카드1 - 유효년월</td>
+            <td>
+                <input type="text" name="text" th:field="*{cardList[0].validMonth}" />
+                <font color="red">
+                    <span th:if="${#fields.hasErrors('cardList[0].validMonth')}" th:errors="*{cardList[0].validMonth}">
+                        cardList[0].validMonth의 에러 메시지
+                    </span>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td>카드2 - 번호</td>
+            <td>
+                <input type="text" name="text" th:field="*{cardList[1].no}" />
+                <font color="red">
+                    <span th:if="${#fields.hasErrors('cardList[1].no')}" th:errors="*{cardList[1].no}">
+                        cardList[1].no의 에러 메시지
+                    </span>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td>카드2 - 유효년월</td>
+            <td>
+                <input type="text" name="text" th:field="*{cardList[1].validMonth}" />
+                <font color="red">
+                    <span th:if="${#fields.hasErrors('cardList[1].validMonth')}" th:errors="*{cardList[1].validMonth}">
+                        cardList[1].validMonth의 에러 메시지
+                    </span>
+                </font>
             </td>
         </tr>
     </table>
-
     <button name="register" type="submit">등록</button>
 </form>
 </body>

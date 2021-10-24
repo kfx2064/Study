@@ -1,5 +1,6 @@
 package org.hdcd.devproject.domain;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
@@ -23,6 +24,12 @@ public class Member implements Serializable {
 
     @Email
     private String email;
+
+    @Valid
+    private Address address;
+
+    @Valid
+    private List<Card> cardList;
 
     private String gender;
 
@@ -59,6 +66,22 @@ public class Member implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Card> getCardList() {
+        return cardList;
+    }
+
+    public void setCardList(List<Card> cardList) {
+        this.cardList = cardList;
     }
 
     public String getGender() {
