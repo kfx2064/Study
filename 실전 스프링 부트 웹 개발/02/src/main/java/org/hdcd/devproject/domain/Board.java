@@ -4,10 +4,19 @@ import java.util.Date;
 
 public class Board {
 
+    private int boardNo;
     private String title;
     private String content;
     private String writer;
     private Date regDate;
+
+    public int getBoardNo() {
+        return boardNo;
+    }
+
+    public void setBoardNo(int boardNo) {
+        this.boardNo = boardNo;
+    }
 
     public String getTitle() {
         return title;
