@@ -1,5 +1,10 @@
 package org.hdcd.devproject.domain;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -8,30 +13,28 @@ public class Member implements Serializable {
 
     private static final long serialVersionUID = 5691454397829345004L;
 
+    @NotBlank
     private String userId;
+    @NotBlank
     private String password;
 
+    @NotBlank
+    @Size(max = 3)
     private String userName;
 
+    @Email
     private String email;
-    private String gender;
-    private String hobby;
-    private String[] hobbyArray;
-    private List<String> hobbyList;
-    private boolean foreigner;
-    private String developer;
-    private String nationality;
 
+    @Valid
     private Address address;
 
-    private Date dateOfBirth;
-
+    @Valid
     private List<Card> cardList;
 
-    private String cars;
-    private String[] carArray;
-    private List<String> carList;
-    private String introduction;
+    private String gender;
+
+    @Past
+    private Date dateOfBirth;
 
     public String getUserId() {
         return userId;
@@ -65,76 +68,12 @@ public class Member implements Serializable {
         this.email = email;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getHobby() {
-        return hobby;
-    }
-
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
-    }
-
-    public String[] getHobbyArray() {
-        return hobbyArray;
-    }
-
-    public void setHobbyArray(String[] hobbyArray) {
-        this.hobbyArray = hobbyArray;
-    }
-
-    public List<String> getHobbyList() {
-        return hobbyList;
-    }
-
-    public void setHobbyList(List<String> hobbyList) {
-        this.hobbyList = hobbyList;
-    }
-
-    public boolean isForeigner() {
-        return foreigner;
-    }
-
-    public void setForeigner(boolean foreigner) {
-        this.foreigner = foreigner;
-    }
-
-    public String getDeveloper() {
-        return developer;
-    }
-
-    public void setDeveloper(String developer) {
-        this.developer = developer;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
     public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public List<Card> getCardList() {
@@ -145,35 +84,19 @@ public class Member implements Serializable {
         this.cardList = cardList;
     }
 
-    public String getCars() {
-        return cars;
+    public String getGender() {
+        return gender;
     }
 
-    public void setCars(String cars) {
-        this.cars = cars;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String[] getCarArray() {
-        return carArray;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setCarArray(String[] carArray) {
-        this.carArray = carArray;
-    }
-
-    public List<String> getCarList() {
-        return carList;
-    }
-
-    public void setCarList(List<String> carList) {
-        this.carList = carList;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

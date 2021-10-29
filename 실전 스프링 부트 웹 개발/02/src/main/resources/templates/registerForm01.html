@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Spring Form</h2>
+<form action="result.html" th:action="@{/register}" th:object="${member}" method="POST">
+    <table>
+        <tr>
+            <td>국적</td>
+            <td>
+                <select th:field="*{nationality}">
+                    <option th:each="element : ${nationalityCodeMap}" th:value="${element.key}" th:text="${element.value}">
+                        Korea
+                    </option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <button name="register" type="submit">등록</button>
+</form>
+</body>
+</html>
